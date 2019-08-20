@@ -5,9 +5,6 @@ bookdown::gitbook:
     toc:
       collapse: section
       scroll_highlight: true
-      before: |
-        <li><a href="https://dereksonderegger.github.io/570_II/Statistical-Methods-I.pdf" target="blank">PDF version</a></li>
-      after: |
     edit:
       link: https://github.com/dereksonderegger/570_II/raw/master/%s
     download:

@@ -35,7 +35,7 @@ ggplot(PopDist, aes(x=x, y=density)) +
   ggtitle('Population Distribution')
 ```
 
-![](04_SamplingDistribution_files/figure-epub3/unnamed-chunk-3-1.png)<!-- -->
+<img src="04_SamplingDistribution_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
 We want to estimate the mean $\mu$ and take a random sample of $n=5$. Lets do this a few times and notice that the sample mean is never exactly 5, but is a bit off from that.
 
@@ -50,9 +50,9 @@ mosaic::do(3) * {
 
 ```
 ##       xbar
-## 1 5.000065
-## 2 5.603388
-## 3 4.401814
+## 1 5.355526
+## 2 5.034475
+## 3 6.133905
 ```
 
 
@@ -75,7 +75,7 @@ ggplot() +
                   alpha=.6)     # alpha is the opacity of the layer
 ```
 
-![](04_SamplingDistribution_files/figure-epub3/unnamed-chunk-6-1.png)<!-- -->
+<img src="04_SamplingDistribution_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 
 
 From the histogram of the sample means, we notice three things:
@@ -175,7 +175,7 @@ ggplot(data, aes(x=z, y=y)) +
   geom_text( x=0, y=.2, label='95%')
 ```
 
-![](04_SamplingDistribution_files/figure-epub3/unnamed-chunk-7-1.png)<!-- -->
+<img src="04_SamplingDistribution_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
 So all we need to do is solve the following equation for $n$ 
 $$1.96	=	\frac{10}{ \left( \frac{50}{\sqrt{n}} \right) }$$
@@ -227,7 +227,7 @@ SampDist %>%                                         # What proportion of those
 
 ```
 ##   ProportionGreater
-## 1            0.0653
+## 1            0.0678
 ```
 
 **Summary**
@@ -260,7 +260,7 @@ $$\bar{Y}	\stackrel{\cdot}{\sim}	N\left(\mu_{\bar{Y}}=\mu,\;\;\sigma_{\bar{Y}}^{
     b) Over the next month, I'll visit Big Foot BBQ 5 times. What is the probability that the mean waiting time of those 5 visits is less than 9 minutes? (This assumes independence of visits but because I don't hit the same restaurant the same night each week, this assumption is probably OK.)
 
 3. 5. Suppose that we have a population with the following distribution that has mean $\mu=5.2$ and standard deviation $\sigma=3.0$:
-![](04_SamplingDistribution_files/figure-epub3/Ch3_HistogramMatching-1.png)<!-- -->
+<img src="04_SamplingDistribution_files/figure-html/Ch3_HistogramMatching-1.png" width="672" />
     a) Which of the histograms would most likely represent the distribution of the sample mean $\bar{x}$ of $n=4$ observations?  
     b) Which of the histograms would most likely represent the distribution of the sample mean $\bar{x}$ of $n=30$ observations?
     c) Justify your choices in parts (a) and (b).

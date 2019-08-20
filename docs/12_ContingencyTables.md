@@ -211,8 +211,8 @@ table(Mites.star)
 ```
 ##           outcome
 ## treatment  no wilt wilt
-##   mites         12   14
-##   no mites       7   14
+##   mites          9   17
+##   no mites      10   11
 ```
 
 ```r
@@ -221,7 +221,7 @@ chisq.test( table(Mites.star), correct=FALSE )$statistic # grab only the test st
 
 ```
 ## X-squared 
-## 0.7928475
+## 0.8156621
 ```
 
 We see that this code is creating a data frame with a single column called `X.squared` and next we simulate a large number of times and display the sampling distribution of $X^{2*}$.

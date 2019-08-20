@@ -27,7 +27,7 @@ We hope you'll find these notes useful.
 
 *Derek Sonderegger*: I have had the pleasure of interacting with a great number of talented mathematicians and statisticians in my schooling.  In particular I am deeply indebted to Dr Robert Boik and Dr Warren Esty as well as my Ph.D. adviser Dr Jan Hannig. 
 
-As a professor at Northern Arizona University, I am grateful for the feedback and comradery of my fellow statisticans, particularly Dr St. Laurent and Dr. Buscalia 
+As a professor at Northern Arizona University, I am grateful for the feedback and comradery of my fellow statisticans, particularly Dr St. Laurent and Dr. Buscalia.
 
 Finally, I am deeply appreciative of the support given to me by my wife, Aubrey.
 

@@ -1,4 +1,4 @@
-# Sampling Distribution of $\bar{X}$
+# Sampling Distribution of $\bar{X}$ 
 
 
  
@@ -50,9 +50,9 @@ mosaic::do(3) * {
 
 ```
 ##       xbar
-## 1 5.355526
-## 2 5.034475
-## 3 6.133905
+## 1 4.327771
+## 2 7.053190
+## 3 4.878844
 ```
 
 
@@ -227,7 +227,7 @@ SampDist %>%                                         # What proportion of those
 
 ```
 ##   ProportionGreater
-## 1            0.0678
+## 1            0.0621
 ```
 
 **Summary**
@@ -259,7 +259,7 @@ $$\bar{Y}	\stackrel{\cdot}{\sim}	N\left(\mu_{\bar{Y}}=\mu,\;\;\sigma_{\bar{Y}}^{
     a) Tonight I am planning on going to Big Foot BBQ. What is the probability I have to wait less than 9 minutes?
     b) Over the next month, I'll visit Big Foot BBQ 5 times. What is the probability that the mean waiting time of those 5 visits is less than 9 minutes? (This assumes independence of visits but because I don't hit the same restaurant the same night each week, this assumption is probably OK.)
 
-3. 5. Suppose that we have a population with the following distribution that has mean $\mu=5.2$ and standard deviation $\sigma=3.0$:
+3. Suppose that we have a population with the following distribution that has mean $\mu=5.2$ and standard deviation $\sigma=3.0$:
 <img src="04_SamplingDistribution_files/figure-html/Ch3_HistogramMatching-1.png" width="672" />
     a) Which of the histograms would most likely represent the distribution of the sample mean $\bar{x}$ of $n=4$ observations?  
     b) Which of the histograms would most likely represent the distribution of the sample mean $\bar{x}$ of $n=30$ observations?

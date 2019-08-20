@@ -132,23 +132,23 @@ CaffeineTaps %>% mutate(ShuffledGroup = mosaic::shuffle(Group))
 ## 1   246   Caffeine      Caffeine
 ## 2   248   Caffeine    NoCaffeine
 ## 3   250   Caffeine    NoCaffeine
-## 4   252   Caffeine    NoCaffeine
+## 4   252   Caffeine      Caffeine
 ## 5   248   Caffeine    NoCaffeine
-## 6   250   Caffeine    NoCaffeine
-## 7   246   Caffeine      Caffeine
-## 8   248   Caffeine    NoCaffeine
-## 9   245   Caffeine      Caffeine
-## 10  250   Caffeine    NoCaffeine
+## 6   250   Caffeine      Caffeine
+## 7   246   Caffeine    NoCaffeine
+## 8   248   Caffeine      Caffeine
+## 9   245   Caffeine    NoCaffeine
+## 10  250   Caffeine      Caffeine
 ## 11  242 NoCaffeine      Caffeine
 ## 12  245 NoCaffeine      Caffeine
 ## 13  244 NoCaffeine    NoCaffeine
 ## 14  248 NoCaffeine      Caffeine
 ## 15  247 NoCaffeine    NoCaffeine
-## 16  248 NoCaffeine      Caffeine
+## 16  248 NoCaffeine    NoCaffeine
 ## 17  242 NoCaffeine      Caffeine
-## 18  244 NoCaffeine      Caffeine
-## 19  246 NoCaffeine      Caffeine
-## 20  242 NoCaffeine    NoCaffeine
+## 18  244 NoCaffeine    NoCaffeine
+## 19  246 NoCaffeine    NoCaffeine
+## 20  242 NoCaffeine      Caffeine
 ```
 
 We can then calculate the mean difference but this time using the randomly generated groups, and now the non-caffeinated group just happens to have a slightly higher mean tap rate just by the random sorting into two groups.
@@ -166,7 +166,7 @@ CaffeineTaps %>%
 ## # A tibble: 1 x 1
 ##   d.star
 ##    <dbl>
-## 1    1.9
+## 1   -0.7
 ```
 
 We could repeat this shuffling several times and see the possible values we might have seen if the null hypothesis is correct and the treatment group doesn't matter at all.
@@ -184,11 +184,11 @@ mosaic::do(5) * {
 
 ```
 ##   d.star
-## 1   -1.1
+## 1   -1.5
 ## 2   -1.7
-## 3   -0.7
-## 4   -0.3
-## 5    1.3
+## 3   -0.3
+## 4    2.3
+## 5   -0.3
 ```
 
 Of course, five times isn't sufficient to understand the sampling distribution of the mean difference under the null hypothesis, we should do more.
@@ -340,7 +340,7 @@ $$\textrm{p.value}=P\left(T_{17.89}<-3.39\right)$$
 
 
 ```r
-mosaic::xpt(-3.39, df=17.89)
+mosaic::xpt(-3.39, df=17.89, ncp=0)
 ```
 
 <img src="07_Two_Samples_files/figure-html/unnamed-chunk-18-1.png" width="672" />

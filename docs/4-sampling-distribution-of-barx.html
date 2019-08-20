@@ -125,9 +125,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="https://dereksonderegger.github.io/570_II/Statistical-Methods-I.pdf" target="blank">PDF version</a></li>
-
-<li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
@@ -345,9 +342,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb100-4" data-line-number="4">  Sample.Data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>( <span class="dt">xbar =</span> <span class="kw">mean</span>(x) )</a>
 <a class="sourceLine" id="cb100-5" data-line-number="5">}</a></code></pre></div>
 <pre><code>##       xbar
-## 1 5.355526
-## 2 5.034475
-## 3 6.133905</code></pre>
+## 1 4.327771
+## 2 7.053190
+## 3 4.878844</code></pre>
 <div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1">n &lt;-<span class="st"> </span><span class="dv">5</span></a>
 <a class="sourceLine" id="cb102-2" data-line-number="2">SampDist &lt;-<span class="st"> </span>mosaic<span class="op">::</span><span class="kw">do</span>(<span class="dv">10000</span>) <span class="op">*</span><span class="st"> </span>{</a>
 <a class="sourceLine" id="cb102-3" data-line-number="3">  Sample.Data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">x =</span> <span class="kw">rchisq</span>(n,<span class="dt">df=</span><span class="dv">5</span>) )</a>
@@ -475,7 +472,7 @@ with a mean time greater than <span class="math inline">\(2.5\)</span> minutes?<
 <a class="sourceLine" id="cb105-7" data-line-number="7"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Greater =</span> <span class="kw">ifelse</span>(xbar <span class="op">&gt;=</span><span class="st"> </span><span class="fl">2.5</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="op">%&gt;%</span><span class="st">    </span><span class="co"># xbar values are</span></a>
 <a class="sourceLine" id="cb105-8" data-line-number="8"><span class="st">  </span><span class="kw">summarise</span>( <span class="dt">ProportionGreater =</span> <span class="kw">mean</span>(Greater) )     <span class="co"># greater than 2.5?</span></a></code></pre></div>
 <pre><code>##   ProportionGreater
-## 1            0.0678</code></pre>
+## 1            0.0621</code></pre>
 <p><strong>Summary</strong></p>
 <p>Often we have sampled <span class="math inline">\(n\)</span> elements from some population <span class="math inline">\(Y_{1},Y_{2},\dots,Y_{n}\)</span> independently and <span class="math inline">\(E\left(Y_{i}\right)=\mu\)</span> and <span class="math inline">\(Var\left(Y_{i}\right)=\sigma^{2}\)</span> and we want to understand the distribution of the sample mean, that is we want to understand how the sample mean varies from sample to sample.</p>
 <p><span class="math inline">\(E\left(\bar{Y}\right)=\mu\)</span>. That states that the distribution of the sample mean will centered at <span class="math inline">\(\mu\)</span>. We expect to sometimes take samples where the sample mean is higher than <span class="math inline">\(\mu\)</span> and sometimes less than <span class="math inline">\(\mu\)</span>, but the average underestimate is the same magnitude as the average overestimate.</p>
@@ -502,10 +499,8 @@ is normally distributed.
 <li>Tonight I am planning on going to Big Foot BBQ. What is the probability I have to wait less than 9 minutes?</li>
 <li>Over the next month, I’ll visit Big Foot BBQ 5 times. What is the probability that the mean waiting time of those 5 visits is less than 9 minutes? (This assumes independence of visits but because I don’t hit the same restaurant the same night each week, this assumption is probably OK.)</li>
 </ol></li>
-<li><ol start="5" style="list-style-type: decimal">
 <li>Suppose that we have a population with the following distribution that has mean <span class="math inline">\(\mu=5.2\)</span> and standard deviation <span class="math inline">\(\sigma=3.0\)</span>:
-<img src="04_SamplingDistribution_files/figure-html/Ch3_HistogramMatching-1.png" width="672" /></li>
-</ol>
+<img src="04_SamplingDistribution_files/figure-html/Ch3_HistogramMatching-1.png" width="672" />
 <ol style="list-style-type: lower-alpha">
 <li>Which of the histograms would most likely represent the distribution of the sample mean <span class="math inline">\(\bar{x}\)</span> of <span class="math inline">\(n=4\)</span> observations?<br />
 </li>
@@ -568,7 +563,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": [["Statistical-Methods-I.pdf", "PDF"], ["Statistical-Methods-I.epub", "EPUB"]],
+"download": null,
 "toc": {
 "collapse": "section",
 "scroll_highlight": true

@@ -125,9 +125,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="https://dereksonderegger.github.io/570_II/Statistical-Methods-I.pdf" target="blank">PDF version</a></li>
-
-<li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
@@ -683,7 +680,7 @@ but the <span class="math inline">\(\epsilon_{i}\)</span> terms have a strong po
 <a class="sourceLine" id="cb425-2" data-line-number="2"><span class="co">#boot.ci(boot.model, type=&#39;bca&#39;, index=1) # CI for Intercept</span></a>
 <a class="sourceLine" id="cb425-3" data-line-number="3"><span class="co">#boot.ci(boot.model, type=&#39;bca&#39;, index=2) # CI for the Slope</span></a>
 <a class="sourceLine" id="cb425-4" data-line-number="4"><span class="kw">confint</span>(boot.model)</a></code></pre></div>
-<pre><code>## Bootstrap quantiles, type =  bca 
+<pre><code>## Bootstrap bca confidence intervals
 ## 
 ##        2.5 %    97.5 %
 ## 1 15.4340761 17.013663
@@ -949,7 +946,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": [["Statistical-Methods-I.pdf", "PDF"], ["Statistical-Methods-I.epub", "EPUB"]],
+"download": null,
 "toc": {
 "collapse": "section",
 "scroll_highlight": true

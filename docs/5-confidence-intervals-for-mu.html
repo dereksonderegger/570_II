@@ -125,9 +125,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="https://dereksonderegger.github.io/570_II/Statistical-Methods-I.pdf" target="blank">PDF version</a></li>
-
-<li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
@@ -399,7 +396,7 @@ or <span class="math inline">\(\left(310.8, \, 380.4\right)\)</span> which is in
 <p>Grabbing the appropriate quantiles from the bootstrap estimate of the sampling distribution, we see that the bootstrap <span class="math inline">\(95\%\)</span> confidence interval matches up will with the confidence interval we obtained from asymptotic theory.</p>
 <div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1"><span class="kw">quantile</span>( SampDist<span class="op">$</span>xbar, <span class="dt">probs=</span><span class="kw">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>) )</a></code></pre></div>
 <pre><code>##     2.5%    97.5% 
-## 313.4731 379.5256</code></pre>
+## 312.6000 380.5256</code></pre>
 <p>Example: Assume that the percent of alcohol in casks of whiskey is normally distributed. From the last batch of casks produced, the brewer samples <span class="math inline">\(n=5\)</span> casks and wants to calculate a <span class="math inline">\(90\%\)</span> confidence interval for the mean percent alcohol in the latest batch produced. The sample mean was <span class="math inline">\(\bar{x}=55\)</span> percent and the sample standard deviation was <span class="math inline">\(s=4\)</span> percent.</p>
 <p><span class="math display">\[\bar{x}   \pm t_{n-1}^{1-\alpha/2}\left(\frac{s}{\sqrt{n}}\right)\]</span></p>
 <div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1"><span class="kw">qt</span>( <span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="fl">.1</span><span class="op">/</span><span class="dv">2</span>, <span class="dt">df=</span><span class="dv">4</span>)  <span class="co"># 1-(.1)/2 = 1-.05 = .95</span></a></code></pre></div>
@@ -494,7 +491,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": [["Statistical-Methods-I.pdf", "PDF"], ["Statistical-Methods-I.epub", "EPUB"]],
+"download": null,
 "toc": {
 "collapse": "section",
 "scroll_highlight": true

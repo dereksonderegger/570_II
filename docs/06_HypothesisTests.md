@@ -55,8 +55,8 @@ The above value is the actual value calculated using R
 
 
 ```r
-#        pt(-1.58, df=9)    # No Graph
-mosaic::xpt(-1.58, df=9)    # With a graph
+#        pt(-1.58, df=9)           # No Graph
+mosaic::xpt(-1.58, df=9, ncp=0)    # With a graph; Non-Centrality Parameter = 0
 ```
 
 <img src="06_HypothesisTests_files/figure-html/unnamed-chunk-4-1.png" width="672" />
@@ -64,7 +64,6 @@ mosaic::xpt(-1.58, df=9)    # With a graph
 ```
 ## [1] 0.07428219
 ```
-
 
 
 but using tables typically found in intro statistics books, the most precise thing you would be able to say is $0.05 \le \mbox{p-value} \le 0.10$ So there is a small chance that my brother-in-law just got unlucky with his ten cows. While the data isn't entirely supportive of $H_{0}$, we don't have strong enough data to out right reject $H_{0}$. So we will say that we fail to reject $H_{0}$. Notice that we aren't saying that we accept the null hypothesis, only that there is insufficient evidence to call-out the neighbor as a liar. 
@@ -131,8 +130,8 @@ Then the p-value would be
 
 
 ```r
-#        pt(-1.4, df=19)    # No Graph
-mosaic::xpt(-1.4, df=19 )   # With a Graph
+#        pt(-1.4, df=19)           # No Graph
+mosaic::xpt(-1.4, df=19, ncp=0 )   # With a Graph
 ```
 
 <img src="06_HypothesisTests_files/figure-html/unnamed-chunk-6-1.png" width="672" />
@@ -154,7 +153,7 @@ Suppose we perform a test of a random sample of resistors and obtain a test stat
 
 
 ```r
-mosaic::xpt( c(-1.8, 1.8), df=9)
+mosaic::xpt( c(-1.8, 1.8), df=9, ncp=0)
 ```
 
 <img src="06_HypothesisTests_files/figure-html/unnamed-chunk-7-1.png" width="672" />

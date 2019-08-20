@@ -2,4 +2,3 @@ base
 dplyr
 ggplot2
 ggfortify
-bindrcpp

@@ -138,7 +138,7 @@ quantile( SampDist$xbar, probs=c(0.025, 0.975) )
 
 ```
 ##     2.5%    97.5% 
-## 313.4731 379.5256
+## 312.6000 380.5256
 ```
 
 Example: Assume that the percent of alcohol in casks of whiskey is normally distributed. From the last batch of casks produced, the brewer samples $n=5$ casks and wants to calculate a $90\%$ confidence interval for the mean percent alcohol in the latest batch produced. The sample mean was $\bar{x}=55$ percent and the sample standard deviation was $s=4$ percent. 

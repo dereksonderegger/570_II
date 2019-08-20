@@ -623,7 +623,7 @@ confint(boot.model)
 ```
 
 ```
-## Bootstrap quantiles, type =  bca 
+## Bootstrap bca confidence intervals
 ## 
 ##        2.5 %    97.5 %
 ## 1 15.4340761 17.013663

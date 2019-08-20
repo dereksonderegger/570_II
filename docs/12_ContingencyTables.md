@@ -211,8 +211,8 @@ table(Mites.star)
 ```
 ##           outcome
 ## treatment  no wilt wilt
-##   mites         11   15
-##   no mites       8   13
+##   mites          9   17
+##   no mites      10   11
 ```
 
 ```r
@@ -220,8 +220,8 @@ chisq.test( table(Mites.star), correct=FALSE )$statistic # grab only the test st
 ```
 
 ```
-##  X-squared 
-## 0.08559517
+## X-squared 
+## 0.8156621
 ```
 
 We see that this code is creating a data frame with a single column called `X.squared` and next we simulate a large number of times and display the sampling distribution of $X^{2*}$.
@@ -250,10 +250,10 @@ p.value
 
 ```
 ##   p.value
-## 1  0.0151
+## 1  0.0167
 ```
 
-We see that the p-value is 0.0151 and conclude that there is strong evidence to reject the null hypothesis that the mite treatment does not affect the probability of wilting. That is to say, the probability of observing data as extreme as ours is unlikely to occur by random chance when the null hypothesis is true.
+We see that the p-value is 0.0167 and conclude that there is strong evidence to reject the null hypothesis that the mite treatment does not affect the probability of wilting. That is to say, the probability of observing data as extreme as ours is unlikely to occur by random chance when the null hypothesis is true.
 
 As usual, it is pretty annoying to have to program the permutation test ourselves. Fortunately the `chisq.test()` function allows us to option to tell it to do a permutation based test. There is an option `simulate.p.value` which reproduces the simulation test we just performed.
 
@@ -268,7 +268,7 @@ chisq.test( table(Mites), simulate.p.value=TRUE, B=10000 )
 ## 	replicates)
 ## 
 ## data:  table(Mites)
-## X-squared = 7.2037, df = NA, p-value = 0.0161
+## X-squared = 7.2037, df = NA, p-value = 0.0167
 ```
 
 Before we had our excellent computers, we would have to compare the observed $X^{2}$ test statistic to some distribution to determine if it is large enough to be evidence against the null. It can be shown that if the null hypothesis is correct then $X^{2}\stackrel{\cdot}{\sim}\chi_{1}^{2}$ where this is the Chi-squared distribution with 1 degree of freedom. This is the distribution that the `chisq.test()` compares against if we don't tell it to do a permutation based test. Furthermore, even if the null hypothesis is true the test statistic is only approximately normal but that approximation gets better and better as the total sample size increases. 
@@ -449,7 +449,7 @@ chisq.test( tab, simulate.p.value=TRUE, B=100000 )
 ## 	replicates)
 ## 
 ## data:  tab
-## X-squared = 26.168, df = NA, p-value = 1e-05
+## X-squared = 26.168, df = NA, p-value = 2e-05
 ```
 
 With such a small p-value, we know that we are unlikely to have observed such a large difference in marriage rates among our different races. It appears that white respondents are much more likely to be married than the other races listed, but is there a difference in rates between blacks and Asians? What about Asian and other?  
@@ -490,12 +490,12 @@ result
 
 ```
 ##        comparison  raw.p  adj.p
-## 1 asian vs. black 0.0003 0.0009
-## 2 asian vs. other 0.0223 0.0387
-## 3 asian vs. white 0.3761 0.3761
-## 4 black vs. other 0.2828 0.3393
-## 5 black vs. white 0.0001 0.0006
-## 6 other vs. white 0.0258 0.0387
+## 1 asian vs. black 0.0002 0.0006
+## 2 asian vs. other 0.0231 0.0346
+## 3 asian vs. white 0.3852 0.3852
+## 4 black vs. other 0.2916 0.3499
+## 5 black vs. white 0.0002 0.0006
+## 6 other vs. white 0.0214 0.0346
 ```
 
 

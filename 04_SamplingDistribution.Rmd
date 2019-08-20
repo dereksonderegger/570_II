@@ -1,4 +1,4 @@
-# Sampling Distribution of $\bar{X}$
+# Sampling Distribution of $\bar{X}$ 
 
 ```{r, echo=FALSE}
 # Unattach any packages that happen to already be loaded. In general this is unecessary
@@ -248,8 +248,8 @@ $$\bar{Y}	\stackrel{\cdot}{\sim}	N\left(\mu_{\bar{Y}}=\mu,\;\;\sigma_{\bar{Y}}^{
     a) Tonight I am planning on going to Big Foot BBQ. What is the probability I have to wait less than 9 minutes?
     b) Over the next month, I'll visit Big Foot BBQ 5 times. What is the probability that the mean waiting time of those 5 visits is less than 9 minutes? (This assumes independence of visits but because I don't hit the same restaurant the same night each week, this assumption is probably OK.)
 
-3. 5. Suppose that we have a population with the following distribution that has mean $\mu=5.2$ and standard deviation $\sigma=3.0$:
-```{r, echo=FALSE, Ch3_HistogramMatching, cache=TRUE}
+3. Suppose that we have a population with the following distribution that has mean $\mu=5.2$ and standard deviation $\sigma=3.0$:
+```{r, echo=FALSE, Ch3_HistogramMatching, cache=TRUE, fig.height=5}
 df.star <- function(x){
   X <- splines::bs(x, knots=c(1.95,4,8), Boundary.knots=c(0,10))
   return( X %*% c(0, 2, 0, 0, 2, 0) )  

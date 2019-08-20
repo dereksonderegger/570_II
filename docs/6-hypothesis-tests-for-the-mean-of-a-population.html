@@ -125,9 +125,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="https://dereksonderegger.github.io/570_II/Statistical-Methods-I.pdf" target="blank">PDF version</a></li>
-
-<li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
@@ -342,8 +339,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>P-value is the probability of seeing the observed data or something more extreme given the null hypothesis is true. By “something more extreme”, we mean samples that would be more evidence for the alternative hypothesis.</p>
 <p><span class="math display">\[\mbox{p-value}=P(T_{9}&lt;-1.58)=0.074\]</span></p>
 <p>The above value is the actual value calculated using R</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1"><span class="co">#        pt(-1.58, df=9)    # No Graph</span></a>
-<a class="sourceLine" id="cb121-2" data-line-number="2">mosaic<span class="op">::</span><span class="kw">xpt</span>(<span class="op">-</span><span class="fl">1.58</span>, <span class="dt">df=</span><span class="dv">9</span>)    <span class="co"># With a graph</span></a></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1"><span class="co">#        pt(-1.58, df=9)           # No Graph</span></a>
+<a class="sourceLine" id="cb121-2" data-line-number="2">mosaic<span class="op">::</span><span class="kw">xpt</span>(<span class="op">-</span><span class="fl">1.58</span>, <span class="dt">df=</span><span class="dv">9</span>, <span class="dt">ncp=</span><span class="dv">0</span>)    <span class="co"># With a graph; Non-Centrality Parameter = 0</span></a></code></pre></div>
 <p><img src="06_HypothesisTests_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <pre><code>## [1] 0.07428219</code></pre>
 <p>but using tables typically found in intro statistics books, the most precise thing you would be able to say is <span class="math inline">\(0.05 \le \mbox{p-value} \le 0.10\)</span> So there is a small chance that my brother-in-law just got unlucky with his ten cows. While the data isn’t entirely supportive of <span class="math inline">\(H_{0}\)</span>, we don’t have strong enough data to out right reject <span class="math inline">\(H_{0}\)</span>. So we will say that we fail to reject <span class="math inline">\(H_{0}\)</span>. Notice that we aren’t saying that we accept the null hypothesis, only that there is insufficient evidence to call-out the neighbor as a liar.</p>
@@ -396,8 +393,8 @@ The hard part is figuring which of the possible alternatives we should examine. 
 <p>Suppose we perform an experiment with <span class="math inline">\(n=20\)</span> light bulbs and observe <span class="math inline">\(\bar{x}=980\)</span> and <span class="math inline">\(s=64\)</span> hours and therefore our test statistic is
 <span class="math display">\[ t_{19}   =   \frac{\bar{x}-\mu}{s/\sqrt{n}} =    \frac{980-1000}{64/\sqrt{20}} = -1.40\]</span>
 Then the p-value would be</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1"><span class="co">#        pt(-1.4, df=19)    # No Graph</span></a>
-<a class="sourceLine" id="cb123-2" data-line-number="2">mosaic<span class="op">::</span><span class="kw">xpt</span>(<span class="op">-</span><span class="fl">1.4</span>, <span class="dt">df=</span><span class="dv">19</span> )   <span class="co"># With a Graph</span></a></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1"><span class="co">#        pt(-1.4, df=19)           # No Graph</span></a>
+<a class="sourceLine" id="cb123-2" data-line-number="2">mosaic<span class="op">::</span><span class="kw">xpt</span>(<span class="op">-</span><span class="fl">1.4</span>, <span class="dt">df=</span><span class="dv">19</span>, <span class="dt">ncp=</span><span class="dv">0</span> )   <span class="co"># With a Graph</span></a></code></pre></div>
 <p><img src="06_HypothesisTests_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <pre><code>## [1] 0.08881538</code></pre>
 <p>and we calculate p-value <span class="math inline">\(=P\left(T_{19}&lt;-1.4\right)=0.0888\)</span></p>
@@ -407,7 +404,7 @@ Then the p-value would be</p>
   H_{a}:\mbox{ }\mu &amp;\ne    2 
   \end{aligned}\]</span></p>
 <p>Suppose we perform a test of a random sample of resistors and obtain a test statistics of <span class="math inline">\(t_{9}=1.8\)</span>. Because the p-value is “the probability of your data or something more extreme” and in this case more extreme implies extreme values in both tails then</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1">mosaic<span class="op">::</span><span class="kw">xpt</span>( <span class="kw">c</span>(<span class="op">-</span><span class="fl">1.8</span>, <span class="fl">1.8</span>), <span class="dt">df=</span><span class="dv">9</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1">mosaic<span class="op">::</span><span class="kw">xpt</span>( <span class="kw">c</span>(<span class="op">-</span><span class="fl">1.8</span>, <span class="fl">1.8</span>), <span class="dt">df=</span><span class="dv">9</span>, <span class="dt">ncp=</span><span class="dv">0</span>)</a></code></pre></div>
 <p><img src="06_HypothesisTests_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <pre><code>## [1] 0.05269534 0.94730466</code></pre>
 <p>and we calculate
@@ -770,7 +767,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": [["Statistical-Methods-I.pdf", "PDF"], ["Statistical-Methods-I.epub", "EPUB"]],
+"download": null,
 "toc": {
 "collapse": "section",
 "scroll_highlight": true

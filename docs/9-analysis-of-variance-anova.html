@@ -125,9 +125,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="https://dereksonderegger.github.io/570_II/Statistical-Methods-I.pdf" target="blank">PDF version</a></li>
-
-<li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
@@ -563,10 +560,10 @@ and can be found using the <code>coef()</code> and <code>confint()</code> functi
 <div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb276-1" data-line-number="1"><span class="co"># alternatively we could use the emmeans package</span></a>
 <a class="sourceLine" id="cb276-2" data-line-number="2"><span class="co"># using either model representation </span></a>
 <a class="sourceLine" id="cb276-3" data-line-number="3">emmeans<span class="op">::</span><span class="kw">emmeans</span>(model, <span class="op">~</span>Species)</a></code></pre></div>
-<pre><code>##  Species emmean         SE df lower.CL upper.CL
-##  1         3.11 0.07492218 12 2.946759 3.273241
-##  2         3.95 0.07492218 12 3.786759 4.113241
-##  3         4.93 0.07492218 12 4.766759 5.093241
+<pre><code>##  Species emmean     SE df lower.CL upper.CL
+##  1         3.11 0.0749 12     2.95     3.27
+##  2         3.95 0.0749 12     3.79     4.11
+##  3         4.93 0.0749 12     4.77     5.09
 ## 
 ## Confidence level used: 0.95</code></pre>
 <p>Are the all the species different from each other? In practice I will want to examine each group and compare it to all others and figure out if they are different. How can we efficiently do all possible t-tests and keep the correct <span class="math inline">\(\alpha\)</span> level correct?</p>
@@ -580,7 +577,7 @@ and can be found using the <code>coef()</code> and <code>confint()</code> functi
 <a class="sourceLine" id="cb278-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>( <span class="dt">Y=</span>mu<span class="op">+</span><span class="kw">rnorm</span>(k<span class="op">*</span>n), <span class="dt">Group=</span>Grp) </a>
 <a class="sourceLine" id="cb278-5" data-line-number="5">letterdata &lt;-<span class="st"> </span><span class="kw">lm</span>( Y<span class="op">~</span>Grp, <span class="dt">data=</span>mydata ) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb278-6" data-line-number="6"><span class="st">  </span>emmeans<span class="op">::</span><span class="kw">emmeans</span>( <span class="op">~</span><span class="st"> </span>Grp) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb278-7" data-line-number="7"><span class="st">  </span>emmeans<span class="op">::</span><span class="kw">cld</span>( <span class="dt">Letters=</span>letters, <span class="dt">adjust=</span><span class="st">&#39;none&#39;</span> ) <span class="op">%&gt;%</span><span class="st">  </span><span class="co"># Force no p-value adjustment</span></a>
+<a class="sourceLine" id="cb278-7" data-line-number="7"><span class="st">  </span>multcomp<span class="op">::</span><span class="kw">cld</span>( <span class="dt">Letters=</span>letters, <span class="dt">adjust=</span><span class="st">&#39;none&#39;</span> ) <span class="op">%&gt;%</span><span class="st">  </span><span class="co"># Force no p-value adjustment</span></a>
 <a class="sourceLine" id="cb278-8" data-line-number="8"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Grp, .group) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb278-9" data-line-number="9"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>( <span class="dt">Y =</span> <span class="dv">3</span> )</a></code></pre></div>
 <div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb279-1" data-line-number="1"><span class="co"># Visualize a made up data set: mydata</span></a>
@@ -598,38 +595,38 @@ and can be found using the <code>coef()</code> and <code>confint()</code> functi
 <a class="sourceLine" id="cb280-2" data-line-number="2">t1 &lt;-<span class="st"> </span>emmeans<span class="op">::</span><span class="kw">emmeans</span>(model, pairwise <span class="op">~</span><span class="st"> </span>Grp)</a>
 <a class="sourceLine" id="cb280-3" data-line-number="3">t1</a></code></pre></div>
 <pre><code>## $emmeans
-##  Grp     emmean        SE df   lower.CL   upper.CL
-##  1    0.4408853 0.3161521 45 -0.1958777 1.07764834
-##  2   -0.1164715 0.3161521 45 -0.7532346 0.52029152
-##  3    0.2009232 0.3161521 45 -0.4358399 0.83768620
-##  4   -0.5476682 0.3161521 45 -1.1844312 0.08909484
-##  5   -0.1835186 0.3161521 45 -0.8202817 0.45324440
+##  Grp emmean    SE df lower.CL upper.CL
+##  1    0.441 0.316 45   -0.196   1.0776
+##  2   -0.116 0.316 45   -0.753   0.5203
+##  3    0.201 0.316 45   -0.436   0.8377
+##  4   -0.548 0.316 45   -1.184   0.0891
+##  5   -0.184 0.316 45   -0.820   0.4532
 ## 
 ## Confidence level used: 0.95 
 ## 
 ## $contrasts
-##  contrast    estimate        SE df t.ratio p.value
-##  1 - 2     0.55735682 0.4471066 45   1.247  0.7244
-##  1 - 3     0.23996214 0.4471066 45   0.537  0.9830
-##  1 - 4     0.98855350 0.4471066 45   2.211  0.1943
-##  1 - 5     0.62440394 0.4471066 45   1.397  0.6330
-##  2 - 3    -0.31739468 0.4471066 45  -0.710  0.9532
-##  2 - 4     0.43119668 0.4471066 45   0.964  0.8695
-##  2 - 5     0.06704712 0.4471066 45   0.150  0.9999
-##  3 - 4     0.74859136 0.4471066 45   1.674  0.4597
-##  3 - 5     0.38444180 0.4471066 45   0.860  0.9099
-##  4 - 5    -0.36414956 0.4471066 45  -0.814  0.9248
+##  contrast estimate    SE df t.ratio p.value
+##  1 - 2       0.557 0.447 45  1.247  0.7244 
+##  1 - 3       0.240 0.447 45  0.537  0.9830 
+##  1 - 4       0.989 0.447 45  2.211  0.1943 
+##  1 - 5       0.624 0.447 45  1.397  0.6330 
+##  2 - 3      -0.317 0.447 45 -0.710  0.9532 
+##  2 - 4       0.431 0.447 45  0.964  0.8695 
+##  2 - 5       0.067 0.447 45  0.150  0.9999 
+##  3 - 4       0.749 0.447 45  1.674  0.4597 
+##  3 - 5       0.384 0.447 45  0.860  0.9099 
+##  4 - 5      -0.364 0.447 45 -0.814  0.9248 
 ## 
 ## P value adjustment: tukey method for comparing a family of 5 estimates</code></pre>
 <p>It is also straightforward to generate the letter display using the function <code>cld()</code> which stands for <em>compact letter display</em>.</p>
 <div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb282-1" data-line-number="1">emmeans<span class="op">::</span><span class="kw">emmeans</span>(model, <span class="op">~</span><span class="st"> </span>Grp) <span class="op">%&gt;%</span><span class="st">    </span><span class="co"># don&#39;t have the pairwise here or else</span></a>
-<a class="sourceLine" id="cb282-2" data-line-number="2"><span class="st">  </span>emmeans<span class="op">::</span><span class="kw">cld</span>( <span class="dt">Letters=</span>letters )     <span class="co"># the cld() function gets confused...</span></a></code></pre></div>
-<pre><code>##  Grp     emmean        SE df   lower.CL   upper.CL .group
-##  4   -0.5476682 0.3161521 45 -1.1844312 0.08909484  a    
-##  5   -0.1835186 0.3161521 45 -0.8202817 0.45324440  a    
-##  2   -0.1164715 0.3161521 45 -0.7532346 0.52029152  a    
-##  3    0.2009232 0.3161521 45 -0.4358399 0.83768620  a    
-##  1    0.4408853 0.3161521 45 -0.1958777 1.07764834  a    
+<a class="sourceLine" id="cb282-2" data-line-number="2"><span class="st">  </span>multcomp<span class="op">::</span><span class="kw">cld</span>( <span class="dt">Letters=</span>letters )     <span class="co"># the cld() function gets confused...</span></a></code></pre></div>
+<pre><code>##  Grp emmean    SE df lower.CL upper.CL .group
+##  4   -0.548 0.316 45   -1.184   0.0891  a    
+##  5   -0.184 0.316 45   -0.820   0.4532  a    
+##  2   -0.116 0.316 45   -0.753   0.5203  a    
+##  3    0.201 0.316 45   -0.436   0.8377  a    
+##  1    0.441 0.316 45   -0.196   1.0776  a    
 ## 
 ## Confidence level used: 0.95 
 ## P value adjustment: tukey method for comparing a family of 5 estimates 
@@ -687,18 +684,18 @@ and can be found using the <code>coef()</code> and <code>confint()</code> functi
 <p>To find out which means are different we look at the group means and confidence intervals as well as all the pairwise contrasts between the groups. We will control for the multiple comparisons issue by using Tukey’s method.</p>
 <div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb295-1" data-line-number="1">emmeans<span class="op">::</span><span class="kw">emmeans</span>(model, pairwise<span class="op">~</span>Method)</a></code></pre></div>
 <pre><code>## $emmeans
-##  Method   emmean       SE df lower.CL upper.CL
-##  M1     86.75000 1.518172 21 83.59279 89.90721
-##  M2     75.57143 1.622994 21 72.19623 78.94663
-##  M3     71.00000 1.431347 21 68.02335 73.97665
+##  Method emmean   SE df lower.CL upper.CL
+##  M1       86.8 1.52 21     83.6     89.9
+##  M2       75.6 1.62 21     72.2     78.9
+##  M3       71.0 1.43 21     68.0     74.0
 ## 
 ## Confidence level used: 0.95 
 ## 
 ## $contrasts
-##  contrast  estimate       SE df t.ratio p.value
-##  M1 - M2  11.178571 2.222377 21   5.030  0.0002
-##  M1 - M3  15.750000 2.086528 21   7.548  &lt;.0001
-##  M2 - M3   4.571429 2.163993 21   2.112  0.1114
+##  contrast estimate   SE df t.ratio p.value
+##  M1 - M2     11.18 2.22 21 5.030   0.0002 
+##  M1 - M3     15.75 2.09 21 7.548   &lt;.0001 
+##  M2 - M3      4.57 2.16 21 2.112   0.1114 
 ## 
 ## P value adjustment: tukey method for comparing a family of 3 estimates</code></pre>
 <p>If we feel uncomfortable with the equal variance assumption, we can do each pairwise t-test using non-pooled variance and then correct for the multiple comparisons using Bonferroni’s p-value correction. If we have <span class="math inline">\(k=3\)</span> groups, the we have <span class="math inline">\(k(k-1)/2=3\)</span> different comparisons, so I will calculate each p-value and multiply by <span class="math inline">\(3\)</span>.</p>
@@ -1083,7 +1080,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": [["Statistical-Methods-I.pdf", "PDF"], ["Statistical-Methods-I.epub", "EPUB"]],
+"download": null,
 "toc": {
 "collapse": "section",
 "scroll_highlight": true

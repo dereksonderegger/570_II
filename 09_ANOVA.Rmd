@@ -351,7 +351,7 @@ mydata <- data.frame(mu=rep(0,k*n), Grp=factor(rep(1:k, each=n))) %>%
   mutate( Y=mu+rnorm(k*n), Group=Grp) 
 letterdata <- lm( Y~Grp, data=mydata ) %>%
   emmeans::emmeans( ~ Grp) %>%
-  emmeans::cld( Letters=letters, adjust='none' ) %>%  # Force no p-value adjustment
+  multcomp::cld( Letters=letters, adjust='none' ) %>%  # Force no p-value adjustment
   dplyr::select(Grp, .group) %>%
   dplyr::mutate( Y = 3 )
 ```
@@ -383,7 +383,7 @@ It is also straightforward to generate the letter display using the function `cl
 
 ```{r}
 emmeans::emmeans(model, ~ Grp) %>%    # don't have the pairwise here or else
-  emmeans::cld( Letters=letters )     # the cld() function gets confused...
+  multcomp::cld( Letters=letters )     # the cld() function gets confused...
 ```
 
 

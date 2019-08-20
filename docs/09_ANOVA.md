@@ -272,10 +272,10 @@ emmeans::emmeans(model, ~Species)
 ```
 
 ```
-##  Species emmean         SE df lower.CL upper.CL
-##  1         3.11 0.07492218 12 2.946759 3.273241
-##  2         3.95 0.07492218 12 3.786759 4.113241
-##  3         4.93 0.07492218 12 4.766759 5.093241
+##  Species emmean     SE df lower.CL upper.CL
+##  1         3.11 0.0749 12     2.95     3.27
+##  2         3.95 0.0749 12     3.79     4.11
+##  3         4.93 0.0749 12     4.77     5.09
 ## 
 ## Confidence level used: 0.95
 ```
@@ -294,7 +294,7 @@ mydata <- data.frame(mu=rep(0,k*n), Grp=factor(rep(1:k, each=n))) %>%
   mutate( Y=mu+rnorm(k*n), Group=Grp) 
 letterdata <- lm( Y~Grp, data=mydata ) %>%
   emmeans::emmeans( ~ Grp) %>%
-  emmeans::cld( Letters=letters, adjust='none' ) %>%  # Force no p-value adjustment
+  multcomp::cld( Letters=letters, adjust='none' ) %>%  # Force no p-value adjustment
   dplyr::select(Grp, .group) %>%
   dplyr::mutate( Y = 3 )
 ```
@@ -328,27 +328,27 @@ t1
 
 ```
 ## $emmeans
-##  Grp     emmean        SE df   lower.CL   upper.CL
-##  1    0.4408853 0.3161521 45 -0.1958777 1.07764834
-##  2   -0.1164715 0.3161521 45 -0.7532346 0.52029152
-##  3    0.2009232 0.3161521 45 -0.4358399 0.83768620
-##  4   -0.5476682 0.3161521 45 -1.1844312 0.08909484
-##  5   -0.1835186 0.3161521 45 -0.8202817 0.45324440
+##  Grp emmean    SE df lower.CL upper.CL
+##  1    0.441 0.316 45   -0.196   1.0776
+##  2   -0.116 0.316 45   -0.753   0.5203
+##  3    0.201 0.316 45   -0.436   0.8377
+##  4   -0.548 0.316 45   -1.184   0.0891
+##  5   -0.184 0.316 45   -0.820   0.4532
 ## 
 ## Confidence level used: 0.95 
 ## 
 ## $contrasts
-##  contrast    estimate        SE df t.ratio p.value
-##  1 - 2     0.55735682 0.4471066 45   1.247  0.7244
-##  1 - 3     0.23996214 0.4471066 45   0.537  0.9830
-##  1 - 4     0.98855350 0.4471066 45   2.211  0.1943
-##  1 - 5     0.62440394 0.4471066 45   1.397  0.6330
-##  2 - 3    -0.31739468 0.4471066 45  -0.710  0.9532
-##  2 - 4     0.43119668 0.4471066 45   0.964  0.8695
-##  2 - 5     0.06704712 0.4471066 45   0.150  0.9999
-##  3 - 4     0.74859136 0.4471066 45   1.674  0.4597
-##  3 - 5     0.38444180 0.4471066 45   0.860  0.9099
-##  4 - 5    -0.36414956 0.4471066 45  -0.814  0.9248
+##  contrast estimate    SE df t.ratio p.value
+##  1 - 2       0.557 0.447 45  1.247  0.7244 
+##  1 - 3       0.240 0.447 45  0.537  0.9830 
+##  1 - 4       0.989 0.447 45  2.211  0.1943 
+##  1 - 5       0.624 0.447 45  1.397  0.6330 
+##  2 - 3      -0.317 0.447 45 -0.710  0.9532 
+##  2 - 4       0.431 0.447 45  0.964  0.8695 
+##  2 - 5       0.067 0.447 45  0.150  0.9999 
+##  3 - 4       0.749 0.447 45  1.674  0.4597 
+##  3 - 5       0.384 0.447 45  0.860  0.9099 
+##  4 - 5      -0.364 0.447 45 -0.814  0.9248 
 ## 
 ## P value adjustment: tukey method for comparing a family of 5 estimates
 ```
@@ -358,16 +358,16 @@ It is also straightforward to generate the letter display using the function `cl
 
 ```r
 emmeans::emmeans(model, ~ Grp) %>%    # don't have the pairwise here or else
-  emmeans::cld( Letters=letters )     # the cld() function gets confused...
+  multcomp::cld( Letters=letters )     # the cld() function gets confused...
 ```
 
 ```
-##  Grp     emmean        SE df   lower.CL   upper.CL .group
-##  4   -0.5476682 0.3161521 45 -1.1844312 0.08909484  a    
-##  5   -0.1835186 0.3161521 45 -0.8202817 0.45324440  a    
-##  2   -0.1164715 0.3161521 45 -0.7532346 0.52029152  a    
-##  3    0.2009232 0.3161521 45 -0.4358399 0.83768620  a    
-##  1    0.4408853 0.3161521 45 -0.1958777 1.07764834  a    
+##  Grp emmean    SE df lower.CL upper.CL .group
+##  4   -0.548 0.316 45   -1.184   0.0891  a    
+##  5   -0.184 0.316 45   -0.820   0.4532  a    
+##  2   -0.116 0.316 45   -0.753   0.5203  a    
+##  3    0.201 0.316 45   -0.436   0.8377  a    
+##  1    0.441 0.316 45   -0.196   1.0776  a    
 ## 
 ## Confidence level used: 0.95 
 ## P value adjustment: tukey method for comparing a family of 5 estimates 
@@ -486,18 +486,18 @@ emmeans::emmeans(model, pairwise~Method)
 
 ```
 ## $emmeans
-##  Method   emmean       SE df lower.CL upper.CL
-##  M1     86.75000 1.518172 21 83.59279 89.90721
-##  M2     75.57143 1.622994 21 72.19623 78.94663
-##  M3     71.00000 1.431347 21 68.02335 73.97665
+##  Method emmean   SE df lower.CL upper.CL
+##  M1       86.8 1.52 21     83.6     89.9
+##  M2       75.6 1.62 21     72.2     78.9
+##  M3       71.0 1.43 21     68.0     74.0
 ## 
 ## Confidence level used: 0.95 
 ## 
 ## $contrasts
-##  contrast  estimate       SE df t.ratio p.value
-##  M1 - M2  11.178571 2.222377 21   5.030  0.0002
-##  M1 - M3  15.750000 2.086528 21   7.548  <.0001
-##  M2 - M3   4.571429 2.163993 21   2.112  0.1114
+##  contrast estimate   SE df t.ratio p.value
+##  M1 - M2     11.18 2.22 21 5.030   0.0002 
+##  M1 - M3     15.75 2.09 21 7.548   <.0001 
+##  M2 - M3      4.57 2.16 21 2.112   0.1114 
 ## 
 ## P value adjustment: tukey method for comparing a family of 3 estimates
 ```

@@ -251,7 +251,7 @@ So now we can compute our p-value as
 $$\textrm{p.value}=P\left(T_{17.89}<-3.39\right)$$
 
 ```{r}
-mosaic::xpt(-3.39, df=17.89)
+mosaic::xpt(-3.39, df=17.89, ncp=0)
 ```
 
 In a similar fashion, we can calculate the confidence interval in our usual fashion

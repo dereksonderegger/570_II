@@ -125,9 +125,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="https://dereksonderegger.github.io/570_II/Statistical-Methods-I.pdf" target="blank">PDF version</a></li>
-
-<li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
@@ -468,8 +465,8 @@ where the relevant parameters are <span class="math inline">\(\pi_{w}\)</span>, 
 <div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb466-1" data-line-number="1">p.value &lt;-<span class="st"> </span>SamplingDist <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>( <span class="dt">p.value =</span> <span class="kw">mean</span>( X.squared <span class="op">&gt;=</span><span class="st"> </span>X.sq ) )</a>
 <a class="sourceLine" id="cb466-2" data-line-number="2">p.value</a></code></pre></div>
 <pre><code>##   p.value
-## 1  0.0151</code></pre>
-<p>We see that the p-value is 0.0151 and conclude that there is strong evidence to reject the null hypothesis that the mite treatment does not affect the probability of wilting. That is to say, the probability of observing data as extreme as ours is unlikely to occur by random chance when the null hypothesis is true.</p>
+## 1  0.0167</code></pre>
+<p>We see that the p-value is 0.0167 and conclude that there is strong evidence to reject the null hypothesis that the mite treatment does not affect the probability of wilting. That is to say, the probability of observing data as extreme as ours is unlikely to occur by random chance when the null hypothesis is true.</p>
 <p>As usual, it is pretty annoying to have to program the permutation test ourselves. Fortunately the <code>chisq.test()</code> function allows us to option to tell it to do a permutation based test. There is an option <code>simulate.p.value</code> which reproduces the simulation test we just performed.</p>
 <div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb468-1" data-line-number="1"><span class="kw">chisq.test</span>( <span class="kw">table</span>(Mites), <span class="dt">simulate.p.value=</span><span class="ot">TRUE</span>, <span class="dt">B=</span><span class="dv">10000</span> )</a></code></pre></div>
 <pre><code>## 
@@ -477,7 +474,7 @@ where the relevant parameters are <span class="math inline">\(\pi_{w}\)</span>, 
 ##  replicates)
 ## 
 ## data:  table(Mites)
-## X-squared = 7.2037, df = NA, p-value = 0.0161</code></pre>
+## X-squared = 7.2037, df = NA, p-value = 0.0167</code></pre>
 <p>Before we had our excellent computers, we would have to compare the observed <span class="math inline">\(X^{2}\)</span> test statistic to some distribution to determine if it is large enough to be evidence against the null. It can be shown that if the null hypothesis is correct then <span class="math inline">\(X^{2}\stackrel{\cdot}{\sim}\chi_{1}^{2}\)</span> where this is the Chi-squared distribution with 1 degree of freedom. This is the distribution that the <code>chisq.test()</code> compares against if we don’t tell it to do a permutation based test. Furthermore, even if the null hypothesis is true the test statistic is only approximately normal but that approximation gets better and better as the total sample size increases.</p>
 <p>The reason that we compare against a Chi-squared distribution with 1 degree of freedom is because when we shuffle the group labels, we still have the same number of wilted/non-wilted plants as well as the same number of mite/no-mite treated plants. So the row and column totals are identical in all the permuted tables. So once the number of observations in the <span class="math inline">\((1,1)\)</span> cell is decided, the other three cells are also indirectly determined as well due to the row/column totals being constant regardless of permutation. In the general case with <span class="math inline">\(R\)</span> rows and <span class="math inline">\(C\)</span> columns, the number of cells that are not set due to the row/column totals, is <span class="math inline">\((R-1)(C-1)\)</span>.</p>
 <p>The asymptotic approximation is usually acceptable if the observed count in each cell is greater than 5. Even then, a slightly better approximation can be obtained by using the Yates’ continuity correction. Typically I will perform the analysis both ways and confirm we get the same inference. If the two methods disagree, I’d trust the permutation method.</p>
@@ -585,7 +582,7 @@ where the relevant parameters are <span class="math inline">\(\pi_{w}\)</span>, 
 ##  replicates)
 ## 
 ## data:  tab
-## X-squared = 26.168, df = NA, p-value = 1e-05</code></pre>
+## X-squared = 26.168, df = NA, p-value = 2e-05</code></pre>
 <p>With such a small p-value, we know that we are unlikely to have observed such a large difference in marriage rates among our different races. It appears that white respondents are much more likely to be married than the other races listed, but is there a difference in rates between blacks and Asians? What about Asian and other?</p>
 <p>Just as we wanted to perform an analysis on all pairwise comparisons among levels in an ANOVA analysis and control the overall Type I error rate, we will do the same thing but now using the Chi-squared test.</p>
 <p>Conceptually we will just perform all possible pairwise tests and then adjust the resulting p-values to control for the number of comparisons.</p>
@@ -604,12 +601,12 @@ where the relevant parameters are <span class="math inline">\(\pi_{w}\)</span>, 
 <pre><code>## Adjusted p-values used the fdr method.</code></pre>
 <div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb490-1" data-line-number="1">result</a></code></pre></div>
 <pre><code>##        comparison  raw.p  adj.p
-## 1 asian vs. black 0.0003 0.0009
-## 2 asian vs. other 0.0223 0.0387
-## 3 asian vs. white 0.3761 0.3761
-## 4 black vs. other 0.2828 0.3393
-## 5 black vs. white 0.0001 0.0006
-## 6 other vs. white 0.0258 0.0387</code></pre>
+## 1 asian vs. black 0.0002 0.0006
+## 2 asian vs. other 0.0231 0.0346
+## 3 asian vs. white 0.3852 0.3852
+## 4 black vs. other 0.2916 0.3499
+## 5 black vs. white 0.0002 0.0006
+## 6 other vs. white 0.0214 0.0346</code></pre>
 <div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb492-1" data-line-number="1"><span class="co"># We really want to get the compact letter display for </span></a>
 <a class="sourceLine" id="cb492-2" data-line-number="2"><span class="co"># graphing purposes, but there is some annoying details</span></a>
 <a class="sourceLine" id="cb492-3" data-line-number="3"><span class="co"># that we really ought not have to think about.  So lets</span></a>
@@ -767,7 +764,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": [["Statistical-Methods-I.pdf", "PDF"], ["Statistical-Methods-I.epub", "EPUB"]],
+"download": null,
 "toc": {
 "collapse": "section",
 "scroll_highlight": true

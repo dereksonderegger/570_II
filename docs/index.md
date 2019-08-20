@@ -12,7 +12,7 @@ github-repo: dereksonderegger/570_II
 description: ""
 ---
 
-# Preface {-}
+# Preface{-}
 These notes were originally written for an introductory statistics course for grad students in the physical sciences. 
 
 The problem with most introductory statistics courses is that they don't prepare the student for the use of advanced statistics. Rote hand calculation is easy to test, easy to grade, and easy for students to learn to do, but is useless for actually understanding how to apply statistics. Since students pursuing a Ph.D. will likely be using statistics for the rest of their professional careers, we feel that this sort of course should attempt to steer away from a “cookbook” undergraduate pedagogy, and give the student enough theoretical background to continue their statistical studies at a high level while staying away from the painful mathematical details that statisticians must work through.
@@ -23,8 +23,7 @@ Because the mathematical and statistical background of typical students varies w
 
 We hope you'll find these notes useful.
 
-## Acknowledgements {-}
-
+## Acknowledgements{-}
 *Derek Sonderegger*: I have had the pleasure of interacting with a great number of talented mathematicians and statisticians in my schooling.  In particular I am deeply indebted to Dr Robert Boik and Dr Warren Esty as well as my Ph.D. adviser Dr Jan Hannig. 
 
 As a professor at Northern Arizona University, I am grateful for the feedback and comradery of my fellow statisticans, particularly Dr St. Laurent and Dr. Buscalia.

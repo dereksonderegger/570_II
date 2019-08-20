@@ -31,5 +31,5 @@ As a professor at Northern Arizona University, I am grateful for the feedback an
 
 Finally, I am deeply appreciative of the support given to me by my wife, Aubrey.
 
-*Robert Buscalia*: 
+*Robert Buscalia*: *Thank somebody that helped you Robert!*
 

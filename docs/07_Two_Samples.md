@@ -72,7 +72,7 @@ ggplot(CaffeineTaps, aes(x=Taps)) +
   facet_grid( Group ~ . )  # two graphs stacked by Group (Caffeine vs non)
 ```
 
-<img src="07_Two_Samples_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+![](07_Two_Samples_files/figure-epub3/unnamed-chunk-4-1.png)<!-- -->
 
 From this view, it looks like the caffeine group has a higher tapping rate. It will be helpful to summarize the difference between these two groups with a single statistic by calculating the mean for each group and then calculate the difference between the group means.
 
@@ -131,23 +131,23 @@ CaffeineTaps %>% mutate(ShuffledGroup = mosaic::shuffle(Group))
 ##    Taps      Group ShuffledGroup
 ## 1   246   Caffeine      Caffeine
 ## 2   248   Caffeine    NoCaffeine
-## 3   250   Caffeine    NoCaffeine
+## 3   250   Caffeine      Caffeine
 ## 4   252   Caffeine    NoCaffeine
-## 5   248   Caffeine    NoCaffeine
+## 5   248   Caffeine      Caffeine
 ## 6   250   Caffeine    NoCaffeine
-## 7   246   Caffeine      Caffeine
-## 8   248   Caffeine    NoCaffeine
-## 9   245   Caffeine      Caffeine
+## 7   246   Caffeine    NoCaffeine
+## 8   248   Caffeine      Caffeine
+## 9   245   Caffeine    NoCaffeine
 ## 10  250   Caffeine    NoCaffeine
 ## 11  242 NoCaffeine      Caffeine
 ## 12  245 NoCaffeine      Caffeine
-## 13  244 NoCaffeine    NoCaffeine
+## 13  244 NoCaffeine      Caffeine
 ## 14  248 NoCaffeine      Caffeine
-## 15  247 NoCaffeine    NoCaffeine
-## 16  248 NoCaffeine      Caffeine
+## 15  247 NoCaffeine      Caffeine
+## 16  248 NoCaffeine    NoCaffeine
 ## 17  242 NoCaffeine      Caffeine
-## 18  244 NoCaffeine      Caffeine
-## 19  246 NoCaffeine      Caffeine
+## 18  244 NoCaffeine    NoCaffeine
+## 19  246 NoCaffeine    NoCaffeine
 ## 20  242 NoCaffeine    NoCaffeine
 ```
 
@@ -166,7 +166,7 @@ CaffeineTaps %>%
 ## # A tibble: 1 x 1
 ##   d.star
 ##    <dbl>
-## 1    1.9
+## 1    0.9
 ```
 
 We could repeat this shuffling several times and see the possible values we might have seen if the null hypothesis is correct and the treatment group doesn't matter at all.
@@ -184,11 +184,11 @@ mosaic::do(5) * {
 
 ```
 ##   d.star
-## 1   -1.1
-## 2   -1.7
-## 3   -0.7
-## 4   -0.3
-## 5    1.3
+## 1   -2.7
+## 2    0.5
+## 3   -1.1
+## 4   -0.7
+## 5   -0.7
 ```
 
 Of course, five times isn't sufficient to understand the sampling distribution of the mean difference under the null hypothesis, we should do more.
@@ -214,7 +214,7 @@ ggplot(PermutationDist, aes(x=d.star)) +
   xlab('d*')
 ```
 
-<img src="07_Two_Samples_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+![](07_Two_Samples_files/figure-epub3/unnamed-chunk-12-1.png)<!-- -->
 
 We have almost no cases where the randomly assigned groups produced a difference as extreme as the actual observed difference of $d=-3.5$. We can calculate the percentage of the sampling distribution of the difference in means that is farther from zero 
 
@@ -280,7 +280,7 @@ ggplot(BootDist, aes(x=d.star)) +
   ggtitle('Bootstrap distribution of d*')
 ```
 
-<img src="07_Two_Samples_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+![](07_Two_Samples_files/figure-epub3/unnamed-chunk-16-1.png)<!-- -->
 
 
 ```r
@@ -343,7 +343,7 @@ $$\textrm{p.value}=P\left(T_{17.89}<-3.39\right)$$
 mosaic::xpt(-3.39, df=17.89)
 ```
 
-<img src="07_Two_Samples_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+![](07_Two_Samples_files/figure-epub3/unnamed-chunk-18-1.png)<!-- -->
 
 ```
 ## [1] 0.00164277
@@ -562,7 +562,7 @@ ggplot(Mosquitoes, aes(x=Number)) +
   facet_grid( Treat ~ . )
 ```
 
-<img src="07_Two_Samples_files/figure-html/unnamed-chunk-25-1.png" width="672" />
+![](07_Two_Samples_files/figure-epub3/unnamed-chunk-25-1.png)<!-- -->
 
 For this experiment and the summary statistic that captures the difference we are trying to understand is $d=\bar{x}_{w}-\bar{x}_{b}$ where $\bar{x}_{w}$ is the sample mean number of mosquitoes attracted by the water group and $\bar{x}_{b}$ is the sample mean number of mosquitoes attracted by the beer group. Because of the order we chose for the subtraction, a negative value for d is supportive of the alternative hypothesis that mosquitoes are more attracted to beer drinkers. 
 
@@ -608,7 +608,7 @@ ggplot(PermutationDist, aes(x=d.star)) +
   ggtitle('Sampling Dist. of d* assuming H0 is true')
 ```
 
-<img src="07_Two_Samples_files/figure-html/unnamed-chunk-28-1.png" width="672" />
+![](07_Two_Samples_files/figure-epub3/unnamed-chunk-28-1.png)<!-- -->
 
 ```r
 p.value <- PermutationDist %>%
@@ -640,7 +640,7 @@ ggplot(BootDist, aes(x=d.star)) +
   ggtitle('Bootstrap dist. of d*')
 ```
 
-<img src="07_Two_Samples_files/figure-html/unnamed-chunk-31-1.png" width="672" />
+![](07_Two_Samples_files/figure-epub3/unnamed-chunk-31-1.png)<!-- -->
 
 ```r
 quantile( BootDist$d.star, probs=c(.05, .95))
@@ -715,7 +715,7 @@ ggplot(MarriageAges.Long, aes(x=Age)) +
   facet_grid(Spouse ~ .) 
 ```
 
-<img src="07_Two_Samples_files/figure-html/unnamed-chunk-36-1.png" width="672" />
+![](07_Two_Samples_files/figure-epub3/unnamed-chunk-36-1.png)<!-- -->
 
 Looking at this view of the data, it doesn't appear that the husbands tend to be older than the wives. A t-test to see if the average age of husbands is greater than the average age of wives gives an insignificant difference.
 
@@ -753,7 +753,7 @@ ggplot(MarriageAges, aes(x = d)) +
   geom_histogram(binwidth=2)
 ```
 
-<img src="07_Two_Samples_files/figure-html/unnamed-chunk-38-1.png" width="672" />
+![](07_Two_Samples_files/figure-epub3/unnamed-chunk-38-1.png)<!-- -->
 
 Given this set of differences, we'd like to know if this data is compatible with the null hypothesis that husbands and wives tend to be the same age versus the alternative that husbands tend to be older. (We could chose the two-sided test as well).
 $$\begin{aligned}
@@ -808,7 +808,7 @@ ggplot(PermDist, aes(x=d.bar)) +
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-<img src="07_Two_Samples_files/figure-html/unnamed-chunk-40-1.png" width="672" />
+![](07_Two_Samples_files/figure-epub3/unnamed-chunk-40-1.png)<!-- -->
 
 ```r
 PermDist %>%
@@ -890,7 +890,7 @@ ggplot(TrafficFlow.Long, aes(x=Delay)) +
   facet_grid(Seq ~ .)                       # two plots, stacked by SequenceType
 ```
 
-<img src="07_Two_Samples_files/figure-html/unnamed-chunk-44-1.png" width="672" />
+![](07_Two_Samples_files/figure-epub3/unnamed-chunk-44-1.png)<!-- -->
 
 ```r
 ggplot(TrafficFlow, aes(x=Difference)) +
@@ -898,7 +898,7 @@ ggplot(TrafficFlow, aes(x=Difference)) +
   ggtitle('Difference (Standard - Flexible)')
 ```
 
-<img src="07_Two_Samples_files/figure-html/unnamed-chunk-45-1.png" width="672" />
+![](07_Two_Samples_files/figure-epub3/unnamed-chunk-45-1.png)<!-- -->
 
 All of the differences were positive, so it is almost ridiculous to do a hypothesis test that there is no decrease in delays with the flexible timing system, but we might as well walk through the analysis.
 

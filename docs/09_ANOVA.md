@@ -50,12 +50,12 @@ H_{a} &:		\textrm{at least on mean is different than the others}
 
 In the following graph, there does not appear to be a difference between the hybrid means:
 
-<img src="09_ANOVA_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+![](09_ANOVA_files/figure-epub3/unnamed-chunk-3-1.png)<!-- -->
 
 
 However, in this case, it looks like there is a difference in the means of each hybrid:
 
-<img src="09_ANOVA_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+![](09_ANOVA_files/figure-epub3/unnamed-chunk-4-1.png)<!-- -->
 
 
 What is the difference between these two?
@@ -99,7 +99,7 @@ There are several sources of variability that we are dealing with.
 SST: Sum of Squares Total - This is the total variability in the data set. It has an associated df=n-1 because under the null hypothesis there is only one mean $\mu$. 
 $$SST=\sum_{i=1}^{k}\sum_{j=1}^{n_{j}}\left(y_{ij}-\bar{y}_{\cdot\cdot}\right)^{2} \;\;\;\;\;\;\;\;\;df_{T}=n-1$$
 
-<img src="09_ANOVA_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+![](09_ANOVA_files/figure-epub3/unnamed-chunk-5-1.png)<!-- -->
 
 
 An anova table is usually set up the in the following way (although the total row is sometimes removed):
@@ -206,7 +206,7 @@ As is always good practice, the first thing we should do is graph our data.
 ggplot(data, aes(x=Species, y=LAI)) + geom_boxplot()
 ```
 
-<img src="09_ANOVA_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+![](09_ANOVA_files/figure-epub3/unnamed-chunk-7-1.png)<!-- -->
 
 It looks like the equal variance question isn't a worry and it certainly appears that the mean value for each species is not the same.  I expect that we will certainly prefer the complex model in this case.
 
@@ -221,7 +221,7 @@ Before we examine the anova table and make any conclusion, we should double chec
 autoplot( model, which=2)  # The which argument specifies which plot to make
 ```
 
-<img src="09_ANOVA_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+![](09_ANOVA_files/figure-epub3/unnamed-chunk-8-1.png)<!-- -->
 
 The qqplot doesn't look too bad, with only two observations far from the normality line. To get the Analysis of Variance table, we'll extract it from the model object using the function `anova()`.
 
@@ -308,7 +308,7 @@ ggplot(mydata, aes(x=Grp, y=Y)) +
   xlab('Group') + ylab('Response')
 ```
 
-<img src="09_ANOVA_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+![](09_ANOVA_files/figure-epub3/unnamed-chunk-12-1.png)<!-- -->
 
 
 With 5 groups, there are 10 different comparisons to be made, and just by random chance, one of those comparisons might come up significant. In this sampled data, performing 10 different two sample t-tests without making any adjustments to our $\alpha$-level, we find one statistically significant difference even though all of the data came from a standard normal distribution.
@@ -411,7 +411,7 @@ ggplot(Hostility, aes(x=Method, y=HLT)) +
   geom_boxplot()
 ```
 
-<img src="09_ANOVA_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+![](09_ANOVA_files/figure-epub3/unnamed-chunk-17-1.png)<!-- -->
 
 
 These box plots make it clear that there is a difference between the three groups (at least group M1 is different from M2 or M3). An ANOVA model assumes equal variance between groups and that the residuals are normally distributed. Based on the box plot, the equal variance assumption might be suspect (although with only $\approx 8$ observations per group, it might not be bad). We'll examine a QQ-plot of the residuals to consider the normality.
@@ -424,7 +424,7 @@ model <- lm( HLT ~ Method, data=Hostility )
 autoplot(model, which=c(1,2))
 ```
 
-<img src="09_ANOVA_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+![](09_ANOVA_files/figure-epub3/unnamed-chunk-18-1.png)<!-- -->
 
 
 To examine the Normality of the residuals, we'll use a Shapiro-Wilk's test and we'll also use Levene's test for homogeneity of variances.
@@ -552,12 +552,12 @@ We started with what I will call the “cell means model”
 $$Y_{ij}=\mu_{i}+\epsilon_{ij}\;\;\;\textrm{where}\;\;\epsilon_{ij}\stackrel{iid}{\sim}N\left(0,\sigma^{2}\right)$$
 so that the $E\left(Y_{ij}\right)=\mu_{i}$ where I interpret $\mu_{i}$ as the mean of each population. Given some data, we the following graph where the red lines and numbers denote the observed mean of the data in each group :
 
-<img src="09_ANOVA_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+![](09_ANOVA_files/figure-epub3/unnamed-chunk-23-1.png)<!-- -->
 
 
 But I am often interested in the difference between one group and another. For example, suppose this data comes from an experiment and group 1 is the control group. Then perhaps what I'm really interested is not that group 2 has a mean of 9, but rather that it is 5 units larger than the control. In this case perhaps what we care about is the differences. I could re-write the group means in terms of these differences from group 1. So looking at the model this way, the values that define the group means are the mean of group 1 (here it is 4), and the offsets from group 1 to group 2 (which is 5), and the offset from group 1 to group 3 (which is 10).
 
-<img src="09_ANOVA_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+![](09_ANOVA_files/figure-epub3/unnamed-chunk-24-1.png)<!-- -->
 
 I could write this interpretation of the model as the “offset” model which is
 $$Y_{ij}=\mu+\tau_{i}+\epsilon_{ij}$$ where $\mu$ is the mean of group 1 and $\tau_{i}$ is each population's offset from group 1. Because group 1 can't be offset from itself, this forces $\tau_{1}=0$.
@@ -667,7 +667,7 @@ Neither representation is more powerful because on a very deep mathematical leve
 We have been talking about the complex and simple models for our data but there is one more possible model, albeit not a very good one. I will refer to this as the bad model because it is almost always a poor fitting model.
 $$Y_{ij}=\epsilon_{ij} \;\;\; \textrm{ where }\;\;\; \epsilon_{ij}\stackrel{iid}{\sim}N\left(0,\sigma^{2}\right).$$
 
-<img src="09_ANOVA_files/figure-html/unnamed-chunk-29-1.png" width="672" />
+![](09_ANOVA_files/figure-epub3/unnamed-chunk-29-1.png)<!-- -->
 
 Notice that the complex model has three parameters that define “signal” part of the model (i.e. the three group means). The simple has one parameter that defines the “signal” (the overall mean). The bad model has no parameters that define the model (i.e. the red line is always at zero). 
 
@@ -761,7 +761,7 @@ _Eventually, your job will be to figure out what analysis to conduct, what assum
 
 1. For this exercise, we will compare the Sums of Squared Error for the simple $y_{ij}=\mu+\epsilon_{ij}$ and complex $y_{ij}=\mu_{i}+\epsilon_{ij}$ model and clearly, in the data presented below, the complex model fits the data better. The group means $\bar{y}_{i\cdot}$ are 3, 13, 5, and 9, while the overall mean is $\bar{y}_{\cdot\cdot}=7.5$. \
         
-    <img src="09_ANOVA_files/figure-html/unnamed-chunk-32-1.png" width="672" />
+    ![](09_ANOVA_files/figure-epub3/unnamed-chunk-32-1.png)<!-- -->
     
     a) For the simple model graph, draw a horizontal line at the height of the overall mean, representing predicted value of a new observation. Next, draw the the corresponding residuals $y_{ij}-\bar{y}_{\cdot\cdot}$ as vertical lines from the data points to the overall mean. Similarly draw horizontal lines for the group means in the complex model and represent the residuals for the complex model $y_{ij}-\bar{y}_{i\cdot}$ as vertical lines from the data points to the group means. In this case, does it appear that the average residual is significantly larger in the simple model than the complex? _Hint: Don't try to do this in R, but rather do this using a pencil and paper._
     
@@ -777,7 +777,7 @@ _Eventually, your job will be to figure out what analysis to conduct, what assum
         
 2. We will essentially repeat the previous exercise, except this time, the simple model will be preferred.  Again for each group, we have $n_i=3$ observations.
     
-    <img src="09_ANOVA_files/figure-html/unnamed-chunk-33-1.png" width="672" />
+    ![](09_ANOVA_files/figure-epub3/unnamed-chunk-33-1.png)<!-- -->
     
     For this data, the following group means can be calculated as $\bar{y}_{i\cdot} = (4.42, 5.21, 4.58)$ and the overall mean is $\bar{y}_{\cdot \cdot}=4.73$.
     a) For the simple model graph, draw the corresponding residuals $y_{ij}-\bar{y}_{\cdot\cdot}$ as vertical lines from the data point to the overall mean. Similarly draw the residuals for the complex model $y_{ij}-\bar{y}_{i\cdot}$ as vertical lines from the data points to the group means.  In this case, does it appear that the average residual is significantly larger in the simple model than the complex? _Again, just draw predicted values and residuals by hand._

@@ -221,7 +221,7 @@ Suppose we were to sample from a population of shapes, and we observed 4/9 of th
 ## Loading required package: grid
 ```
 
-<img src="11_Resampling_LinearModels_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+![](11_Resampling_LinearModels_files/figure-epub3/unnamed-chunk-9-1.png)<!-- -->
 
 
 Using this approximated population (which is just many many copies of our sample data), we can take many samples of size $n$. We denote these bootstrap samples as $\mathbb{Y}_{j}^{*}$, where the star denotes that the sample was taken from the approximate population, not the actual population. From each bootstrap sample $\mathbb{Y}_{j}^{*}$ a statistic of interest can be taken $\hat{\theta}_{j}^{*}$.
@@ -317,7 +317,7 @@ We want to understand the relationship between the sample statistic $\hat{\theta
 
 
 
-<img src="11_Resampling_LinearModels_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+![](11_Resampling_LinearModels_files/figure-epub3/unnamed-chunk-15-1.png)<!-- -->
 
 
 We will outline several methods for producing confidence intervals (in the order of most assumptions to fewest).
@@ -346,7 +346,7 @@ Unlike the percentile bootstrap interval, the basic interval does not assume the
 To address this, we will using the observed distribution of our replicates $\hat{\theta}^{*}$. Let $\hat{\theta}_{\alpha/2}^{*}$ and $\hat{\theta}_{1-\alpha/2}^{*}$ be the $\alpha/2$ and $1-\alpha/2$ quantiles of the replicates $\hat{\theta}^{*}$. Then another way to form a confidence interval would be $$\left[\hat{\theta}-\left(\hat{\theta}_{1-\alpha/2}^{*}-\hat{\theta}\right),\;\;\;\;\hat{\theta}-\left(\hat{\theta}_{\alpha/2}^{*}-\hat{\theta}\right)\right]$$
 where the minus sign on the upper limit is because $\left(\hat{\theta}_{\alpha/2}^{*}-\hat{\theta}\right)$ is already negative. The idea behind this interval is that the sampling variability of $\hat{\theta}$ from $\theta$ is the same as the sampling variability of the replicates $\hat{\theta}^{*}$ from $\hat{\theta}$, and that the distribution of $\hat{\theta}$ is possibly skewed, so we can't add/subtract the same amounts. Suppose we observe the distribution of $\hat{\theta}^{*}$ as
 
-<img src="11_Resampling_LinearModels_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+![](11_Resampling_LinearModels_files/figure-epub3/unnamed-chunk-16-1.png)<!-- -->
 
 Then any particular value of $\hat{\theta}^{*}$ could be much larger than $\hat{\theta}$. Therefore $\hat{\theta}$ could be much larger than $\theta$. Therefore our confidence interval should be $\left[\hat{\theta}-\textrm{big},\;\hat{\theta}+\textrm{small}\right]$. 
 
@@ -383,7 +383,7 @@ ggplot(Hostility, aes(x=Method, y=HLT)) +
   geom_boxplot()
 ```
 
-<img src="11_Resampling_LinearModels_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+![](11_Resampling_LinearModels_files/figure-epub3/unnamed-chunk-18-1.png)<!-- -->
 
 We can fit the cell-means model and examine the summary statistics using the following code.
 
@@ -446,7 +446,7 @@ The `car::Boot()` function has done all work of doing the re-sampling and storin
 hist(boot.model, layout=c(1,3)) # 1 row, 3 columns of plots
 ```
 
-<img src="11_Resampling_LinearModels_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+![](11_Resampling_LinearModels_files/figure-epub3/unnamed-chunk-22-1.png)<!-- -->
 
 
 While this plot is aesthetically displeasing (we could do so much better using ggplot2!) this shows the observed bootstrap histogram of $\hat{\mu}_{i}^{*}$, along with the normal distribution centered at $\hat{\mu}_{i}$ with spread equal to the $StdDev\left(\hat{\mu}_{i}^{*}\right)$. In this case, the sampling distribution looks very normal and the bootstrap confidence intervals should line up well with the asymptotic intervals. The function `confint()` will report the BCa intervals by default, but you can ask for “bca”, “norm”, “basic”, “perc”.
@@ -508,7 +508,7 @@ my.data <- data.frame(
 ggplot(my.data, aes(x=x, y=y)) + geom_point()
 ```
 
-<img src="11_Resampling_LinearModels_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+![](11_Resampling_LinearModels_files/figure-epub3/unnamed-chunk-24-1.png)<!-- -->
 
 
 Fitting a linear model, we see a problem that the residuals don't appear to be balanced. The large residuals are all positive. The Shapiro-Wilks test firmly rejects normality of the residuals. 
@@ -520,7 +520,7 @@ model <- lm( y ~ x, data=my.data)
 plot(model, which=1)
 ```
 
-<img src="11_Resampling_LinearModels_files/figure-html/unnamed-chunk-25-1.png" width="672" />
+![](11_Resampling_LinearModels_files/figure-epub3/unnamed-chunk-25-1.png)<!-- -->
 
 ```r
 shapiro.test( resid(model) )
@@ -544,7 +544,7 @@ boot.model <- Boot( model )  # by default method='case'
 hist( boot.model )
 ```
 
-<img src="11_Resampling_LinearModels_files/figure-html/unnamed-chunk-27-1.png" width="672" />
+![](11_Resampling_LinearModels_files/figure-epub3/unnamed-chunk-27-1.png)<!-- -->
 
 ```r
 confint( boot.model )
@@ -678,7 +678,7 @@ Fortunately the `hist()` command can print the nice histogram from the output of
 hist( boot.model, layout=c(1,3)) # 1 row, 3 columns)
 ```
 
-<img src="11_Resampling_LinearModels_files/figure-html/unnamed-chunk-32-1.png" width="672" />
+![](11_Resampling_LinearModels_files/figure-epub3/unnamed-chunk-32-1.png)<!-- -->
 
 
 Notice that we don't need to have the model coefficients $\hat{\mu}_{i}$ be our statistic of interest, we could just as easily produce a confidence interval for the residual standard error $\hat{\sigma}$.
@@ -707,7 +707,7 @@ boot.model <- boot(my.data, my.stat, R=10000)
 hist(boot.model, layout=c(1,3))
 ```
 
-<img src="11_Resampling_LinearModels_files/figure-html/unnamed-chunk-34-1.png" width="672" />
+![](11_Resampling_LinearModels_files/figure-epub3/unnamed-chunk-34-1.png)<!-- -->
 
 ```r
 confint(boot.model)
@@ -810,7 +810,7 @@ boot.model <- boot( Hostility, my.stat, R=1000, strata=Hostility$Method )
 hist(boot.model, layout=c(1,3))
 ```
 
-<img src="11_Resampling_LinearModels_files/figure-html/unnamed-chunk-38-1.png" width="672" />
+![](11_Resampling_LinearModels_files/figure-epub3/unnamed-chunk-38-1.png)<!-- -->
 
 ```r
 confint(boot.model)

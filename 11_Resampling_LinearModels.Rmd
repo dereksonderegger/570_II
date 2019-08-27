@@ -291,8 +291,9 @@ p2 <- ggplot(temp, aes(x=theta, y=y)) +
        x=NULL, y='density') +
   theme_bw()
 ```
+
 ```{r, echo=FALSE}
-multiplot(p1, p2, cols=1)
+#multiplot(p1, p2, cols=1)
 ```
 
 

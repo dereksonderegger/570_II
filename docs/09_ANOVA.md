@@ -362,12 +362,12 @@ emmeans::emmeans(model, ~ Grp) %>%    # don't have the pairwise here or else
 ```
 
 ```
-##  Grp emmean    SE df lower.CL upper.CL .group
-##  4   -0.548 0.316 45   -1.184   0.0891  a    
-##  5   -0.184 0.316 45   -0.820   0.4532  a    
-##  2   -0.116 0.316 45   -0.753   0.5203  a    
-##  3    0.201 0.316 45   -0.436   0.8377  a    
-##  1    0.441 0.316 45   -0.196   1.0776  a    
+##  Grp     emmean        SE df   lower.CL   upper.CL .group
+##  4   -0.5476682 0.3161521 45 -1.1844312 0.08909484  a    
+##  5   -0.1835186 0.3161521 45 -0.8202817 0.45324440  a    
+##  2   -0.1164715 0.3161521 45 -0.7532346 0.52029152  a    
+##  3    0.2009232 0.3161521 45 -0.4358399 0.83768620  a    
+##  1    0.4408853 0.3161521 45 -0.1958777 1.07764834  a    
 ## 
 ## Confidence level used: 0.95 
 ## P value adjustment: tukey method for comparing a family of 5 estimates 

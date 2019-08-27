@@ -317,7 +317,8 @@ We want to understand the relationship between the sample statistic $\hat{\theta
 
 
 
-<img src="11_Resampling_LinearModels_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+
+
 
 
 We will outline several methods for producing confidence intervals (in the order of most assumptions to fewest).

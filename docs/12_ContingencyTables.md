@@ -458,84 +458,44 @@ Just as we wanted to perform an analysis on all pairwise comparisons among level
 
 Conceptually we will just perform all possible pairwise tests and then adjust the resulting p-values to control for the number of comparisons. 
 
+# ```{r}
+# # # We will use a function from the package fifer
+# # # chisq.post.hoc  wants the table arranged with the 
+# # # factor you want to pairwise contasts as the rows
+# # t( tab )   # transpose the rows and columns
+# # result <- fifer::chisq.post.hoc( t(tab),
+# #     test=chisq.test, simulate.p.value=TRUE, B=10000 ) 
+# # result
+# ```
 
-```r
-# We will use a function from the package fifer
-# chisq.post.hoc  wants the table arranged with the 
-# factor you want to pairwise contasts as the rows
-t( tab )   # transpose the rows and columns
-```
+# ```{r}
+# # We really want to get the compact letter display for 
+# # graphing purposes, but there is some annoying details
+# # that we really ought not have to think about.  So lets
+# # make a little function to handle this stuff.
+# library(dplyr)
+# library(stringr)
+# library(multcompView)
+# # cld.chisq.post.hoc <- function( obj, name ){
+# #   p.values <- obj$adj.p                # just the p-values
+# #   contrasts <- obj$comparison %>%
+# #     as.character( ) %>%
+# #     str_replace( pattern=fixed(' vs. '), replacement = fixed('-'))
+# #   names(p.values) <- contrasts
+# # 
+# #   # finally we can pass p.values into a letters function
+# #   my.letters <- multcompView::multcompLetters(p.values)
+# #   letter.df <- data.frame( TEMP=names(my.letters$Letters), 
+# #                            .group = my.letters$Letters ) 
+# #   colnames(letter.df)[1] <- name
+# #   rownames(letter.df) <- NULL
+# #   return(letter.df)
+# # }  
+# ```
 
-```
-##        Married
-## Race    Married Single
-##   asian      37     33
-##   black      25     81
-##   other      20     43
-##   white     355    406
-```
-
-```r
-result <- fifer::chisq.post.hoc( t(tab),
-    test=chisq.test, simulate.p.value=TRUE, B=10000 ) 
-```
-
-```
-## Adjusted p-values used the fdr method.
-```
-
-```r
-result
-```
-
-```
-##        comparison  raw.p  adj.p
-## 1 asian vs. black 0.0002 0.0006
-## 2 asian vs. other 0.0231 0.0346
-## 3 asian vs. white 0.3852 0.3852
-## 4 black vs. other 0.2916 0.3499
-## 5 black vs. white 0.0002 0.0006
-## 6 other vs. white 0.0214 0.0346
-```
-
-
-```r
-# We really want to get the compact letter display for 
-# graphing purposes, but there is some annoying details
-# that we really ought not have to think about.  So lets
-# make a little function to handle this stuff.
-library(dplyr)
-library(stringr)
-library(multcompView)
-cld.chisq.post.hoc <- function( obj, name ){
-  p.values <- obj$adj.p                # just the p-values
-  contrasts <- obj$comparison %>%
-    as.character( ) %>%
-    str_replace( pattern=fixed(' vs. '), replacement = fixed('-'))
-  names(p.values) <- contrasts
-
-  # finally we can pass p.values into a letters function
-  my.letters <- multcompView::multcompLetters(p.values)
-  letter.df <- data.frame( TEMP=names(my.letters$Letters), 
-                           .group = my.letters$Letters ) 
-  colnames(letter.df)[1] <- name
-  rownames(letter.df) <- NULL
-  return(letter.df)
-}  
-```
-
-
-```r
-cld.chisq.post.hoc(result, 'Race')
-```
-
-```
-##    Race .group
-## 1 asian      a
-## 2 black      b
-## 3 other      b
-## 4 white      a
-```
+# ```{r}
+# cld.chisq.post.hoc(result, 'Race')
+# ```
 
 There are a number of other questions that I might consider, such as confidence intervals for the proportions married in each race. However, those questions require a few more assumptions about the structure of the data and will be addressed when we study logistic regression.
 
@@ -573,7 +533,7 @@ There are a number of other questions that I might consider, such as confidence 
       geom_bar(stat='identity')
     ```
     
-    <img src="12_ContingencyTables_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+    <img src="12_ContingencyTables_files/figure-html/unnamed-chunk-21-1.png" width="672" />
     
     a) Generate a table summarizing how many respondents of each race has health insurance.
     b) Test the hypothesis that there is no association between race and having health insurance using both the asymptotic method and the permutation method. Is your inference the same in both cases?

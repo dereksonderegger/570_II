@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 Summary Statistics and Graphing | Introduction to Statistical Methodology, Second Edition</title>
   <meta name="description" content="Chapter 1 Summary Statistics and Graphing | Introduction to Statistical Methodology, Second Edition" />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 Summary Statistics and Graphing | Introduction to Statistical Methodology, Second Edition" />
   <meta property="og:type" content="book" />
@@ -21,18 +21,18 @@
   
   
 
-<meta name="author" content="Derek L. Sonderegger &amp; Robert Buscalia" />
+<meta name="author" content="Derek L. Sonderegger &amp; Robert Buscaglia" />
 
 
-<meta name="date" content="2019-08-20" />
+<meta name="date" content="2019-08-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="2-probability.html">
+<link rel="prev" href="index.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,66 +50,41 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -156,144 +131,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.5" data-path="1-summary-statistics-and-graphing.html"><a href="1-summary-statistics-and-graphing.html#exercises"><i class="fa fa-check"></i><b>1.5</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="2-probability.html"><a href="2-probability.html"><i class="fa fa-check"></i><b>2</b> Probability</a><ul>
-<li class="chapter" data-level="2.1" data-path="2-probability.html"><a href="2-probability.html#introduction-to-set-theory"><i class="fa fa-check"></i><b>2.1</b> Introduction to Set Theory</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="2-probability.html"><a href="2-probability.html#composition-of-events"><i class="fa fa-check"></i><b>2.1.1</b> Composition of events</a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="2-probability.html"><a href="2-probability.html#probability-rules"><i class="fa fa-check"></i><b>2.2</b> Probability Rules</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="2-probability.html"><a href="2-probability.html#simple-rules"><i class="fa fa-check"></i><b>2.2.1</b> Simple Rules</a></li>
-<li class="chapter" data-level="2.2.2" data-path="2-probability.html"><a href="2-probability.html#conditional-probability"><i class="fa fa-check"></i><b>2.2.2</b> Conditional Probability</a></li>
-<li class="chapter" data-level="2.2.3" data-path="2-probability.html"><a href="2-probability.html#summary-of-probability-rules"><i class="fa fa-check"></i><b>2.2.3</b> Summary of Probability Rules</a></li>
-</ul></li>
-<li class="chapter" data-level="2.3" data-path="2-probability.html"><a href="2-probability.html#discrete-random-variables"><i class="fa fa-check"></i><b>2.3</b> Discrete Random Variables</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="2-probability.html"><a href="2-probability.html#introduction-to-discrete-random-variables"><i class="fa fa-check"></i><b>2.3.1</b> Introduction to Discrete Random Variables</a></li>
-</ul></li>
-<li class="chapter" data-level="2.4" data-path="2-probability.html"><a href="2-probability.html#common-discrete-distributions"><i class="fa fa-check"></i><b>2.4</b> Common Discrete Distributions</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="2-probability.html"><a href="2-probability.html#binomial-distribution"><i class="fa fa-check"></i><b>2.4.1</b> Binomial Distribution</a></li>
-<li class="chapter" data-level="2.4.2" data-path="2-probability.html"><a href="2-probability.html#poisson-distribution"><i class="fa fa-check"></i><b>2.4.2</b> Poisson Distribution</a></li>
-</ul></li>
-<li class="chapter" data-level="2.5" data-path="2-probability.html"><a href="2-probability.html#continuous-random-variables"><i class="fa fa-check"></i><b>2.5</b> Continuous Random Variables</a><ul>
-<li class="chapter" data-level="2.5.1" data-path="2-probability.html"><a href="2-probability.html#uniform01-distribution"><i class="fa fa-check"></i><b>2.5.1</b> Uniform(0,1) Distribution</a></li>
-<li class="chapter" data-level="2.5.2" data-path="2-probability.html"><a href="2-probability.html#exponential-distribution"><i class="fa fa-check"></i><b>2.5.2</b> Exponential Distribution</a></li>
-<li class="chapter" data-level="2.5.3" data-path="2-probability.html"><a href="2-probability.html#normal-distribution"><i class="fa fa-check"></i><b>2.5.3</b> Normal Distribution</a></li>
-<li class="chapter" data-level="2.5.4" data-path="2-probability.html"><a href="2-probability.html#standardizing"><i class="fa fa-check"></i><b>2.5.4</b> Standardizing</a></li>
-</ul></li>
-<li class="chapter" data-level="2.6" data-path="2-probability.html"><a href="2-probability.html#exercises-1"><i class="fa fa-check"></i><b>2.6</b> Exercises</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="3-confidence-intervals-via-bootstrapping.html"><a href="3-confidence-intervals-via-bootstrapping.html"><i class="fa fa-check"></i><b>3</b> Confidence Intervals via Bootstrapping</a><ul>
-<li class="chapter" data-level="3.1" data-path="3-confidence-intervals-via-bootstrapping.html"><a href="3-confidence-intervals-via-bootstrapping.html#theory-of-bootstrapping"><i class="fa fa-check"></i><b>3.1</b> Theory of Bootstrapping</a></li>
-<li class="chapter" data-level="3.2" data-path="3-confidence-intervals-via-bootstrapping.html"><a href="3-confidence-intervals-via-bootstrapping.html#quantile-based-confidence-intervals"><i class="fa fa-check"></i><b>3.2</b> Quantile-based Confidence Intervals</a></li>
-<li class="chapter" data-level="3.3" data-path="3-confidence-intervals-via-bootstrapping.html"><a href="3-confidence-intervals-via-bootstrapping.html#exercises-2"><i class="fa fa-check"></i><b>3.3</b> Exercises</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="4-sampling-distribution-of-barx.html"><a href="4-sampling-distribution-of-barx.html"><i class="fa fa-check"></i><b>4</b> Sampling Distribution of <span class="math inline">\(\bar{X}\)</span></a><ul>
-<li class="chapter" data-level="4.1" data-path="4-sampling-distribution-of-barx.html"><a href="4-sampling-distribution-of-barx.html#enlightening-example"><i class="fa fa-check"></i><b>4.1</b> Enlightening Example</a></li>
-<li class="chapter" data-level="4.2" data-path="4-sampling-distribution-of-barx.html"><a href="4-sampling-distribution-of-barx.html#mathematical-details"><i class="fa fa-check"></i><b>4.2</b> Mathematical details</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="4-sampling-distribution-of-barx.html"><a href="4-sampling-distribution-of-barx.html#probability-rules-for-expectations-and-variances"><i class="fa fa-check"></i><b>4.2.1</b> Probability Rules for Expectations and Variances</a></li>
-<li class="chapter" data-level="4.2.2" data-path="4-sampling-distribution-of-barx.html"><a href="4-sampling-distribution-of-barx.html#mean-and-variance-of-the-sample-mean"><i class="fa fa-check"></i><b>4.2.2</b> Mean and Variance of the Sample Mean</a></li>
-</ul></li>
-<li class="chapter" data-level="4.3" data-path="4-sampling-distribution-of-barx.html"><a href="4-sampling-distribution-of-barx.html#distribution-of-barx"><i class="fa fa-check"></i><b>4.3</b> Distribution of <span class="math inline">\(\bar{X}\)</span></a></li>
-<li class="chapter" data-level="4.4" data-path="4-sampling-distribution-of-barx.html"><a href="4-sampling-distribution-of-barx.html#central-limit-theorem"><i class="fa fa-check"></i><b>4.4</b> Central Limit Theorem</a></li>
-<li class="chapter" data-level="4.5" data-path="4-sampling-distribution-of-barx.html"><a href="4-sampling-distribution-of-barx.html#exercises-3"><i class="fa fa-check"></i><b>4.5</b> Exercises</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="5-confidence-intervals-for-mu.html"><a href="5-confidence-intervals-for-mu.html"><i class="fa fa-check"></i><b>5</b> Confidence Intervals for <span class="math inline">\(\mu\)</span></a><ul>
-<li class="chapter" data-level="5.1" data-path="5-confidence-intervals-for-mu.html"><a href="5-confidence-intervals-for-mu.html#asymptotic-result-sigma-known"><i class="fa fa-check"></i><b>5.1</b> Asymptotic result (<span class="math inline">\(\sigma\)</span> known)</a></li>
-<li class="chapter" data-level="5.2" data-path="5-confidence-intervals-for-mu.html"><a href="5-confidence-intervals-for-mu.html#asymptotoic-result-sigma-unknown"><i class="fa fa-check"></i><b>5.2</b> Asymptotoic result (<span class="math inline">\(\sigma\)</span> unknown)</a></li>
-<li class="chapter" data-level="5.3" data-path="5-confidence-intervals-for-mu.html"><a href="5-confidence-intervals-for-mu.html#sample-size-selection"><i class="fa fa-check"></i><b>5.3</b> Sample Size Selection</a></li>
-<li class="chapter" data-level="5.4" data-path="5-confidence-intervals-for-mu.html"><a href="5-confidence-intervals-for-mu.html#exercises-4"><i class="fa fa-check"></i><b>5.4</b> Exercises</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="6-hypothesis-tests-for-the-mean-of-a-population.html"><a href="6-hypothesis-tests-for-the-mean-of-a-population.html"><i class="fa fa-check"></i><b>6</b> Hypothesis Tests for the mean of a population</a><ul>
-<li class="chapter" data-level="6.1" data-path="6-hypothesis-tests-for-the-mean-of-a-population.html"><a href="6-hypothesis-tests-for-the-mean-of-a-population.html#writing-hypotheses"><i class="fa fa-check"></i><b>6.1</b> Writing Hypotheses</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="6-hypothesis-tests-for-the-mean-of-a-population.html"><a href="6-hypothesis-tests-for-the-mean-of-a-population.html#null-and-alternative-hypotheses"><i class="fa fa-check"></i><b>6.1.1</b> Null and alternative hypotheses</a></li>
-<li class="chapter" data-level="6.1.2" data-path="6-hypothesis-tests-for-the-mean-of-a-population.html"><a href="6-hypothesis-tests-for-the-mean-of-a-population.html#error"><i class="fa fa-check"></i><b>6.1.2</b> Error</a></li>
-<li class="chapter" data-level="6.1.3" data-path="6-hypothesis-tests-for-the-mean-of-a-population.html"><a href="6-hypothesis-tests-for-the-mean-of-a-population.html#why-should-hypotheses-use-mu-and-not-barx"><i class="fa fa-check"></i><b>6.1.3</b> Why should hypotheses use <span class="math inline">\(\mu\)</span> and not <span class="math inline">\(\bar{x}\)</span>?</a></li>
-<li class="chapter" data-level="6.1.4" data-path="6-hypothesis-tests-for-the-mean-of-a-population.html"><a href="6-hypothesis-tests-for-the-mean-of-a-population.html#calculating-p-values"><i class="fa fa-check"></i><b>6.1.4</b> Calculating p-values</a></li>
-<li class="chapter" data-level="6.1.5" data-path="6-hypothesis-tests-for-the-mean-of-a-population.html"><a href="6-hypothesis-tests-for-the-mean-of-a-population.html#calculating-p-values-vs-cutoff-values"><i class="fa fa-check"></i><b>6.1.5</b> Calculating p-values vs cutoff values</a></li>
-<li class="chapter" data-level="6.1.6" data-path="6-hypothesis-tests-for-the-mean-of-a-population.html"><a href="6-hypothesis-tests-for-the-mean-of-a-population.html#t-tests-in-r"><i class="fa fa-check"></i><b>6.1.6</b> t-tests in R</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="6-hypothesis-tests-for-the-mean-of-a-population.html"><a href="6-hypothesis-tests-for-the-mean-of-a-population.html#type-i-and-type-ii-errors"><i class="fa fa-check"></i><b>6.2</b> Type I and Type II Errors</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="6-hypothesis-tests-for-the-mean-of-a-population.html"><a href="6-hypothesis-tests-for-the-mean-of-a-population.html#power-and-sample-size-selection"><i class="fa fa-check"></i><b>6.2.1</b> Power and Sample Size Selection</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="6-hypothesis-tests-for-the-mean-of-a-population.html"><a href="6-hypothesis-tests-for-the-mean-of-a-population.html#exercises-5"><i class="fa fa-check"></i><b>6.3</b> Exercises</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="7-two-sample-hypothesis-tests-and-confidence-intervals.html"><a href="7-two-sample-hypothesis-tests-and-confidence-intervals.html"><i class="fa fa-check"></i><b>7</b> Two-Sample Hypothesis Tests and Confidence Intervals</a><ul>
-<li class="chapter" data-level="7.1" data-path="7-two-sample-hypothesis-tests-and-confidence-intervals.html"><a href="7-two-sample-hypothesis-tests-and-confidence-intervals.html#difference-in-means-between-two-groups"><i class="fa fa-check"></i><b>7.1</b> Difference in means between two groups</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="7-two-sample-hypothesis-tests-and-confidence-intervals.html"><a href="7-two-sample-hypothesis-tests-and-confidence-intervals.html#inference-via-resampling"><i class="fa fa-check"></i><b>7.1.1</b> Inference via resampling</a></li>
-<li class="chapter" data-level="7.1.2" data-path="7-two-sample-hypothesis-tests-and-confidence-intervals.html"><a href="7-two-sample-hypothesis-tests-and-confidence-intervals.html#inference-via-asymptotic-results-unequal-variance-assumption"><i class="fa fa-check"></i><b>7.1.2</b> Inference via asymptotic results (unequal variance assumption)</a></li>
-<li class="chapter" data-level="7.1.3" data-path="7-two-sample-hypothesis-tests-and-confidence-intervals.html"><a href="7-two-sample-hypothesis-tests-and-confidence-intervals.html#inference-via-asymptotic-results-equal-variance-assumption"><i class="fa fa-check"></i><b>7.1.3</b> Inference via asymptotic results (equal variance assumption)</a></li>
-</ul></li>
-<li class="chapter" data-level="7.2" data-path="7-two-sample-hypothesis-tests-and-confidence-intervals.html"><a href="7-two-sample-hypothesis-tests-and-confidence-intervals.html#difference-in-means-between-two-groups-paired-data"><i class="fa fa-check"></i><b>7.2</b> Difference in means between two groups: Paired Data</a></li>
-<li class="chapter" data-level="7.3" data-path="7-two-sample-hypothesis-tests-and-confidence-intervals.html"><a href="7-two-sample-hypothesis-tests-and-confidence-intervals.html#exercises-6"><i class="fa fa-check"></i><b>7.3</b> Exercises</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="8-testing-model-assumptions.html"><a href="8-testing-model-assumptions.html"><i class="fa fa-check"></i><b>8</b> Testing Model Assumptions</a><ul>
-<li class="chapter" data-level="8.1" data-path="8-testing-model-assumptions.html"><a href="8-testing-model-assumptions.html#testing-normality"><i class="fa fa-check"></i><b>8.1</b> Testing Normality</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="8-testing-model-assumptions.html"><a href="8-testing-model-assumptions.html#visual-inspection---qqplots"><i class="fa fa-check"></i><b>8.1.1</b> Visual Inspection - QQplots</a></li>
-<li class="chapter" data-level="8.1.2" data-path="8-testing-model-assumptions.html"><a href="8-testing-model-assumptions.html#tests-for-normality"><i class="fa fa-check"></i><b>8.1.2</b> Tests for Normality</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="8-testing-model-assumptions.html"><a href="8-testing-model-assumptions.html#testing-equal-variance"><i class="fa fa-check"></i><b>8.2</b> Testing Equal Variance</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="8-testing-model-assumptions.html"><a href="8-testing-model-assumptions.html#visual-inspection"><i class="fa fa-check"></i><b>8.2.1</b> Visual Inspection</a></li>
-<li class="chapter" data-level="8.2.2" data-path="8-testing-model-assumptions.html"><a href="8-testing-model-assumptions.html#tests-for-equal-variance"><i class="fa fa-check"></i><b>8.2.2</b> Tests for Equal Variance</a></li>
-<li class="chapter" data-level="8.2.3" data-path="8-testing-model-assumptions.html"><a href="8-testing-model-assumptions.html#symmetry-of-the-f-distribution"><i class="fa fa-check"></i><b>8.2.3</b> Symmetry of the F-distribution</a></li>
-</ul></li>
-<li class="chapter" data-level="8.3" data-path="8-testing-model-assumptions.html"><a href="8-testing-model-assumptions.html#power-of-the-f-test"><i class="fa fa-check"></i><b>8.3</b> Power of the F-test</a></li>
-<li class="chapter" data-level="8.4" data-path="8-testing-model-assumptions.html"><a href="8-testing-model-assumptions.html#theoretical-distribution-vs-bootstrap"><i class="fa fa-check"></i><b>8.4</b> Theoretical distribution vs bootstrap</a></li>
-<li class="chapter" data-level="8.5" data-path="8-testing-model-assumptions.html"><a href="8-testing-model-assumptions.html#exercises-7"><i class="fa fa-check"></i><b>8.5</b> Exercises</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="9-analysis-of-variance-anova.html"><a href="9-analysis-of-variance-anova.html"><i class="fa fa-check"></i><b>9</b> Analysis of Variance (ANOVA)</a><ul>
-<li class="chapter" data-level="9.1" data-path="9-analysis-of-variance-anova.html"><a href="9-analysis-of-variance-anova.html#model"><i class="fa fa-check"></i><b>9.1</b> Model</a></li>
-<li class="chapter" data-level="9.2" data-path="9-analysis-of-variance-anova.html"><a href="9-analysis-of-variance-anova.html#theory"><i class="fa fa-check"></i><b>9.2</b> Theory</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="9-analysis-of-variance-anova.html"><a href="9-analysis-of-variance-anova.html#anova-table"><i class="fa fa-check"></i><b>9.2.1</b> Anova Table</a></li>
-<li class="chapter" data-level="9.2.2" data-path="9-analysis-of-variance-anova.html"><a href="9-analysis-of-variance-anova.html#anova-using-simple-vs-complex-models."><i class="fa fa-check"></i><b>9.2.2</b> ANOVA using Simple vs Complex models.</a></li>
-<li class="chapter" data-level="9.2.3" data-path="9-analysis-of-variance-anova.html"><a href="9-analysis-of-variance-anova.html#parameter-estimates-and-confidence-intervals"><i class="fa fa-check"></i><b>9.2.3</b> Parameter Estimates and Confidence Intervals</a></li>
-</ul></li>
-<li class="chapter" data-level="9.3" data-path="9-analysis-of-variance-anova.html"><a href="9-analysis-of-variance-anova.html#anova-in-r"><i class="fa fa-check"></i><b>9.3</b> Anova in R</a></li>
-<li class="chapter" data-level="9.4" data-path="9-analysis-of-variance-anova.html"><a href="9-analysis-of-variance-anova.html#multiple-comparisons"><i class="fa fa-check"></i><b>9.4</b> Multiple comparisons</a></li>
-<li class="chapter" data-level="9.5" data-path="9-analysis-of-variance-anova.html"><a href="9-analysis-of-variance-anova.html#different-model-representations"><i class="fa fa-check"></i><b>9.5</b> Different Model Representations</a><ul>
-<li class="chapter" data-level="9.5.1" data-path="9-analysis-of-variance-anova.html"><a href="9-analysis-of-variance-anova.html#theory-1"><i class="fa fa-check"></i><b>9.5.1</b> Theory</a></li>
-<li class="chapter" data-level="9.5.2" data-path="9-analysis-of-variance-anova.html"><a href="9-analysis-of-variance-anova.html#model-representations-in-r"><i class="fa fa-check"></i><b>9.5.2</b> Model Representations in R</a></li>
-<li class="chapter" data-level="9.5.3" data-path="9-analysis-of-variance-anova.html"><a href="9-analysis-of-variance-anova.html#implications-on-the-anova-table"><i class="fa fa-check"></i><b>9.5.3</b> Implications on the ANOVA table</a></li>
-</ul></li>
-<li class="chapter" data-level="9.6" data-path="9-analysis-of-variance-anova.html"><a href="9-analysis-of-variance-anova.html#exercises-8"><i class="fa fa-check"></i><b>9.6</b> Exercises</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="10-regression.html"><a href="10-regression.html"><i class="fa fa-check"></i><b>10</b> Regression</a><ul>
-<li class="chapter" data-level="10.1" data-path="10-regression.html"><a href="10-regression.html#pearsons-correlation-coefficient"><i class="fa fa-check"></i><b>10.1</b> Pearson’s Correlation Coefficient</a></li>
-<li class="chapter" data-level="10.2" data-path="10-regression.html"><a href="10-regression.html#model-theory"><i class="fa fa-check"></i><b>10.2</b> Model Theory</a><ul>
-<li class="chapter" data-level="10.2.1" data-path="10-regression.html"><a href="10-regression.html#anova-interpretation"><i class="fa fa-check"></i><b>10.2.1</b> Anova Interpretation</a></li>
-<li class="chapter" data-level="10.2.2" data-path="10-regression.html"><a href="10-regression.html#confidence-intervals-vs-prediction-intervals"><i class="fa fa-check"></i><b>10.2.2</b> Confidence Intervals vs Prediction Intervals</a></li>
-</ul></li>
-<li class="chapter" data-level="10.3" data-path="10-regression.html"><a href="10-regression.html#extrapolation"><i class="fa fa-check"></i><b>10.3</b> Extrapolation</a></li>
-<li class="chapter" data-level="10.4" data-path="10-regression.html"><a href="10-regression.html#checking-model-assumptions"><i class="fa fa-check"></i><b>10.4</b> Checking Model Assumptions</a></li>
-<li class="chapter" data-level="10.5" data-path="10-regression.html"><a href="10-regression.html#common-problems"><i class="fa fa-check"></i><b>10.5</b> Common Problems</a><ul>
-<li class="chapter" data-level="10.5.1" data-path="10-regression.html"><a href="10-regression.html#influential-points"><i class="fa fa-check"></i><b>10.5.1</b> Influential Points</a></li>
-<li class="chapter" data-level="10.5.2" data-path="10-regression.html"><a href="10-regression.html#transformations"><i class="fa fa-check"></i><b>10.5.2</b> Transformations</a></li>
-</ul></li>
-<li class="chapter" data-level="10.6" data-path="10-regression.html"><a href="10-regression.html#exercises-9"><i class="fa fa-check"></i><b>10.6</b> Exercises</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="11-resampling-linear-models.html"><a href="11-resampling-linear-models.html"><i class="fa fa-check"></i><b>11</b> Resampling Linear Models</a><ul>
-<li class="chapter" data-level="11.1" data-path="11-resampling-linear-models.html"><a href="11-resampling-linear-models.html#using-lm-for-many-analyses"><i class="fa fa-check"></i><b>11.1</b> Using <code>lm()</code> for many analyses</a><ul>
-<li class="chapter" data-level="11.1.1" data-path="11-resampling-linear-models.html"><a href="11-resampling-linear-models.html#one-sample-t-tests"><i class="fa fa-check"></i><b>11.1.1</b> One-sample t-tests</a></li>
-<li class="chapter" data-level="11.1.2" data-path="11-resampling-linear-models.html"><a href="11-resampling-linear-models.html#two-sample-t-tests"><i class="fa fa-check"></i><b>11.1.2</b> Two-sample t-tests</a></li>
-</ul></li>
-<li class="chapter" data-level="11.2" data-path="11-resampling-linear-models.html"><a href="11-resampling-linear-models.html#creating-simulated-data"><i class="fa fa-check"></i><b>11.2</b> Creating Simulated Data</a><ul>
-<li class="chapter" data-level="11.2.1" data-path="11-resampling-linear-models.html"><a href="11-resampling-linear-models.html#observational-studies-vs-designed-experiments"><i class="fa fa-check"></i><b>11.2.1</b> Observational Studies vs Designed Experiments</a></li>
-</ul></li>
-<li class="chapter" data-level="11.3" data-path="11-resampling-linear-models.html"><a href="11-resampling-linear-models.html#confidence-interval-types"><i class="fa fa-check"></i><b>11.3</b> Confidence Interval Types</a><ul>
-<li class="chapter" data-level="11.3.1" data-path="11-resampling-linear-models.html"><a href="11-resampling-linear-models.html#normal-intervals"><i class="fa fa-check"></i><b>11.3.1</b> Normal intervals</a></li>
-<li class="chapter" data-level="11.3.2" data-path="11-resampling-linear-models.html"><a href="11-resampling-linear-models.html#percentile-intervals"><i class="fa fa-check"></i><b>11.3.2</b> Percentile intervals</a></li>
-<li class="chapter" data-level="11.3.3" data-path="11-resampling-linear-models.html"><a href="11-resampling-linear-models.html#basic-intervals"><i class="fa fa-check"></i><b>11.3.3</b> Basic intervals</a></li>
-<li class="chapter" data-level="11.3.4" data-path="11-resampling-linear-models.html"><a href="11-resampling-linear-models.html#towards-bias-corrected-and-accelerated-intervals-bca"><i class="fa fa-check"></i><b>11.3.4</b> Towards bias-corrected and accelerated intervals (BCa)</a></li>
-</ul></li>
-<li class="chapter" data-level="11.4" data-path="11-resampling-linear-models.html"><a href="11-resampling-linear-models.html#bootstrap-confidence-intervals-in-r"><i class="fa fa-check"></i><b>11.4</b> Bootstrap Confidence Intervals in R</a><ul>
-<li class="chapter" data-level="11.4.1" data-path="11-resampling-linear-models.html"><a href="11-resampling-linear-models.html#using-carboot-function"><i class="fa fa-check"></i><b>11.4.1</b> Using <code>car::Boot()</code> function</a></li>
-<li class="chapter" data-level="11.4.2" data-path="11-resampling-linear-models.html"><a href="11-resampling-linear-models.html#using-the-boot-package"><i class="fa fa-check"></i><b>11.4.2</b> Using the <code>boot</code> package</a></li>
-</ul></li>
-<li class="chapter" data-level="11.5" data-path="11-resampling-linear-models.html"><a href="11-resampling-linear-models.html#exercises-10"><i class="fa fa-check"></i><b>11.5</b> Exercises</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="12-contingency-tables.html"><a href="12-contingency-tables.html"><i class="fa fa-check"></i><b>12</b> Contingency Tables</a><ul>
-<li class="chapter" data-level="12.1" data-path="12-contingency-tables.html"><a href="12-contingency-tables.html#expected-counts"><i class="fa fa-check"></i><b>12.1</b> Expected Counts</a></li>
-<li class="chapter" data-level="12.2" data-path="12-contingency-tables.html"><a href="12-contingency-tables.html#hypothesis-testing"><i class="fa fa-check"></i><b>12.2</b> Hypothesis Testing</a></li>
-<li class="chapter" data-level="12.3" data-path="12-contingency-tables.html"><a href="12-contingency-tables.html#rxc-tables"><i class="fa fa-check"></i><b>12.3</b> RxC tables</a></li>
-<li class="chapter" data-level="12.4" data-path="12-contingency-tables.html"><a href="12-contingency-tables.html#exercises-11"><i class="fa fa-check"></i><b>12.4</b> Exercises</a></li>
-</ul></li>
 </ul>
 
       </nav>
@@ -313,18 +150,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="summary-statistics-and-graphing" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Summary Statistics and Graphing</h1>
-<p>When confronted with a large amount of data, we seek to summarize the data into statistics that somehow capture the essence of the data with as few numbers as possible. Graphing the data has a similar goal… to reduce the data to an image that represents all the key aspects of the raw data. In short, we seek to simplify the data in order to understand the trends while not obscuring important structure.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># Every chapter, we will load all the librarys we will use at the beginning</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co"># of the chapter. These commands will start most every homework assignment</span></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co"># for this class, and likely, every R script you write.</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw">library</span>(ggplot2)    <span class="co"># graphing functions</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw">library</span>(dplyr)      <span class="co"># data summary tools</span></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co"># Set default behavior of ggplot2 graphs to be black/white theme</span></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="kw">theme_set</span>(<span class="kw">theme_bw</span>())</a></code></pre></div>
+<p>When confronted with a large amount of data, we seek to summarize the data into statistics that capture the essence of the data with as few numbers as possible. Graphing the data has a similar goal: to reduce the data to an image that represents all the key aspects of the raw data. In short, we seek to simplify the data in order to understand the trends while not obscuring important structure.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Every chapter, we will load all the librarys we will use at the beginning</span>
+<span class="co"># of the chapter. These commands will start most every homework assignment</span>
+<span class="co"># for this class, and likely, every R script you write.</span>
+<span class="kw">library</span>(ggplot2)    <span class="co"># graphing functions</span>
+<span class="kw">library</span>(dplyr)      <span class="co"># data summary tools</span>
+
+<span class="co"># Set default behavior of ggplot2 graphs to be black/white theme</span>
+<span class="kw">theme_set</span>(<span class="kw">theme_bw</span>())</code></pre></div>
 <p>For this chapter, we will consider data from a the 2005 Cherry Blossom 10 mile run that occurs in Washington DC. This data set has 8636 observations that includes the runners state of residence, official time (gun to finish, in seconds), net time (start line to finish, in seconds), age, and gender of the runners.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">data</span>( TenMileRace, <span class="dt">package=</span><span class="st">&#39;mosaicData&#39;</span>)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">head</span>(TenMileRace)   <span class="co"># examine the first few rows of the data</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>( TenMileRace, <span class="dt">package=</span><span class="st">&#39;mosaicData&#39;</span>)
+<span class="kw">head</span>(TenMileRace)   <span class="co"># examine the first few rows of the data</span></code></pre></div>
 <pre><code>##   state time  net age sex
 ## 1    VA 6060 5978  12   M
 ## 2    MD 4515 4457  13   M
@@ -334,7 +171,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6    VA 6234 5968  14   M</code></pre>
 <p>In general, I often need to make a distinction between two types of data.</p>
 <ul>
-<li>Discrete (also called Categorical) data is data that can only take a small set of particular values. For example a college student’s grade can be either A, B, C, D, or F. A person’s sex can be only Male or Female.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Discrete data could also be numeric, for example a bird could lay 1, 2, 3, … eggs in a breeding season.</li>
+<li>Discrete (also called Categorical) data is data that can only take a small set of particular values. For example a college student’s grade can be either A, B, C, D, or F. A person’s sex can be only Male or Female.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> Discrete data could also be numeric, for example a bird could lay 1, 2, 3, … eggs in a breeding season.</li>
 </ul>
 <ul>
 <li>Continuous data is data that can take on an infinite number of numerical values. For example a person’s height could be 68 inches, 68.2 inches, 68.23212 inches.</li>
@@ -345,43 +182,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="univariate---categorical" class="section level3">
 <h3><span class="header-section-number">1.1.1</span> Univariate - Categorical</h3>
 <p>If we have univariate data about a number of groups, often the best way to display it is using barplots. They have the advantage over pie-charts that groups are easily compared.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>sex)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>()</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>sex)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>()</code></pre></div>
 <p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>One thing that can be misleading is if the zero on the y-axis is removed. In the following graph it looks like there are twice as many female runners as male until you examine the y-axis closely. In general, the following is a very misleading graph.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>sex)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw">coord_cartesian</span>(<span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4300</span>, <span class="dv">4330</span>))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>sex)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">coord_cartesian</span>(<span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4300</span>, <span class="dv">4330</span>))</code></pre></div>
 <p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 <div id="univariate---continuous" class="section level3">
 <h3><span class="header-section-number">1.1.2</span> Univariate - Continuous</h3>
 <p>A histogram looks very similar to a bar plot, but is used to represent continuous data instead of categorical and therefore the bars will actually be touching.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>net)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>()</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>net)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>()</code></pre></div>
 <p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Often when a histogram is presented, the y-axis is labeled as “frequency” or “count” which is the number of observations that fall within a particular bin. However, it is often desirable to scale the y-axis so that if we were to sum up the area <span class="math inline">\((height * width)\)</span> then the total area would sum to 1. The re-scaling that accomplishes this is <span class="math display">\[density=\frac{\#\;observations\;in\;bin}{total\;number\;observations}\cdot\frac{1}{bin\;width}\]</span></p>
 </div>
 <div id="bivariate---categorical-vs-continuous" class="section level3">
 <h3><span class="header-section-number">1.1.3</span> Bivariate - Categorical vs Continuous</h3>
 <p>We often wish to compare response levels from two or more groups of interest. To do this, we often use side-by-side boxplots. Notice that each observation is associated with a continuous response value and a categorical value.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>sex, <span class="dt">y=</span>net)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>sex, <span class="dt">y=</span>net)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
 <p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>In this graph, the edges of the box are defined by the 25% and 75% percentiles. That is to say, 25% of the data is to the below of the box, 50% of the data is in the box, and the final 25% of the data is to the above of the box. The line in the center of the box represents the 50% percentile. The dots are data points that traditionally considered outliers. We will define the Inter-Quartile Range (IQR) as the length of the box. It is conventional to define any observation more than 1.5*IQR from the box as an considered an outlier. In the above graph it is easy to see that the median time for the males is lower than for females, but the box width (one measure of the spread of the data) is approximately the same.</p>
 <p>Because boxplots simplify the distribution to just 5 numbers, looking at side-by-side histograms might give similar information.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>net)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="st">  </span><span class="kw">facet_grid</span>( . <span class="op">~</span><span class="st"> </span>sex )  <span class="co"># side-by-side plots based on sex</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>net)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_grid</span>( . <span class="op">~</span><span class="st"> </span>sex )  <span class="co"># side-by-side plots based on sex</span></code></pre></div>
 <p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>Orientation of graphs can certainly matter. In this case, it makes sense to stack the two graphs to facilitate comparisons in where the centers are and it is more obvious that the center of the female distribution is about 500 to 600 seconds higher than then center of the male distribution.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>net)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st">  </span><span class="kw">facet_grid</span>( sex <span class="op">~</span><span class="st"> </span>. )  <span class="co"># side-by-side plots based on sex</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>net)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_grid</span>( sex <span class="op">~</span><span class="st"> </span>. )  <span class="co"># side-by-side plots based on sex</span></code></pre></div>
 <p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
 <div id="bivariate---continuous-vs-continuous" class="section level3">
 <h3><span class="header-section-number">1.1.4</span> Bivariate - Continuous vs Continuous</h3>
 <p>Finally we might want to examine the relationship between two continuous random variables. For example, we might wish to explore the relationship between a runners age and their net time.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>age, <span class="dt">y=</span>net, <span class="dt">color=</span>sex)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>age, <span class="dt">y=</span>net, <span class="dt">color=</span>sex)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
 <p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 </div>
 </div>
@@ -391,20 +228,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="mean" class="section level3">
 <h3><span class="header-section-number">1.2.1</span> Mean</h3>
 <p>Often called the average, or arithmetic mean, we will denote this special statistic with a bar. We define <span class="math display">\[\bar{x}=\frac{1}{n}\sum_{i=1}^{n}x_{i}=\frac{1}{n}\left(x_{1}+x_{2}+\dots+x_{n}\right)\]</span></p>
-<p>If we want to find the mean of five numbers <span class="math inline">\(\left\{ 3,6,4,8,2\right\}\)</span> the calculation is
-<span class="math display">\[\bar{x}   =   \frac{1}{5}\left(3+6+4+8+2\right)
+<p>If we want to find the mean of five numbers <span class="math inline">\(\left\{ 3,6,4,8,2\right\}\)</span> the calculation is <span class="math display">\[\bar{x}   =   \frac{1}{5}\left(3+6+4+8+2\right)
     =   \frac{1}{5}\left(23\right)
     =   23/5
     =   4.6\]</span></p>
 <p>This can easily be calculated in R by using the function <code>mean()</code>. We first extract the column we are interested in using the notation: <code>DataSet$ColumnName</code> where the $ signifies grabbing the column.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co"># TenMileRace$net  is the set of data to calculate the mean of. </span></a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw">mean</span>( TenMileRace<span class="op">$</span>net ) <span class="co"># Simplest way of doing this calculation</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># TenMileRace$net  is the set of data to calculate the mean of. </span>
+<span class="kw">mean</span>( TenMileRace<span class="op">$</span>net ) <span class="co"># Simplest way of doing this calculation</span></code></pre></div>
 <pre><code>## [1] 5599.065</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co"># Using the dplyr package we first specify the data set </span></a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co"># Then specify we wish to summarize() the data set</span></a>
-<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co"># The summary we want to do is to calculate the mean of the &#39;net&#39; column.</span></a>
-<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co"># and we want to name what we are about to create as Calculated.Mean</span></a>
-<a class="sourceLine" id="cb13-5" data-line-number="5">TenMileRace <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>( <span class="dt">Calculated.Mean =</span> <span class="kw">mean</span>(net) )  </a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Using the dplyr package we first specify the data set </span>
+<span class="co"># Then specify we wish to summarize() the data set</span>
+<span class="co"># The summary we want to do is to calculate the mean of the &#39;net&#39; column.</span>
+<span class="co"># and we want to name what we are about to create as Calculated.Mean</span>
+TenMileRace <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>( <span class="dt">Calculated.Mean =</span> <span class="kw">mean</span>(net) )  </code></pre></div>
 <pre><code>##   Calculated.Mean
 ## 1        5599.065</code></pre>
 </div>
@@ -413,9 +249,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>If the data were to be ordered, the median would be the middle most observation (or, in the case that <span class="math inline">\(n\)</span> is even, the mean of the two middle most values).</p>
 <p>In our simple case of five observations <span class="math inline">\(\left\{ 3,6,4,8,2\right\}\)</span>, we first sort the data into <span class="math inline">\(\left\{ 2,3,4,6,8\right\}\)</span> and then the middle observation is clearly <span class="math inline">\(4\)</span>.</p>
 <p>In R the median is easily calculated by the function <code>median()</code>.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="co"># Use the median() function to calculate the median for us.</span></a>
-<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="co"># median( TenMileRace$net )</span></a>
-<a class="sourceLine" id="cb15-3" data-line-number="3">TenMileRace <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>( <span class="dt">Median =</span> <span class="kw">median</span>(net) ) </a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Use the median() function to calculate the median for us.</span>
+<span class="co"># median( TenMileRace$net )</span>
+TenMileRace <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>( <span class="dt">Median =</span> <span class="kw">median</span>(net) ) </code></pre></div>
 <pre><code>##   Median
 ## 1   5555</code></pre>
 </div>
@@ -446,8 +282,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="range" class="section level3">
 <h3><span class="header-section-number">1.3.1</span> Range</h3>
 <p>Range is the distance from the largest to the smallest value in the dataset.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="co"># max( TenMileRace$net ) - min( TenMileRace$net )</span></a>
-<a class="sourceLine" id="cb17-2" data-line-number="2">TenMileRace <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>( <span class="dt">Range =</span> <span class="kw">max</span>(net) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(net) )</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># max( TenMileRace$net ) - min( TenMileRace$net )</span>
+TenMileRace <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>( <span class="dt">Range =</span> <span class="kw">max</span>(net) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(net) )</code></pre></div>
 <pre><code>##   Range
 ## 1  7722</code></pre>
 <p>In general, this method is highly sensitive to outlier observations and isn’t often used.</p>
@@ -456,39 +292,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">1.3.2</span> Inter-Quartile Range</h3>
 <p>The p-th percentile is the observation (or observations) that has at most <span class="math inline">\(p\)</span> percent of the observations below it and <span class="math inline">\((1-p)\)</span> above it, where <span class="math inline">\(p\)</span> is between 0 and 100. The median is the <span class="math inline">\(50\)</span>th percentile. Often we are interested in splitting the data into four equal sections using the <span class="math inline">\(25\)</span>th, <span class="math inline">\(50\)</span>th, and <span class="math inline">\(75\)</span>th percentiles (which, because it splits the data into four sections, we often call these the <span class="math inline">\(1\)</span>st, <span class="math inline">\(2\)</span>nd, and <span class="math inline">\(3\)</span>rd quartiles).</p>
 <p>In general we could be interested in dividing the data up into an arbitrary number of sections, and refer to those as quantiles of my data.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw">quantile</span>( TenMileRace<span class="op">$</span>net ) <span class="co"># gives the 5-number summary by default</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>( TenMileRace<span class="op">$</span>net ) <span class="co"># gives the 5-number summary by default</span></code></pre></div>
 <pre><code>##    0%   25%   50%   75%  100% 
 ##  2814  4950  5555  6169 10536</code></pre>
 <p>The inter-quartile range (IQR) is defined as the distance from the <span class="math inline">\(3\)</span>rd quartile to the <span class="math inline">\(1\)</span>st.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="co"># IQR( TenMileRace$net )</span></a>
-<a class="sourceLine" id="cb21-2" data-line-number="2">TenMileRace <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>( <span class="dt">CalcIQR =</span> <span class="kw">IQR</span>(net) ) </a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># IQR( TenMileRace$net )</span>
+TenMileRace <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>( <span class="dt">CalcIQR =</span> <span class="kw">IQR</span>(net) ) </code></pre></div>
 <pre><code>##   CalcIQR
 ## 1    1219</code></pre>
 <p>Notice that we’ve defined IQR before when we looked at box-and-whisker plots and this is exactly the length of the box part of a box-and-whisker plot.</p>
 </div>
 <div id="variance" class="section level3">
 <h3><span class="header-section-number">1.3.3</span> Variance</h3>
-<p>One way to measure the spread of a distribution is to ask “what is the typical distance of an observation to the mean?” We could define the <span class="math inline">\(i\)</span>th deviate as
-<span class="math display">\[e_{i}=x_{i}-\bar{x}\]</span>
-and then ask what is the average deviate? The problem with this approach is that the sum (and thus the average) of all deviates is always 0.
-<span class="math display">\[\sum_{i=1}^{n}(x_{i}-\bar{x}) =   \sum_{i=1}^{n}x_{i}-\sum_{i=1}^{n}\bar{x}
+<p>One way to measure the spread of a distribution is to ask “what is the typical distance of an observation to the mean?” We could define the <span class="math inline">\(i\)</span>th deviate as <span class="math display">\[e_{i}=x_{i}-\bar{x}\]</span> and then ask what is the average deviate? The problem with this approach is that the sum (and thus the average) of all deviates is always 0. <span class="math display">\[\sum_{i=1}^{n}(x_{i}-\bar{x}) =   \sum_{i=1}^{n}x_{i}-\sum_{i=1}^{n}\bar{x}
     =   n\frac{1}{n}\sum_{i=1}^{n}x_{i}-n\bar{x}
     =   n\bar{x}-n\bar{x}
     =   0\]</span></p>
 <p>The big problem is that about half the deviates are negative and the others are positive. What we really care is the distance from the mean, not the sign. So we could either take the absolute value, or square it.</p>
-<p>There are some really good theoretical reasons to chose the square option. Squared terms are easier to deal with compared to absolute values, but more importantly, the spread of the normal distribution is parameterized via squared distances from the mean. Because the normal distribution is so important, we’ve chosen to define the sample variance so it matches up with the natural spread parameter of the normal distribution. So we square the deviates and then find the average deviate size (approximately) and call that the sample variance.
-<span class="math display">\[s^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}\]</span>
-Why do we divide by <span class="math inline">\(n-1\)</span> instead of <span class="math inline">\(n\)</span>?</p>
+<p>There are some really good theoretical reasons to chose the square option. Squared terms are easier to deal with compared to absolute values, but more importantly, the spread of the normal distribution is parameterized via squared distances from the mean. Because the normal distribution is so important, we’ve chosen to define the sample variance so it matches up with the natural spread parameter of the normal distribution. So we square the deviates and then find the average deviate size (approximately) and call that the sample variance. <span class="math display">\[s^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}\]</span> Why do we divide by <span class="math inline">\(n-1\)</span> instead of <span class="math inline">\(n\)</span>?</p>
 <ol style="list-style-type: decimal">
 <li>If we divide by <span class="math inline">\(n\)</span>, then on average, we would tend to underestimate the population variance <span class="math inline">\(\sigma^{2}\)</span>.</li>
 <li>The reason is because we are using the same set of data to estimate <span class="math inline">\(\sigma^{2}\)</span> as we did to estimate the population mean (<span class="math inline">\(\mu\)</span>). If we could use<br />
-<span class="math display">\[\frac{1}{n}\sum_{i=1}^{n}\left(x_{i}-\mu\right)^{2}\]</span>
-as the estimator, we would be fine. But because we have to replace <span class="math inline">\(\mu\)</span> with <span class="math inline">\(\bar{x}\)</span> we have to pay a price.</li>
+<span class="math display">\[\frac{1}{n}\sum_{i=1}^{n}\left(x_{i}-\mu\right)^{2}\]</span> as the estimator, we would be fine. But because we have to replace <span class="math inline">\(\mu\)</span> with <span class="math inline">\(\bar{x}\)</span> we have to pay a price.</li>
 <li>Because the estimation of <span class="math inline">\(\sigma^{2}\)</span> requires the estimation of one other quantity, and using using that quantity, you only need <span class="math inline">\(n-1\)</span> data points and can then figure out the last one, we have used one degree of freedom on estimating the mean and we need to adjust the formula accordingly.</li>
 </ol>
-<p>In later chapters we’ll give this quantity a different name, so we’ll introduce the necessary vocabulary here. Let <span class="math inline">\(e_{i}=x_{i}-\bar{x}\)</span> be the error left after fitting the sample mean. This is the deviation from the observed value to the “expected value” <span class="math inline">\(\bar{x}\)</span>. We can then define the Sum of Squared Error as
-<span class="math display">\[SSE=\sum_{i=1}^{n}e_{i}^{2}\]</span>
-and the Mean Squared Error as <span class="math display">\[MSE=\frac{SSE}{df}=\frac{SSE}{n-1}=s^{2}\]</span> where <span class="math inline">\(df=n-1\)</span> is the appropriate degrees of freedom.</p>
+<p>In later chapters we’ll give this quantity a different name, so we’ll introduce the necessary vocabulary here. Let <span class="math inline">\(e_{i}=x_{i}-\bar{x}\)</span> be the error left after fitting the sample mean. This is the deviation from the observed value to the “expected value” <span class="math inline">\(\bar{x}\)</span>. We can then define the Sum of Squared Error as <span class="math display">\[SSE=\sum_{i=1}^{n}e_{i}^{2}\]</span> and the Mean Squared Error as <span class="math display">\[MSE=\frac{SSE}{df}=\frac{SSE}{n-1}=s^{2}\]</span> where <span class="math inline">\(df=n-1\)</span> is the appropriate degrees of freedom.</p>
 <p>Calculating the variance of our small sample of five observations <span class="math inline">\(\left\{ 3,6,4,8,2\right\}\)</span>, recall that the sample mean was <span class="math inline">\(\bar{x}=4.6\)</span></p>
 <table style="width:68%;">
 <colgroup>
@@ -505,29 +333,29 @@ and the Mean Squared Error as <span class="math display">\[MSE=\frac{SSE}{df}=\f
 </thead>
 <tbody>
 <tr class="odd">
-<td>3</td>
+<td><p>3</p></td>
 <td><pre><code>  -1.6</code></pre></td>
-<td>2.56</td>
+<td><p>2.56</p></td>
 </tr>
 <tr class="even">
-<td>6</td>
+<td><p>6</p></td>
 <td><pre><code>   1.4</code></pre></td>
-<td>1.96</td>
+<td><p>1.96</p></td>
 </tr>
 <tr class="odd">
-<td>4</td>
+<td><p>4</p></td>
 <td><pre><code>  -0.6</code></pre></td>
-<td>0.36</td>
+<td><p>0.36</p></td>
 </tr>
 <tr class="even">
-<td>8</td>
+<td><p>8</p></td>
 <td><pre><code>   3.4</code></pre></td>
-<td>11.56</td>
+<td><p>11.56</p></td>
 </tr>
 <tr class="odd">
-<td>2</td>
+<td><p>2</p></td>
 <td><pre><code>  -2.6</code></pre></td>
-<td>6.76</td>
+<td><p>6.76</p></td>
 </tr>
 <tr class="even">
 <td></td>
@@ -538,24 +366,23 @@ and the Mean Squared Error as <span class="math display">\[MSE=\frac{SSE}{df}=\f
 </table>
 <p>and so the sample variance is <span class="math display">\[s^2 = \frac{SSE}{n-1} = \frac{23.2}{(n-1)} = \frac{23.2}{4}=5.8\]</span></p>
 <p>Clearly this calculation would get very tedious to do by hand and computers will be much more accurate in these calculations. In R, the sample variance is easily calculated by the function <code>var()</code>.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">ToyData &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">x=</span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">2</span>) )</a>
-<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="co"># var( ToyData$x )</span></a>
-<a class="sourceLine" id="cb28-3" data-line-number="3">ToyData <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>( <span class="dt">s2 =</span> <span class="kw">var</span>(x) )</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ToyData &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">x=</span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">2</span>) )
+<span class="co"># var( ToyData$x )</span>
+ToyData <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>( <span class="dt">s2 =</span> <span class="kw">var</span>(x) )</code></pre></div>
 <pre><code>##    s2
 ## 1 5.8</code></pre>
 <p>For the larger TenMileRace data set, the variance is just as easily calculated.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="co"># var( TenMileRace$net )</span></a>
-<a class="sourceLine" id="cb30-2" data-line-number="2">TenMileRace <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>( <span class="dt">s2 =</span> <span class="kw">var</span>(net) )</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># var( TenMileRace$net )</span>
+TenMileRace <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>( <span class="dt">s2 =</span> <span class="kw">var</span>(net) )</code></pre></div>
 <pre><code>##         s2
 ## 1 940233.5</code></pre>
 </div>
 <div id="standard-deviation" class="section level3">
 <h3><span class="header-section-number">1.3.4</span> Standard Deviation</h3>
-<p>The biggest problem with the sample variance statistic is that the units are in the original units-squared. That means if you are looking at data about car fuel efficiency, then the values would be in mpg<span class="math inline">\(^{2}\)</span> which are units that I can’t really understand. The solution is to take the positive square root, which we will call the sample standard deviation. <span class="math display">\[s=\sqrt{s^{2}}\]</span>
-But why do we take the jog through through variance? Mathematically the variance is more useful and most distributions (such as the normal) are defined by the variance term. Practically though, standard deviation is easier to think about.</p>
+<p>The biggest problem with the sample variance statistic is that the units are in the original units-squared. That means if you are looking at data about car fuel efficiency, then the values would be in mpg<span class="math inline">\(^{2}\)</span> which are units that I can’t really understand. The solution is to take the positive square root, which we will call the sample standard deviation. <span class="math display">\[s=\sqrt{s^{2}}\]</span> But why do we take the jog through through variance? Mathematically the variance is more useful and most distributions (such as the normal) are defined by the variance term. Practically though, standard deviation is easier to think about.</p>
 <p>The sample standard deviation is important enough for R to have a function <code>sd()</code> that will calculate it for you.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="co"># sd( TenMileRace$net )</span></a>
-<a class="sourceLine" id="cb32-2" data-line-number="2">TenMileRace <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>( <span class="dt">s =</span> <span class="kw">sd</span>(net) )</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># sd( TenMileRace$net )</span>
+TenMileRace <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>( <span class="dt">s =</span> <span class="kw">sd</span>(net) )</code></pre></div>
 <pre><code>##          s
 ## 1 969.6564</code></pre>
 </div>
@@ -563,19 +390,19 @@ But why do we take the jog through through variance? Mathematically the variance
 <h3><span class="header-section-number">1.3.5</span> Coefficient of Variation</h3>
 <p>Suppose we had a group of animals and the sample standard deviation of the animals lengths was 15 cm. If the animals were elephants, you would be amazed at their uniformity in size, but if they were insects, you would be astounded at the variability. To account for that, the coefficient of variation takes the sample standard deviation and divides by the absolute value of the sample mean (to keep everything positive)</p>
 <p><span class="math display">\[CV=\frac{s}{\vert\bar{x}\vert}\]</span></p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">TenMileRace <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>( <span class="dt">s =</span> <span class="kw">sd</span>(net),</a>
-<a class="sourceLine" id="cb34-2" data-line-number="2">                           <span class="dt">xbar =</span> <span class="kw">mean</span>(net),</a>
-<a class="sourceLine" id="cb34-3" data-line-number="3">                           <span class="dt">cv =</span> s <span class="op">/</span><span class="st"> </span><span class="kw">abs</span>(xbar) )</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">TenMileRace <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>( <span class="dt">s =</span> <span class="kw">sd</span>(net),
+                           <span class="dt">xbar =</span> <span class="kw">mean</span>(net),
+                           <span class="dt">cv =</span> s <span class="op">/</span><span class="st"> </span><span class="kw">abs</span>(xbar) )</code></pre></div>
 <pre><code>##          s     xbar        cv
 ## 1 969.6564 5599.065 0.1731818</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="co"># Previously using dplyr notation didn&#39;t help too much, but if we wanted</span></a>
-<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="co"># to calculate the statistics separately for each sex, the dplyr solution</span></a>
-<a class="sourceLine" id="cb36-3" data-line-number="3"><span class="co"># is MUCH easier.</span></a>
-<a class="sourceLine" id="cb36-4" data-line-number="4">TenMileRace <span class="op">%&gt;%</span><span class="st">                     </span><span class="co"># Summarize the Ten Mile Race Data</span></a>
-<a class="sourceLine" id="cb36-5" data-line-number="5"><span class="st">  </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span><span class="st">                 </span><span class="co"># Subsequent actions are done seperately </span></a>
-<a class="sourceLine" id="cb36-6" data-line-number="6"><span class="st">  </span><span class="kw">summarise</span>( <span class="dt">xbar =</span> <span class="kw">mean</span>(net),      <span class="co">#    for each gender</span></a>
-<a class="sourceLine" id="cb36-7" data-line-number="7">             <span class="dt">s    =</span> <span class="kw">sd</span>(net),        <span class="co">#</span></a>
-<a class="sourceLine" id="cb36-8" data-line-number="8">             <span class="dt">cv   =</span> s <span class="op">/</span><span class="st"> </span><span class="kw">abs</span>(xbar) ) <span class="co"># Calculate three different summary stats</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Previously using dplyr notation didn&#39;t help too much, but if we wanted</span>
+<span class="co"># to calculate the statistics separately for each sex, the dplyr solution</span>
+<span class="co"># is MUCH easier.</span>
+TenMileRace <span class="op">%&gt;%</span><span class="st">                     </span><span class="co"># Summarize the Ten Mile Race Data</span>
+<span class="st">  </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span><span class="st">                 </span><span class="co"># Subsequent actions are done seperately </span>
+<span class="st">  </span><span class="kw">summarise</span>( <span class="dt">xbar =</span> <span class="kw">mean</span>(net),      <span class="co">#    for each gender</span>
+             <span class="dt">s    =</span> <span class="kw">sd</span>(net),        <span class="co">#</span>
+             <span class="dt">cv   =</span> s <span class="op">/</span><span class="st"> </span><span class="kw">abs</span>(xbar) ) <span class="co"># Calculate three different summary stats</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 4
 ##   sex    xbar     s    cv
 ##   &lt;fct&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -615,8 +442,7 @@ But why do we take the jog through through variance? Mathematically the variance
 <p>We want to be able to describe the shape of a distribution and this section introduces the standard vocabulary.</p>
 <div id="symmetry" class="section level3">
 <h3><span class="header-section-number">1.4.1</span> Symmetry</h3>
-<p>A distribution is said to be symetric if there is a point along the x-axis (which we’ll call <span class="math inline">\(\mu\)</span>) which acts as a mirror and <span class="math inline">\(f( -|x-\mu| ) = f( |x-\mu| )\)</span>. In the following graphs, the point of symmetry is marked with a red line.
-<img src="01_Data_Summary_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p>A distribution is said to be symetric if there is a point along the x-axis (which we’ll call <span class="math inline">\(\mu\)</span>) which acts as a mirror and <span class="math inline">\(f( -|x-\mu| ) = f( |x-\mu| )\)</span>. In the following graphs, the point of symmetry is marked with a red line. <img src="01_Data_Summary_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <p>A distribution that is not symetric is said to be asymmetric.</p>
 </div>
 <div id="unimodal-or-multi-modal" class="section level3">
@@ -633,13 +459,26 @@ But why do we take the jog through through variance? Mathematically the variance
 <h2><span class="header-section-number">1.5</span> Exercises</h2>
 <ol style="list-style-type: decimal">
 <li><p>O&amp;L 3.21. The ratio of DDE (related to DDT) to PCB concentrations in bird eggs has been shown to have had a number of biological implications. The ratio is used as an indication of the movement of contamination through the food chain. The paper “The ratio of DDE to PCB concentrations in Great Lakes herring gull eggs and its us in interpreting contaminants data” reports the following ratios for eggs collected at 13 study sites from the five Great Lakes. The eggs were collected from both terrestrial and aquatic feeding birds.</p>
-<p>+——————-+———————————————————————–+
-| Source Type | DDE to PCB Ratio |
-+——————-+———————————————————————–+
-| <strong>Terrestrial</strong> | 76.50, 6.03, 3.51, 9.96, 4.24, 7.74, 9.54, 41.70, 1.84, 2.5, 1.54 |
-+——————-+———————————————————————–+
-| <strong>Aquatic</strong> | 0.27, 0.61, 0.54, 0.14, 0.63, 0.23, 0.56, 0.48, 0.16, 0.18 |
-+——————-+———————————————————————–+</p>
+<table>
+<colgroup>
+<col width="21%" />
+<col width="78%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p>Source Type</p></td>
+<td><p>DDE to PCB Ratio</p></td>
+</tr>
+<tr class="even">
+<td><p><strong>Terrestrial</strong></p></td>
+<td><p>76.50, 6.03, 3.51, 9.96, 4.24, 7.74, 9.54, 41.70, 1.84, 2.5, 1.54</p></td>
+</tr>
+<tr class="odd">
+<td><p><strong>Aquatic</strong></p></td>
+<td><p>0.27, 0.61, 0.54, 0.14, 0.63, 0.23, 0.56, 0.48, 0.16, 0.18</p></td>
+</tr>
+</tbody>
+</table>
 <ol style="list-style-type: lower-alpha">
 <li>By hand, compute the mean and median separately for each type of feeder.</li>
 <li>Using your results from part (a), comment on the relative sensitivity of the mean and median to extreme values in a data set.</li>
@@ -677,13 +516,13 @@ But why do we take the jog through through variance? Mathematically the variance
 <li>Explain why the weights represent the relative contribution to the overall mean for each group.</li>
 </ol></li>
 <li><p>Use R to confirm your calculations in problem 1 (the pollution data). Show the code you used and the subsequent output. It will often be convenient for me to give you code that generates a data frame instead of uploading an Excel file and having you read it in. The data can be generated using the following commands:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">PolutionRatios &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
-<a class="sourceLine" id="cb38-2" data-line-number="2">  <span class="dt">Ratio =</span> <span class="kw">c</span>(<span class="fl">76.50</span>, <span class="fl">6.03</span>, <span class="fl">3.51</span>, <span class="fl">9.96</span>, <span class="fl">4.24</span>, <span class="fl">7.74</span>, <span class="fl">9.54</span>, <span class="fl">41.70</span>, <span class="fl">1.84</span>, <span class="fl">2.5</span>, <span class="fl">1.54</span>,</a>
-<a class="sourceLine" id="cb38-3" data-line-number="3">             <span class="fl">0.27</span>, <span class="fl">0.61</span>, <span class="fl">0.54</span>, <span class="fl">0.14</span>, <span class="fl">0.63</span>, <span class="fl">0.23</span>, <span class="fl">0.56</span>,  <span class="fl">0.48</span>, <span class="fl">0.16</span>, <span class="fl">0.18</span>       ),</a>
-<a class="sourceLine" id="cb38-4" data-line-number="4">  <span class="dt">Type  =</span> <span class="kw">c</span>( <span class="kw">rep</span>(<span class="st">&#39;Terrestrial&#39;</span>,<span class="dv">11</span>), <span class="kw">rep</span>(<span class="st">&#39;Aquatic&#39;</span>,<span class="dv">10</span>) ) )</a>
-<a class="sourceLine" id="cb38-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb38-6" data-line-number="6"><span class="co"># Print out some of the data to confirm what the column names are</span></a>
-<a class="sourceLine" id="cb38-7" data-line-number="7"><span class="kw">head</span>( PolutionRatios )</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">PolutionRatios &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+  <span class="dt">Ratio =</span> <span class="kw">c</span>(<span class="fl">76.50</span>, <span class="fl">6.03</span>, <span class="fl">3.51</span>, <span class="fl">9.96</span>, <span class="fl">4.24</span>, <span class="fl">7.74</span>, <span class="fl">9.54</span>, <span class="fl">41.70</span>, <span class="fl">1.84</span>, <span class="fl">2.5</span>, <span class="fl">1.54</span>,
+             <span class="fl">0.27</span>, <span class="fl">0.61</span>, <span class="fl">0.54</span>, <span class="fl">0.14</span>, <span class="fl">0.63</span>, <span class="fl">0.23</span>, <span class="fl">0.56</span>,  <span class="fl">0.48</span>, <span class="fl">0.16</span>, <span class="fl">0.18</span>       ),
+  <span class="dt">Type  =</span> <span class="kw">c</span>( <span class="kw">rep</span>(<span class="st">&#39;Terrestrial&#39;</span>,<span class="dv">11</span>), <span class="kw">rep</span>(<span class="st">&#39;Aquatic&#39;</span>,<span class="dv">10</span>) ) )
+
+<span class="co"># Print out some of the data to confirm what the column names are</span>
+<span class="kw">head</span>( PolutionRatios )</code></pre></div>
 <pre><code>##   Ratio        Type
 ## 1 76.50 Terrestrial
 ## 2  6.03 Terrestrial
@@ -693,12 +532,12 @@ But why do we take the jog through through variance? Mathematically the variance
 ## 6  7.74 Terrestrial</code></pre>
 <p><em>Hint: for computing the means and medians for each type of feeder separately, the <code>group_by()</code> command we demonstated earlier in the chapter is convenient.</em></p></li>
 <li><p>Use R to confirm your calculations in problem 2 (the hotel data). Show the code you used and the subsequent output. The data can be loaded into a data frame using the following commands Show the code you used and the subsequent output:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">Hotels &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
-<a class="sourceLine" id="cb40-2" data-line-number="2">  <span class="dt">Price =</span> <span class="kw">c</span>(<span class="dv">175</span>, <span class="dv">180</span>, <span class="dv">120</span>, <span class="dv">150</span>, <span class="dv">120</span>, <span class="dv">125</span>, <span class="dv">50</span>, <span class="dv">50</span>, <span class="dv">49</span>, <span class="dv">45</span>, <span class="dv">36</span>, <span class="dv">45</span>, <span class="dv">50</span>, <span class="dv">50</span>, <span class="dv">40</span>),</a>
-<a class="sourceLine" id="cb40-3" data-line-number="3">  <span class="dt">Type  =</span> <span class="kw">c</span>( <span class="kw">rep</span>(<span class="st">&#39;Luxury&#39;</span>,<span class="dv">6</span>),  <span class="kw">rep</span>(<span class="st">&#39;Budget&#39;</span>, <span class="dv">9</span>) ) )</a>
-<a class="sourceLine" id="cb40-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb40-5" data-line-number="5"><span class="co"># Print out some of the data to confirm what the column names are</span></a>
-<a class="sourceLine" id="cb40-6" data-line-number="6"><span class="kw">head</span>( Hotels )</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Hotels &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+  <span class="dt">Price =</span> <span class="kw">c</span>(<span class="dv">175</span>, <span class="dv">180</span>, <span class="dv">120</span>, <span class="dv">150</span>, <span class="dv">120</span>, <span class="dv">125</span>, <span class="dv">50</span>, <span class="dv">50</span>, <span class="dv">49</span>, <span class="dv">45</span>, <span class="dv">36</span>, <span class="dv">45</span>, <span class="dv">50</span>, <span class="dv">50</span>, <span class="dv">40</span>),
+  <span class="dt">Type  =</span> <span class="kw">c</span>( <span class="kw">rep</span>(<span class="st">&#39;Luxury&#39;</span>,<span class="dv">6</span>),  <span class="kw">rep</span>(<span class="st">&#39;Budget&#39;</span>, <span class="dv">9</span>) ) )
+
+<span class="co"># Print out some of the data to confirm what the column names are</span>
+<span class="kw">head</span>( Hotels )</code></pre></div>
 <pre><code>##   Price   Type
 ## 1   175 Luxury
 ## 2   180 Luxury
@@ -708,8 +547,7 @@ But why do we take the jog through through variance? Mathematically the variance
 ## 6   125 Luxury</code></pre></li>
 <li><p>For the hotel data, create side-by-side box-and-whisker plots to compare the prices.</p></li>
 <li><p>Match the following histograms to the appropriate boxplot.</p>
-<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-27-1.png" width="672" />
-<img src="01_Data_Summary_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-27-1.png" width="672" /> <img src="01_Data_Summary_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 <ol style="list-style-type: lower-alpha">
 <li>Histogram A goes with boxplot __________</li>
 <li>Histogram B goes with boxplot __________</li>
@@ -732,10 +570,16 @@ But why do we take the jog through through variance? Mathematically the variance
 
 </div>
 </div>
+
+
+
+
+
+
 <div class="footnotes">
 <hr />
 <ol start="1">
-<li id="fn1"><p>Actually this isn’t true as both gender and sex are far more complex. However from a statistical point of view it is often useful to simplify our model of the world. George Box famously said, “All models are wrong, but some are useful.”<a href="1-summary-statistics-and-graphing.html#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>Actually this isn’t true as both gender and sex are far more complex. However from a statistical point of view it is often useful to simplify our model of the world. George Box famously said, “All models are wrong, but some are useful.”<a href="1-summary-statistics-and-graphing.html#fnref1">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -743,8 +587,8 @@ But why do we take the jog through through variance? Mathematically the variance
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="2-probability.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -797,10 +641,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "true";
+    var src = "";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

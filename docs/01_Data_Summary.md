@@ -35,11 +35,25 @@ head(TenMileRace)   # examine the first few rows of the data
 ## 6    VA 6234 5968  14   M
 ```
 
-In general, I often need to make a distinction between two types of data.
+## Variable Types
 
-* Discrete (also called Categorical) data is data that can only take a small set of particular values. For example a college student's grade can be either A, B, C, D, or F. A person's sex can be only Male or Female [^1]. Discrete data could also be numeric, for example a bird could lay 1, 2, 3, ... eggs in a breeding season. 
+We will always want to be aware of the variable types in which we are working.  We will distinquish variables into two principal categories: numerical and categorical.
+
+### Categorical
+
+* **Categorical variables** are variables whose elements take on non-numerical entries.  
+
+Examples within the TenMileRace set include the *state* and *sex* variables.  Categorical variables are typically unordered, such that if we chose to order 'NM' before 'AZ' in an evaluation of the *state* variable, there would be no impact on our analysis. Categorical variables that have an implied order are termed **ordinal** variables. Examples include the common A, B, C, D, F grade-scale system.  The variable entries are non-numerical, but there is an implied order that A > B > C > D > F.  Such an ordering could influence the way the data is evaluated.
+
+### Numerical
+
+**Numerical variables** are broadly classified as variables with numerical elements.  Numerical variables within the TenMileRace set include the *time*, *net*, and *age* variables.  Numerical variables are sub-classified as either discrete or continuous.  
+
+* **Discrete variables** have entries that can be written as a list. 
+
+Data that is discrete can take on a countable number of entries, such the variable *age* in years.  We could write a list of numbers, `{0, 1, 2, ..., 122}`[^1], of which all values within the *age* variable could be drawn.  Discrete variables are potentially finite, such as in the previous list for possible values of *age*.  Finite variables have important distributions such as the Binomial distribution.  Discrete variables can also take on a potentially infinite number of possible values, but the values can still be listed, `{0, 1, 2, ...}`.  Although there is no largest value within the list, the number of potential entries is still countable.  Infinite valued discrete variables will also serve the basis for important distribution, such as the Poisson distribution.
      
-[^1]: Actually this isn't true as both gender and sex are far more complex. However from a statistical point of view it is often useful to simplify our model of the world. George Box famously said, “All models are wrong, but some are useful.”
+[^1]: The oldest recorded age was that of a French women, Jeanne Calment, who lived to be to the age of 122 years.
     
 * Continuous data is data that can take on an infinite number of numerical values. For example a person's height could be 68 inches, 68.2 inches, 68.23212 inches. 
     

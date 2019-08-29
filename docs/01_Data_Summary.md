@@ -65,7 +65,7 @@ An important aspect of working within statistics is the concept that the data we
 
 The way we select our samples is done to ensure that we have randomly collected the data, such that there is no influence of correlation between samples interfering with our analysis.  We will cover three broad sampling techniques that help ensure randomization of the samples collected.
 
-### Sample Techniques
+### Sampling Techniques
 
 * **Simple Random Sampling (SRS)** is when every member of the population is equally-likely to be chosen.
 

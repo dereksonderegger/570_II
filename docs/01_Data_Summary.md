@@ -21,7 +21,7 @@ For this chapter, we will consider data from a the 2005 Cherry Blossom 10 mile r
 
 
 ```r
-data( TenMileRace, package='mosaicData')
+data(TenMileRace, package='mosaicData')
 head(TenMileRace)   # examine the first few rows of the data
 ```
 
@@ -37,7 +37,7 @@ head(TenMileRace)   # examine the first few rows of the data
 
 ## Variable Types
 
-We will always want to be aware of the variable types in which we are working.  We will distinquish variables into two principal categories: numerical and categorical.
+We will always want to be aware of the variable types in which we are working.  We will distinguish variables into two principal categories: numerical and categorical.
 
 ### Categorical
 
@@ -51,15 +51,31 @@ Examples within the TenMileRace set include the *state* and *sex* variables.  Ca
 
 * **Discrete variables** have entries that can be written as a list. 
 
-Data that is discrete can take on a countable number of entries, such the variable *age* in years.  We could write a list of numbers, `{0, 1, 2, ..., 122}`[^1], of which all values within the *age* variable could be drawn.  Discrete variables are potentially finite, such as in the previous list for possible values of *age*.  Finite variables have important distributions such as the Binomial distribution.  Discrete variables can also take on a potentially infinite number of possible values, but the values can still be listed, `{0, 1, 2, ...}`.  Although there is no largest value within the list, the number of potential entries is still countable.  Infinite valued discrete variables will also serve the basis for important distribution, such as the Poisson distribution.
+Data that is discrete can take on a countable number of entries, such the variable *age* in years.  We could write a list of numbers, `{0, 1, 2, ..., 122}`[^1], of which all values within the *age* variable could be drawn.  Discrete variables are potentially finite, such as in the previous list for possible values of *age*.  Additional examples include the number of students in a classroom or the number of offspring for a rabbit.  Finite variables have important distributions such as the Binomial distribution.  Discrete variables can also take on a potentially infinite number of possible values, but the values can still be listed, `{0, 1, 2, ...}`.  Although there is no largest value within the list, the number of potential entries is still countable.  Infinite valued discrete variables will also serve the basis for important distributions, such as the Poisson distribution.
      
 [^1]: The oldest recorded age was that of a French women, Jeanne Calment, who lived to be to the age of 122 years.
     
-* Continuous data is data that can take on an infinite number of numerical values. For example a person's height could be 68 inches, 68.2 inches, 68.23212 inches. 
-    
-To decided if a data attribute is discrete or continuous, I often as “Does a fraction of a value make sense?” If so, then the data is continuous. 
+* **Continuous variables** have entries that take on numerical values that lie on an interval.  
 
-## Graphical summaries of data
+To decided if a data attribute is discrete or continuous, I often as “Does a fraction of a value make sense?” If so, then the data is continuous.  The variables *time* and *net* are both recorded in seconds, and in this case seem to conform to discrete.  However, if we had instead recorded the minutes with fractions of a minute present, such as 75.25 minutes instead of 4515 seconds, we might realize these variables are more likely to be considered continuous.  Continuous variables constitute a large set of distributions that will be studied, the most commonly known being the Normal distribution.  For the Normal distribution, it is possible to see values ranging from $(-\infty, \infty)$.  This constitutes an interval, albeit a very large interval.  Thus, elements of the variables lie on an interval, and it is not possible to list out all possible entries.  Another simple example will be the Uniform distribution, whose entries lie on the interval `(a,b)`, where `a` and `b` are any real valued number.  Again, all potential observation of the variable can be found in the interval, but it is not possible to list out all possible outcomes.
+
+## Randomization and Sampling
+
+An important aspect of working within statistics is the concept that the data we are working with has been collected randomly.  We think of having a **population**, the collection of all possible observations under consideration.  The population will be dependent on the problem at hand.  In the case of performing a study at a university, it may be that the entire university is the population.  However, you may be working with only a specific subject, in which case the population may be only Mathematics majors.  A **sample** is a subset of the population for which information is gathered.  From the university example, we may choose to collect information from 1,000 students (our sample) which is drawn from the entire university population of 30,000 students (our population).
+
+The way we select our samples is done to ensure that we have randomly collected the data, such that there is no influence of correlation between samples interfering with our analysis.  We will cover three broad sampling techniques that help ensure randomization of the samples collected.
+
+### Sample Techniques
+
+* **Simple Random Sampling (SRS)** is when every member of the population is equally-likely to be chosen.
+
+For SRS to be used, we also ensure that every member of the population is selected independently.  Let us take the a university of having 30,000 students enrolled to be our population of which we would like to selected 1,000 as a sample.  To use SRS, we would assign every member of the population a value `{1, 2, ..., 30,000}` and then draw numbers, without replacement, from our list of values.  Such random numbers can be drawn using a random number generator, or traditionally through the use of a random number table. Using this method would ensure that we obtain a random sampling drawn from the entire university.  What we cannot do is draw a student, then also draw all of their siblings.  If we were to use such a method, we would be introducing correlation within our samples.  We must ensure that the students are all drawn randomly and that the selection is done independently.
+
+* **Random Cluster Sampling** draws entire clusters based on a division of the population.
+
+
+
+## Graphical Summaries
 
 ### Univariate - Categorical
 
@@ -103,6 +119,7 @@ We often wish to compare response levels from two or more groups of interest. To
 
 
 ```r
+library(ggplot2)
 ggplot(TenMileRace, aes(x=sex, y=net)) + geom_boxplot()
 ```
 
@@ -139,8 +156,7 @@ Finally we might want to examine the relationship between two continuous random 
 
 
 ```r
-ggplot(TenMileRace, aes(x=age, y=net, color=sex)) +
-  geom_point()
+ggplot(TenMileRace, aes(x=age, y=net, color=sex)) + geom_point()
 ```
 
 <img src="01_Data_Summary_files/figure-html/unnamed-chunk-10-1.png" width="672" />
@@ -164,6 +180,27 @@ $$\bar{x}	=	\frac{1}{5}\left(3+6+4+8+2\right)
 
 This can easily be calculated in R by using the function `mean()`. We first extract the column we are interested in using the notation: `DataSet$ColumnName` where the $ signifies grabbing the column.
 
+
+```r
+library(dplyr)
+```
+
+```
+## 
+## Attaching package: 'dplyr'
+```
+
+```
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+```
+
+```
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+```
 
 ```r
 # TenMileRace$net  is the set of data to calculate the mean of. 
@@ -215,19 +252,19 @@ When creating a histogram from a set of data, often the choice of binwidth will 
 
 <img src="01_Data_Summary_files/figure-html/unnamed-chunk-13-1.png" width="672" />
 
-With the two smaller binwidths, sample randomness between adjacent bins obscures the overall shape and we have many different modes. However the *larger* binwidth results in a histogram that more effectively communicates the shape of the distribution and has just a single mode at around 6000 seconds (= 100 minutes = 1 hour 40 minutes). When making histograms the choice of binwidth (or equivalently, the number of bins) should not be ignored and a balance should be struck between simplifying the data too much vs seeing too much of the noise resulting from the sample randomess.
+With the two smaller binwidths, sample randomness between adjacent bins obscures the overall shape and we have many different modes. However the *larger* binwidth results in a histogram that more effectively communicates the shape of the distribution and has just a single mode at around 6000 seconds (= 100 minutes = 1 hour 40 minutes). When making histograms the choice of binwidth (or equivalently, the number of bins) should not be ignored and a balance should be struck between simplifying the data too much vs seeing too much of the noise resulting from the sample randomness.
 
 ### Examples 
 
 * Suppose a retired professor my father were to become bored and enroll into the the author's STA 570 course, how would that affect the mean and median age of the STA 570 students? 
     + The mean would move much more than the median. Suppose the class has 5 people right now, ages 21, 22, 23, 23, 24 and therefore the median is 23. When the retired professor joins, the ages will be 21, 22, 23, 23, 24, 72 and the median will remain 23. However, the mean would move because we add in such a large outlier. Whenever we are dealing with skewed data, the mean is pulled toward the outlying observations.
 
-* In 2010 during a player's strike in the NFL, the median NFL player salary was $770,000 while the mean salary was $1.9 million. Clearly the player's union would talk about the median while the team owners prefered to talk about the mean. Why is there such a difference? 
+* In 2010 during a player's strike in the NFL, the median NFL player salary was $770,000 while the mean salary was $1.9 million. Clearly the player's union would talk about the median while the team owners preferred to talk about the mean. Why is there such a difference? 
     + Because salary data contains outliers (e.g. superstar players with salaries in excess of 20 million) and the minimum salary for a rookie is $375,000. Financial data often reflects a highly skewed distribution and the median is often a better measure of centrality in these cases.
 
 ## Measures of Spread
 
-The second question to ask of a dataset is 'How much spead is in the data?' The fancier (and eventually more technical) word for spread is 'variability'. As with centrality, there are several ways to measure this. 
+The second question to ask of a dataset is 'How much spread is in the data?' The fancier (and eventually more technical) word for spread is 'variability'. As with centrality, there are several ways to measure this. 
 
 ### Range
 
@@ -423,10 +460,10 @@ For any mound-shaped sample of data the following is a reasonable rule of thumb:
 We want to be able to describe the shape of a distribution and this section introduces the standard vocabulary.
 
 ### Symmetry
-A distribution is said to be symetric if there is a point along the x-axis (which we'll call $\mu$) which acts as a mirror and $f( -|x-\mu| ) = f( |x-\mu| )$.  In the following graphs, the point of symmetry is marked with a red line.
+A distribution is said to be symmetric if there is a point along the x-axis (which we'll call $\mu$) which acts as a mirror and $f( -|x-\mu| ) = f( |x-\mu| )$.  In the following graphs, the point of symmetry is marked with a red line.
 <img src="01_Data_Summary_files/figure-html/unnamed-chunk-23-1.png" width="672" />
 
-A distribution that is not symetric is said to be asymmetric.
+A distribution that is not symmetric is said to be asymmetric.
 
 ### Unimodal or Multi-modal
 Recall one measure of centrality was mode.  If there is just a single mode, then we refer to the distribution as unimodal. If there is two or more we would refer to it as bimodal or multi-modal.
@@ -464,7 +501,7 @@ If a distribution has a heavier tail on one side or the other, we refer to it as
     b) Give a practical reason why luxury hotels might have higher variability than the budget hotels. (Don't just say the standard deviation is higher because there is more spread in the data, but rather think about the Hotel Industry and why you might see greater price variability for upscale goods compared to budget items.)
 
 3. Suppose that we have two groups of individuals, each with a mean value $\bar{x}_i$.  We wish to combine the two groups together and find the mean value for the combined group (denoted $\bar{x}_c$).
-    a) Suppose $n_1=1$ and $n_2=1$ (i.e. there is one individual in each group) and the means of the two groups are $\bar{x}_1 = 10$ and $\bar{x}_2=14$. What is the sum of the ages of indivuals in the combined group? What is the mean age of the combined group?
+    a) Suppose $n_1=1$ and $n_2=1$ (i.e. there is one individual in each group) and the means of the two groups are $\bar{x}_1 = 10$ and $\bar{x}_2=14$. What is the sum of the ages of individuals in the combined group? What is the mean age of the combined group?
     b) Suppose that $n_1=50$? What is the mean age of the combined group?
     c) Finally suppose that $n_2=75$. What is the mean age of the combined group?
     d) Write a formula for the weighted average of the mean of the combined group as $$\bar{x}_c = w_1 \bar{x}_1 + w_2 \bar{x}_2 = \sum_{i=1}^2 w_i \bar{x}_i$$ by defining the group *weighting factors* $w_i$.
@@ -528,7 +565,7 @@ If a distribution has a heavier tail on one side or the other, we refer to it as
 
 7. Twenty-five employees of a corporation have a mean salary of $62,000 and the sample standard deviation of those salaries is $15,000. If each employee receives a bonus of $1,000, does the standard deviation of the salaries change? Explain your reasoning.
 
-8. Histograms of the salaries of two corportations. They have the same mean salary, but very different shapes. Use the shape of the distributions to justify which has a lower median salary.
+8. Histograms of the salaries of two corporations. They have the same mean salary, but very different shapes. Use the shape of the distributions to justify which has a lower median salary.
 
 8. The chemicals in clay used to make pottery can differ depending on the geographical region where the clay originated. Sometimes, archaeologists use a chemical analysis of clay to help identify where a piece of pottery originated. Such an analysis measures the amount of a chemical in the clay as a percent of the total weight of the piece of pottery. The boxplots below summarize analyses done for three chemicals—X, Y, and Z—on pieces of pottery that originated at one of three sites: I, II, or III.
     

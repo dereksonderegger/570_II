@@ -115,8 +115,13 @@ Often when a histogram is presented, the y-axis is labeled as “frequency” or
 
 We often wish to compare response levels from two or more groups of interest. To do this, we often use side-by-side boxplots. Notice that each observation is associated with a continuous response value and a categorical value. 
 
-```{r}
+```{r, include=FALSE}
 library(ggplot2)
+library(dplyr)
+```
+
+
+```{r}
 ggplot(TenMileRace, aes(x=sex, y=net)) + geom_boxplot()
 ```
 
@@ -167,8 +172,6 @@ $$\bar{x}	=	\frac{1}{5}\left(3+6+4+8+2\right)
 This can easily be calculated in R by using the function `mean()`. We first extract the column we are interested in using the notation: `DataSet$ColumnName` where the $ signifies grabbing the column.
 
 ```{r}
-library(dplyr)
-
 # TenMileRace$net  is the set of data to calculate the mean of. 
 mean( TenMileRace$net ) # Simplest way of doing this calculation
 
@@ -458,13 +461,6 @@ Rmisc::multiplot(P2, P1, cols = 2)
     a) By hand, compute the means and standard deviations of the room rates for each class of hotel.
     b) Give a practical reason why luxury hotels might have higher variability than the budget hotels. (Don't just say the standard deviation is higher because there is more spread in the data, but rather think about the Hotel Industry and why you might see greater price variability for upscale goods compared to budget items.)
 
-3. Suppose that we have two groups of individuals, each with a mean value $\bar{x}_i$.  We wish to combine the two groups together and find the mean value for the combined group (denoted $\bar{x}_c$).
-    a) Suppose $n_1=1$ and $n_2=1$ (i.e. there is one individual in each group) and the means of the two groups are $\bar{x}_1 = 10$ and $\bar{x}_2=14$. What is the sum of the ages of individuals in the combined group? What is the mean age of the combined group?
-    b) Suppose that $n_1=50$? What is the mean age of the combined group?
-    c) Finally suppose that $n_2=75$. What is the mean age of the combined group?
-    d) Write a formula for the weighted average of the mean of the combined group as $$\bar{x}_c = w_1 \bar{x}_1 + w_2 \bar{x}_2 = \sum_{i=1}^2 w_i \bar{x}_i$$ by defining the group *weighting factors* $w_i$.
-    e) Explain why the weights represent the relative contribution to the overall mean for each group.
-    
 3. Use R to confirm your calculations in problem 1 (the pollution data). Show the code you used and the subsequent output. It will often be convenient for me to give you code that generates a data frame instead of uploading an Excel file and having you read it in. The data can be generated using the following commands:
     ```{r}
     PolutionRatios <- data.frame(
@@ -517,8 +513,6 @@ Rmisc::multiplot(P2, P1, cols = 2)
     d) Histogram D goes with boxplot __________
 
 7. Twenty-five employees of a corporation have a mean salary of $62,000 and the sample standard deviation of those salaries is $15,000. If each employee receives a bonus of $1,000, does the standard deviation of the salaries change? Explain your reasoning.
-
-8. Histograms of the salaries of two corporations. They have the same mean salary, but very different shapes. Use the shape of the distributions to justify which has a lower median salary.
 
 8. The chemicals in clay used to make pottery can differ depending on the geographical region where the clay originated. Sometimes, archaeologists use a chemical analysis of clay to help identify where a piece of pottery originated. Such an analysis measures the amount of a chemical in the clay as a percent of the total weight of the piece of pottery. The boxplots below summarize analyses done for three chemicals—X, Y, and Z—on pieces of pottery that originated at one of three sites: I, II, or III.
     

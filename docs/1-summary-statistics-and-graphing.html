@@ -24,7 +24,7 @@
 <meta name="author" content="Derek L. Sonderegger &amp; Robert Buscaglia" />
 
 
-<meta name="date" content="2019-08-29" />
+<meta name="date" content="2019-08-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -237,26 +237,25 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="bivariate---categorical-vs-continuous" class="section level3">
 <h3><span class="header-section-number">1.3.3</span> Bivariate - Categorical vs Continuous</h3>
 <p>We often wish to compare response levels from two or more groups of interest. To do this, we often use side-by-side boxplots. Notice that each observation is associated with a continuous response value and a categorical value.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
-<span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>sex, <span class="dt">y=</span>net)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>sex, <span class="dt">y=</span>net)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>In this graph, the edges of the box are defined by the 25% and 75% percentiles. That is to say, 25% of the data is to the below of the box, 50% of the data is in the box, and the final 25% of the data is to the above of the box. The line in the center of the box represents the 50% percentile. The dots are data points that traditionally considered outliers. We will define the Inter-Quartile Range (IQR) as the length of the box. It is conventional to define any observation more than 1.5*IQR from the box as an considered an outlier. In the above graph it is easy to see that the median time for the males is lower than for females, but the box width (one measure of the spread of the data) is approximately the same.</p>
 <p>Because boxplots simplify the distribution to just 5 numbers, looking at side-by-side histograms might give similar information.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>net)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">facet_grid</span>( . <span class="op">~</span><span class="st"> </span>sex )  <span class="co"># side-by-side plots based on sex</span></code></pre></div>
-<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>Orientation of graphs can certainly matter. In this case, it makes sense to stack the two graphs to facilitate comparisons in where the centers are and it is more obvious that the center of the female distribution is about 500 to 600 seconds higher than then center of the male distribution.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>net)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">facet_grid</span>( sex <span class="op">~</span><span class="st"> </span>. )  <span class="co"># side-by-side plots based on sex</span></code></pre></div>
-<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 </div>
 <div id="bivariate---continuous-vs-continuous" class="section level3">
 <h3><span class="header-section-number">1.3.4</span> Bivariate - Continuous vs Continuous</h3>
 <p>Finally we might want to examine the relationship between two continuous random variables. For example, we might wish to explore the relationship between a runners age and their net time.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>age, <span class="dt">y=</span>net, <span class="dt">color=</span>sex)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
 </div>
 <div id="measures-of-centrality" class="section level2">
@@ -270,15 +269,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
     =   23/5
     =   4.6\]</span></p>
 <p>This can easily be calculated in R by using the function <code>mean()</code>. We first extract the column we are interested in using the notation: <code>DataSet$ColumnName</code> where the $ signifies grabbing the column.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)</code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># TenMileRace$net  is the set of data to calculate the mean of. </span>
 <span class="kw">mean</span>( TenMileRace<span class="op">$</span>net ) <span class="co"># Simplest way of doing this calculation</span></code></pre></div>
 <pre><code>## [1] 5599.065</code></pre>
@@ -305,7 +295,7 @@ TenMileRace <span class="op">%&gt;%</span><span class="st"> </span><span class="
 <h3><span class="header-section-number">1.4.3</span> Mode</h3>
 <p>This is peak in the distribution. A distribution might have a single peak or multiple peaks.This measure of “center” is not often used in quantitative analyses, but is often helps provide a nice description.</p>
 <p>When creating a histogram from a set of data, often the choice of binwidth will affect the modes of the graph. Consider the following graphs of <span class="math inline">\(n=200\)</span> data points, where we have slightly different binwidths.</p>
-<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p>With the two smaller binwidths, sample randomness between adjacent bins obscures the overall shape and we have many different modes. However the <em>larger</em> binwidth results in a histogram that more effectively communicates the shape of the distribution and has just a single mode at around 6000 seconds (= 100 minutes = 1 hour 40 minutes). When making histograms the choice of binwidth (or equivalently, the number of bins) should not be ignored and a balance should be struck between simplifying the data too much vs seeing too much of the noise resulting from the sample randomness.</p>
 </div>
 <div id="examples" class="section level3">
@@ -480,7 +470,7 @@ TenMileRace <span class="op">%&gt;%</span><span class="st">                     
 </tr>
 </tbody>
 </table>
-<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 </div>
 </div>
 <div id="shape" class="section level2">
@@ -488,7 +478,7 @@ TenMileRace <span class="op">%&gt;%</span><span class="st">                     
 <p>We want to be able to describe the shape of a distribution and this section introduces the standard vocabulary.</p>
 <div id="symmetry" class="section level3">
 <h3><span class="header-section-number">1.6.1</span> Symmetry</h3>
-<p>A distribution is said to be symmetric if there is a point along the x-axis (which we’ll call <span class="math inline">\(\mu\)</span>) which acts as a mirror and <span class="math inline">\(f( -|x-\mu| ) = f( |x-\mu| )\)</span>. In the following graphs, the point of symmetry is marked with a red line. <img src="01_Data_Summary_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p>A distribution is said to be symmetric if there is a point along the x-axis (which we’ll call <span class="math inline">\(\mu\)</span>) which acts as a mirror and <span class="math inline">\(f( -|x-\mu| ) = f( |x-\mu| )\)</span>. In the following graphs, the point of symmetry is marked with a red line. <img src="01_Data_Summary_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <p>A distribution that is not symmetric is said to be asymmetric.</p>
 </div>
 <div id="unimodal-or-multi-modal" class="section level3">
@@ -498,7 +488,7 @@ TenMileRace <span class="op">%&gt;%</span><span class="st">                     
 <div id="skew" class="section level3">
 <h3><span class="header-section-number">1.6.3</span> Skew</h3>
 <p>If a distribution has a heavier tail on one side or the other, we refer to it as a <em>skewed</em> distribution and the direction of the skew is towards the heavier tail. Usually (but not always), an asymmetric is skewed.</p>
-<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 </div>
 </div>
 <div id="exercises" class="section level2">
@@ -553,14 +543,6 @@ TenMileRace <span class="op">%&gt;%</span><span class="st">                     
 <li>By hand, compute the means and standard deviations of the room rates for each class of hotel.</li>
 <li>Give a practical reason why luxury hotels might have higher variability than the budget hotels. (Don’t just say the standard deviation is higher because there is more spread in the data, but rather think about the Hotel Industry and why you might see greater price variability for upscale goods compared to budget items.)</li>
 </ol></li>
-<li>Suppose that we have two groups of individuals, each with a mean value <span class="math inline">\(\bar{x}_i\)</span>. We wish to combine the two groups together and find the mean value for the combined group (denoted <span class="math inline">\(\bar{x}_c\)</span>).
-<ol style="list-style-type: lower-alpha">
-<li>Suppose <span class="math inline">\(n_1=1\)</span> and <span class="math inline">\(n_2=1\)</span> (i.e. there is one individual in each group) and the means of the two groups are <span class="math inline">\(\bar{x}_1 = 10\)</span> and <span class="math inline">\(\bar{x}_2=14\)</span>. What is the sum of the ages of individuals in the combined group? What is the mean age of the combined group?</li>
-<li>Suppose that <span class="math inline">\(n_1=50\)</span>? What is the mean age of the combined group?</li>
-<li>Finally suppose that <span class="math inline">\(n_2=75\)</span>. What is the mean age of the combined group?</li>
-<li>Write a formula for the weighted average of the mean of the combined group as <span class="math display">\[\bar{x}_c = w_1 \bar{x}_1 + w_2 \bar{x}_2 = \sum_{i=1}^2 w_i \bar{x}_i\]</span> by defining the group <em>weighting factors</em> <span class="math inline">\(w_i\)</span>.</li>
-<li>Explain why the weights represent the relative contribution to the overall mean for each group.</li>
-</ol></li>
 <li><p>Use R to confirm your calculations in problem 1 (the pollution data). Show the code you used and the subsequent output. It will often be convenient for me to give you code that generates a data frame instead of uploading an Excel file and having you read it in. The data can be generated using the following commands:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">PolutionRatios &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
   <span class="dt">Ratio =</span> <span class="kw">c</span>(<span class="fl">76.50</span>, <span class="fl">6.03</span>, <span class="fl">3.51</span>, <span class="fl">9.96</span>, <span class="fl">4.24</span>, <span class="fl">7.74</span>, <span class="fl">9.54</span>, <span class="fl">41.70</span>, <span class="fl">1.84</span>, <span class="fl">2.5</span>, <span class="fl">1.54</span>,
@@ -593,7 +575,7 @@ TenMileRace <span class="op">%&gt;%</span><span class="st">                     
 ## 6   125 Luxury</code></pre></li>
 <li><p>For the hotel data, create side-by-side box-and-whisker plots to compare the prices.</p></li>
 <li><p>Match the following histograms to the appropriate boxplot.</p>
-<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-27-1.png" width="672" /> <img src="01_Data_Summary_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-28-1.png" width="672" /> <img src="01_Data_Summary_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 <ol style="list-style-type: lower-alpha">
 <li>Histogram A goes with boxplot __________</li>
 <li>Histogram B goes with boxplot __________</li>
@@ -601,9 +583,8 @@ TenMileRace <span class="op">%&gt;%</span><span class="st">                     
 <li>Histogram D goes with boxplot __________</li>
 </ol></li>
 <li><p>Twenty-five employees of a corporation have a mean salary of $62,000 and the sample standard deviation of those salaries is $15,000. If each employee receives a bonus of $1,000, does the standard deviation of the salaries change? Explain your reasoning.</p></li>
-<li><p>Histograms of the salaries of two corporations. They have the same mean salary, but very different shapes. Use the shape of the distributions to justify which has a lower median salary.</p></li>
 <li><p>The chemicals in clay used to make pottery can differ depending on the geographical region where the clay originated. Sometimes, archaeologists use a chemical analysis of clay to help identify where a piece of pottery originated. Such an analysis measures the amount of a chemical in the clay as a percent of the total weight of the piece of pottery. The boxplots below summarize analyses done for three chemicals—X, Y, and Z—on pieces of pottery that originated at one of three sites: I, II, or III.</p>
-<img src="01_Data_Summary_files/figure-html/unnamed-chunk-29-1.png" width="672" />
+<img src="01_Data_Summary_files/figure-html/unnamed-chunk-30-1.png" width="672" />
 <ol style="list-style-type: lower-alpha">
 <li>For chemical Z, describe how the percents found in the pieces of pottery are similar and how they differ among the three sites.</li>
 <li>Consider a piece of pottery known to have originated at one of the three sites, but the actual site is not known.

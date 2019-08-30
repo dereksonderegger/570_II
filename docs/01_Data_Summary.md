@@ -118,12 +118,14 @@ Often when a histogram is presented, the y-axis is labeled as “frequency” or
 We often wish to compare response levels from two or more groups of interest. To do this, we often use side-by-side boxplots. Notice that each observation is associated with a continuous response value and a categorical value. 
 
 
+
+
+
 ```r
-library(ggplot2)
 ggplot(TenMileRace, aes(x=sex, y=net)) + geom_boxplot()
 ```
 
-<img src="01_Data_Summary_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<img src="01_Data_Summary_files/figure-html/unnamed-chunk-8-1.png" width="672" />
 
 In this graph, the edges of the box are defined by the 25% and 75% percentiles. That is to say, 25% of the data is to the below of the box, 50% of the data is in the box, and the final 25% of the data is to the above of the box. The line in the center of the box represents the 50% percentile. The dots are data points that traditionally considered outliers. We will define the Inter-Quartile Range (IQR) as the length of the box. It is conventional to define any observation more than 1.5*IQR from the box as an considered an outlier.  In the above graph it is easy to see that the median time for the males is lower than for females, but the box width (one measure of the spread of the data) is approximately the same.
 
@@ -136,7 +138,7 @@ ggplot(TenMileRace, aes(x=net)) +
   facet_grid( . ~ sex )  # side-by-side plots based on sex
 ```
 
-<img src="01_Data_Summary_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+<img src="01_Data_Summary_files/figure-html/unnamed-chunk-9-1.png" width="672" />
 
 Orientation of graphs can certainly matter. In this case, it makes sense to stack the two graphs to facilitate comparisons in where the centers are and it is more obvious that the center of the female distribution is about 500 to 600 seconds higher than then center of the male distribution. 
 
@@ -147,7 +149,7 @@ ggplot(TenMileRace, aes(x=net)) +
   facet_grid( sex ~ . )  # side-by-side plots based on sex
 ```
 
-<img src="01_Data_Summary_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="01_Data_Summary_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
 
 ### Bivariate - Continuous vs Continuous
@@ -159,7 +161,7 @@ Finally we might want to examine the relationship between two continuous random 
 ggplot(TenMileRace, aes(x=age, y=net, color=sex)) + geom_point()
 ```
 
-<img src="01_Data_Summary_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<img src="01_Data_Summary_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 
 
 ## Measures of Centrality
@@ -180,27 +182,6 @@ $$\bar{x}	=	\frac{1}{5}\left(3+6+4+8+2\right)
 
 This can easily be calculated in R by using the function `mean()`. We first extract the column we are interested in using the notation: `DataSet$ColumnName` where the $ signifies grabbing the column.
 
-
-```r
-library(dplyr)
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
 
 ```r
 # TenMileRace$net  is the set of data to calculate the mean of. 
@@ -250,7 +231,7 @@ This is peak in the distribution. A distribution might have a single peak or mul
 
 When creating a histogram from a set of data, often the choice of binwidth will affect the modes of the graph.  Consider the following graphs of $n=200$ data points, where we have slightly different binwidths. 
 
-<img src="01_Data_Summary_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<img src="01_Data_Summary_files/figure-html/unnamed-chunk-14-1.png" width="672" />
 
 With the two smaller binwidths, sample randomness between adjacent bins obscures the overall shape and we have many different modes. However the *larger* binwidth results in a histogram that more effectively communicates the shape of the distribution and has just a single mode at around 6000 seconds (= 100 minutes = 1 hour 40 minutes). When making histograms the choice of binwidth (or equivalently, the number of bins) should not be ignored and a balance should be struck between simplifying the data too much vs seeing too much of the noise resulting from the sample randomness.
 
@@ -454,14 +435,14 @@ For any mound-shaped sample of data the following is a reasonable rule of thumb:
 | $\bar{x}\pm 2s$  |               95%                         |
 | $\bar{x}\pm 3s$  |               99.7%                       |
 
-<img src="01_Data_Summary_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+<img src="01_Data_Summary_files/figure-html/unnamed-chunk-23-1.png" width="672" />
 
 ## Shape
 We want to be able to describe the shape of a distribution and this section introduces the standard vocabulary.
 
 ### Symmetry
 A distribution is said to be symmetric if there is a point along the x-axis (which we'll call $\mu$) which acts as a mirror and $f( -|x-\mu| ) = f( |x-\mu| )$.  In the following graphs, the point of symmetry is marked with a red line.
-<img src="01_Data_Summary_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+<img src="01_Data_Summary_files/figure-html/unnamed-chunk-24-1.png" width="672" />
 
 A distribution that is not symmetric is said to be asymmetric.
 
@@ -471,7 +452,7 @@ Recall one measure of centrality was mode.  If there is just a single mode, then
 ### Skew
 If a distribution has a heavier tail on one side or the other, we refer to it as a *skewed* distribution and the direction of the skew is towards the heavier tail.  Usually (but not always), an asymmetric is skewed. 
 
-<img src="01_Data_Summary_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+<img src="01_Data_Summary_files/figure-html/unnamed-chunk-25-1.png" width="672" />
 
 
 ## Exercises
@@ -500,13 +481,6 @@ If a distribution has a heavier tail on one side or the other, we refer to it as
     a) By hand, compute the means and standard deviations of the room rates for each class of hotel.
     b) Give a practical reason why luxury hotels might have higher variability than the budget hotels. (Don't just say the standard deviation is higher because there is more spread in the data, but rather think about the Hotel Industry and why you might see greater price variability for upscale goods compared to budget items.)
 
-3. Suppose that we have two groups of individuals, each with a mean value $\bar{x}_i$.  We wish to combine the two groups together and find the mean value for the combined group (denoted $\bar{x}_c$).
-    a) Suppose $n_1=1$ and $n_2=1$ (i.e. there is one individual in each group) and the means of the two groups are $\bar{x}_1 = 10$ and $\bar{x}_2=14$. What is the sum of the ages of individuals in the combined group? What is the mean age of the combined group?
-    b) Suppose that $n_1=50$? What is the mean age of the combined group?
-    c) Finally suppose that $n_2=75$. What is the mean age of the combined group?
-    d) Write a formula for the weighted average of the mean of the combined group as $$\bar{x}_c = w_1 \bar{x}_1 + w_2 \bar{x}_2 = \sum_{i=1}^2 w_i \bar{x}_i$$ by defining the group *weighting factors* $w_i$.
-    e) Explain why the weights represent the relative contribution to the overall mean for each group.
-    
 3. Use R to confirm your calculations in problem 1 (the pollution data). Show the code you used and the subsequent output. It will often be convenient for me to give you code that generates a data frame instead of uploading an Excel file and having you read it in. The data can be generated using the following commands:
     
     ```r
@@ -555,8 +529,8 @@ If a distribution has a heavier tail on one side or the other, we refer to it as
 
 6. Match the following histograms to the appropriate boxplot.
     
-    <img src="01_Data_Summary_files/figure-html/unnamed-chunk-27-1.png" width="672" />
     <img src="01_Data_Summary_files/figure-html/unnamed-chunk-28-1.png" width="672" />
+    <img src="01_Data_Summary_files/figure-html/unnamed-chunk-29-1.png" width="672" />
     
     a) Histogram A goes with boxplot __________
     b) Histogram B goes with boxplot __________
@@ -565,11 +539,9 @@ If a distribution has a heavier tail on one side or the other, we refer to it as
 
 7. Twenty-five employees of a corporation have a mean salary of $62,000 and the sample standard deviation of those salaries is $15,000. If each employee receives a bonus of $1,000, does the standard deviation of the salaries change? Explain your reasoning.
 
-8. Histograms of the salaries of two corporations. They have the same mean salary, but very different shapes. Use the shape of the distributions to justify which has a lower median salary.
-
 8. The chemicals in clay used to make pottery can differ depending on the geographical region where the clay originated. Sometimes, archaeologists use a chemical analysis of clay to help identify where a piece of pottery originated. Such an analysis measures the amount of a chemical in the clay as a percent of the total weight of the piece of pottery. The boxplots below summarize analyses done for three chemicals—X, Y, and Z—on pieces of pottery that originated at one of three sites: I, II, or III.
     
-    <img src="01_Data_Summary_files/figure-html/unnamed-chunk-29-1.png" width="672" />
+    <img src="01_Data_Summary_files/figure-html/unnamed-chunk-30-1.png" width="672" />
     a) For chemical Z, describe how the percents found in the pieces of pottery are similar and how they differ among the three sites.
     b) Consider a piece of pottery known to have originated at one of the three sites, but the actual site is not known.
         i) Suppose an analysis of the clay reveals that the sum of the percents of the three chemicals X, Y, and Z is $20.5\%$. Based on the boxplots, which site—I, II, or III—is the most likely site where the piece of pottery originated? Justify your choice.

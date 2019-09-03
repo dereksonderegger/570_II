@@ -12,6 +12,8 @@ When confronted with a large amount of data, we seek to summarize the data into 
 # for this class, and likely, every R script you write.
 library(ggplot2)    # graphing functions
 library(dplyr)      # data summary tools
+library(knitr)
+library(tidyr)
 
 # Set default behavior of ggplot2 graphs to be black/white theme
 theme_set(theme_bw())
@@ -43,11 +45,11 @@ We will always want to be aware of the variable types in which we are working.  
 
 * **Categorical variables** are variables whose elements take on non-numerical entries.  
 
-Examples within the TenMileRace set include the *state* and *sex* variables.  Categorical variables are typically unordered, such that if we chose to order 'NM' before 'AZ' in an evaluation of the *state* variable, there would be no impact on our analysis. Categorical variables that have an implied order are termed **ordinal** variables. Examples include the common A, B, C, D, F grade-scale system.  The variable entries are non-numerical, but there is an implied order that A > B > C > D > F.  Such an ordering could influence the way the data is evaluated.
+Examples within the `TenMileRace` set include the *state* and *sex* variables.  Categorical variables are typically unordered, such that if we chose to order 'NM' before 'AZ' in an evaluation of the *state* variable, there would be no impact on our analysis. Categorical variables that have an implied order are termed **ordinal** variables. Examples include the common A, B, C, D, F grade-scale system.  The variable entries are non-numerical, but there is an implied order that A > B > C > D > F.  Such an ordering could influence the way the data is evaluated.
 
 ### Numerical
 
-**Numerical variables** are broadly classified as variables with numerical elements.  Numerical variables within the TenMileRace set include the *time*, *net*, and *age* variables.  Numerical variables are sub-classified as either discrete or continuous.  
+**Numerical variables** are broadly classified as variables with numerical elements.  Numerical variables within the `TenMileRace` set include the *time*, *net*, and *age* variables.  Numerical variables are sub-classified as either discrete or continuous.  
 
 * **Discrete variables** have entries that can be written as a list. 
 
@@ -69,11 +71,53 @@ The way we select our samples is done to ensure that we have randomly collected 
 
 * **Simple Random Sampling (SRS)** is when every member of the population is equally-likely to be chosen.
 
-For SRS to be used, we also ensure that every member of the population is selected independently.  Let us take the a university of having 30,000 students enrolled to be our population of which we would like to selected 1,000 as a sample.  To use SRS, we would assign every member of the population a value `{1, 2, ..., 30,000}` and then draw numbers, without replacement, from our list of values.  Such random numbers can be drawn using a random number generator, or traditionally through the use of a random number table. Using this method would ensure that we obtain a random sampling drawn from the entire university.  What we cannot do is draw a student, then also draw all of their siblings.  If we were to use such a method, we would be introducing correlation within our samples.  We must ensure that the students are all drawn randomly and that the selection is done independently.
+For SRS to be used, we also ensure that every member of the population is selected independently.  Let us take the a university of having 30,000 students enrolled to be our population of which we would like to selected 1,000 as a sample.  To use SRS, we would assign every member of the population a value `{1, 2, ..., 30,000}` and then draw numbers, without replacement, from our list of values.  Such random numbers can be drawn using a random number generator, or traditionally through the use of a random number table. Below we show a simple method in R to draw 1,000 from 30,000 without replacement.
+
+
+```r
+sample(1:30000, 1000, replace=FALSE)
+```
+
+
+Using this method would ensure that we obtain a random sampling drawn from the entire university.  What we cannot do is draw a student, then also draw all of their siblings.  If we were to use such a method, we would be introducing correlation within our samples.  We must ensure that the students are all drawn randomly and that the selection is done independently.
 
 * **Random Cluster Sampling** draws entire clusters based on a division of the population.
 
+In cluster sampling, the biggest idea is that we will draw entire clusters.  Using the `TenMileRace` data, we could choose to create clusters from any of the variables.  We could for example, cluster all participates based on *state* or create two clusters using *sex*, although two clusters may too limiting.  We could also create ranges of values for the *time*, *net*, or *age* variables, and cluster the groups based on numerial ranges.  Any of these methods would work for creating clusters.  Let us consider clustering based on *state*.  If one was to view this variable, they would find there are 62 unique *state* identifiers.  This is due to there being several countries listed in this variable, as well as the inclusion of Washington, DC as its own state, and because it is real data, there is also one blank.  The main concept though if we chose to cluster by *state*, we would produce 62 clusters, all of which are imbalanced in size.  To complete cluster random sampling, we then use SRS to draw X states from the 62 clusters produced, such as say 10 from 62.  This is done synonomously to the above method, but now from the 10 clusters chosen, we would sample ALL participatings from within those clusters.  Thus, if I were to draw the AZ cluster, I would sample all 3 participants.  If I drew the VA cluster, we woul dsample all 3689 participants.  Although this type of sampling is easier to produce larger samples with less randomizationg, we can see that clusters can be highly imbalanced, and it is unlikely that clustering will allow me to sub-sample from the entire population.  Just in our example, I would not gather information from 52 of the 62 states, if I only was to draw 10 clusters.
 
+* **Stratified Sampling** draws samples using proportionality based on homogoneous groupings known as strata.
+
+It is often easy to confuse Clustering and Stratified sampling, but the major difference here is that we will draw random samples from within the strata, unlike clustering where we take all individuals from the chosen clusters.  Let us consider for exampling producing a random stratified sample using *sex* as our strata.  Here, our homogenous grouping is simply *sex*.  Other examples might include stratified animals by breed, stratifying the atmosphere by height above ground, or stratifying soil by depth.  The main idea behind create strata is every member of the strata should be homogenized: in our example, we homogenized by 'Male' and 'Female'.
+
+
+```r
+full_join(as.data.frame(table(TenMileRace$sex)), as.data.frame(table(TenMileRace$sex)/8636))
+```
+
+```
+## Joining, by = c("Var1", "Freq")
+```
+
+```
+##   Var1         Freq
+## 1    F 4325.0000000
+## 2    M 4311.0000000
+## 3    F    0.5008106
+## 4    M    0.4991894
+```
+
+```r
+kable(table(TenMileRace$sex))
+```
+
+
+
+Var1    Freq
+-----  -----
+F       4325
+M       4311
+
+Above shows a table for the number of 'Male' and 'Female' particpants.  We see that these two strata are nearly equivalent, but we want to ensure we draw the samples based on proportionality.  In total, we have 8636 participants.  Let us say we want to draw 800 of these participants, but through statification using *sex*.  We must then ensure that when we draw a random sample, we obtain a sub-sample that has nearly equivalent proportions to that obsereved in the population.
 
 ## Graphical Summaries
 
@@ -86,7 +130,7 @@ If we have univariate data about a number of groups, often the best way to displ
 ggplot(TenMileRace, aes(x=sex)) + geom_bar()
 ```
 
-<img src="01_Data_Summary_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="01_Data_Summary_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 
 One thing that can be misleading is if the zero on the y-axis is removed. In the following graph it looks like there are twice as many female runners as male until you examine the y-axis closely.  In general, the following is a very misleading graph.
 
@@ -97,7 +141,7 @@ ggplot(TenMileRace, aes(x=sex)) +
   coord_cartesian(ylim = c(4300, 4330))
 ```
 
-<img src="01_Data_Summary_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="01_Data_Summary_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
 ### Univariate - Continuous
 
@@ -108,7 +152,7 @@ A histogram looks very similar to a bar plot, but is used to represent continuou
 ggplot(TenMileRace, aes(x=net)) + geom_histogram()
 ```
 
-<img src="01_Data_Summary_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="01_Data_Summary_files/figure-html/unnamed-chunk-8-1.png" width="672" />
 
 Often when a histogram is presented, the y-axis is labeled as “frequency” or “count” which is the number of observations that fall within a particular bin. However, it is often desirable to scale the y-axis so that if we were to sum up the area $(height * width)$ then the total area would sum to 1. The re-scaling that accomplishes this is $$density=\frac{\#\;observations\;in\;bin}{total\;number\;observations}\cdot\frac{1}{bin\;width}$$
  
@@ -125,7 +169,7 @@ We often wish to compare response levels from two or more groups of interest. To
 ggplot(TenMileRace, aes(x=sex, y=net)) + geom_boxplot()
 ```
 
-<img src="01_Data_Summary_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+<img src="01_Data_Summary_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
 In this graph, the edges of the box are defined by the 25% and 75% percentiles. That is to say, 25% of the data is to the below of the box, 50% of the data is in the box, and the final 25% of the data is to the above of the box. The line in the center of the box represents the 50% percentile. The dots are data points that traditionally considered outliers. We will define the Inter-Quartile Range (IQR) as the length of the box. It is conventional to define any observation more than 1.5*IQR from the box as an considered an outlier.  In the above graph it is easy to see that the median time for the males is lower than for females, but the box width (one measure of the spread of the data) is approximately the same.
 
@@ -138,7 +182,7 @@ ggplot(TenMileRace, aes(x=net)) +
   facet_grid( . ~ sex )  # side-by-side plots based on sex
 ```
 
-<img src="01_Data_Summary_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="01_Data_Summary_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 
 Orientation of graphs can certainly matter. In this case, it makes sense to stack the two graphs to facilitate comparisons in where the centers are and it is more obvious that the center of the female distribution is about 500 to 600 seconds higher than then center of the male distribution. 
 
@@ -149,7 +193,7 @@ ggplot(TenMileRace, aes(x=net)) +
   facet_grid( sex ~ . )  # side-by-side plots based on sex
 ```
 
-<img src="01_Data_Summary_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<img src="01_Data_Summary_files/figure-html/unnamed-chunk-12-1.png" width="672" />
 
 
 ### Bivariate - Continuous vs Continuous
@@ -161,7 +205,7 @@ Finally we might want to examine the relationship between two continuous random 
 ggplot(TenMileRace, aes(x=age, y=net, color=sex)) + geom_point()
 ```
 
-<img src="01_Data_Summary_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<img src="01_Data_Summary_files/figure-html/unnamed-chunk-13-1.png" width="672" />
 
 
 ## Measures of Centrality
@@ -231,7 +275,7 @@ This is peak in the distribution. A distribution might have a single peak or mul
 
 When creating a histogram from a set of data, often the choice of binwidth will affect the modes of the graph.  Consider the following graphs of $n=200$ data points, where we have slightly different binwidths. 
 
-<img src="01_Data_Summary_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+<img src="01_Data_Summary_files/figure-html/unnamed-chunk-16-1.png" width="672" />
 
 With the two smaller binwidths, sample randomness between adjacent bins obscures the overall shape and we have many different modes. However the *larger* binwidth results in a histogram that more effectively communicates the shape of the distribution and has just a single mode at around 6000 seconds (= 100 minutes = 1 hour 40 minutes). When making histograms the choice of binwidth (or equivalently, the number of bins) should not be ignored and a balance should be struck between simplifying the data too much vs seeing too much of the noise resulting from the sample randomness.
 
@@ -435,14 +479,14 @@ For any mound-shaped sample of data the following is a reasonable rule of thumb:
 | $\bar{x}\pm 2s$  |               95%                         |
 | $\bar{x}\pm 3s$  |               99.7%                       |
 
-<img src="01_Data_Summary_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+<img src="01_Data_Summary_files/figure-html/unnamed-chunk-25-1.png" width="672" />
 
 ## Shape
 We want to be able to describe the shape of a distribution and this section introduces the standard vocabulary.
 
 ### Symmetry
 A distribution is said to be symmetric if there is a point along the x-axis (which we'll call $\mu$) which acts as a mirror and $f( -|x-\mu| ) = f( |x-\mu| )$.  In the following graphs, the point of symmetry is marked with a red line.
-<img src="01_Data_Summary_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+<img src="01_Data_Summary_files/figure-html/unnamed-chunk-26-1.png" width="672" />
 
 A distribution that is not symmetric is said to be asymmetric.
 
@@ -452,7 +496,7 @@ Recall one measure of centrality was mode.  If there is just a single mode, then
 ### Skew
 If a distribution has a heavier tail on one side or the other, we refer to it as a *skewed* distribution and the direction of the skew is towards the heavier tail.  Usually (but not always), an asymmetric is skewed. 
 
-<img src="01_Data_Summary_files/figure-html/unnamed-chunk-25-1.png" width="672" />
+<img src="01_Data_Summary_files/figure-html/unnamed-chunk-27-1.png" width="672" />
 
 
 ## Exercises
@@ -529,8 +573,8 @@ If a distribution has a heavier tail on one side or the other, we refer to it as
 
 6. Match the following histograms to the appropriate boxplot.
     
-    <img src="01_Data_Summary_files/figure-html/unnamed-chunk-28-1.png" width="672" />
-    <img src="01_Data_Summary_files/figure-html/unnamed-chunk-29-1.png" width="672" />
+    <img src="01_Data_Summary_files/figure-html/unnamed-chunk-30-1.png" width="672" />
+    <img src="01_Data_Summary_files/figure-html/unnamed-chunk-31-1.png" width="672" />
     
     a) Histogram A goes with boxplot __________
     b) Histogram B goes with boxplot __________
@@ -541,7 +585,7 @@ If a distribution has a heavier tail on one side or the other, we refer to it as
 
 8. The chemicals in clay used to make pottery can differ depending on the geographical region where the clay originated. Sometimes, archaeologists use a chemical analysis of clay to help identify where a piece of pottery originated. Such an analysis measures the amount of a chemical in the clay as a percent of the total weight of the piece of pottery. The boxplots below summarize analyses done for three chemicals—X, Y, and Z—on pieces of pottery that originated at one of three sites: I, II, or III.
     
-    <img src="01_Data_Summary_files/figure-html/unnamed-chunk-30-1.png" width="672" />
+    <img src="01_Data_Summary_files/figure-html/unnamed-chunk-32-1.png" width="672" />
     a) For chemical Z, describe how the percents found in the pieces of pottery are similar and how they differ among the three sites.
     b) Consider a piece of pottery known to have originated at one of the three sites, but the actual site is not known.
         i) Suppose an analysis of the clay reveals that the sum of the percents of the three chemicals X, Y, and Z is $20.5\%$. Based on the boxplots, which site—I, II, or III—is the most likely site where the piece of pottery originated? Justify your choice.

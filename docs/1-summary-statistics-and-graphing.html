@@ -24,7 +24,7 @@
 <meta name="author" content="Derek L. Sonderegger &amp; Robert Buscaglia" />
 
 
-<meta name="date" content="2019-08-30" />
+<meta name="date" content="2019-09-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -163,6 +163,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="co"># for this class, and likely, every R script you write.</span>
 <span class="kw">library</span>(ggplot2)    <span class="co"># graphing functions</span>
 <span class="kw">library</span>(dplyr)      <span class="co"># data summary tools</span>
+<span class="kw">library</span>(knitr)
+<span class="kw">library</span>(tidyr)
 
 <span class="co"># Set default behavior of ggplot2 graphs to be black/white theme</span>
 <span class="kw">theme_set</span>(<span class="kw">theme_bw</span>())</code></pre></div>
@@ -184,11 +186,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <ul>
 <li><strong>Categorical variables</strong> are variables whose elements take on non-numerical entries.</li>
 </ul>
-<p>Examples within the TenMileRace set include the <em>state</em> and <em>sex</em> variables. Categorical variables are typically unordered, such that if we chose to order ‘NM’ before ‘AZ’ in an evaluation of the <em>state</em> variable, there would be no impact on our analysis. Categorical variables that have an implied order are termed <strong>ordinal</strong> variables. Examples include the common A, B, C, D, F grade-scale system. The variable entries are non-numerical, but there is an implied order that A &gt; B &gt; C &gt; D &gt; F. Such an ordering could influence the way the data is evaluated.</p>
+<p>Examples within the <code>TenMileRace</code> set include the <em>state</em> and <em>sex</em> variables. Categorical variables are typically unordered, such that if we chose to order ‘NM’ before ‘AZ’ in an evaluation of the <em>state</em> variable, there would be no impact on our analysis. Categorical variables that have an implied order are termed <strong>ordinal</strong> variables. Examples include the common A, B, C, D, F grade-scale system. The variable entries are non-numerical, but there is an implied order that A &gt; B &gt; C &gt; D &gt; F. Such an ordering could influence the way the data is evaluated.</p>
 </div>
 <div id="numerical" class="section level3">
 <h3><span class="header-section-number">1.1.2</span> Numerical</h3>
-<p><strong>Numerical variables</strong> are broadly classified as variables with numerical elements. Numerical variables within the TenMileRace set include the <em>time</em>, <em>net</em>, and <em>age</em> variables. Numerical variables are sub-classified as either discrete or continuous.</p>
+<p><strong>Numerical variables</strong> are broadly classified as variables with numerical elements. Numerical variables within the <code>TenMileRace</code> set include the <em>time</em>, <em>net</em>, and <em>age</em> variables. Numerical variables are sub-classified as either discrete or continuous.</p>
 <ul>
 <li><strong>Discrete variables</strong> have entries that can be written as a list.</li>
 </ul>
@@ -208,10 +210,44 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <ul>
 <li><strong>Simple Random Sampling (SRS)</strong> is when every member of the population is equally-likely to be chosen.</li>
 </ul>
-<p>For SRS to be used, we also ensure that every member of the population is selected independently. Let us take the a university of having 30,000 students enrolled to be our population of which we would like to selected 1,000 as a sample. To use SRS, we would assign every member of the population a value <code>{1, 2, ..., 30,000}</code> and then draw numbers, without replacement, from our list of values. Such random numbers can be drawn using a random number generator, or traditionally through the use of a random number table. Using this method would ensure that we obtain a random sampling drawn from the entire university. What we cannot do is draw a student, then also draw all of their siblings. If we were to use such a method, we would be introducing correlation within our samples. We must ensure that the students are all drawn randomly and that the selection is done independently.</p>
+<p>For SRS to be used, we also ensure that every member of the population is selected independently. Let us take the a university of having 30,000 students enrolled to be our population of which we would like to selected 1,000 as a sample. To use SRS, we would assign every member of the population a value <code>{1, 2, ..., 30,000}</code> and then draw numbers, without replacement, from our list of values. Such random numbers can be drawn using a random number generator, or traditionally through the use of a random number table. Below we show a simple method in R to draw 1,000 from 30,000 without replacement.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">30000</span>, <span class="dv">1000</span>, <span class="dt">replace=</span><span class="ot">FALSE</span>)</code></pre></div>
+<p>Using this method would ensure that we obtain a random sampling drawn from the entire university. What we cannot do is draw a student, then also draw all of their siblings. If we were to use such a method, we would be introducing correlation within our samples. We must ensure that the students are all drawn randomly and that the selection is done independently.</p>
 <ul>
 <li><strong>Random Cluster Sampling</strong> draws entire clusters based on a division of the population.</li>
 </ul>
+<p>In cluster sampling, the biggest idea is that we will draw entire clusters. Using the <code>TenMileRace</code> data, we could choose to create clusters from any of the variables. We could for example, cluster all participates based on <em>state</em> or create two clusters using <em>sex</em>, although two clusters may too limiting. We could also create ranges of values for the <em>time</em>, <em>net</em>, or <em>age</em> variables, and cluster the groups based on numerial ranges. Any of these methods would work for creating clusters. Let us consider clustering based on <em>state</em>. If one was to view this variable, they would find there are 62 unique <em>state</em> identifiers. This is due to there being several countries listed in this variable, as well as the inclusion of Washington, DC as its own state, and because it is real data, there is also one blank. The main concept though if we chose to cluster by <em>state</em>, we would produce 62 clusters, all of which are imbalanced in size. To complete cluster random sampling, we then use SRS to draw X states from the 62 clusters produced, such as say 10 from 62. This is done synonomously to the above method, but now from the 10 clusters chosen, we would sample ALL participatings from within those clusters. Thus, if I were to draw the AZ cluster, I would sample all 3 participants. If I drew the VA cluster, we woul dsample all 3689 participants. Although this type of sampling is easier to produce larger samples with less randomizationg, we can see that clusters can be highly imbalanced, and it is unlikely that clustering will allow me to sub-sample from the entire population. Just in our example, I would not gather information from 52 of the 62 states, if I only was to draw 10 clusters.</p>
+<ul>
+<li><strong>Stratified Sampling</strong> draws samples using proportionality based on homogoneous groupings known as strata.</li>
+</ul>
+<p>It is often easy to confuse Clustering and Stratified sampling, but the major difference here is that we will draw random samples from within the strata, unlike clustering where we take all individuals from the chosen clusters. Let us consider for exampling producing a random stratified sample using <em>sex</em> as our strata. Here, our homogenous grouping is simply <em>sex</em>. Other examples might include stratified animals by breed, stratifying the atmosphere by height above ground, or stratifying soil by depth. The main idea behind create strata is every member of the strata should be homogenized: in our example, we homogenized by ‘Male’ and ‘Female’.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">full_join</span>(<span class="kw">as.data.frame</span>(<span class="kw">table</span>(TenMileRace<span class="op">$</span>sex)), <span class="kw">as.data.frame</span>(<span class="kw">table</span>(TenMileRace<span class="op">$</span>sex)<span class="op">/</span><span class="dv">8636</span>))</code></pre></div>
+<pre><code>## Joining, by = c(&quot;Var1&quot;, &quot;Freq&quot;)</code></pre>
+<pre><code>##   Var1         Freq
+## 1    F 4325.0000000
+## 2    M 4311.0000000
+## 3    F    0.5008106
+## 4    M    0.4991894</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">kable</span>(<span class="kw">table</span>(TenMileRace<span class="op">$</span>sex))</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Var1</th>
+<th align="right">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">F</td>
+<td align="right">4325</td>
+</tr>
+<tr class="even">
+<td align="left">M</td>
+<td align="right">4311</td>
+</tr>
+</tbody>
+</table>
+<p>Above shows a table for the number of ‘Male’ and ‘Female’ particpants. We see that these two strata are nearly equivalent, but we want to ensure we draw the samples based on proportionality. In total, we have 8636 participants. Let us say we want to draw 800 of these participants, but through statification using <em>sex</em>. We must then ensure that when we draw a random sample, we obtain a sub-sample that has nearly equivalent proportions to that obsereved in the population.</p>
 </div>
 </div>
 <div id="graphical-summaries" class="section level2">
@@ -220,42 +256,42 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3><span class="header-section-number">1.3.1</span> Univariate - Categorical</h3>
 <p>If we have univariate data about a number of groups, often the best way to display it is using barplots. They have the advantage over pie-charts that groups are easily compared.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>sex)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>()</code></pre></div>
-<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>One thing that can be misleading is if the zero on the y-axis is removed. In the following graph it looks like there are twice as many female runners as male until you examine the y-axis closely. In general, the following is a very misleading graph.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>sex)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">coord_cartesian</span>(<span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">4300</span>, <span class="dv">4330</span>))</code></pre></div>
-<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
 <div id="univariate---continuous" class="section level3">
 <h3><span class="header-section-number">1.3.2</span> Univariate - Continuous</h3>
 <p>A histogram looks very similar to a bar plot, but is used to represent continuous data instead of categorical and therefore the bars will actually be touching.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>net)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>()</code></pre></div>
-<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>Often when a histogram is presented, the y-axis is labeled as “frequency” or “count” which is the number of observations that fall within a particular bin. However, it is often desirable to scale the y-axis so that if we were to sum up the area <span class="math inline">\((height * width)\)</span> then the total area would sum to 1. The re-scaling that accomplishes this is <span class="math display">\[density=\frac{\#\;observations\;in\;bin}{total\;number\;observations}\cdot\frac{1}{bin\;width}\]</span></p>
 </div>
 <div id="bivariate---categorical-vs-continuous" class="section level3">
 <h3><span class="header-section-number">1.3.3</span> Bivariate - Categorical vs Continuous</h3>
 <p>We often wish to compare response levels from two or more groups of interest. To do this, we often use side-by-side boxplots. Notice that each observation is associated with a continuous response value and a categorical value.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>sex, <span class="dt">y=</span>net)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p>In this graph, the edges of the box are defined by the 25% and 75% percentiles. That is to say, 25% of the data is to the below of the box, 50% of the data is in the box, and the final 25% of the data is to the above of the box. The line in the center of the box represents the 50% percentile. The dots are data points that traditionally considered outliers. We will define the Inter-Quartile Range (IQR) as the length of the box. It is conventional to define any observation more than 1.5*IQR from the box as an considered an outlier. In the above graph it is easy to see that the median time for the males is lower than for females, but the box width (one measure of the spread of the data) is approximately the same.</p>
 <p>Because boxplots simplify the distribution to just 5 numbers, looking at side-by-side histograms might give similar information.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>net)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">facet_grid</span>( . <span class="op">~</span><span class="st"> </span>sex )  <span class="co"># side-by-side plots based on sex</span></code></pre></div>
-<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>Orientation of graphs can certainly matter. In this case, it makes sense to stack the two graphs to facilitate comparisons in where the centers are and it is more obvious that the center of the female distribution is about 500 to 600 seconds higher than then center of the male distribution.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>net)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">facet_grid</span>( sex <span class="op">~</span><span class="st"> </span>. )  <span class="co"># side-by-side plots based on sex</span></code></pre></div>
-<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 </div>
 <div id="bivariate---continuous-vs-continuous" class="section level3">
 <h3><span class="header-section-number">1.3.4</span> Bivariate - Continuous vs Continuous</h3>
 <p>Finally we might want to examine the relationship between two continuous random variables. For example, we might wish to explore the relationship between a runners age and their net time.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(TenMileRace, <span class="kw">aes</span>(<span class="dt">x=</span>age, <span class="dt">y=</span>net, <span class="dt">color=</span>sex)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
 </div>
 <div id="measures-of-centrality" class="section level2">
@@ -295,7 +331,7 @@ TenMileRace <span class="op">%&gt;%</span><span class="st"> </span><span class="
 <h3><span class="header-section-number">1.4.3</span> Mode</h3>
 <p>This is peak in the distribution. A distribution might have a single peak or multiple peaks.This measure of “center” is not often used in quantitative analyses, but is often helps provide a nice description.</p>
 <p>When creating a histogram from a set of data, often the choice of binwidth will affect the modes of the graph. Consider the following graphs of <span class="math inline">\(n=200\)</span> data points, where we have slightly different binwidths.</p>
-<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>With the two smaller binwidths, sample randomness between adjacent bins obscures the overall shape and we have many different modes. However the <em>larger</em> binwidth results in a histogram that more effectively communicates the shape of the distribution and has just a single mode at around 6000 seconds (= 100 minutes = 1 hour 40 minutes). When making histograms the choice of binwidth (or equivalently, the number of bins) should not be ignored and a balance should be struck between simplifying the data too much vs seeing too much of the noise resulting from the sample randomness.</p>
 </div>
 <div id="examples" class="section level3">
@@ -470,7 +506,7 @@ TenMileRace <span class="op">%&gt;%</span><span class="st">                     
 </tr>
 </tbody>
 </table>
-<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 </div>
 </div>
 <div id="shape" class="section level2">
@@ -478,7 +514,7 @@ TenMileRace <span class="op">%&gt;%</span><span class="st">                     
 <p>We want to be able to describe the shape of a distribution and this section introduces the standard vocabulary.</p>
 <div id="symmetry" class="section level3">
 <h3><span class="header-section-number">1.6.1</span> Symmetry</h3>
-<p>A distribution is said to be symmetric if there is a point along the x-axis (which we’ll call <span class="math inline">\(\mu\)</span>) which acts as a mirror and <span class="math inline">\(f( -|x-\mu| ) = f( |x-\mu| )\)</span>. In the following graphs, the point of symmetry is marked with a red line. <img src="01_Data_Summary_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p>A distribution is said to be symmetric if there is a point along the x-axis (which we’ll call <span class="math inline">\(\mu\)</span>) which acts as a mirror and <span class="math inline">\(f( -|x-\mu| ) = f( |x-\mu| )\)</span>. In the following graphs, the point of symmetry is marked with a red line. <img src="01_Data_Summary_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 <p>A distribution that is not symmetric is said to be asymmetric.</p>
 </div>
 <div id="unimodal-or-multi-modal" class="section level3">
@@ -488,7 +524,7 @@ TenMileRace <span class="op">%&gt;%</span><span class="st">                     
 <div id="skew" class="section level3">
 <h3><span class="header-section-number">1.6.3</span> Skew</h3>
 <p>If a distribution has a heavier tail on one side or the other, we refer to it as a <em>skewed</em> distribution and the direction of the skew is towards the heavier tail. Usually (but not always), an asymmetric is skewed.</p>
-<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 </div>
 </div>
 <div id="exercises" class="section level2">
@@ -575,7 +611,7 @@ TenMileRace <span class="op">%&gt;%</span><span class="st">                     
 ## 6   125 Luxury</code></pre></li>
 <li><p>For the hotel data, create side-by-side box-and-whisker plots to compare the prices.</p></li>
 <li><p>Match the following histograms to the appropriate boxplot.</p>
-<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-28-1.png" width="672" /> <img src="01_Data_Summary_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p><img src="01_Data_Summary_files/figure-html/unnamed-chunk-30-1.png" width="672" /> <img src="01_Data_Summary_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
 <ol style="list-style-type: lower-alpha">
 <li>Histogram A goes with boxplot __________</li>
 <li>Histogram B goes with boxplot __________</li>
@@ -584,7 +620,7 @@ TenMileRace <span class="op">%&gt;%</span><span class="st">                     
 </ol></li>
 <li><p>Twenty-five employees of a corporation have a mean salary of $62,000 and the sample standard deviation of those salaries is $15,000. If each employee receives a bonus of $1,000, does the standard deviation of the salaries change? Explain your reasoning.</p></li>
 <li><p>The chemicals in clay used to make pottery can differ depending on the geographical region where the clay originated. Sometimes, archaeologists use a chemical analysis of clay to help identify where a piece of pottery originated. Such an analysis measures the amount of a chemical in the clay as a percent of the total weight of the piece of pottery. The boxplots below summarize analyses done for three chemicals—X, Y, and Z—on pieces of pottery that originated at one of three sites: I, II, or III.</p>
-<img src="01_Data_Summary_files/figure-html/unnamed-chunk-30-1.png" width="672" />
+<img src="01_Data_Summary_files/figure-html/unnamed-chunk-32-1.png" width="672" />
 <ol style="list-style-type: lower-alpha">
 <li>For chemical Z, describe how the percents found in the pieces of pottery are similar and how they differ among the three sites.</li>
 <li>Consider a piece of pottery known to have originated at one of the three sites, but the actual site is not known.

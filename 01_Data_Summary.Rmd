@@ -30,6 +30,8 @@ When confronted with a large amount of data, we seek to summarize the data into 
 # for this class, and likely, every R script you write.
 library(ggplot2)    # graphing functions
 library(dplyr)      # data summary tools
+library(knitr)
+library(tidyr)
 
 # Set default behavior of ggplot2 graphs to be black/white theme
 theme_set(theme_bw())
@@ -50,11 +52,11 @@ We will always want to be aware of the variable types in which we are working.  
 
 * **Categorical variables** are variables whose elements take on non-numerical entries.  
 
-Examples within the TenMileRace set include the *state* and *sex* variables.  Categorical variables are typically unordered, such that if we chose to order 'NM' before 'AZ' in an evaluation of the *state* variable, there would be no impact on our analysis. Categorical variables that have an implied order are termed **ordinal** variables. Examples include the common A, B, C, D, F grade-scale system.  The variable entries are non-numerical, but there is an implied order that A > B > C > D > F.  Such an ordering could influence the way the data is evaluated.
+Examples within the `TenMileRace` set include the *state* and *sex* variables.  Categorical variables are typically unordered, such that if we chose to order 'NM' before 'AZ' in an evaluation of the *state* variable, there would be no impact on our analysis. Categorical variables that have an implied order are termed **ordinal** variables. Examples include the common A, B, C, D, F grade-scale system.  The variable entries are non-numerical, but there is an implied order that A > B > C > D > F.  Such an ordering could influence the way the data is evaluated.
 
 ### Numerical
 
-**Numerical variables** are broadly classified as variables with numerical elements.  Numerical variables within the TenMileRace set include the *time*, *net*, and *age* variables.  Numerical variables are sub-classified as either discrete or continuous.  
+**Numerical variables** are broadly classified as variables with numerical elements.  Numerical variables within the `TenMileRace` set include the *time*, *net*, and *age* variables.  Numerical variables are sub-classified as either discrete or continuous.  
 
 * **Discrete variables** have entries that can be written as a list. 
 
@@ -76,11 +78,31 @@ The way we select our samples is done to ensure that we have randomly collected 
 
 * **Simple Random Sampling (SRS)** is when every member of the population is equally-likely to be chosen.
 
-For SRS to be used, we also ensure that every member of the population is selected independently.  Let us take the a university of having 30,000 students enrolled to be our population of which we would like to selected 1,000 as a sample.  To use SRS, we would assign every member of the population a value `{1, 2, ..., 30,000}` and then draw numbers, without replacement, from our list of values.  Such random numbers can be drawn using a random number generator, or traditionally through the use of a random number table. Using this method would ensure that we obtain a random sampling drawn from the entire university.  What we cannot do is draw a student, then also draw all of their siblings.  If we were to use such a method, we would be introducing correlation within our samples.  We must ensure that the students are all drawn randomly and that the selection is done independently.
+For SRS to be used, we also ensure that every member of the population is selected independently.  Let us take the a university of having 30,000 students enrolled to be our population of which we would like to selected 1,000 as a sample.  To use SRS, we would assign every member of the population a value `{1, 2, ..., 30,000}` and then draw numbers, without replacement, from our list of values.  Such random numbers can be drawn using a random number generator, or traditionally through the use of a random number table. Below we show a simple method in R to draw 1,000 from 30,000 without replacement.
+
+```{r, eval=FALSE}
+sample(1:30000, 1000, replace=FALSE)
+```
+
+
+Using this method would ensure that we obtain a random sampling drawn from the entire university.  What we cannot do is draw a student, then also draw all of their siblings.  If we were to use such a method, we would be introducing correlation within our samples.  We must ensure that the students are all drawn randomly and that the selection is done independently.
 
 * **Random Cluster Sampling** draws entire clusters based on a division of the population.
 
+In cluster sampling, the biggest idea is that we will draw entire clusters.  Using the `TenMileRace` data, we could choose to create clusters from any of the variables.  We could for example, cluster all participates based on *state* or create two clusters using *sex*, although two clusters may too limiting.  We could also create ranges of values for the *time*, *net*, or *age* variables, and cluster the groups based on numerial ranges.  Any of these methods would work for creating clusters.  Let us consider clustering based on *state*.  If one was to view this variable, they would find there are 62 unique *state* identifiers.  This is due to there being several countries listed in this variable, as well as the inclusion of Washington, DC as its own state, and because it is real data, there is also one blank.  The main concept though if we chose to cluster by *state*, we would produce 62 clusters, all of which are imbalanced in size.  To complete cluster random sampling, we then use SRS to draw X states from the 62 clusters produced, such as say 10 from 62.  This is done synonomously to the above method, but now from the 10 clusters chosen, we would sample ALL participatings from within those clusters.  Thus, if I were to draw the AZ cluster, I would sample all 3 participants.  If I drew the VA cluster, we woul dsample all 3689 participants.  Although this type of sampling is easier to produce larger samples with less randomizationg, we can see that clusters can be highly imbalanced, and it is unlikely that clustering will allow me to sub-sample from the entire population.  Just in our example, I would not gather information from 52 of the 62 states, if I only was to draw 10 clusters.
 
+* **Stratified Sampling** draws samples using proportionality based on homogoneous groupings known as strata.
+
+It is often easy to confuse Clustering and Stratified sampling, but the major difference here is that we will draw random samples from within the strata, unlike clustering where we take all individuals from the chosen clusters.  Let us consider for exampling producing a random stratified sample using *sex* as our strata.  Here, our homogenous grouping is simply *sex*.  Other examples might include stratified animals by breed, stratifying the atmosphere by height above ground, or stratifying soil by depth.  The main idea behind create strata is every member of the strata should be homogenized: in our example, we homogenized by 'Male' and 'Female'.
+
+```{r}
+
+full_join(as.data.frame(table(TenMileRace$sex)), as.data.frame(table(TenMileRace$sex)/8636))
+
+kable(table(TenMileRace$sex))
+```
+
+Above shows a table for the number of 'Male' and 'Female' particpants.  We see that these two strata are nearly equivalent, but we want to ensure we draw the samples based on proportionality.  In total, we have 8636 participants.  Let us say we want to draw 800 of these participants, but through statification using *sex*.  We must then ensure that when we draw a random sample, we obtain a sub-sample that has nearly equivalent proportions to that obsereved in the population.
 
 ## Graphical Summaries
 

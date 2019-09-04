@@ -85,7 +85,7 @@ sample(1:30000, 1000, replace=FALSE)
 ```
 
 
-Using this method would ensure that we obtain a random sampling drawn from the entire university.  What we cannot do is draw a student, then also draw all of their siblings.  If we were to use such a method, we would be introducing correlation within our samples.  We must ensure that the students are all drawn randomly and that the selection is done independently.
+Using this method would ensure that we obtain a random sampling drawn from the entire University.  What we cannot do is draw a student, then also draw all of their siblings.  If we were to use such a method, we would be introducing correlation within our samples.  We must ensure that the students are all drawn randomly and that the selection is done independently.
 
 * **Random Cluster Sampling** draws entire clusters based on a division of the population.
 
@@ -93,15 +93,16 @@ In cluster sampling, the biggest idea is that we will draw entire clusters.  Usi
 
 * **Stratified Sampling** draws samples using proportionality based on homogeneous groupings known as strata.
 
-It is often easy to confuse Clustering and Stratified sampling, but the major difference here is that we will draw random samples from within the strata, unlike clustering where we take all individuals from the chosen clusters.  Let us consider for exampling producing a random stratified sample using *sex* as our strata.  Here, our homogeneous grouping is simply *sex*.  Other examples might include stratifying animals by breed, stratifying the atmosphere by height above ground, or stratifying soil by depth.  The main idea behind create strata is every member of the strata should be homogenized: in our example, we homogenized by 'Male' and 'Female'.
+It is often easy to confuse Clustering and Stratified sampling, but the major difference here is that we will draw random samples from within the strata, unlike clustering where we take all individuals from the chosen clusters.  Let us consider for exampling producing a random stratified sample using *sex* as our strata.  Here, our homogeneous grouping is simply *sex*.  Other examples might include stratifying animals by breed, stratifying the atmosphere by height above ground, or stratifying soil by depth.  The main idea behind a strata is every member should be homogenized: in our example, we homogenized by 'Male' and 'Female'.
 
 ```{r, echo=FALSE}
 data.frame.temp.1 <- as.data.frame(table(TenMileRace$sex))
 data.frame.temp.1 <- data.frame.temp.1 %>% mutate(Proportion = round(Freq/sum(Freq),3))
+colnames(data.frame.temp.1) = c('sex', 'Frequency', 'Proportion')
 kable(data.frame.temp.1)
 ```
 
-Above shows a table for the number of 'Male' and 'Female' participants.  We see that these two strata are nearly equivalent, but we want to ensure we draw the samples based on proportionality.  In total, we have 8636 participants.  Let us say we want to draw 800 of these participants, but through stratification using *sex*.  We must then ensure that when we draw a random sample, we obtain a sub-sample that has nearly equivalent proportions to that observed in the population.  We must therefore draw $800*0.501 = 401$ Males from the $4311$ available and $800*0.499 = 399$ Females from the $4325$, where rounding was used.  Notice this gives me $401 + 399 = 800$ samples, and that I have $401/800 = 0.501$ of the the sub-sample is Male and $399/800 =  0.499$ is female.  Thus, stratified sampling retains the proportions of the populations and allows me to sample from all strata.  This can have desirable consequences, mainly that stratifying ensures samples are taken from all potential sources, here the sources are the different categories within our *sex* variable.  Although unlikely, if I did draw samples using only SRS with no stratifying, I might get proportions of 'Male' and 'Female' that are close to that of the original sample.  Stratifying guarantees we reproduce the proportions, while sampling from all homogeneous groupings.
+Above shows a table for the number of 'Male' and 'Female' participants.  We see that these two strata are nearly equivalent, but we want to ensure we draw the samples based on proportionality.  In total, we have 8636 participants.  Let us say we want to draw $800$ of these participants, but through stratification using *sex*.  We must then ensure that when we draw a random sample, we obtain a sub-sample that has nearly equivalent proportions to that observed in the population.  We must therefore draw $800*0.501 = 401$ Males from the $4311$ available and $800*0.499 = 399$ Females from the $4325$, where rounding was used.  Notice this gives me $401 + 399 = 800$ samples, and that I have $401/800 = 0.501$ of the the sub-sample is Male and $399/800 =  0.499$ is female.  Thus, stratified sampling retains the proportions of the populations and allows me to sample from all strata.  This can have desirable consequences, mainly that stratifying ensures samples are taken from all potential sources, here the sources are the different categories within our *sex* variable.  Although unlikely, if I did draw samples using only SRS with no stratifying, I might get proportions of 'Male' and 'Female' that are close to that of the original sample.  Stratifying guarantees we reproduce the proportions, while sampling from all homogeneous groupings.
 
 ## Graphical Summaries
 

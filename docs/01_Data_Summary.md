@@ -530,6 +530,7 @@ head( PolutionRatios ) # Print out some data to confirm column names.
 ## 5  4.24 Terrestrial
 ## 6  7.74 Terrestrial
 ```
+    
     *Hint: for computing the means and medians for each type of feeder separately, the `group_by()` command we demonstated earlier in the chapter is convenient.*
 
 4. Use R to confirm your calculations in problem 2 (the hotel data). Show the code you used and the subsequent output. The data can be loaded into a data frame using the following commands Show the code you used and the subsequent output:

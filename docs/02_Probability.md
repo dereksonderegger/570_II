@@ -51,7 +51,7 @@ I am often interested in discussing the composition of two events and we give th
 
 <img src="02_Probability_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
-**Definition 1**. Two events $A$ and $B$ are said to be mutually exclusive (or disjoint) if the occurrence of one event precludes the occurrence of the other. For example, on a single roll of a die, a two and a five cannot both come up. For a second example, define $A$ to be the event that the die is even, and $B$ to be the event that the die comes up as a $5$.
+**Definition:** Two events $A$ and $B$ are said to be **mutually exclusive** (or **disjoint**) if the occurrence of one event precludes the occurrence of the other. For example, on a single roll of a die, a two and a five cannot both come up. For a second example, define $A$ to be the event that the die is even, and $B$ to be the event that the die comes up as a $5$.
 
 <img src="02_Probability_files/figure-html/unnamed-chunk-8-1.png" width="672" />
 
@@ -61,18 +61,24 @@ I am often interested in discussing the composition of two events and we give th
 
 We now take our Venn diagrams and use them to understand the rules of probability. The underlying idea that we will use is the the probability of an event is the area in the Venn diagram.
 
-**Definition 2**. Probability is the proportion of times an event occurs in many repeated trials of a random phenomenon. In other words, probability is the long-term relative frequency.
+**Definition:** The **probability** is the proportion of times an event occurs in many repeated trials of a random phenomenon. In other words, it is the long-term relative frequency.
 
-**Fact**. *For any event $A$ the probability of the event $P(A)$ satisfies $0\le P(A) \le 1$ because proportions always lie in $[0,1]$.*
+**Rule:** *For any event $A$ the probability of the event $P(A)$ satisfies $0\leq P(A) \leq 1$.  That is to say, the probability of any event will always lie in the interval $[0,1]$.*
  
 Because $S$ is the set of all events that might occur, the area of our bounding rectangle will be $1$ and the probability of event $A$ occurring will be represented by the area in the circle $A$.
 
-**Fact**. *If two events are mutually exclusive, then $P(A\cup B)=P(A)+P(B)$*
+**Rule:** *The probability of the set of all events ($S$) is always 1. That is, $P(S) = 1$.*
+
+**General Addition Rule:** $P(A\cup B)=P(A)+P(B)-P(A\cap B)$
+
+The reason behind this fact is that if there is if $A$ and $B$ are not disjoint, then some area is added twice when I calculate $P\left(A\right)+P\left(B\right)$. To account for this, I simply subtract off the area that was double counted.
 
 <img src="02_Probability_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+
+**Rule:** *If two events are mutually exclusive, then $P(A\cup B)=P(A)+P(B)$*
+
+<img src="02_Probability_files/figure-html/unnamed-chunk-10-1.png" width="672" />
  
-
-
 **Example**. Let $R$ be the sum of two different colored dice. Suppose we are interested in $P(R \le 4)$. Notice that the pair of dice can fall 36 different ways (6 ways for the first die and six for the second results in 6x6 possible outcomes, and each way has equal probability $1/36$. Because the dice cannot simultaneously sum to $2$ and to $3$, we could write 
 $$\begin{aligned} P(R \le 4 )	
   &=	P(R=2)+P(R=3)+P(R=4) \\
@@ -82,27 +88,17 @@ $$\begin{aligned} P(R \le 4 )
 	&=	\frac{1}{6} \end{aligned}$$
  
 
-**Fact**. $P(A)+P(\bar{A})=1$
+**Complement Rule:** $P(A)+P(\bar{A})=1$
 
-<img src="02_Probability_files/figure-html/unnamed-chunk-10-1.png" width="672" />
-
-The above statement is true because the probability of whole space $S$ is one (remember $S$ is all possible outcomes), then either we get an outcome in which $A$ occurs or we get an outcome in which $A$ does not occur.
-
-**Fact**. $P(A\cup B)=P(A)+P(B)-P(A\cap B)$
-
-The reason behind this fact is that if there is if $A$ and $B$ are not disjoint, then some area is added twice when I calculate $P\left(A\right)+P\left(B\right)$. To account for this, I simply subtract off the area that was double counted.
+This rule follows from the partitioning of the set of all events ($S$) into two disjoint sets, $A$ and $A^c$.  We learned above that $A \cup A^c = S$ and that $P(S) = 1$.  Combining those statements, we obtain the complement rule.
 
 <img src="02_Probability_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 
-
-
-**Fact 3**. $P(A)=P(A\cap B)+P(A\cap\bar{B})$
+**Completeness Rule:** $P(A)=P(A\cap B)+P(A\cap\bar{B})$
 
 <img src="02_Probability_files/figure-html/unnamed-chunk-12-1.png" width="672" />
 
 This identity is just breaking the event $A$ into two disjoint pieces.
-
-
 
 ### Conditional Probability
 

@@ -99,7 +99,7 @@ All of our possible events are present, and distributed among our possible event
 
 I am often interested in discussing the composition of two events and we give the common set operations below. 
 
-* Union: Denote the event that either $A$ or $B$ occurs as $A\cup B$.
+* **Union:** Denote the event that either $A$ or $B$ occurs as $A\cup B$.
 
 ```{r, echo=FALSE}
 df.A <- data.frame(theta=seq(0,2*pi, length=1000)) %>%
@@ -128,7 +128,7 @@ ggplot(df, aes(x=x, y=y)) +
   theme_minimal() 
 ```
 
-* Denote the event that **both** $A$ and $B$ occur as $A\cap B$
+* **Intersection:** Denote the event that **both** $A$ and $B$ occur as $A\cap B$
 
 ```{r, echo=FALSE}
 df.A <- data.frame(theta=seq(0,2*pi, length=1000)) %>%
@@ -167,7 +167,7 @@ ggplot(df, aes(x=x, y=y)) +
 ```
 
 
-* Denote the event that $A$ does not occur as $\bar{A}$ or $A^{C}$ (different people use different notations)
+* **Complement:** Denote the event that $A$ does not occur as $\bar{A}$ or $A^{C}$ (different people use different notations)
 
 ```{r, echo=FALSE}
 df.A <- data.frame(theta=seq(0,2*pi, length=1000)) %>%
@@ -324,7 +324,7 @@ $$\begin{aligned} P(R \le 4 )
 	&=	\frac{1}{6} \end{aligned}$$
  
 
-**Complement Rule:** $P(A)+P(\bar{A})=1$
+**Complement Rule:** $P(A)+P(A^c)=1$
 
 This rule follows from the partitioning of the set of all events ($S$) into two disjoint sets, $A$ and $A^c$.  We learned above that $A \cup A^c = S$ and that $P(S) = 1$.  Combining those statements, we obtain the complement rule.
 
@@ -355,7 +355,7 @@ ggplot(df, aes(x=x, y=y)) +
   theme_minimal()
 ```  
 
-**Completeness Rule:** $P(A)=P(A\cap B)+P(A\cap\bar{B})$
+**Completeness Rule:** $P(A)=P(A\cap B)+P(A\cap B^c)$
 
 ```{r, echo=FALSE}
 df.A <- data.frame(theta=seq(0,2*pi, length=1000)) %>%
@@ -440,17 +440,17 @@ P\left(\,Auto\;|\;NotFraud\,\right)	&= \frac{P\left(\,Auto\;\cap\;NotFraud\right
 	\end{aligned}$$
  
 
-**Definition 4**. *Two events $A$ and $B$ are said to be independent if $P(A|B)=P(A)\;\;\textrm{and}\;\;P(B|A)=P(B)$.*
+**Definition:** Two events $A$ and $B$ are said to be **independent** if $P(A\cap B)=P(A)P(B)$.
  
-What independence is saying that knowing the outcome of event $A$ doesn't give you any information about the outcome of event $B$. 
+What independence is saying that knowing the outcome of event $A$ doesn't give you any information about the outcome of event $B$.  Thus, we can use conditional statements to also show that two events are independent if $P(A|B) = P(A)$. 
 
-*In simple random sampling, we assume that any two samples are independent.
-* In cluster sampling, we assume that samples within a cluster are not independent, but clusters are independent of each other.
+In simple random sampling, we assume that any two samples are independent. In cluster sampling, we assume that samples within a cluster are not independent, but clusters are independent of each other.
 
-**Fact 5**. *If $A$ and $B$ are independent events, then $P(A\cap B)	=	P(A|B)P(B) =	P(A)P(B)$.*
+**Fact:** *If $A$ and $B$ are independent events, then $P(A|B)	=	P(A)$ and $P(B|A) = P(B)$.*
+
+These statements follow directly from the given definitions.
  
-
-**Example 6**. Suppose that we are interested in the relationship between the color and the type of car. Specifically I will divide the car world into convertibles and non-convertibles and the colors into red and non-red.
+**Example:** Suppose that we are interested in the relationship between the color and the type of car. Specifically I will divide the car world into convertibles and non-convertibles and the colors into red and non-red.
 
 Suppose that convertibles make up just 10% of the domestic automobile market. This is to say $P(\;Convertable\;)=0.10$. Of the non-convertibles, red is not unheard of but it isn't common either. So suppose $P(\;Red\;|\;NonConvertable\;)=0.15$. However red is an extremely popular color for convertibles so let $P(\;Red\;|\;Convertable\;)=0.60$.
 
@@ -484,9 +484,11 @@ Notice that because $P\left(Red\right)=0.195\ne0.60=P\left(Red\,|\,Convertable\r
 
 ### Summary of Probability Rules
 
+Here we give a short summary of the most frequently used rules.
+
 $$0 \le P\left(A\right) \le 1$$
 		
-$$P\left(A\right)+P\left(\bar{A}\right)=1$$
+$$P\left(A\right)+P\left(A^c\right)=1$$
 $$P\left(A\cup B\right)	=	P\left(A\right)+P\left(B\right)-P\left(A\cap B\right)$$
 $$P\left(A\cap B\right)	=	\begin{cases}
 P\left(A\,|\,B\right)P\left(B\right)\\
@@ -559,7 +561,7 @@ $$\begin{aligned} \sigma^{2}=V[S]
 	
  We could interpret the expectation as the sample mean of an infinitely large sample, and the variance as the sample variance of the same infinitely large sample. These are two very important numbers that describe the distribution.
 
-**Example 7**. My wife is a massage therapist and over the last year, the number of clients she sees per work day (denoted Y) varied according the following table:
+**Example:** My wife is a massage therapist and over the last year, the number of clients she sees per work day (denoted Y) varied according the following table:
 
 |  Number of Clients         |   0   |   1   |   2   |   3   |   4   |
 |---------------------------:|:-----:|:-----:|:-----:|:-----:|:-----:| 
@@ -575,7 +577,7 @@ ggplot(distr, aes(x=clients)) +                   # graph with clients as the x-
   theme_bw()                                      # set background color...
 ```
 
-Because this is the long term relative frequency of the number of clients (over 200 working days!), it is appropriate to interpret these frequencies as probabilities. This table and graph is often called a probability mass function (pmf) because it lists how the probability is spread across the possible values of the random variable. We might next ask ourselves what is the average number of clients per day? It looks like it ought to be between 1 and 2 clients per day. 
+Because this is the long term relative frequency of the number of clients (over 200 working days!), it is appropriate to interpret these frequencies as probabilities. This table and graph is often called a **probability mass function (pmf)** because it lists how the probability is spread across the possible values of the random variable. We might next ask ourselves what is the average number of clients per day?
 
 $$\begin{aligned} E\left(Y\right)	
   &=	\sum_{\textrm{possible }y}y\,P\left(Y=y\right) \\
@@ -620,7 +622,7 @@ Note on Notation: There is a difference between the upper and lower case letters
 
 ### Binomial Distribution
 
-**Example**: Suppose we are trapping small mammals in the desert and we spread out three traps. Assume that the traps are far enough apart that having one being filled doesn't affect the probability of the others being filled and that all three traps have the same probability of being filled in an evening. Denote the event that a trap is filled with a critter as $C_{i}$ and denote the event that the trap is empty as $E_{i}$. Denote the probability that a trap is filled by $\pi=0.8$. (This sort of random variable is often referred to as a Bernoulli RV.)
+**Example:** Suppose we are trapping small mammals in the desert and we spread out three traps. Assume that the traps are far enough apart that having one being filled doesn't affect the probability of the others being filled and that all three traps have the same probability of being filled in an evening. Denote the event that a trap is filled with a critter as $C_{i}$ and denote the event that the trap is empty as $E_{i}$. Denote the probability that a trap is filled by $\pi=0.8$. (This sort of random variable is often referred to as a Bernoulli RV.)
 
 The possible outcomes are 
   
@@ -724,7 +726,7 @@ $$\begin{aligned} V[X]
 	&=	n\pi(1-\pi) \end{aligned}$$
  
 
-**Example 8**. Suppose a bird survey only captures the presence or absence of a particular bird (say the mountain chickadee). Assuming the true presence proportion at national forest sites around Flagstaff $$\pi=0.1$$, then for $n=20$ randomly chosen sites, the number of sites in which the bird was observed would have the distribution
+**Example:** Suppose a bird survey only captures the presence or absence of a particular bird (say the mountain chickadee). Assuming the true presence proportion at national forest sites around Flagstaff is $\pi=0.1$, then for $n=20$ randomly chosen sites, the number of sites in which the bird was observed would have the following PMF.
 
 ```{r}
 dist <- data.frame( x = 0:20 ) %>% 
@@ -765,7 +767,7 @@ A commonly used distribution for count data is the Poisson.
 3. Number of prairie dog towns per 1000 hectares
 4. Number of alga clumps per cubic meter of lake water
 
-For a RV is a Poisson RV if the following conditions apply:
+A discrete RV is a Poisson RV if the following conditions apply:
 
 1. Two or more events do not occur at precisely the same time or in the same space
 2. The occurrence of an event in a given period of time or region of space is independent of the occurrence of the event in a non overlapping period or region.
@@ -779,7 +781,7 @@ $$E[Y]	=	\lambda$$
 $$Var[Y]	=	\lambda$$
  
 
-**Example 9**. Suppose we are interested in the population size of small mammals in a region. Let $Y$ be the number of small mammals caught in a large trap (multiple traps in the same location?) in a 12 hour period. Finally, suppose that $Y\sim Poi(\lambda=2.3)$. What is the probability of finding exactly 4 critters in our trap?
+**Example:** Suppose we are interested in the population size of small mammals in a region. Let $Y$ be the number of small mammals caught in a large trap over a 12 hour period. Finally, suppose that $Y\sim Poisson(\lambda=2.3)$. What is the probability of finding exactly 4 critters in our trap?
 $$P(Y=4)	=	\frac{2.3^{4}\,e^{-2.3}}{4!} =	0.1169$$
  What about the probability of finding at most 4?
  $$\begin{aligned} P(Y\le4)	
@@ -820,7 +822,7 @@ Suppose you wish to draw a random number number between 0 and 1 and any two inte
 
 Because there are an infinite number of rational numbers between 0 and 1, the probability of any particular number being selected is $1/\infty=0$. But even though each number has 0 probability of being selected, some number must end up being selected. Because of this conundrum, probability theory doesn't look at the probability of a single number, but rather focuses on a region of numbers. 
 
-To make this distinction, we will define the distribution using a probability density function (pdf) instead of the probability mass function. In the discrete case, we had to constrain the probability mass function to sum to 1. In the continuous case, we have to constrain the probability density function to integrate to 1.
+To make this distinction, we will define the distribution using a **probability density function (pdf)** instead of the probability mass function. In the discrete case, we had to constrain the probability mass function to sum to 1. In the continuous case, we have to constrain the probability density function to integrate to 1.
 
 ```{r, echo=FALSE}
 data <- data.frame(x = seq(-.2, 1.2, length=1000)) %>%
@@ -873,7 +875,7 @@ ggplot(data, aes(x=x, y=y)) +
   theme_bw()
 ```
 
-**Example 10**. Suppose the time between insect captures $X$ during a summer evening for a species of bat follows a exponential distribution with capture rate of $\lambda=2$ insects per minute and therefore the expected waiting time between captures is $1/\lambda=1/2$ minute. Suppose that we are interested in the probability that it takes a bat more than 1 minute to capture its next insect.
+**Example:**  Suppose the time between insect captures $X$ during a summer evening for a species of bat follows a exponential distribution with capture rate of $\lambda=2$ insects per minute and therefore the expected waiting time between captures is $1/\lambda=1/2$ minute. Suppose that we are interested in the probability that it takes a bat more than 1 minute to capture its next insect.
 
 $$P(X>1)=$$
  
@@ -890,7 +892,7 @@ ggplot(data, aes(x=x, y=y, fill=grp)) +
 We now must resort to calculus to find this area. Or use tables of pre-calculated values. Or use R, remembering that p-functions give the area under the curve to the left of the given value.
 
 ```{r}
-# P(X > 1)  == 1 - P(X <= 1)
+# P(X > 1)  == 1 - P(X <= 1)  ### Complement Rule
 1 - pexp(1, rate=2)
 ```
 
@@ -923,7 +925,7 @@ ggplot(data, aes(x=x, y=y, color=factor(grp))) +
 ```
 
 
-**Example 11**. It is known that the heights of adult males in the US is approximately normal with a mean of 5 feet 10 inches ($\mu=70$ inches) and a standard deviation of $\sigma=3$ inches. Your instructor is a mere 5 feet 4 inches (64 inches). What proportion of the population is shorter than your professor?
+**Example:**  It is known that the heights of adult males in the US is approximately normal with a mean of 5 feet 10 inches ($\mu=70$ inches) and a standard deviation of $\sigma=3$ inches. Your instructor is a mere 5 feet 4 inches (64 inches). What proportion of the population is shorter than your professor?
 
 ```{r}
 distr <- data.frame(x=seq(57, 82, length=1000)) %>%
@@ -969,7 +971,7 @@ qnorm(.8, mean=0, sd=1)
 ```
 
 
-**Empirical Rule** - It is from the normal distribution that the empirical rule from the previous chapter is derived. If $X\sim N(\mu,\sigma^{2})$ then 
+**Empirical Rules:** It is from the normal distribution that the empirical rules from the previous chapter is derived. If $X\sim N(\mu,\sigma^{2})$ then 
 $$\begin{aligned} P(\mu-\sigma\le X\le\mu+\sigma)	
   &=	P(-1 \le Z \le 1) \\
 	&=	P(Z \le 1) - P(Z \le -1) \\
@@ -996,9 +998,9 @@ ggplot(data, aes(x=x,y=y)) +
   theme_bw()
 ```
 
-1.6 R Comments
+## R Quick Reference
 
-There will be a variety of distributions we'll be interested in and R refers to them using the following abbreviations
+We give a brief summary of the distributions used most in this couse and the abberviations used in R.
 
 +--------------+-------------+---------------+------------------------------------+
 | Distribution |  Stem       | Parameters    | Parameter Interpretation           |
@@ -1102,3 +1104,9 @@ The `mosaic` package has versions of the p and q -functions that also print a ou
 9. The amount of dry kibble that I feed my cats each morning can be well approximated by a normal distribution with mean $\mu=200$ grams and standard deviation $\sigma=30$ grams.
     a) What is the probability that I fed my cats more than 250 grams of kibble this morning?
     b) From my cats' perspective, more food is better. How much would I have to feed them for this morning to be among the top $10\%$ of feedings?
+    
+10. Sea lion weight is well approximated by a normal distribution with a mean of 300 kg and standard deviation of 15 kg.  
+    a) Use R to find the probability of randomly sampling a sea lion with a weight greater than 320 kg.  Round your answer to 3 decimals.
+    b) Now suppose we sample 10 sea lions.  We wish to calculate the probability of how many sea lions will have a weight larger than 320 kg. What type of distribution will we have to use and what are the parameters of the distribution?
+    c) Calculate by hand the probability of observing only 1 sea lion with a weight greater than 320 kg.
+    d) Use R to calculate the probability of all possible outcomes.  Graph the PMF of this distribution.

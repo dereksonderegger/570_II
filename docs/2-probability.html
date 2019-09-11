@@ -160,7 +160,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.5.3" data-path="2-probability.html"><a href="2-probability.html#normal-distribution"><i class="fa fa-check"></i><b>2.5.3</b> Normal Distribution</a></li>
 <li class="chapter" data-level="2.5.4" data-path="2-probability.html"><a href="2-probability.html#standardizing"><i class="fa fa-check"></i><b>2.5.4</b> Standardizing</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="2-probability.html"><a href="2-probability.html#exercises-1"><i class="fa fa-check"></i><b>2.6</b> Exercises</a></li>
+<li class="chapter" data-level="2.6" data-path="2-probability.html"><a href="2-probability.html#r-quick-reference"><i class="fa fa-check"></i><b>2.6</b> R Quick Reference</a></li>
+<li class="chapter" data-level="2.7" data-path="2-probability.html"><a href="2-probability.html#exercises-1"><i class="fa fa-check"></i><b>2.7</b> Exercises</a></li>
 </ul></li>
 </ul>
 
@@ -203,15 +204,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3><span class="header-section-number">2.1.1</span> Composition of events</h3>
 <p>I am often interested in discussing the composition of two events and we give the common set operations below.</p>
 <ul>
-<li>Union: Denote the event that either <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span> occurs as <span class="math inline">\(A\cup B\)</span>.</li>
+<li><strong>Union:</strong> Denote the event that either <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span> occurs as <span class="math inline">\(A\cup B\)</span>.</li>
 </ul>
 <p><img src="02_Probability_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <ul>
-<li>Denote the event that <strong>both</strong> <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> occur as <span class="math inline">\(A\cap B\)</span></li>
+<li><strong>Intersection:</strong> Denote the event that <strong>both</strong> <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> occur as <span class="math inline">\(A\cap B\)</span></li>
 </ul>
 <p><img src="02_Probability_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <ul>
-<li>Denote the event that <span class="math inline">\(A\)</span> does not occur as <span class="math inline">\(\bar{A}\)</span> or <span class="math inline">\(A^{C}\)</span> (different people use different notations)</li>
+<li><strong>Complement:</strong> Denote the event that <span class="math inline">\(A\)</span> does not occur as <span class="math inline">\(\bar{A}\)</span> or <span class="math inline">\(A^{C}\)</span> (different people use different notations)</li>
 </ul>
 <p><img src="02_Probability_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p><strong>Definition:</strong> Two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are said to be <strong>mutually exclusive</strong> (or <strong>disjoint</strong>) if the occurrence of one event precludes the occurrence of the other. For example, on a single roll of a die, a two and a five cannot both come up. For a second example, define <span class="math inline">\(A\)</span> to be the event that the die is even, and <span class="math inline">\(B\)</span> to be the event that the die comes up as a <span class="math inline">\(5\)</span>.</p>
@@ -238,10 +239,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
     &amp;=  \frac{1}{36}+\frac{2}{36}+\frac{3}{36} \\
     &amp;=  \frac{6}{36} \\
     &amp;=  \frac{1}{6} \end{aligned}\]</span></p>
-<p><strong>Complement Rule:</strong> <span class="math inline">\(P(A)+P(\bar{A})=1\)</span></p>
+<p><strong>Complement Rule:</strong> <span class="math inline">\(P(A)+P(A^c)=1\)</span></p>
 <p>This rule follows from the partitioning of the set of all events (<span class="math inline">\(S\)</span>) into two disjoint sets, <span class="math inline">\(A\)</span> and <span class="math inline">\(A^c\)</span>. We learned above that <span class="math inline">\(A \cup A^c = S\)</span> and that <span class="math inline">\(P(S) = 1\)</span>. Combining those statements, we obtain the complement rule.</p>
 <p><img src="02_Probability_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
-<p><strong>Completeness Rule:</strong> <span class="math inline">\(P(A)=P(A\cap B)+P(A\cap\bar{B})\)</span></p>
+<p><strong>Completeness Rule:</strong> <span class="math inline">\(P(A)=P(A\cap B)+P(A\cap B^c)\)</span></p>
 <p><img src="02_Probability_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>This identity is just breaking the event <span class="math inline">\(A\)</span> into two disjoint pieces.</p>
 </div>
@@ -323,11 +324,12 @@ P\left(\,Auto\;|\;NotFraud\,\right) &amp;= \frac{P\left(\,Auto\;\cap\;NotFraud\r
     &amp;   \\
     &amp;=  0.3\bar{2}
     \end{aligned}\]</span></p>
-<p><strong>Definition 4</strong>. <em>Two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are said to be independent if <span class="math inline">\(P(A|B)=P(A)\;\;\textrm{and}\;\;P(B|A)=P(B)\)</span>.</em></p>
-<p>What independence is saying that knowing the outcome of event <span class="math inline">\(A\)</span> doesn’t give you any information about the outcome of event <span class="math inline">\(B\)</span>.</p>
-<p><em>In simple random sampling, we assume that any two samples are independent. </em> In cluster sampling, we assume that samples within a cluster are not independent, but clusters are independent of each other.</p>
-<p><strong>Fact 5</strong>. <em>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent events, then <span class="math inline">\(P(A\cap B) = P(A|B)P(B) = P(A)P(B)\)</span>.</em></p>
-<p><strong>Example 6</strong>. Suppose that we are interested in the relationship between the color and the type of car. Specifically I will divide the car world into convertibles and non-convertibles and the colors into red and non-red.</p>
+<p><strong>Definition:</strong> Two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are said to be <strong>independent</strong> if <span class="math inline">\(P(A\cap B)=P(A)P(B)\)</span>.</p>
+<p>What independence is saying that knowing the outcome of event <span class="math inline">\(A\)</span> doesn’t give you any information about the outcome of event <span class="math inline">\(B\)</span>. Thus, we can use conditional statements to also show that two events are independent if <span class="math inline">\(P(A|B) = P(A)\)</span>.</p>
+<p>In simple random sampling, we assume that any two samples are independent. In cluster sampling, we assume that samples within a cluster are not independent, but clusters are independent of each other.</p>
+<p><strong>Fact:</strong> <em>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent events, then <span class="math inline">\(P(A|B) = P(A)\)</span> and <span class="math inline">\(P(B|A) = P(B)\)</span>.</em></p>
+<p>These statements follow directly from the given definitions.</p>
+<p><strong>Example:</strong> Suppose that we are interested in the relationship between the color and the type of car. Specifically I will divide the car world into convertibles and non-convertibles and the colors into red and non-red.</p>
 <p>Suppose that convertibles make up just 10% of the domestic automobile market. This is to say <span class="math inline">\(P(\;Convertable\;)=0.10\)</span>. Of the non-convertibles, red is not unheard of but it isn’t common either. So suppose <span class="math inline">\(P(\;Red\;|\;NonConvertable\;)=0.15\)</span>. However red is an extremely popular color for convertibles so let <span class="math inline">\(P(\;Red\;|\;Convertable\;)=0.60\)</span>.</p>
 <p>Given the above information, we can create the following table:</p>
 <table>
@@ -376,8 +378,9 @@ P\left(Red\,\cap\,Convertable\right)    &amp;= P\left(Red\,|\,Convertable\right)
 </div>
 <div id="summary-of-probability-rules" class="section level3">
 <h3><span class="header-section-number">2.2.3</span> Summary of Probability Rules</h3>
+<p>Here we give a short summary of the most frequently used rules.</p>
 <p><span class="math display">\[0 \le P\left(A\right) \le 1\]</span></p>
-<p><span class="math display">\[P\left(A\right)+P\left(\bar{A}\right)=1\]</span> <span class="math display">\[P\left(A\cup B\right) =   P\left(A\right)+P\left(B\right)-P\left(A\cap B\right)\]</span> <span class="math display">\[P\left(A\cap B\right) =   \begin{cases}
+<p><span class="math display">\[P\left(A\right)+P\left(A^c\right)=1\]</span> <span class="math display">\[P\left(A\cup B\right) =   P\left(A\right)+P\left(B\right)-P\left(A\cap B\right)\]</span> <span class="math display">\[P\left(A\cap B\right) =   \begin{cases}
 P\left(A\,|\,B\right)P\left(B\right)\\
 P\left(B\,|\,A\right)P\left(A\right)\\
 P(A)P(B)\;\; &amp; \textrm{ if A,B are independent}
@@ -426,7 +429,7 @@ P(A)P(B)\;\; &amp; \textrm{ if A,B are independent}
     &amp;= \frac{35}{6}=5.8\bar{3}
     \end{aligned}\]</span></p>
 <p>We could interpret the expectation as the sample mean of an infinitely large sample, and the variance as the sample variance of the same infinitely large sample. These are two very important numbers that describe the distribution.</p>
-<p><strong>Example 7</strong>. My wife is a massage therapist and over the last year, the number of clients she sees per work day (denoted Y) varied according the following table:</p>
+<p><strong>Example:</strong> My wife is a massage therapist and over the last year, the number of clients she sees per work day (denoted Y) varied according the following table:</p>
 <table>
 <thead>
 <tr class="header">
@@ -457,7 +460,7 @@ P(A)P(B)\;\; &amp; \textrm{ if A,B are independent}
 <span class="st">  </span><span class="kw">geom_linerange</span>(<span class="kw">aes</span>(<span class="dt">ymax=</span>probability, <span class="dt">ymin=</span><span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span><span class="co"># the vertical lines       </span>
 <span class="st">  </span><span class="kw">theme_bw</span>()                                      <span class="co"># set background color...</span></code></pre></div>
 <p><img src="02_Probability_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
-<p>Because this is the long term relative frequency of the number of clients (over 200 working days!), it is appropriate to interpret these frequencies as probabilities. This table and graph is often called a probability mass function (pmf) because it lists how the probability is spread across the possible values of the random variable. We might next ask ourselves what is the average number of clients per day? It looks like it ought to be between 1 and 2 clients per day.</p>
+<p>Because this is the long term relative frequency of the number of clients (over 200 working days!), it is appropriate to interpret these frequencies as probabilities. This table and graph is often called a <strong>probability mass function (pmf)</strong> because it lists how the probability is spread across the possible values of the random variable. We might next ask ourselves what is the average number of clients per day?</p>
 <p><span class="math display">\[\begin{aligned} E\left(Y\right)   
   &amp;=    \sum_{\textrm{possible }y}y\,P\left(Y=y\right) \\
     &amp;=  \sum_{y=0}^{4}y\,P\left(Y=y\right) \\
@@ -505,7 +508,7 @@ P(A)P(B)\;\; &amp; \textrm{ if A,B are independent}
 <h2><span class="header-section-number">2.4</span> Common Discrete Distributions</h2>
 <div id="binomial-distribution" class="section level3">
 <h3><span class="header-section-number">2.4.1</span> Binomial Distribution</h3>
-<p><strong>Example</strong>: Suppose we are trapping small mammals in the desert and we spread out three traps. Assume that the traps are far enough apart that having one being filled doesn’t affect the probability of the others being filled and that all three traps have the same probability of being filled in an evening. Denote the event that a trap is filled with a critter as <span class="math inline">\(C_{i}\)</span> and denote the event that the trap is empty as <span class="math inline">\(E_{i}\)</span>. Denote the probability that a trap is filled by <span class="math inline">\(\pi=0.8\)</span>. (This sort of random variable is often referred to as a Bernoulli RV.)</p>
+<p><strong>Example:</strong> Suppose we are trapping small mammals in the desert and we spread out three traps. Assume that the traps are far enough apart that having one being filled doesn’t affect the probability of the others being filled and that all three traps have the same probability of being filled in an evening. Denote the event that a trap is filled with a critter as <span class="math inline">\(C_{i}\)</span> and denote the event that the trap is empty as <span class="math inline">\(E_{i}\)</span>. Denote the probability that a trap is filled by <span class="math inline">\(\pi=0.8\)</span>. (This sort of random variable is often referred to as a Bernoulli RV.)</p>
 <p>The possible outcomes are</p>
 <table>
 <thead>
@@ -699,7 +702,7 @@ P(A)P(B)\;\; &amp; \textrm{ if A,B are independent}
     &amp;=  \sum_{x=0}^{n}\left(x-E\left[X\right]\right)^{2}\;\frac{n!}{x!\left(n-x\right)!}\pi^{x}\left(1-\pi\right)^{n-x} \\
     &amp;=  \vdots \\
     &amp;=  n\pi(1-\pi) \end{aligned}\]</span></p>
-<p><strong>Example 8</strong>. Suppose a bird survey only captures the presence or absence of a particular bird (say the mountain chickadee). Assuming the true presence proportion at national forest sites around Flagstaff <span class="math display">\[\pi=0.1\]</span>, then for <span class="math inline">\(n=20\)</span> randomly chosen sites, the number of sites in which the bird was observed would have the distribution</p>
+<p><strong>Example:</strong> Suppose a bird survey only captures the presence or absence of a particular bird (say the mountain chickadee). Assuming the true presence proportion at national forest sites around Flagstaff is <span class="math inline">\(\pi=0.1\)</span>, then for <span class="math inline">\(n=20\)</span> randomly chosen sites, the number of sites in which the bird was observed would have the following PMF.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dist &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">x =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">20</span> ) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">probability =</span> <span class="kw">dbinom</span>(x, <span class="dt">size=</span><span class="dv">20</span>, <span class="dt">prob=</span><span class="fl">0.1</span>))
 <span class="kw">ggplot</span>(dist, <span class="kw">aes</span>(<span class="dt">x=</span>x)) <span class="op">+</span>
@@ -736,7 +739,7 @@ sum</code></pre></div>
 <li>Number of prairie dog towns per 1000 hectares</li>
 <li>Number of alga clumps per cubic meter of lake water</li>
 </ol>
-<p>For a RV is a Poisson RV if the following conditions apply:</p>
+<p>A discrete RV is a Poisson RV if the following conditions apply:</p>
 <ol style="list-style-type: decimal">
 <li>Two or more events do not occur at precisely the same time or in the same space</li>
 <li>The occurrence of an event in a given period of time or region of space is independent of the occurrence of the event in a non overlapping period or region.</li>
@@ -744,7 +747,7 @@ sum</code></pre></div>
 </ol>
 <p>Assuming that these conditions hold for some count variable <span class="math inline">\(Y\)</span>, the the probability mass function is given by <span class="math display">\[P(Y=y)=\frac{\lambda^{y}e^{-\lambda}}{y!}\]</span> where <span class="math inline">\(\lambda\)</span> is the expected number of events over 1 unit of time or space and <span class="math inline">\(e\)</span> is the constant <span class="math inline">\(2.718281828\dots\)</span>.</p>
 <p><span class="math display">\[E[Y]  =   \lambda\]</span> <span class="math display">\[Var[Y]    =   \lambda\]</span></p>
-<p><strong>Example 9</strong>. Suppose we are interested in the population size of small mammals in a region. Let <span class="math inline">\(Y\)</span> be the number of small mammals caught in a large trap (multiple traps in the same location?) in a 12 hour period. Finally, suppose that <span class="math inline">\(Y\sim Poi(\lambda=2.3)\)</span>. What is the probability of finding exactly 4 critters in our trap? <span class="math display">\[P(Y=4)    =   \frac{2.3^{4}\,e^{-2.3}}{4!} =  0.1169\]</span> What about the probability of finding at most 4? <span class="math display">\[\begin{aligned} P(Y\le4) 
+<p><strong>Example:</strong> Suppose we are interested in the population size of small mammals in a region. Let <span class="math inline">\(Y\)</span> be the number of small mammals caught in a large trap over a 12 hour period. Finally, suppose that <span class="math inline">\(Y\sim Poisson(\lambda=2.3)\)</span>. What is the probability of finding exactly 4 critters in our trap? <span class="math display">\[P(Y=4)    =   \frac{2.3^{4}\,e^{-2.3}}{4!} =  0.1169\]</span> What about the probability of finding at most 4? <span class="math display">\[\begin{aligned} P(Y\le4) 
   &amp;=    P(Y=0)+P(Y=1)+P(Y=2)+P(Y=3)+P(Y=4) \\
     &amp;=  0.1003+0.2306+0.2652+0.2033+0.1169 \\
     &amp;=  0.9163 \end{aligned}\]</span></p>
@@ -777,7 +780,7 @@ sum</code></pre></div>
 <h3><span class="header-section-number">2.5.1</span> Uniform(0,1) Distribution</h3>
 <p>Suppose you wish to draw a random number number between 0 and 1 and any two intervals of equal size should have the same probability of the value being in them. This random variable is said to have a Uniform(0,1) distribution.</p>
 <p>Because there are an infinite number of rational numbers between 0 and 1, the probability of any particular number being selected is <span class="math inline">\(1/\infty=0\)</span>. But even though each number has 0 probability of being selected, some number must end up being selected. Because of this conundrum, probability theory doesn’t look at the probability of a single number, but rather focuses on a region of numbers.</p>
-<p>To make this distinction, we will define the distribution using a probability density function (pdf) instead of the probability mass function. In the discrete case, we had to constrain the probability mass function to sum to 1. In the continuous case, we have to constrain the probability density function to integrate to 1.</p>
+<p>To make this distinction, we will define the distribution using a <strong>probability density function (pdf)</strong> instead of the probability mass function. In the discrete case, we had to constrain the probability mass function to sum to 1. In the continuous case, we have to constrain the probability density function to integrate to 1.</p>
 <p><img src="02_Probability_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <p><img src="02_Probability_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
 <p>Finding the area under the curve of a particular density function <span class="math inline">\(f(x)\)</span> usually requires the use of calculus, but since this isn’t a calculus course, we will resort to using R or tables of calculated values.</p>
@@ -791,7 +794,7 @@ sum</code></pre></div>
 <p>Analogous to the discrete distributions, we can define the Expectation and Variance of these distributions by replacing the summation with an integral <span class="math display">\[\mu = E[X] =  \int_{0}^{\infty}x\,f(x)\,dx = \dots = \frac{1}{\lambda} \]</span> <span class="math display">\[\sigma^2 = Var[X] =   \int_{0}^{\infty}\left(x-\mu\right)^{2}\,f\left(x\right)\,dx =  \dots = \frac{1}{\lambda^{2}}\]</span></p>
 <p>Because the exponential distribution is defined by the rate of occurrence of an event, increasing that rate decreases the time between events. Furthermore because the rate of occurrence cannot be negative, we restrict <span class="math inline">\(\lambda&gt;0\)</span>.</p>
 <p><img src="02_Probability_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
-<p><strong>Example 10</strong>. Suppose the time between insect captures <span class="math inline">\(X\)</span> during a summer evening for a species of bat follows a exponential distribution with capture rate of <span class="math inline">\(\lambda=2\)</span> insects per minute and therefore the expected waiting time between captures is <span class="math inline">\(1/\lambda=1/2\)</span> minute. Suppose that we are interested in the probability that it takes a bat more than 1 minute to capture its next insect.</p>
+<p><strong>Example:</strong> Suppose the time between insect captures <span class="math inline">\(X\)</span> during a summer evening for a species of bat follows a exponential distribution with capture rate of <span class="math inline">\(\lambda=2\)</span> insects per minute and therefore the expected waiting time between captures is <span class="math inline">\(1/\lambda=1/2\)</span> minute. Suppose that we are interested in the probability that it takes a bat more than 1 minute to capture its next insect.</p>
 <p><span class="math display">\[P(X&gt;1)=\]</span></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dt">length=</span><span class="dv">1000</span>), <span class="dt">lambda =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">y=</span><span class="kw">dexp</span>(x, <span class="dt">rate =</span> lambda),
@@ -802,7 +805,7 @@ sum</code></pre></div>
 <span class="st">  </span><span class="kw">theme_bw</span>()</code></pre></div>
 <p><img src="02_Probability_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <p>We now must resort to calculus to find this area. Or use tables of pre-calculated values. Or use R, remembering that p-functions give the area under the curve to the left of the given value.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># P(X &gt; 1)  == 1 - P(X &lt;= 1)</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># P(X &gt; 1)  == 1 - P(X &lt;= 1)  </span><span class="al">###</span><span class="co"> Complement Rule</span>
 <span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pexp</span>(<span class="dv">1</span>, <span class="dt">rate=</span><span class="dv">2</span>)</code></pre></div>
 <pre><code>## [1] 0.1353353</code></pre>
 </div>
@@ -812,7 +815,7 @@ sum</code></pre></div>
 <p><span class="math display">\[f(x)=\frac{1}{\sqrt{2\pi}\sigma}\exp\left[-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{2}\right]\]</span></p>
 <p>and see this distribution is defined by its expectation <span class="math inline">\(E[X]=\mu\)</span> and its variance <span class="math inline">\(Var[X]=\sigma^{2}\)</span>. Notice I could define it using the standard deviation <span class="math inline">\(\sigma\)</span>, and different software packages will expect it to be defined by one or the other. R defines the normal distribution using the standard deviation.</p>
 <p><img src="02_Probability_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
-<p><strong>Example 11</strong>. It is known that the heights of adult males in the US is approximately normal with a mean of 5 feet 10 inches (<span class="math inline">\(\mu=70\)</span> inches) and a standard deviation of <span class="math inline">\(\sigma=3\)</span> inches. Your instructor is a mere 5 feet 4 inches (64 inches). What proportion of the population is shorter than your professor?</p>
+<p><strong>Example:</strong> It is known that the heights of adult males in the US is approximately normal with a mean of 5 feet 10 inches (<span class="math inline">\(\mu=70\)</span> inches) and a standard deviation of <span class="math inline">\(\sigma=3\)</span> inches. Your instructor is a mere 5 feet 4 inches (64 inches). What proportion of the population is shorter than your professor?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">distr &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span><span class="kw">seq</span>(<span class="dv">57</span>, <span class="dv">82</span>, <span class="dt">length=</span><span class="dv">1000</span>)) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">mutate</span>( <span class="dt">density =</span> <span class="kw">dnorm</span>(x, <span class="dt">mean=</span><span class="dv">70</span>, <span class="dt">sd=</span><span class="dv">3</span>),
           <span class="dt">group =</span> <span class="kw">ifelse</span>(x<span class="op">&lt;=</span><span class="dv">64</span>, <span class="st">&#39;Shorter&#39;</span>,<span class="st">&#39;Taller&#39;</span>) )
@@ -840,14 +843,17 @@ x       &amp;=  3(0.84)+70 \\
 <p>Alternatively we could use the quantile function for the normal distribution (q-function) in R and avoid the imprecision of using a table.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qnorm</span>(.<span class="dv">8</span>, <span class="dt">mean=</span><span class="dv">0</span>, <span class="dt">sd=</span><span class="dv">1</span>)</code></pre></div>
 <pre><code>## [1] 0.8416212</code></pre>
-<p><strong>Empirical Rule</strong> - It is from the normal distribution that the empirical rule from the previous chapter is derived. If <span class="math inline">\(X\sim N(\mu,\sigma^{2})\)</span> then <span class="math display">\[\begin{aligned} P(\mu-\sigma\le X\le\mu+\sigma)   
+<p><strong>Empirical Rules:</strong> It is from the normal distribution that the empirical rules from the previous chapter is derived. If <span class="math inline">\(X\sim N(\mu,\sigma^{2})\)</span> then <span class="math display">\[\begin{aligned} P(\mu-\sigma\le X\le\mu+\sigma)   
   &amp;=    P(-1 \le Z \le 1) \\
     &amp;=  P(Z \le 1) - P(Z \le -1) \\
     &amp;\approx    0.8413-0.1587 \\
     &amp;=  0.6826 \end{aligned}\]</span></p>
 <p><img src="02_Probability_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
-<p>1.6 R Comments</p>
-<p>There will be a variety of distributions we’ll be interested in and R refers to them using the following abbreviations</p>
+</div>
+</div>
+<div id="r-quick-reference" class="section level2">
+<h2><span class="header-section-number">2.6</span> R Quick Reference</h2>
+<p>We give a brief summary of the distributions used most in this couse and the abberviations used in R.</p>
 <table>
 <colgroup>
 <col width="18%" />
@@ -923,9 +929,8 @@ x       &amp;=  3(0.84)+70 \\
 </table>
 <p>The <code>mosaic</code> package has versions of the p and q -functions that also print a out nice picture of the probabilities that you ask for. These functions are named by just adding an ‘x’ at the beginning of the function. For example <code>mosaic::xpnorm(-1)</code>.</p>
 </div>
-</div>
 <div id="exercises-1" class="section level2">
-<h2><span class="header-section-number">2.6</span> Exercises</h2>
+<h2><span class="header-section-number">2.7</span> Exercises</h2>
 <ol style="list-style-type: decimal">
 <li><p>The population distribution of blood donors in the United States based on race/ethnicity and blood type as reported by the American Red Cross is given here:</p>
 <table style="width:82%;">
@@ -1068,6 +1073,13 @@ Notice that the numbers given in the table sum to 100%, so the data presented ar
 <ol style="list-style-type: lower-alpha">
 <li>What is the probability that I fed my cats more than 250 grams of kibble this morning?</li>
 <li>From my cats’ perspective, more food is better. How much would I have to feed them for this morning to be among the top <span class="math inline">\(10\%\)</span> of feedings?</li>
+</ol></li>
+<li>Sea lion weight is well approximated by a normal distribution with a mean of 300 kg and standard deviation of 15 kg.
+<ol style="list-style-type: lower-alpha">
+<li>Use R to find the probability of randomly sampling a sea lion with a weight greater than 320 kg. Round your answer to 3 decimals.</li>
+<li>Now suppose we sample 10 sea lions. We wish to calculate the probability of how many sea lions will have a weight larger than 320 kg. What type of distribution will we have to use and what are the parameters of the distribution?</li>
+<li>Calculate by hand the probability of observing only 1 sea lion with a weight greater than 320 kg.</li>
+<li>Use R to calculate the probability of all possible outcomes. Graph the PMF of this distribution.</li>
 </ol></li>
 </ol>
 

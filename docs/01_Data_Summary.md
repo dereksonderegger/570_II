@@ -486,14 +486,13 @@ If a distribution has a heavier tail on one side or the other, we refer to it as
 ## Exercises
 
 1. O&L 3.21. The ratio of DDE (related to DDT) to PCB concentrations in bird eggs has been shown to have had a number of biological implications. The ratio is used as an indication of the movement of contamination through the food chain. The paper “The ratio of DDE to PCB concentrations in Great Lakes herring gull eggs and its us in interpreting contaminants data” reports the following ratios for eggs collected at 13 study sites from the five Great Lakes. The eggs were collected from both terrestrial and aquatic feeding birds.
+
+    |  Source Type   |   DDE to PCB Ratio                                       |
+    |:-------------:|:----------------------------------------------------:|
+    |  Terrestrial	      |  76.50, 6.03, 3.51, 9.96, 4.24, 7.74, 9.54, 41.70, 1.84, 2.5, 1.54                 |
+    |  Aquatic       |  0.27, 0.61, 0.54, 0.14, 0.63, 0.23, 0.56,  0.48, 0.16, 0.18  |
     
-    +-------------------+-----------------------------------------------------------------------+
-    |  Source Type      |   DDE to PCB Ratio                                                    |
-    +-------------------+-----------------------------------------------------------------------+
-    |  **Terrestrial**  | 76.50, 6.03, 3.51, 9.96, 4.24, 7.74, 9.54, 41.70, 1.84, 2.5, 1.54     |
-    +-------------------+-----------------------------------------------------------------------+
-    |  **Aquatic**      |  0.27, 0.61, 0.54, 0.14, 0.63, 0.23, 0.56,  0.48, 0.16, 0.18          |
-    +-------------------+-----------------------------------------------------------------------+
+ 
     
     a) By hand, compute the mean and median separately for each type of feeder.
     b) Using your results from part (a), comment on the relative sensitivity of the mean and median to extreme values in a data set.
@@ -531,7 +530,7 @@ head( PolutionRatios ) # Print out some data to confirm column names.
 ## 6  7.74 Terrestrial
 ```
     
-    *Hint: for computing the means and medians for each type of feeder separately, the `group_by()` command we demonstated earlier in the chapter is convenient.*
+  *Hint: for computing the means and medians for each type of feeder separately, the `group_by()` command we demonstated earlier in the chapter is convenient.*
 
 4. Use R to confirm your calculations in problem 2 (the hotel data). Show the code you used and the subsequent output. The data can be loaded into a data frame using the following commands Show the code you used and the subsequent output:
 

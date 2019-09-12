@@ -215,13 +215,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="probability" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> Probability</h1>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="co"># Every chapter, we will load all the librarys we will use at the beginning</span></a>
-<a class="sourceLine" id="cb48-2" title="2"><span class="co"># of the chapter. </span></a>
-<a class="sourceLine" id="cb48-3" title="3"><span class="kw">library</span>(ggplot2)    <span class="co"># graphing functions</span></a>
-<a class="sourceLine" id="cb48-4" title="4"><span class="kw">library</span>(dplyr)      <span class="co"># data summary tools</span></a>
-<a class="sourceLine" id="cb48-5" title="5"></a>
-<a class="sourceLine" id="cb48-6" title="6"><span class="co"># Set default behavior of ggplot2 graphs to be black/white theme</span></a>
-<a class="sourceLine" id="cb48-7" title="7"><span class="kw">theme_set</span>(<span class="kw">theme_bw</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1"><span class="co"># Every chapter, we will load all the librarys we will use at the beginning</span></a>
+<a class="sourceLine" id="cb47-2" title="2"><span class="co"># of the chapter. </span></a>
+<a class="sourceLine" id="cb47-3" title="3"><span class="kw">library</span>(ggplot2)    <span class="co"># graphing functions</span></a>
+<a class="sourceLine" id="cb47-4" title="4"><span class="kw">library</span>(dplyr)      <span class="co"># data summary tools</span></a>
+<a class="sourceLine" id="cb47-5" title="5"></a>
+<a class="sourceLine" id="cb47-6" title="6"><span class="co"># Set default behavior of ggplot2 graphs to be black/white theme</span></a>
+<a class="sourceLine" id="cb47-7" title="7"><span class="kw">theme_set</span>(<span class="kw">theme_bw</span>())</a></code></pre></div>
 <p>We need to work out the mathematics of what we mean by probability. To begin with we first define an outcome. An outcome is one observation from a random process or event. For example we might be interested in a single roll of a six-side die. Alternatively we might be interested in selecting one NAU student at random from the entire population of NAU students.</p>
 <div id="introduction-to-set-theory" class="section level2">
 <h2><span class="header-section-number">2.1</span> Introduction to Set Theory</h2>
@@ -503,13 +503,13 @@ which in this example can be calculated as
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1">distr &lt;-<span class="st"> </span><span class="kw">data.frame</span>(    <span class="dt">clients =</span> <span class="kw">c</span>( <span class="dv">0</span>,   <span class="dv">1</span>,    <span class="dv">2</span>,    <span class="dv">3</span>,    <span class="dv">4</span>   ),    <span class="co"># two columns </span></a>
-<a class="sourceLine" id="cb49-2" title="2">                    <span class="dt">probability =</span> <span class="kw">c</span>(<span class="fl">0.3</span>, <span class="fl">0.35</span>, <span class="fl">0.20</span>, <span class="fl">0.10</span>, <span class="fl">0.05</span> ) )   <span class="co"># </span></a>
-<a class="sourceLine" id="cb49-3" title="3"></a>
-<a class="sourceLine" id="cb49-4" title="4"><span class="kw">ggplot</span>(distr, <span class="kw">aes</span>(<span class="dt">x=</span>clients)) <span class="op">+</span><span class="st">                   </span><span class="co"># graph with clients as the x-axis</span></a>
-<a class="sourceLine" id="cb49-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y=</span>probability)) <span class="op">+</span><span class="st">                </span><span class="co"># where the dots go</span></a>
-<a class="sourceLine" id="cb49-6" title="6"><span class="st">  </span><span class="kw">geom_linerange</span>(<span class="kw">aes</span>(<span class="dt">ymax=</span>probability, <span class="dt">ymin=</span><span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span><span class="co"># the vertical lines       </span></a>
-<a class="sourceLine" id="cb49-7" title="7"><span class="st">  </span><span class="kw">theme_bw</span>()                                      <span class="co"># set background color...</span></a></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1">distr &lt;-<span class="st"> </span><span class="kw">data.frame</span>(    <span class="dt">clients =</span> <span class="kw">c</span>( <span class="dv">0</span>,   <span class="dv">1</span>,    <span class="dv">2</span>,    <span class="dv">3</span>,    <span class="dv">4</span>   ),    <span class="co"># two columns </span></a>
+<a class="sourceLine" id="cb48-2" title="2">                    <span class="dt">probability =</span> <span class="kw">c</span>(<span class="fl">0.3</span>, <span class="fl">0.35</span>, <span class="fl">0.20</span>, <span class="fl">0.10</span>, <span class="fl">0.05</span> ) )   <span class="co"># </span></a>
+<a class="sourceLine" id="cb48-3" title="3"></a>
+<a class="sourceLine" id="cb48-4" title="4"><span class="kw">ggplot</span>(distr, <span class="kw">aes</span>(<span class="dt">x=</span>clients)) <span class="op">+</span><span class="st">                   </span><span class="co"># graph with clients as the x-axis</span></a>
+<a class="sourceLine" id="cb48-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y=</span>probability)) <span class="op">+</span><span class="st">                </span><span class="co"># where the dots go</span></a>
+<a class="sourceLine" id="cb48-6" title="6"><span class="st">  </span><span class="kw">geom_linerange</span>(<span class="kw">aes</span>(<span class="dt">ymax=</span>probability, <span class="dt">ymin=</span><span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span><span class="co"># the vertical lines       </span></a>
+<a class="sourceLine" id="cb48-7" title="7"><span class="st">  </span><span class="kw">theme_bw</span>()                                      <span class="co"># set background color...</span></a></code></pre></div>
 <p><img src="02_Probability_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p>Because this is the long term relative frequency of the number of clients (over 200 working days!), it is appropriate to interpret these frequencies as probabilities. This table and graph is often called a <strong>probability mass function (pmf)</strong> because it lists how the probability is spread across the possible values of the random variable. We might next ask ourselves what is the average number of clients per day?</p>
 <p><span class="math display">\[\begin{aligned} E\left(Y\right)   
@@ -727,13 +727,13 @@ which in this example can be calculated as
 <p><span class="math display">\[P(X=x)=\underbrace{\frac{n!}{x!(n-x)!}}_{orderings}\;\underbrace{\pi^{x}}_{y\,successes}\;\underbrace{(1-\pi)^{n-x}}_{n-y\,failures}\]</span></p>
 <p>where we define <span class="math inline">\(n!=n(n-1)\dots(2)(1)\)</span> and further define <span class="math inline">\(0!=1\)</span>. Often the ordering term is written more compactly as <span class="math display">\[{n \choose x}=\frac{n!}{x!\left(n-x\right)!}\]</span>.</p>
 <p>For our small mammal example we can create a graph that shows the binomial distribution with the following R code:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1">dist &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">x=</span><span class="dv">0</span><span class="op">:</span><span class="dv">3</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb50-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">probability =</span> <span class="kw">dbinom</span>(x, <span class="dt">size=</span><span class="dv">3</span>, <span class="dt">prob=</span><span class="fl">0.8</span>))</a>
-<a class="sourceLine" id="cb50-3" title="3"><span class="kw">ggplot</span>(dist, <span class="kw">aes</span>(<span class="dt">x=</span>x)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb50-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y=</span>probability)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb50-5" title="5"><span class="st">  </span><span class="kw">geom_linerange</span>(<span class="kw">aes</span>(<span class="dt">ymax=</span>probability, <span class="dt">ymin=</span><span class="dv">0</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb50-6" title="6"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Binomial distribution: n=3, p=0.8&#39;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb50-7" title="7"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1">dist &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">x=</span><span class="dv">0</span><span class="op">:</span><span class="dv">3</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb49-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">probability =</span> <span class="kw">dbinom</span>(x, <span class="dt">size=</span><span class="dv">3</span>, <span class="dt">prob=</span><span class="fl">0.8</span>))</a>
+<a class="sourceLine" id="cb49-3" title="3"><span class="kw">ggplot</span>(dist, <span class="kw">aes</span>(<span class="dt">x=</span>x)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb49-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y=</span>probability)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb49-5" title="5"><span class="st">  </span><span class="kw">geom_linerange</span>(<span class="kw">aes</span>(<span class="dt">ymax=</span>probability, <span class="dt">ymin=</span><span class="dv">0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb49-6" title="6"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Binomial distribution: n=3, p=0.8&#39;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb49-7" title="7"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
 <p><img src="02_Probability_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>To calculate the height of any of these bars, we can evaluate the pmf at the desired point. For example, to calculate the probability the number of full traps is 2, we calculate the following</p>
 <p><span class="math display">\[\begin{aligned} P(X=2)    
@@ -743,9 +743,9 @@ which in this example can be calculated as
     &amp;=  3(0.128) \\
     &amp;=  0.384 \end{aligned}\]</span></p>
 <p>You can use R to calculate these probabilities. In general, for any distribution, the “d-function” gives the distribution function (pmf or pdf). So to get R to do the preceding calculation we use:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1"><span class="co"># If    X ~ Binomial(n=3, pi=0.8)</span></a>
-<a class="sourceLine" id="cb51-2" title="2"><span class="co"># Then  P( X = 2 | n=3, pi=0.8 ) =</span></a>
-<a class="sourceLine" id="cb51-3" title="3"><span class="kw">dbinom</span>(<span class="dv">2</span>, <span class="dt">size=</span><span class="dv">3</span>, <span class="dt">prob=</span><span class="fl">0.8</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1"><span class="co"># If    X ~ Binomial(n=3, pi=0.8)</span></a>
+<a class="sourceLine" id="cb50-2" title="2"><span class="co"># Then  P( X = 2 | n=3, pi=0.8 ) =</span></a>
+<a class="sourceLine" id="cb50-3" title="3"><span class="kw">dbinom</span>(<span class="dv">2</span>, <span class="dt">size=</span><span class="dv">3</span>, <span class="dt">prob=</span><span class="fl">0.8</span>)</a></code></pre></div>
 <pre><code>## [1] 0.384</code></pre>
 <p>The expectation of this distribution can be shown to be
 <span class="math display">\[\begin{aligned}E[X]   
@@ -760,24 +760,24 @@ which in this example can be calculated as
     &amp;=  \vdots \\
     &amp;=  n\pi(1-\pi) \end{aligned}\]</span></p>
 <p><strong>Example:</strong> Suppose a bird survey only captures the presence or absence of a particular bird (say the mountain chickadee). Assuming the true presence proportion at national forest sites around Flagstaff is <span class="math inline">\(\pi=0.1\)</span>, then for <span class="math inline">\(n=20\)</span> randomly chosen sites, the number of sites in which the bird was observed would have the following PMF.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1">dist &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">x =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">20</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb53-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">probability =</span> <span class="kw">dbinom</span>(x, <span class="dt">size=</span><span class="dv">20</span>, <span class="dt">prob=</span><span class="fl">0.1</span>))</a>
-<a class="sourceLine" id="cb53-3" title="3"><span class="kw">ggplot</span>(dist, <span class="kw">aes</span>(<span class="dt">x=</span>x)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb53-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y=</span>probability)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb53-5" title="5"><span class="st">  </span><span class="kw">geom_linerange</span>(<span class="kw">aes</span>(<span class="dt">ymax=</span>probability, <span class="dt">ymin=</span><span class="dv">0</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb53-6" title="6"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Binomial distribution: n=20, p=0.1&#39;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb53-7" title="7"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&#39;Number of Sites Occupied&#39;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb53-8" title="8"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1">dist &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">x =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">20</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb52-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">probability =</span> <span class="kw">dbinom</span>(x, <span class="dt">size=</span><span class="dv">20</span>, <span class="dt">prob=</span><span class="fl">0.1</span>))</a>
+<a class="sourceLine" id="cb52-3" title="3"><span class="kw">ggplot</span>(dist, <span class="kw">aes</span>(<span class="dt">x=</span>x)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb52-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y=</span>probability)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb52-5" title="5"><span class="st">  </span><span class="kw">geom_linerange</span>(<span class="kw">aes</span>(<span class="dt">ymax=</span>probability, <span class="dt">ymin=</span><span class="dv">0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb52-6" title="6"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Binomial distribution: n=20, p=0.1&#39;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb52-7" title="7"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&#39;Number of Sites Occupied&#39;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb52-8" title="8"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
 <p><img src="02_Probability_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>Often we are interested in questions such as <span class="math inline">\(P(X\le2)\)</span> which is the probability that we see 2 or fewer of the sites being occupied by mountain chickadee. These calculations can be tedious to calculate by hand but R will calculate these cumulative distribution function values for you using the “p-function”. This cumulative distribution function gives the sum of all values up to and including the number given.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1"><span class="co"># P(X=0) + P(X=1) + P(X=2)</span></a>
-<a class="sourceLine" id="cb54-2" title="2">sum &lt;-<span class="st"> </span><span class="kw">dbinom</span>(<span class="dv">0</span>, <span class="dt">size=</span><span class="dv">20</span>, <span class="dt">prob=</span><span class="fl">0.1</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb54-3" title="3"><span class="st">       </span><span class="kw">dbinom</span>(<span class="dv">1</span>, <span class="dt">size=</span><span class="dv">20</span>, <span class="dt">prob=</span><span class="fl">0.1</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb54-4" title="4"><span class="st">       </span><span class="kw">dbinom</span>(<span class="dv">2</span>, <span class="dt">size=</span><span class="dv">20</span>, <span class="dt">prob=</span><span class="fl">0.1</span>)</a>
-<a class="sourceLine" id="cb54-5" title="5">sum</a></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1"><span class="co"># P(X=0) + P(X=1) + P(X=2)</span></a>
+<a class="sourceLine" id="cb53-2" title="2">sum &lt;-<span class="st"> </span><span class="kw">dbinom</span>(<span class="dv">0</span>, <span class="dt">size=</span><span class="dv">20</span>, <span class="dt">prob=</span><span class="fl">0.1</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb53-3" title="3"><span class="st">       </span><span class="kw">dbinom</span>(<span class="dv">1</span>, <span class="dt">size=</span><span class="dv">20</span>, <span class="dt">prob=</span><span class="fl">0.1</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb53-4" title="4"><span class="st">       </span><span class="kw">dbinom</span>(<span class="dv">2</span>, <span class="dt">size=</span><span class="dv">20</span>, <span class="dt">prob=</span><span class="fl">0.1</span>)</a>
+<a class="sourceLine" id="cb53-5" title="5">sum</a></code></pre></div>
 <pre><code>## [1] 0.6769268</code></pre>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1"><span class="co"># P(X &lt;= 2)</span></a>
-<a class="sourceLine" id="cb56-2" title="2"><span class="kw">pbinom</span>(<span class="dv">2</span>, <span class="dt">size=</span><span class="dv">20</span>, <span class="dt">prob=</span><span class="fl">0.1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1"><span class="co"># P(X &lt;= 2)</span></a>
+<a class="sourceLine" id="cb55-2" title="2"><span class="kw">pbinom</span>(<span class="dv">2</span>, <span class="dt">size=</span><span class="dv">20</span>, <span class="dt">prob=</span><span class="fl">0.1</span>)</a></code></pre></div>
 <pre><code>## [1] 0.6769268</code></pre>
 <p>In general we will be interested in asking four different questions about a distribution.</p>
 <ol style="list-style-type: decimal">
@@ -817,23 +817,23 @@ What about the probability of finding at most 4?
 <p>What about the probability of finding 5 or more?
 <span class="math display">\[P(Y\ge5)  =   1-P(Y\le4) =    1-0.9163 =  0.0837\]</span></p>
 <p>These calculations can be done using the distribution function (d-function) for the Poisson and the cumulative distribution function (p-function).</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1">dist &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">NumCaught =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">10</span> ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb58-2" title="2"><span class="st">  </span><span class="kw">mutate</span>( <span class="dt">probability =</span> <span class="kw">dpois</span>( NumCaught, <span class="dt">lambda=</span><span class="fl">2.3</span> ) )</a>
-<a class="sourceLine" id="cb58-3" title="3"><span class="kw">ggplot</span>(dist, <span class="kw">aes</span>(<span class="dt">x=</span>NumCaught)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb58-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>( <span class="kw">aes</span>(<span class="dt">y=</span>probability) ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb58-5" title="5"><span class="st">  </span><span class="kw">geom_linerange</span>(<span class="kw">aes</span>( <span class="dt">ymax=</span>probability, <span class="dt">ymin=</span><span class="dv">0</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb58-6" title="6"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="kw">expression</span>(<span class="kw">paste</span>(<span class="st">&#39;Poisson Distribution with  &#39;</span>, lambda <span class="op">==</span><span class="st"> </span><span class="fl">2.3</span>))) <span class="op">+</span></a>
-<a class="sourceLine" id="cb58-7" title="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&#39;Number Caught&#39;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb58-8" title="8"><span class="st">  </span><span class="kw">theme_bw</span>()            </a></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1">dist &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">NumCaught =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">10</span> ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb57-2" title="2"><span class="st">  </span><span class="kw">mutate</span>( <span class="dt">probability =</span> <span class="kw">dpois</span>( NumCaught, <span class="dt">lambda=</span><span class="fl">2.3</span> ) )</a>
+<a class="sourceLine" id="cb57-3" title="3"><span class="kw">ggplot</span>(dist, <span class="kw">aes</span>(<span class="dt">x=</span>NumCaught)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb57-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>( <span class="kw">aes</span>(<span class="dt">y=</span>probability) ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb57-5" title="5"><span class="st">  </span><span class="kw">geom_linerange</span>(<span class="kw">aes</span>( <span class="dt">ymax=</span>probability, <span class="dt">ymin=</span><span class="dv">0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb57-6" title="6"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="kw">expression</span>(<span class="kw">paste</span>(<span class="st">&#39;Poisson Distribution with  &#39;</span>, lambda <span class="op">==</span><span class="st"> </span><span class="fl">2.3</span>))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb57-7" title="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&#39;Number Caught&#39;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb57-8" title="8"><span class="st">  </span><span class="kw">theme_bw</span>()            </a></code></pre></div>
 <p><img src="02_Probability_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" title="1"><span class="co"># P( Y = 4)</span></a>
-<a class="sourceLine" id="cb59-2" title="2"><span class="kw">dpois</span>(<span class="dv">4</span>, <span class="dt">lambda=</span><span class="fl">2.3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1"><span class="co"># P( Y = 4)</span></a>
+<a class="sourceLine" id="cb58-2" title="2"><span class="kw">dpois</span>(<span class="dv">4</span>, <span class="dt">lambda=</span><span class="fl">2.3</span>)</a></code></pre></div>
 <pre><code>## [1] 0.1169022</code></pre>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" title="1"><span class="co"># P( Y &lt;= 4)</span></a>
-<a class="sourceLine" id="cb61-2" title="2"><span class="kw">ppois</span>(<span class="dv">4</span>, <span class="dt">lambda=</span><span class="fl">2.3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1"><span class="co"># P( Y &lt;= 4)</span></a>
+<a class="sourceLine" id="cb60-2" title="2"><span class="kw">ppois</span>(<span class="dv">4</span>, <span class="dt">lambda=</span><span class="fl">2.3</span>)</a></code></pre></div>
 <pre><code>## [1] 0.9162493</code></pre>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1"><span class="co"># 1-P(Y &lt;= 4)  ==  P( Y &gt; 4)  ==  P( Y &gt;= 5)</span></a>
-<a class="sourceLine" id="cb63-2" title="2"><span class="dv">1</span><span class="op">-</span><span class="kw">ppois</span>(<span class="dv">4</span>, <span class="fl">2.3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1"><span class="co"># 1-P(Y &lt;= 4)  ==  P( Y &gt; 4)  ==  P( Y &gt;= 5)</span></a>
+<a class="sourceLine" id="cb62-2" title="2"><span class="dv">1</span><span class="op">-</span><span class="kw">ppois</span>(<span class="dv">4</span>, <span class="fl">2.3</span>)</a></code></pre></div>
 <pre><code>## [1] 0.08375072</code></pre>
 </div>
 </div>
@@ -863,17 +863,17 @@ What about the probability of finding at most 4?
 <p><img src="02_Probability_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <p><strong>Example:</strong> Suppose the time between insect captures <span class="math inline">\(X\)</span> during a summer evening for a species of bat follows a exponential distribution with capture rate of <span class="math inline">\(\lambda=2\)</span> insects per minute and therefore the expected waiting time between captures is <span class="math inline">\(1/\lambda=1/2\)</span> minute. Suppose that we are interested in the probability that it takes a bat more than 1 minute to capture its next insect.</p>
 <p><span class="math display">\[P(X&gt;1)=\]</span></p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1">data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dt">length=</span><span class="dv">1000</span>), <span class="dt">lambda =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb65-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">y=</span><span class="kw">dexp</span>(x, <span class="dt">rate =</span> lambda),</a>
-<a class="sourceLine" id="cb65-3" title="3">         <span class="dt">grp =</span> <span class="kw">ifelse</span>( x <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>, <span class="st">&#39;&gt; 1&#39;</span>, <span class="st">&#39;&lt;= 1&#39;</span>))</a>
-<a class="sourceLine" id="cb65-4" title="4"><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>x, <span class="dt">y=</span>y, <span class="dt">fill=</span>grp)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb65-5" title="5"><span class="st">  </span><span class="kw">geom_area</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb65-6" title="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">y=</span><span class="st">&#39;density&#39;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb65-7" title="7"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1">data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dt">length=</span><span class="dv">1000</span>), <span class="dt">lambda =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb64-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">y=</span><span class="kw">dexp</span>(x, <span class="dt">rate =</span> lambda),</a>
+<a class="sourceLine" id="cb64-3" title="3">         <span class="dt">grp =</span> <span class="kw">ifelse</span>( x <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>, <span class="st">&#39;&gt; 1&#39;</span>, <span class="st">&#39;&lt;= 1&#39;</span>))</a>
+<a class="sourceLine" id="cb64-4" title="4"><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>x, <span class="dt">y=</span>y, <span class="dt">fill=</span>grp)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb64-5" title="5"><span class="st">  </span><span class="kw">geom_area</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb64-6" title="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">y=</span><span class="st">&#39;density&#39;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb64-7" title="7"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
 <p><img src="02_Probability_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <p>We now must resort to calculus to find this area. Or use tables of pre-calculated values. Or use R, remembering that p-functions give the area under the curve to the left of the given value.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1"><span class="co"># P(X &gt; 1)  == 1 - P(X &lt;= 1)  </span><span class="al">###</span><span class="co"> Complement Rule</span></a>
-<a class="sourceLine" id="cb66-2" title="2"><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pexp</span>(<span class="dv">1</span>, <span class="dt">rate=</span><span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1"><span class="co"># P(X &gt; 1)  == 1 - P(X &lt;= 1)  </span><span class="al">###</span><span class="co"> Complement Rule</span></a>
+<a class="sourceLine" id="cb65-2" title="2"><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pexp</span>(<span class="dv">1</span>, <span class="dt">rate=</span><span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## [1] 0.1353353</code></pre>
 </div>
 <div id="normal-distribution" class="section level3">
@@ -885,16 +885,16 @@ where <span class="math inline">\(\exp[y]\)</span> is the exponential function <
 <p>and see this distribution is defined by its expectation <span class="math inline">\(E[X]=\mu\)</span> and its variance <span class="math inline">\(Var[X]=\sigma^{2}\)</span>. Notice I could define it using the standard deviation <span class="math inline">\(\sigma\)</span>, and different software packages will expect it to be defined by one or the other. R defines the normal distribution using the standard deviation.</p>
 <p><img src="02_Probability_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 <p><strong>Example:</strong> It is known that the heights of adult males in the US is approximately normal with a mean of 5 feet 10 inches (<span class="math inline">\(\mu=70\)</span> inches) and a standard deviation of <span class="math inline">\(\sigma=3\)</span> inches. Your instructor is a mere 5 feet 4 inches (64 inches). What proportion of the population is shorter than your professor?</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1">distr &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span><span class="kw">seq</span>(<span class="dv">57</span>, <span class="dv">82</span>, <span class="dt">length=</span><span class="dv">1000</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb68-2" title="2"><span class="st">  </span><span class="kw">mutate</span>( <span class="dt">density =</span> <span class="kw">dnorm</span>(x, <span class="dt">mean=</span><span class="dv">70</span>, <span class="dt">sd=</span><span class="dv">3</span>),</a>
-<a class="sourceLine" id="cb68-3" title="3">          <span class="dt">group =</span> <span class="kw">ifelse</span>(x<span class="op">&lt;=</span><span class="dv">64</span>, <span class="st">&#39;Shorter&#39;</span>,<span class="st">&#39;Taller&#39;</span>) )</a>
-<a class="sourceLine" id="cb68-4" title="4"><span class="kw">ggplot</span>(distr, <span class="kw">aes</span>(<span class="dt">x=</span>x, <span class="dt">y=</span>density, <span class="dt">fill=</span>group)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb68-5" title="5"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb68-6" title="6"><span class="st">  </span><span class="kw">geom_area</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb68-7" title="7"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1">distr &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span><span class="kw">seq</span>(<span class="dv">57</span>, <span class="dv">82</span>, <span class="dt">length=</span><span class="dv">1000</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb67-2" title="2"><span class="st">  </span><span class="kw">mutate</span>( <span class="dt">density =</span> <span class="kw">dnorm</span>(x, <span class="dt">mean=</span><span class="dv">70</span>, <span class="dt">sd=</span><span class="dv">3</span>),</a>
+<a class="sourceLine" id="cb67-3" title="3">          <span class="dt">group =</span> <span class="kw">ifelse</span>(x<span class="op">&lt;=</span><span class="dv">64</span>, <span class="st">&#39;Shorter&#39;</span>,<span class="st">&#39;Taller&#39;</span>) )</a>
+<a class="sourceLine" id="cb67-4" title="4"><span class="kw">ggplot</span>(distr, <span class="kw">aes</span>(<span class="dt">x=</span>x, <span class="dt">y=</span>density, <span class="dt">fill=</span>group)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb67-5" title="5"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb67-6" title="6"><span class="st">  </span><span class="kw">geom_area</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb67-7" title="7"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
 <p><img src="02_Probability_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 <p>Using R you can easily find this</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1"><span class="kw">pnorm</span>(<span class="dv">64</span>, <span class="dt">mean=</span><span class="dv">70</span>, <span class="dt">sd=</span><span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1"><span class="kw">pnorm</span>(<span class="dv">64</span>, <span class="dt">mean=</span><span class="dv">70</span>, <span class="dt">sd=</span><span class="dv">3</span>)</a></code></pre></div>
 <pre><code>## [1] 0.02275013</code></pre>
 </div>
 <div id="standardizing" class="section level3">
@@ -916,7 +916,7 @@ z       &amp;=  \frac{x-\mu}{\sigma} \\
 x       &amp;=  3(0.84)+70 \\
         &amp;=  72.49\;\textrm{inches} \end{aligned}\]</span></p>
 <p>Alternatively we could use the quantile function for the normal distribution (q-function) in R and avoid the imprecision of using a table.</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1"><span class="kw">qnorm</span>(.<span class="dv">8</span>, <span class="dt">mean=</span><span class="dv">0</span>, <span class="dt">sd=</span><span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1"><span class="kw">qnorm</span>(.<span class="dv">8</span>, <span class="dt">mean=</span><span class="dv">0</span>, <span class="dt">sd=</span><span class="dv">1</span>)</a></code></pre></div>
 <pre><code>## [1] 0.8416212</code></pre>
 <p><strong>Empirical Rules:</strong> It is from the normal distribution that the empirical rules from the previous chapter is derived. If <span class="math inline">\(X\sim N(\mu,\sigma^{2})\)</span> then
 <span class="math display">\[\begin{aligned} P(\mu-\sigma\le X\le\mu+\sigma)   

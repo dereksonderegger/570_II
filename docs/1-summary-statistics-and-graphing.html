@@ -592,13 +592,28 @@ Why do we take always evaluate variance? Mathematically the variance is more use
 <h2><span class="header-section-number">1.7</span> Exercises</h2>
 <ol style="list-style-type: decimal">
 <li><p>O&amp;L 3.21. The ratio of DDE (related to DDT) to PCB concentrations in bird eggs has been shown to have had a number of biological implications. The ratio is used as an indication of the movement of contamination through the food chain. The paper “The ratio of DDE to PCB concentrations in Great Lakes herring gull eggs and its us in interpreting contaminants data” reports the following ratios for eggs collected at 13 study sites from the five Great Lakes. The eggs were collected from both terrestrial and aquatic feeding birds.</p>
-<p>+——————-+———————————————————————–+
-| Source Type | DDE to PCB Ratio |
-+——————-+———————————————————————–+
-| <strong>Terrestrial</strong> | 76.50, 6.03, 3.51, 9.96, 4.24, 7.74, 9.54, 41.70, 1.84, 2.5, 1.54 |
-+——————-+———————————————————————–+
-| <strong>Aquatic</strong> | 0.27, 0.61, 0.54, 0.14, 0.63, 0.23, 0.56, 0.48, 0.16, 0.18 |
-+——————-+———————————————————————–+</p>
+<table>
+<colgroup>
+<col width="21%" />
+<col width="78%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Source Type</th>
+<th align="center">DDE to PCB Ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Terrestrial</td>
+<td align="center">76.50, 6.03, 3.51, 9.96, 4.24, 7.74, 9.54, 41.70, 1.84, 2.5, 1.54</td>
+</tr>
+<tr class="even">
+<td align="center">Aquatic</td>
+<td align="center">0.27, 0.61, 0.54, 0.14, 0.63, 0.23, 0.56, 0.48, 0.16, 0.18</td>
+</tr>
+</tbody>
+</table>
 <ol style="list-style-type: lower-alpha">
 <li>By hand, compute the mean and median separately for each type of feeder.</li>
 <li>Using your results from part (a), comment on the relative sensitivity of the mean and median to extreme values in a data set.</li>
@@ -642,15 +657,15 @@ Why do we take always evaluate variance? Mathematically the variance is more use
 ## 4  9.96 Terrestrial
 ## 5  4.24 Terrestrial
 ## 6  7.74 Terrestrial</code></pre>
-<pre><code>*Hint: for computing the means and medians for each type of feeder separately, the `group_by()` command we demonstated earlier in the chapter is convenient.*</code></pre>
+<p><em>Hint: for computing the means and medians for each type of feeder separately, the <code>group_by()</code> command we demonstated earlier in the chapter is convenient.</em></p>
 <ol start="4" style="list-style-type: decimal">
 <li>Use R to confirm your calculations in problem 2 (the hotel data). Show the code you used and the subsequent output. The data can be loaded into a data frame using the following commands Show the code you used and the subsequent output:</li>
 </ol>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1">Hotels &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
-<a class="sourceLine" id="cb44-2" title="2">      <span class="dt">Price =</span> <span class="kw">c</span>(<span class="dv">175</span>, <span class="dv">180</span>, <span class="dv">120</span>, <span class="dv">150</span>, <span class="dv">120</span>, <span class="dv">125</span>, <span class="dv">50</span>, <span class="dv">50</span>, <span class="dv">49</span>, <span class="dv">45</span>, <span class="dv">36</span>, <span class="dv">45</span>, <span class="dv">50</span>, <span class="dv">50</span>, <span class="dv">40</span>),</a>
-<a class="sourceLine" id="cb44-3" title="3">      <span class="dt">Type  =</span> <span class="kw">c</span>( <span class="kw">rep</span>(<span class="st">&#39;Luxury&#39;</span>,<span class="dv">6</span>),  <span class="kw">rep</span>(<span class="st">&#39;Budget&#39;</span>, <span class="dv">9</span>) ) )</a>
-<a class="sourceLine" id="cb44-4" title="4">       </a>
-<a class="sourceLine" id="cb44-5" title="5"><span class="kw">head</span>( Hotels )  <span class="co"># Print out some data to confirm the column names.</span></a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">Hotels &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb43-2" title="2">      <span class="dt">Price =</span> <span class="kw">c</span>(<span class="dv">175</span>, <span class="dv">180</span>, <span class="dv">120</span>, <span class="dv">150</span>, <span class="dv">120</span>, <span class="dv">125</span>, <span class="dv">50</span>, <span class="dv">50</span>, <span class="dv">49</span>, <span class="dv">45</span>, <span class="dv">36</span>, <span class="dv">45</span>, <span class="dv">50</span>, <span class="dv">50</span>, <span class="dv">40</span>),</a>
+<a class="sourceLine" id="cb43-3" title="3">      <span class="dt">Type  =</span> <span class="kw">c</span>( <span class="kw">rep</span>(<span class="st">&#39;Luxury&#39;</span>,<span class="dv">6</span>),  <span class="kw">rep</span>(<span class="st">&#39;Budget&#39;</span>, <span class="dv">9</span>) ) )</a>
+<a class="sourceLine" id="cb43-4" title="4">       </a>
+<a class="sourceLine" id="cb43-5" title="5"><span class="kw">head</span>( Hotels )  <span class="co"># Print out some data to confirm the column names.</span></a></code></pre></div>
 <pre><code>##   Price   Type
 ## 1   175 Luxury
 ## 2   180 Luxury
@@ -684,14 +699,14 @@ Why do we take always evaluate variance? Mathematically the variance is more use
 <li><p>Grapes from a vineyard with 500 vines in Napa Valley are to be sampled. The investigator chooses to sample one grape from 100 different vines. What type of sampling is being done? Justify your response.</p></li>
 <li><p><strong>R Experiment.</strong> Use the code below to generate 100 samples from a normal distribution. The normal distribution has a mean of 10 and a variance of 2. Be sure to include the <em>set.seed</em> function so all answers are the same.</p></li>
 </ol>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"><span class="kw">set.seed</span>(<span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb46-2" title="2">rand.sample&lt;-<span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">10</span>, <span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="kw">set.seed</span>(<span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb45-2" title="2">rand.sample&lt;-<span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">10</span>, <span class="dv">2</span>)</a></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li><p>Use R to calculate the mean, median, variance, and IQR of <em>rand.sample</em>. Assign each value to variables with the names <em>step1.mean</em>, <em>step1.median</em>, <em>step1.var</em>, <em>step1.IQR</em> and have them output to the file.</p></li>
 <li><p>Do the mean and median calculated match the expected value of 10? Discuss why there may be discrepancies between the population mean and the sample mean.</p></li>
 <li><p>Next use the following code to augment <em>rand.sample</em>. This effectively adds two outliers to <em>rand.sample</em>.</p></li>
 </ol>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1">rand.sample<span class="fl">.2</span>&lt;-<span class="kw">c</span>(rand.sample, <span class="dv">250</span>, <span class="dv">250</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1">rand.sample<span class="fl">.2</span>&lt;-<span class="kw">c</span>(rand.sample, <span class="dv">250</span>, <span class="dv">250</span>)</a></code></pre></div>
 <ol start="4" style="list-style-type: lower-alpha">
 <li><p>Use R to calculate the mean, median, variance, and IQR of <em>rand.sample.2</em> and save them as variables named <em>step2.mean</em>, <em>step2.median</em>, <em>step2.var</em>, <em>step2.IQR</em>. Be sure to display all resulting summary statistics in the final RMD output.</p></li>
 <li><p>Discuss the differences in the statistics computed for <em>rand.sample</em> and <em>rand.sample.2</em>. Which statistics seem more resilient to the outliers?</p></li>

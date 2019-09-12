@@ -215,12 +215,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="confidence-intervals-via-bootstrapping" class="section level1">
 <h1><span class="header-section-number">Chapter 3</span> Confidence Intervals via Bootstrapping</h1>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1"><span class="kw">library</span>(ggplot2)    <span class="co"># graphing functions</span></a>
-<a class="sourceLine" id="cb73-2" title="2"><span class="kw">library</span>(dplyr)      <span class="co"># data summary tools</span></a>
-<a class="sourceLine" id="cb73-3" title="3"><span class="kw">library</span>(boot)       <span class="co"># bootstrap</span></a>
-<a class="sourceLine" id="cb73-4" title="4"></a>
-<a class="sourceLine" id="cb73-5" title="5"><span class="co"># Set default behavior of ggplot2 graphs to be black/white theme</span></a>
-<a class="sourceLine" id="cb73-6" title="6"><span class="kw">theme_set</span>(<span class="kw">theme_bw</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="kw">library</span>(ggplot2)    <span class="co"># graphing functions</span></a>
+<a class="sourceLine" id="cb72-2" title="2"><span class="kw">library</span>(dplyr)      <span class="co"># data summary tools</span></a>
+<a class="sourceLine" id="cb72-3" title="3"><span class="kw">library</span>(boot)       <span class="co"># bootstrap</span></a>
+<a class="sourceLine" id="cb72-4" title="4"></a>
+<a class="sourceLine" id="cb72-5" title="5"><span class="co"># Set default behavior of ggplot2 graphs to be black/white theme</span></a>
+<a class="sourceLine" id="cb72-6" title="6"><span class="kw">theme_set</span>(<span class="kw">theme_bw</span>())</a></code></pre></div>
 <div id="theory-of-bootstrapping" class="section level2">
 <h2><span class="header-section-number">3.1</span> Theory of Bootstrapping</h2>
 <p>Suppose that we had a population of interest and we wish to estimate the mean of that population (the population mean we’ll denote as <span class="math inline">\(\mu\)</span>). We can’t observe every member of the population (which would be prohibitively expensive) so instead we take a random sample and from that sample calculate a sample mean (which we’ll denote <span class="math inline">\(\bar{x}\)</span>). We believe that <span class="math inline">\(\bar{x}\)</span> will be a good estimator of <span class="math inline">\(\mu\)</span>, but it will vary from sample to sample and won’t be exactly equal to <span class="math inline">\(\mu\)</span>.</p>
@@ -230,22 +230,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="03_Bootstrapping_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Using this approximated population (which is just many many copies of our sample data), we can repeatedly sample <span class="math inline">\(\bar{x}^{*}\)</span> values to create an estimate of the sampling distribution of <span class="math inline">\(\bar{x}\)</span>.</p>
 <p>Because our approximate population is just an infinite number of copies of our sample data, then sampling from the approximate population is equivalent to sampling with replacement from our sample data. If I take <span class="math inline">\(n\)</span> samples from <span class="math inline">\(n\)</span> distinct objects with replacement, then the process can be thought of as mixing the <span class="math inline">\(n\)</span> objects in a bowl and taking an object at random, noting which it is, replace it into the bowl, and then draw the next sample. Practically, this means some objects will be selected more than once and some will not be chosen at all. To sample our observed data with replacement, we can use the <code>sample()</code> function in R.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1">names=<span class="kw">c</span>(<span class="st">&#39;Alison&#39;</span>,<span class="st">&#39;Brandon&#39;</span>,<span class="st">&#39;Casey&#39;</span>,<span class="st">&#39;Derek&#39;</span>,<span class="st">&#39;Elise&#39;</span>)</a>
-<a class="sourceLine" id="cb74-2" title="2"><span class="kw">sample</span>(names, <span class="kw">length</span>(names), <span class="dt">replace=</span>T)</a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1">names=<span class="kw">c</span>(<span class="st">&#39;Alison&#39;</span>,<span class="st">&#39;Brandon&#39;</span>,<span class="st">&#39;Casey&#39;</span>,<span class="st">&#39;Derek&#39;</span>,<span class="st">&#39;Elise&#39;</span>)</a>
+<a class="sourceLine" id="cb73-2" title="2"><span class="kw">sample</span>(names, <span class="kw">length</span>(names), <span class="dt">replace=</span>T)</a></code></pre></div>
 <pre><code>## [1] &quot;Alison&quot; &quot;Derek&quot;  &quot;Casey&quot;  &quot;Alison&quot; &quot;Elise&quot;</code></pre>
 <p>Notice Alison has selected twice, while Brandon has not been selected at all.</p>
 <p>The sampling from the estimated population via sampling from the observed data is called <strong>bootstrapping</strong> because we are making no distributional assumptions about where the data came from, and the idiom “Pulling yourself up by your bootstraps” seemed appropriate.</p>
 <p><strong>Example:</strong> Mercury Levels in Fish from Florida Lakes</p>
 <p>A data set provided by the Lock<span class="math inline">\(^{5}\)</span> introductory statistics textbook looks at the mercury levels in fish harvested from lakes in Florida. There are approximately 7,700 lakes in Florida that are larger than 10 acres. As part of a study to assess the average mercury contamination in these lakes, a random sample of <span class="math inline">\(n=53\)</span> lakes, an unspecified number of fish were harvested and the average mercury level (in ppm) was calculated for fish in each lake. The goal of the study was to assess if the average mercury concentration was greater than the 1969 EPA “legally actionable level” of 0.5 ppm.</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1"><span class="co"># read the Lakes data set</span></a>
-<a class="sourceLine" id="cb76-2" title="2">Lakes &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;http://www.lock5stat.com/datasets/FloridaLakes.csv&#39;</span>)</a>
-<a class="sourceLine" id="cb76-3" title="3"><span class="co"># make a nice picture... dot plots are very similar to histograms</span></a>
-<a class="sourceLine" id="cb76-4" title="4"><span class="co"># dot plots can be informative for small samples</span></a>
-<a class="sourceLine" id="cb76-5" title="5"><span class="kw">ggplot</span>(Lakes, <span class="kw">aes</span>(<span class="dt">x=</span>AvgMercury)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb76-6" title="6"><span class="st">  </span><span class="kw">geom_dotplot</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1"><span class="co"># read the Lakes data set</span></a>
+<a class="sourceLine" id="cb75-2" title="2">Lakes &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;http://www.lock5stat.com/datasets/FloridaLakes.csv&#39;</span>)</a>
+<a class="sourceLine" id="cb75-3" title="3"><span class="co"># make a nice picture... dot plots are very similar to histograms</span></a>
+<a class="sourceLine" id="cb75-4" title="4"><span class="co"># dot plots can be informative for small samples</span></a>
+<a class="sourceLine" id="cb75-5" title="5"><span class="kw">ggplot</span>(Lakes, <span class="kw">aes</span>(<span class="dt">x=</span>AvgMercury)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb75-6" title="6"><span class="st">  </span><span class="kw">geom_dotplot</span>()</a></code></pre></div>
 <p><img src="03_Bootstrapping_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>We can calculate mean average mercury level for the <span class="math inline">\(n=53\)</span> lakes</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1">Lakes <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="dt">xbar =</span> <span class="kw">mean</span>( AvgMercury ))</a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1">Lakes <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="dt">xbar =</span> <span class="kw">mean</span>( AvgMercury ))</a></code></pre></div>
 <pre><code>##        xbar
 ## 1 0.5271698</code></pre>
 <p>The sample mean is greater than <span class="math inline">\(0.5\)</span> but not by too much. Is a true population mean concentration <span class="math inline">\(\mu_{Hg}\)</span> that is <span class="math inline">\(0.5\)</span> or less incompatible with our observed data? Is our data sufficient evidence to conclude that the average mercury content is greater than <span class="math inline">\(0.5\)</span>? Perhaps the true average mercury content is less than (or equal to) <span class="math inline">\(0.5\)</span> and we just happened to get a random sample that with a mean greater than <span class="math inline">\(0.5\)</span>?</p>
@@ -253,17 +253,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="conducting-a-bootstrap" class="section level2">
 <h2><span class="header-section-number">3.2</span> Conducting a Bootstrap</h2>
 <p>The first step in answering these questions is to create an estimate of the sampling distribution of <span class="math inline">\(\bar{x}_{Hg}\)</span>. To do this, we will sample from the approximate population of lakes, which is just many many replicated copies of our sample data. There are many ways to bootstrap using R, and chosen here is to introduce the package <code>boot</code> for conducting the bootstrap for us with minimal code. For alternative methods using base R or the package <code>mosaic</code>, see Appendix A.</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1"><span class="kw">library</span>(boot)</a></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1"><span class="kw">library</span>(boot)</a></code></pre></div>
 <p>To use the <code>boot()</code> function within the <code>boot</code> package, we will have to define a function for the resampling to occur. Below, we create the function <code>mean.function</code>, that accepts a vector (our observations) and calculates the mean. The index is so that <code>boot()</code> can do the resampling. How do you think we could change this to bootstrap different statistics?</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1">mean.function &lt;-<span class="st"> </span><span class="cf">function</span>(x, index) {</a>
-<a class="sourceLine" id="cb80-2" title="2">  d &lt;-<span class="st"> </span>x[index]</a>
-<a class="sourceLine" id="cb80-3" title="3">  <span class="kw">return</span>(<span class="kw">mean</span>(d))  }</a></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1">mean.function &lt;-<span class="st"> </span><span class="cf">function</span>(x, index) {</a>
+<a class="sourceLine" id="cb79-2" title="2">  d &lt;-<span class="st"> </span>x[index]</a>
+<a class="sourceLine" id="cb79-3" title="3">  <span class="kw">return</span>(<span class="kw">mean</span>(d))  }</a></code></pre></div>
 <p>Once you have defined what you would like to bootstrap, the function <code>boot()</code> is a simple call in R, and produces the number of iterations <span class="math inline">\(R\)</span> we choose. Let us try running <span class="math inline">\(R = 10000\)</span> bootstrap iterations.</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1"><span class="co"># create the Estimated Sampling Distribution of xbar</span></a>
-<a class="sourceLine" id="cb81-2" title="2">BootDist &lt;-<span class="st"> </span><span class="kw">boot</span>(<span class="dt">data =</span> Lakes<span class="op">$</span>AvgMercury, <span class="dt">statistic =</span> mean.function, <span class="dt">R=</span><span class="dv">10000</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1"><span class="co"># create the Estimated Sampling Distribution of xbar</span></a>
+<a class="sourceLine" id="cb80-2" title="2">BootDist &lt;-<span class="st"> </span><span class="kw">boot</span>(<span class="dt">data =</span> Lakes<span class="op">$</span>AvgMercury, <span class="dt">statistic =</span> mean.function, <span class="dt">R=</span><span class="dv">10000</span>)</a></code></pre></div>
 <p>There are many outputs available within the output of <code>boot()</code>. We are interested in the calculated statistic for each redraw, which is saved within the output as the variable <span class="math inline">\(t\)</span>. We can place the calculated means for each redraw into a data frame and produce a visualization of the estimated sampling distribution of <span class="math inline">\(\bar{x}\)</span>.</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1"><span class="co"># The first few calculated means.</span></a>
-<a class="sourceLine" id="cb82-2" title="2"><span class="kw">head</span>(BootDist<span class="op">$</span>t)</a></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1"><span class="co"># The first few calculated means.</span></a>
+<a class="sourceLine" id="cb81-2" title="2"><span class="kw">head</span>(BootDist<span class="op">$</span>t)</a></code></pre></div>
 <pre><code>##           [,1]
 ## [1,] 0.5141509
 ## [2,] 0.5150943
@@ -271,11 +271,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [4,] 0.4762264
 ## [5,] 0.4950943
 ## [6,] 0.4137736</code></pre>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1"><span class="co"># show a histogram of the estimated sampling distribution of xbar</span></a>
-<a class="sourceLine" id="cb84-2" title="2">BootDist.graph &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">xbar=</span>BootDist<span class="op">$</span>t)</a>
-<a class="sourceLine" id="cb84-3" title="3"><span class="kw">ggplot</span>(BootDist.graph, <span class="kw">aes</span>(<span class="dt">x=</span>xbar)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb84-4" title="4"><span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb84-5" title="5"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Estimated Sampling distribution of xbar&#39;</span> )</a></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1"><span class="co"># show a histogram of the estimated sampling distribution of xbar</span></a>
+<a class="sourceLine" id="cb83-2" title="2">BootDist.graph &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">xbar=</span>BootDist<span class="op">$</span>t)</a>
+<a class="sourceLine" id="cb83-3" title="3"><span class="kw">ggplot</span>(BootDist.graph, <span class="kw">aes</span>(<span class="dt">x=</span>xbar)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb83-4" title="4"><span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb83-5" title="5"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Estimated Sampling distribution of xbar&#39;</span> )</a></code></pre></div>
 <p><img src="03_Bootstrapping_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
 <div id="quantile-based-confidence-intervals" class="section level2">
@@ -290,8 +290,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="03_Bootstrapping_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>Most of these intervals contain the true parameter <span class="math inline">\(\mu\)</span>, that we are trying to estimate. In practice, I will only take one sample and therefore will only calculate one sample mean and one interval, but I want to recognize that the method I used to produce the interval (i.e. take a random sample, calculate the mean and then the interval) will result in intervals where only <span class="math inline">\(95\%\)</span> of those intervals will contain the mean <span class="math inline">\(\mu\)</span>. Therefore, I will refer to the interval as a <span class="math inline">\(95\%\)</span> confidence interval.</p>
 <p>After the sample is taken and the interval is calculated, the numbers lower and upper bounds of the confidence interval are fixed. Because <span class="math inline">\(\mu\)</span> is a constant value and the confidence interval is fixed, nothing is changing. To distinguish between a future random event and the fixed (but unknown) outcome of if I ended up with an interval that contains <span class="math inline">\(\mu\)</span> and we use the term confidence interval instead of probability interval.</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1"><span class="co"># calculate the 95% confidence interval using middle 95% of xbars</span></a>
-<a class="sourceLine" id="cb85-2" title="2"><span class="kw">quantile</span>( BootDist<span class="op">$</span>t, <span class="dt">probs=</span><span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>) )</a></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1"><span class="co"># calculate the 95% confidence interval using middle 95% of xbars</span></a>
+<a class="sourceLine" id="cb84-2" title="2"><span class="kw">quantile</span>( BootDist<span class="op">$</span>t, <span class="dt">probs=</span><span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>) )</a></code></pre></div>
 <pre><code>##      2.5%     97.5% 
 ## 0.4358443 0.6196226</code></pre>
 <p>There are several ways to interpret this interval.</p>
@@ -305,51 +305,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.4</span> Additional Examples</h2>
 <p><strong>Example:</strong> Fuel Economy</p>
 <p>Suppose we have data regarding fuel economy of <span class="math inline">\(5\)</span> new vehicles of the same make and model and we wish to test if the observed fuel economy is consistent with the advertised <span class="math inline">\(31\)</span> mpg at highway speeds. Here are the data:</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1">CarMPG &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">ID=</span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">mpg =</span> <span class="kw">c</span>(<span class="fl">31.8</span>, <span class="fl">32.1</span>, <span class="fl">32.5</span>, <span class="fl">30.9</span>, <span class="fl">31.3</span>) )</a>
-<a class="sourceLine" id="cb87-2" title="2">CarMPG <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>( <span class="dt">xbar=</span><span class="kw">mean</span>(mpg) )</a></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1">CarMPG &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">ID=</span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">mpg =</span> <span class="kw">c</span>(<span class="fl">31.8</span>, <span class="fl">32.1</span>, <span class="fl">32.5</span>, <span class="fl">30.9</span>, <span class="fl">31.3</span>) )</a>
+<a class="sourceLine" id="cb86-2" title="2">CarMPG <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>( <span class="dt">xbar=</span><span class="kw">mean</span>(mpg) )</a></code></pre></div>
 <pre><code>##    xbar
 ## 1 31.72</code></pre>
 <p>We will use the sample mean to assess if the sample fuel efficiency is consistent with the advertised number. Because these cars could be considered a random sample of all new cars of this make, we will create the estimated sampling distribution using the bootstrap re-sampling of the data.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1"><span class="co"># Run the bootstrap now with CarMPG$mpg as our data</span></a>
-<a class="sourceLine" id="cb89-2" title="2">BootDist &lt;-<span class="st"> </span><span class="kw">boot</span>(<span class="dt">data =</span> CarMPG<span class="op">$</span>mpg, <span class="dt">statistic =</span> mean.function, <span class="dt">R=</span><span class="dv">10000</span>)</a>
-<a class="sourceLine" id="cb89-3" title="3"></a>
-<a class="sourceLine" id="cb89-4" title="4"><span class="co"># show a histogram of the sampling distribution of xbar</span></a>
-<a class="sourceLine" id="cb89-5" title="5">BootDist.graph &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">xbar=</span>BootDist<span class="op">$</span>t)</a>
-<a class="sourceLine" id="cb89-6" title="6"><span class="kw">ggplot</span>(BootDist.graph, <span class="kw">aes</span>(<span class="dt">x=</span>xbar)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb89-7" title="7"><span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb89-8" title="8"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Sampling Distribution of mean(mpg)&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1"><span class="co"># Run the bootstrap now with CarMPG$mpg as our data</span></a>
+<a class="sourceLine" id="cb88-2" title="2">BootDist &lt;-<span class="st"> </span><span class="kw">boot</span>(<span class="dt">data =</span> CarMPG<span class="op">$</span>mpg, <span class="dt">statistic =</span> mean.function, <span class="dt">R=</span><span class="dv">10000</span>)</a>
+<a class="sourceLine" id="cb88-3" title="3"></a>
+<a class="sourceLine" id="cb88-4" title="4"><span class="co"># show a histogram of the sampling distribution of xbar</span></a>
+<a class="sourceLine" id="cb88-5" title="5">BootDist.graph &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">xbar=</span>BootDist<span class="op">$</span>t)</a>
+<a class="sourceLine" id="cb88-6" title="6"><span class="kw">ggplot</span>(BootDist.graph, <span class="kw">aes</span>(<span class="dt">x=</span>xbar)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb88-7" title="7"><span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb88-8" title="8"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Sampling Distribution of mean(mpg)&#39;</span>)</a></code></pre></div>
 <p><img src="03_Bootstrapping_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1"><span class="co"># calculate the 95% confidence interval using middle 95% of xbars</span></a>
-<a class="sourceLine" id="cb90-2" title="2"><span class="kw">quantile</span>( BootDist<span class="op">$</span>t, <span class="dt">probs=</span><span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>) )</a></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1"><span class="co"># calculate the 95% confidence interval using middle 95% of xbars</span></a>
+<a class="sourceLine" id="cb89-2" title="2"><span class="kw">quantile</span>( BootDist<span class="op">$</span>t, <span class="dt">probs=</span><span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>) )</a></code></pre></div>
 <pre><code>##  2.5% 97.5% 
 ## 31.22 32.20</code></pre>
 <p>We see that the <span class="math inline">\(95\%\)</span> confidence interval is <span class="math inline">\(\left(31.2,\,32.2\right)\)</span> and does not actually contain the advertised <span class="math inline">\(31\)</span> mpg. However, I don’t think we would object to a car manufacturer selling us a car that is better than advertised.</p>
 <p><strong>Example:</strong> Pulse Rate of College Students</p>
 <p>In the package Lock5Data, the dataset <code>GPAGender</code> contains information taken from undergraduate students in an Introductory Statistics course. This is a convenience sample, but could be considered representative of students at that university. One of the covariates measured was the students pulse rate and we will use this to create a confidence interval for average pulse of students at that university.</p>
 <p>First we’ll look at the raw data.</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1"><span class="kw">data</span>(GPAGender, <span class="dt">package=</span><span class="st">&#39;Lock5Data&#39;</span>)     <span class="co"># load the dataset</span></a>
-<a class="sourceLine" id="cb92-2" title="2"><span class="co"># Now a nice histogram</span></a>
-<a class="sourceLine" id="cb92-3" title="3"><span class="kw">ggplot</span>(GPAGender, <span class="kw">aes</span>(<span class="dt">x=</span>Pulse, <span class="dt">y=</span>..density..)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb92-4" title="4"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth=</span><span class="dv">2</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb92-5" title="5"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Sample Data&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1"><span class="kw">data</span>(GPAGender, <span class="dt">package=</span><span class="st">&#39;Lock5Data&#39;</span>)     <span class="co"># load the dataset</span></a>
+<a class="sourceLine" id="cb91-2" title="2"><span class="co"># Now a nice histogram</span></a>
+<a class="sourceLine" id="cb91-3" title="3"><span class="kw">ggplot</span>(GPAGender, <span class="kw">aes</span>(<span class="dt">x=</span>Pulse, <span class="dt">y=</span>..density..)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb91-4" title="4"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth=</span><span class="dv">2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb91-5" title="5"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Sample Data&#39;</span>)</a></code></pre></div>
 <p><img src="03_Bootstrapping_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
 <p>It is worth noting this was supposed to be measuring resting heart rates, but there are two students had extremely high pulse rates and six with extremely low rates. The two high values are approximately what you’d expect from someone currently engaged in moderate exercise and the low values are levels we’d expect from highly trained endurance athletes.</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1"><span class="co"># Summary Statistics</span></a>
-<a class="sourceLine" id="cb93-2" title="2">GPAGender <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="dt">xbar =</span> <span class="kw">mean</span>(Pulse),</a>
-<a class="sourceLine" id="cb93-3" title="3">                        <span class="dt">StdDev =</span> <span class="kw">sd</span>(Pulse))</a></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1"><span class="co"># Summary Statistics</span></a>
+<a class="sourceLine" id="cb92-2" title="2">GPAGender <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="dt">xbar =</span> <span class="kw">mean</span>(Pulse),</a>
+<a class="sourceLine" id="cb92-3" title="3">                        <span class="dt">StdDev =</span> <span class="kw">sd</span>(Pulse))</a></code></pre></div>
 <pre><code>##       xbar   StdDev
 ## 1 69.90379 12.08569</code></pre>
 <p>So the sample mean is <span class="math inline">\(\bar{x}=69.9\)</span> but how much should we expect our sample mean to vary from sample to sample when our sample size is <span class="math inline">\(n=343\)</span> people? We’ll estimate the sampling distribution of <span class="math inline">\(\bar{X}\)</span> using the bootstrap.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1"><span class="co"># Create the bootstrap replicates</span></a>
-<a class="sourceLine" id="cb95-2" title="2">BootDist &lt;-<span class="st"> </span><span class="kw">boot</span>(<span class="dt">data =</span> GPAGender<span class="op">$</span>Pulse, <span class="dt">statistic =</span> mean.function, <span class="dt">R=</span><span class="dv">10000</span>)</a>
-<a class="sourceLine" id="cb95-3" title="3"></a>
-<a class="sourceLine" id="cb95-4" title="4"><span class="co"># show a histogram of the sampling distribution of xbar</span></a>
-<a class="sourceLine" id="cb95-5" title="5">BootDist.graph &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">xbar=</span>BootDist<span class="op">$</span>t)</a>
-<a class="sourceLine" id="cb95-6" title="6"><span class="kw">ggplot</span>(BootDist.graph, <span class="kw">aes</span>(<span class="dt">x=</span>xbar)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb95-7" title="7"><span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb95-8" title="8"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Sampling Distribution of mean(Pulse)&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1"><span class="co"># Create the bootstrap replicates</span></a>
+<a class="sourceLine" id="cb94-2" title="2">BootDist &lt;-<span class="st"> </span><span class="kw">boot</span>(<span class="dt">data =</span> GPAGender<span class="op">$</span>Pulse, <span class="dt">statistic =</span> mean.function, <span class="dt">R=</span><span class="dv">10000</span>)</a>
+<a class="sourceLine" id="cb94-3" title="3"></a>
+<a class="sourceLine" id="cb94-4" title="4"><span class="co"># show a histogram of the sampling distribution of xbar</span></a>
+<a class="sourceLine" id="cb94-5" title="5">BootDist.graph &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">xbar=</span>BootDist<span class="op">$</span>t)</a>
+<a class="sourceLine" id="cb94-6" title="6"><span class="kw">ggplot</span>(BootDist.graph, <span class="kw">aes</span>(<span class="dt">x=</span>xbar)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb94-7" title="7"><span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb94-8" title="8"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Sampling Distribution of mean(Pulse)&#39;</span>)</a></code></pre></div>
 <p><img src="03_Bootstrapping_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1"><span class="kw">quantile</span>( BootDist<span class="op">$</span>t, <span class="dt">probs=</span><span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>) )</a></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1"><span class="kw">quantile</span>( BootDist<span class="op">$</span>t, <span class="dt">probs=</span><span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>) )</a></code></pre></div>
 <pre><code>##     2.5%    97.5% 
 ## 68.65007 71.17515</code></pre>
 <p>Based on the quantile approach, the <span class="math inline">\(95\%\)</span> bootstrap confidence for the mean pulse rate of undergraduates in the introductory statistics course is <span class="math inline">\(68.7\)</span> to <span class="math inline">\(71.2\)</span> beats per minutes.</p>
@@ -362,8 +362,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: lower-alpha">
 <li>Create a histogram of the observed pulse values. Comment on the graph and aspects of the graph that might be of scientific interest. Below will help you load the data, and we want to use the <code>Pulse</code> variable.</li>
 </ol>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" title="1"><span class="kw">data</span>( BodyTemp50, <span class="dt">package=</span><span class="st">&#39;Lock5Data&#39;</span> )</a>
-<a class="sourceLine" id="cb98-2" title="2"><span class="co">#?BodyTemp50</span></a></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" title="1"><span class="kw">data</span>( BodyTemp50, <span class="dt">package=</span><span class="st">&#39;Lock5Data&#39;</span> )</a>
+<a class="sourceLine" id="cb97-2" title="2"><span class="co">#?BodyTemp50</span></a></code></pre></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Calculate the sample mean <span class="math inline">\(\bar{x}\)</span> and sample standard deviation <span class="math inline">\(s\)</span> of the pulses.</li>
 <li>Create a dataset of 10000 bootstrap replicates of <span class="math inline">\(\bar{x}^{*}\)</span>.</li>

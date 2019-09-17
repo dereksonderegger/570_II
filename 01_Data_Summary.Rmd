@@ -508,9 +508,15 @@ Hotels <- data.frame(
 head( Hotels )  # Print out some data to confirm the column names.
 ```
 
-5. For the hotel data, create side-by-side box-and-whisker plots to compare the prices.
+5. For the hotel data (problem 2), create side-by-side box-and-whisker plots to compare the prices.
 
-6. Match the following histograms to the appropriate boxplot.
+6. For each of the following, mark if it is Continuous or Discrete. 
+    a) $\underline{\hspace{1in}}$ Milliliters of tea drunk per day. 
+    b) $\underline{\hspace{1in}}$ Different brands of soda drunk over the course of a year. 
+    c) $\underline{\hspace{1in}}$ Number of days per week that you are on-campus for any amount of time. 
+    d) $\underline{\hspace{1in}}$ Number of grizzly bears individuals genetically identified from a grid of hair traps in Glacier National Park. 
+
+7. Match the following histograms to the appropriate boxplot.
     
     ```{r, echo=FALSE}
     n <- 20000 
@@ -539,9 +545,9 @@ head( Hotels )  # Print out some data to confirm the column names.
     d) Histogram D goes with boxplot __________
 
 
-7. Twenty-five employees of a corporation have a mean salary of $62,000 and the sample standard deviation of those salaries is $15,000. If each employee receives a bonus of $1,000, does the standard deviation of the salaries change? Explain your reasoning.
+8. Twenty-five employees of a corporation have a mean salary of $62,000 and the sample standard deviation of those salaries is $15,000. If each employee receives a bonus of $1,000, does the standard deviation of the salaries change? Explain your reasoning.
 
-8. The chemicals in clay used to make pottery can differ depending on the geographical region where the clay originated. Sometimes, archaeologists use a chemical analysis of clay to help identify where a piece of pottery originated. Such an analysis measures the amount of a chemical in the clay as a percent of the total weight of the piece of pottery. The boxplots below summarize analyses done for three chemicals—X, Y, and Z—on pieces of pottery that originated at one of three sites: I, II, or III.
+9. The chemicals in clay used to make pottery can differ depending on the geographical region where the clay originated. Sometimes, archaeologists use a chemical analysis of clay to help identify where a piece of pottery originated. Such an analysis measures the amount of a chemical in the clay as a percent of the total weight of the piece of pottery. The boxplots below summarize analyses done for three chemicals—X, Y, and Z—on pieces of pottery that originated at one of three sites: I, II, or III.
     
     ```{r, echo=FALSE}
     ni <- 100
@@ -567,11 +573,11 @@ head( Hotels )  # Print out some data to confirm the column names.
         i) Suppose an analysis of the clay reveals that the sum of the percents of the three chemicals X, Y, and Z is $20.5\%$. Based on the boxplots, which site—I, II, or III—is the most likely site where the piece of pottery originated? Justify your choice.
         ii) Suppose only one chemical could be analyzed in the piece of pottery. Which chemical—X, Y, or Z— would be the most useful in identifying the site where the piece of pottery originated? Justify your choice.
 
-9. The efficacy of a new heart medication is being tested by evaluating its effect on a wide range of individuals.  For each individual in the study the following characteristics are recorded prior to being given the medication: Gender, Ethnicity, Age (years), Height (m), Weight (kg), Blood Pressure (mmHg), Heart Rate (bpm).  Determine the type of variable for each characteristic, briefly justify each answer.
+10. The efficacy of a new heart medication is being tested by evaluating its effect on a wide range of individuals.  For each individual in the study the following characteristics are recorded prior to being given the medication: Gender, Ethnicity, Age (years), Height (m), Weight (kg), Blood Pressure (mmHg), Heart Rate (bpm).  Determine the type of variable for each characteristic, briefly justify each answer.
 
-10. Grapes from a vineyard with 500 vines in Napa Valley are to be sampled.  The investigator chooses to sample one grape from 100 different vines.  What type of sampling is being done?  Justify your response.
+11. Grapes from a vineyard with 500 vines in Napa Valley are to be sampled.  The investigator chooses to sample one grape from 100 different vines.  What type of sampling is being done?  Justify your response.
 
-11. **R Experiment.** Use the code below to generate 100 samples from a normal distribution.  The normal distribution has a mean of 10 and a variance of 2.  Be sure to include the _set.seed_ function so all answers are the same.
+12. **R Experiment.** Use the code below to generate 100 samples from a normal distribution.  The normal distribution has a mean of 10 and a variance of 2.  Be sure to include the _set.seed_ function so all answers are the same.
 
 ```{r Normal Distribution, echo=TRUE}
 set.seed(10)

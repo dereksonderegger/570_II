@@ -312,37 +312,14 @@ For several of these exercises, we will use data sets from the R package `Lock5D
         $$\left(\bar{x}-2\cdot\hat{\sigma}_{\bar{x}}\,,\,\;\;\bar{x}+2\cdot\hat{\sigma}_{\bar{x}}\right)$$
         and comment on its similarity to the interval you calculated in part (e).
         
-        
-# Appendix A {-}
-
-This method uses the `mosaic` package and can work very well when everything is in data frames.
-
+3. Return to the `BodyTemp50` data within the `Lock5Data` package, as in Exercise 1.
 
 ```r
-# create the Estimated Sampling Distribution of xbar
-BootDist <- mosaic::do(10000) * 
-  mosaic::resample(Lakes) %>% 
-  summarise(xbar = mean(AvgMercury))
-
-# what columns does the data frame "BootDist" have?
-head(BootDist)
+new.function <- function(x, index) {
+  d <- x[index]
+  return(mean(d))  }  ## Hint: sd() calculates the standard deviation
 ```
+a) The code above was given in the chapter for calculate the mean of a vector.  Modify the code below such that we can prepare a boostrap confidence interval of the **standard deviation**, $\sigma$.
+b) Create a dataset of 10000 bootstrap replicates of $\sigma^*$.
+c) Using the bootstrap replicates, create a 95% confidence interval for $\sigma$, the standard deviation of adult heart rate.
 
-```
-##        xbar
-## 1 0.5986792
-## 2 0.4700000
-## 3 0.5337736
-## 4 0.5311321
-## 5 0.5245283
-## 6 0.6045283
-```
-
-```r
-# show a histogram of the estimated sampling distribution of xbar
-ggplot(BootDist, aes(x=xbar)) +
-  geom_histogram() + 
-  ggtitle('Estimated Sampling distribution of xbar' )
-```
-
-<img src="03_Bootstrapping_files/figure-html/unnamed-chunk-26-1.png" width="672" />

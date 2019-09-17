@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Introduction to Statistical Methodology, Second Edition</title>
-  <meta name="description" content="Introduction to Statistical Methodology, Second Edition" />
+  <title>Appendix A : Alternative Bootstrap Code | Introduction to Statistical Methodology, Second Edition</title>
+  <meta name="description" content="Appendix A : Alternative Bootstrap Code | Introduction to Statistical Methodology, Second Edition" />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Introduction to Statistical Methodology, Second Edition" />
+  <meta property="og:title" content="Appendix A : Alternative Bootstrap Code | Introduction to Statistical Methodology, Second Edition" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dereksonderegger/570_II" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Introduction to Statistical Methodology, Second Edition" />
+  <meta name="twitter:title" content="Appendix A : Alternative Bootstrap Code | Introduction to Statistical Methodology, Second Edition" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="4-sampling-distribution-of-barx.html"/>
 
-<link rel="next" href="1-summary-statistics-and-graphing.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -201,34 +201,74 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Introduction to Statistical Methodology, Second Edition</h1>
-<p class="author"><em>Derek L. Sonderegger &amp; Robert Buscaglia</em></p>
-<p class="date"><em>September 17, 2019</em></p>
+<div id="appendix-a-alternative-bootstrap-code" class="section level1 unnumbered">
+<h1>Appendix A : Alternative Bootstrap Code</h1>
+<div id="mosaic-package" class="section level2 unnumbered">
+<h2>Mosaic Package</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)    <span class="co"># graphing functions</span>
+<span class="kw">library</span>(dplyr)      <span class="co"># data summary tools</span>
+<span class="kw">library</span>(mosaic)     <span class="co"># using Mosaic for iterations</span>
+
+<span class="co"># Set default behavior of ggplot2 graphs to be black/white theme</span>
+<span class="kw">theme_set</span>(<span class="kw">theme_bw</span>())</code></pre></div>
+<p>This method uses the <code>mosaic</code> package and can work very well when everything is in data frames.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># read the Lakes data set</span>
+Lakes &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;http://www.lock5stat.com/datasets/FloridaLakes.csv&#39;</span>)
+
+<span class="co"># create the Estimated Sampling Distribution of xbar</span>
+BootDist &lt;-<span class="st"> </span>mosaic<span class="op">::</span><span class="kw">do</span>(<span class="dv">10000</span>) <span class="op">*</span><span class="st"> </span>
+<span class="st">  </span>mosaic<span class="op">::</span><span class="kw">resample</span>(Lakes) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">xbar =</span> <span class="kw">mean</span>(AvgMercury))
+
+<span class="co"># what columns does the data frame &quot;BootDist&quot; have?</span>
+<span class="kw">head</span>(BootDist)</code></pre></div>
+<pre><code>##        xbar
+## 1 0.5088679
+## 2 0.5013208
+## 3 0.5547170
+## 4 0.5609434
+## 5 0.4509434
+## 6 0.5367925</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># show a histogram of the estimated sampling distribution of xbar</span>
+<span class="kw">ggplot</span>(BootDist, <span class="kw">aes</span>(<span class="dt">x=</span>xbar)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Estimated Sampling distribution of xbar&#39;</span> )</code></pre></div>
+<p><img src="97_Appendix_A_Alternative_Bootstrap_Methods_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># calculate a quantile-based confidence interval</span>
+<span class="kw">quantile</span>(BootDist<span class="op">$</span>xbar, <span class="kw">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</code></pre></div>
+<pre><code>##      2.5%     97.5% 
+## 0.4381132 0.6184953</code></pre>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>These notes were originally written for an introductory statistics course for grad students in the physical sciences.</p>
-<p>The problem with most introductory statistics courses is that they don’t prepare the student for the use of advanced statistics. Rote hand calculation is easy to test, easy to grade, and easy for students to learn to do, but is useless for actually understanding how to apply statistics. Since students pursuing a Ph.D. will likely be using statistics for the rest of their professional careers, we feel that this sort of course should attempt to steer away from a “cookbook” undergraduate pedagogy, and give the student enough theoretical background to continue their statistical studies at a high level while staying away from the painful mathematical details that statisticians must work through.</p>
-<p>Statistical software has progressed by leaps and bounds over the last decades. Scientists need access to reliable software that is flexible enough to handle new problems, with minimal headaches. R has become a widely used, and extremely robust Open Source platform for statistical computing and most new methodologies will appear in R before being incorporated into commercial software. Second, data exploration is the first step of any analysis and a user friendly yet powerful mechanism for graphing is a critical component in a researchers toolbox. R succeeds in this area with the most flexible graphing library of any statistical software and and basic plotting that can be executed quickly and easily. The only downside is that there is a substantial learning curve to scripting, particularly for students without any programming background. The use of R software is introduced with as little pain as possible, but some frustration is inevitable.</p>
-<p>Because the mathematical and statistical background of physical science students varies widely, the course seems to have a split-personality disorder. We wish to talk about using calculus to maximize the likelihood function and define the expectation of a continuous random variable, but also must spend time defining how to calculate a mean. We attempt to address both audiences, but recognize that it is not ideal.</p>
-<p>We hope you’ll find these notes useful.</p>
-<div id="acknowledgements" class="section level2 unnumbered">
-<h2>Acknowledgements</h2>
-<p><em>Derek Sonderegger</em>: I have had the pleasure of interacting with a great number of talented mathematicians and statisticians in my schooling. In particular I am deeply indebted to Dr Robert Boik and Dr Warren Esty as well as my Ph.D. adviser Dr Jan Hannig.</p>
-<p>As a professor at Northern Arizona University, I am grateful for the feedback and comradery of my fellow statisticians, particularly Dr St. Laurent and Dr. Buscaglia.</p>
-<p>Finally, I am deeply appreciative of the support given to me by my wife, Aubrey.</p>
-<p><em>Robert Buscaglia</em>: I am thankful for Dr. Sonderegger allowing me to be a part of this online textbook. I would like to thank my graduate advisers, Dr. Jonathan B. Chaires and Dr. Yiannis Kamarianakis, who helped me achieve my goal of becoming a professor at Northern Arizona University. I would also be lost without the patience and kindness I receive from my family, especially my caring wife, Kelly.</p>
+<div id="base-r-code" class="section level2 unnumbered">
+<h2>Base R Code</h2>
+<p>Here, no packages are used and the steps of the bootstrap are more explicit.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">AvgMerc &lt;-<span class="st"> </span>Lakes<span class="op">$</span>AvgMercury
+Boot.Its&lt;-<span class="dv">10000</span>  ### Numer of iterations, like `R` in `boot`
+Sample.Size&lt;-<span class="kw">length</span>(AvgMerc)
+BS.means&lt;-<span class="kw">numeric</span>() ### where each estimate is saved
+<span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>Boot.Its) BS.means[j]&lt;-<span class="kw">mean</span>(<span class="kw">sample</span>(AvgMerc, Sample.Size, <span class="dt">replace=</span>T))
+<span class="kw">hist</span>(BS.means)</code></pre></div>
+<p><img src="97_Appendix_A_Alternative_Bootstrap_Methods_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Then the 95% confidence interval can be found in a similar manner to above.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(BS.means, <span class="kw">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</code></pre></div>
+<pre><code>##      2.5%     97.5% 
+## 0.4382972 0.6183019</code></pre>
 
 </div>
 </div>
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
+<a href="4-sampling-distribution-of-barx.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="1-summary-statistics-and-graphing.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -259,7 +299,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/dereksonderegger/570_II/raw/master/index.Rmd",
+"link": "https://github.com/dereksonderegger/570_II/raw/master/97_Appendix_A_Alternative_Bootstrap_Methods.Rmd",
 "text": "Edit"
 },
 "history": {

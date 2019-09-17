@@ -1060,28 +1060,22 @@ The `mosaic` package has versions of the p and q -functions that also print a ou
     e) What is the probability that a white donor will have Type A blood? That is to say, given a donor is randomly selected from the list of all the white donors, what is the probability that the selected donor has Type A blood? (Notice we already know the donor is white because we restricted ourselves to that subset!)
     f) Is blood type and ethnicity independent? Justify your response mathematically using your responses from the previous answers.
 
-2. For each of the following, mark if it is Continuous or Discrete. 
-    a) $\underline{\hspace{1in}}$ Milliliters of tea drunk per day. 
-    b) $\underline{\hspace{1in}}$ Different brands of soda drunk over the course of a year. 
-    c) $\underline{\hspace{1in}}$ Number of days per week that you are on-campus for any amount of time. 
-    d) $\underline{\hspace{1in}}$ Number of grizzly bears individuals genetically identified from a grid of hair traps in Glacier National Park. 
-
-3. For each scenario, state whether the event should be modeled via a binomial or Poisson distribution.
+2. For each scenario, state whether the event should be modeled via a binomial or Poisson distribution.
     a) $\underline{\hspace{1in}}$ Number of M&Ms I eat per hour while grading homework
     b) $\underline{\hspace{1in}}$ The number of mornings in the coming 7 days that I change my son's first diaper of the day. 
     c) $\underline{\hspace{1in}}$ The number of Manzanita bushes per 100 meters of trail. 
 
-4. During a road bike race, there is always a chance a crash will occur. Suppose the probability that at least one crash will occur in any race I'm in is $\pi=0.2$ and that races are independent.
+3. During a road bike race, there is always a chance a crash will occur. Suppose the probability that at least one crash will occur in any race I'm in is $\pi=0.2$ and that races are independent.
     a) What is the probability that the next two races I'm in will both have crashes?
     b) What is the probability that neither of my next two races will have a crash?
     c) What is the probability that at least one of the next two races have a crash?
 
-5. My cats suffer from gastric distress due to eating house plants and the number of vomits per week that I have to clean up follows a Poisson distribution with rate $\lambda=1.2$ pukes per week. 
+4. My cats suffer from gastric distress due to eating house plants and the number of vomits per week that I have to clean up follows a Poisson distribution with rate $\lambda=1.2$ pukes per week. 
     a) What is the probability that I don't have to clean up any vomits this coming week?
     b) What is the probability that I must clean up 1 or more vomits?
     c) If I wanted to measure this process with a rate per day, what rate should I use?
 
-6. Suppose that the number of runners I see on a morning walk on the trails near my house has the following distribution (Notice I've never seen four or more runners on a morning walk):
+5. Suppose that the number of runners I see on a morning walk on the trails near my house has the following distribution (Notice I've never seen four or more runners on a morning walk):
     
     |       y         |    0    |   1    |    2   |   3   |   4+   |
     |----------------:|:-------:|:------:|:------:|:-----:|:------:|
@@ -1091,21 +1085,21 @@ The `mosaic` package has versions of the p and q -functions that also print a ou
     b) What is the expected number of runners that I will encounter?
     c) What is the variance of the number of runners that I will encounter?
 
-7. If $Z\sim N\left(\mu=0,\sigma^{2}=1\right)$, find the following probabilities: 
+6. If $Z\sim N\left(\mu=0,\sigma^{2}=1\right)$, find the following probabilities: 
     a) $P(Z<1.58)=$
     b) $P(Z=1.58)=$
     c) $P(Z>-.27)=$
     d) $P(-1.97<Z<2.46)=$
   
-8. Using the Standard Normal Table or the table functions in R, find $z$ that makes the following statements true. 
+7. Using the Standard Normal Table or the table functions in R, find $z$ that makes the following statements true. 
     a) $P(Z<z)=.75$
     b) $P(Z>z)=.4$
   
-9. The amount of dry kibble that I feed my cats each morning can be well approximated by a normal distribution with mean $\mu=200$ grams and standard deviation $\sigma=30$ grams.
+8. The amount of dry kibble that I feed my cats each morning can be well approximated by a normal distribution with mean $\mu=200$ grams and standard deviation $\sigma=30$ grams.
     a) What is the probability that I fed my cats more than 250 grams of kibble this morning?
     b) From my cats' perspective, more food is better. How much would I have to feed them for this morning to be among the top $10\%$ of feedings?
     
-10. Sea lion weight is well approximated by a normal distribution with a mean of 300 kg and standard deviation of 15 kg.  
+9. Sea lion weight is well approximated by a normal distribution with a mean of 300 kg and standard deviation of 15 kg.  
     a) Use R to find the probability of randomly sampling a sea lion with a weight greater than 320 kg.  Round your answer to 3 decimals.
     b) Now suppose we sample 10 sea lions.  We wish to calculate the probability of how many sea lions will have a weight larger than 320 kg. What type of distribution will we have to use and what are the parameters of the distribution?
     c) Calculate by hand the probability of observing only 1 sea lion with a weight greater than 320 kg.

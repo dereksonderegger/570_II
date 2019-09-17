@@ -1,10 +1,23 @@
 # Sampling Distribution of $\bar{X}$ 
 
+```{r, echo=FALSE}
+# Unattach any packages that happen to already be loaded. In general this is unecessary
+# but is important for the creation of the book to not have package namespaces
+# fighting unexpectedly.
+pkgs = names(sessionInfo()$otherPkgs)
+if( length(pkgs > 0)){
+  pkgs = paste('package:', pkgs, sep = "")
+  for( i in 1:length(pkgs)){
+    detach(pkgs[i], character.only = TRUE, force=TRUE)
+  }
+}
 
+# Set my default chunk options 
+knitr::opts_chunk$set( fig.height=3, cache=TRUE )
+```
  
  
-
-```r
+```{r, message=FALSE, warning=FALSE}
 library(ggplot2)
 library(dplyr)
 
@@ -23,8 +36,7 @@ In the previous chapter, we used bootstrapping to estimate the sampling distribu
 
 Suppose we are sampling from a population that has a mean of $\mu=5$ and is skewed. For this example, I'll use a Chi-squared distribution with parameter $\nu=5$. 
 
-
-```r
+```{r}
 # Population is a Chi-sq distribution with df=5 
 PopDist <- data.frame(x = seq(0,20,length=10000)) %>%
   mutate(density=dchisq(x,df=5))
@@ -34,12 +46,9 @@ ggplot(PopDist, aes(x=x, y=density)) +
   ggtitle('Population Distribution')
 ```
 
-<img src="04_SamplingDistribution_files/figure-html/unnamed-chunk-3-1.png" width="672" />
-
 We want to estimate the mean $\mu$ and take a random sample of $n=5$. Lets do this a few times and notice that the sample mean is never exactly 5, but is a bit off from that.
 
-
-```r
+```{r}
 n <- 5  # Our Sample Size!
 mosaic::do(3) * {
   Sample.Data <- data.frame( x = rchisq(n,df=5) )
@@ -47,17 +56,9 @@ mosaic::do(3) * {
 }
 ```
 
-```
-##       xbar
-## 1 4.327771
-## 2 7.053190
-## 3 4.878844
-```
-
 Now produce 10000 estimates from random samples of the population.
 
-
-```r
+```{r}
 n <- 5
 SampDist <- mosaic::do(10000) * {
   Sample.Data <- data.frame( x = rchisq(n,df=5) )
@@ -67,16 +68,13 @@ SampDist <- mosaic::do(10000) * {
 
 We will compare the population distribution to the sampling distribution graphically.
 
-
-```r
+```{r}
 ggplot() +
   geom_area(data=PopDist, aes(x=x, y=density), fill='salmon') +
   geom_histogram(data=SampDist, aes(x=xbar, y=..density..),
                   binwidth=.1,
                   alpha=.6)     # alpha is the opacity of the layer
 ```
-
-<img src="04_SamplingDistribution_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 
 
 From the histogram of the sample means, we notice three things:
@@ -164,8 +162,7 @@ $$\frac{-10}{\left(\frac{50}{\sqrt{n}}\right)}	\le Z\le	\frac{10}{\left(\frac{50
 
 Next we look in our standard normal table to find a $z$-value such that $P\left(-z\le Z\le z\right)=0.95$ and that value is $z=1.96$.
 
-
-```r
+```{r}
 data <- data.frame( z= seq(-3, 3, length=1000) ) %>%
   mutate( y = dnorm(z) )
 ggplot(data, aes(x=z, y=y)) +
@@ -173,8 +170,6 @@ ggplot(data, aes(x=z, y=y)) +
   geom_area( data = data %>% filter(abs(z) <= 1.96), fill='grey', alpha=.7) +
   geom_text( x=0, y=.2, label='95%')
 ```
-
-<img src="04_SamplingDistribution_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
 So all we need to do is solve the following equation for $n$ 
 $$1.96	=	\frac{10}{ \left( \frac{50}{\sqrt{n}} \right) }$$
@@ -210,8 +205,7 @@ $$\begin{aligned}P\left(\bar{X}\ge2.5\right)
 	&=	0.0571 \end{aligned}$$
  
 
-
-```r
+```{r}
 # Answer obtained via simulation
 SampDist <- mosaic::do(10000) *{                     # make 10,000
   Sample <- data.frame( x= rexp(n=40, rate=1/2 ) )   # simulated xbar 
@@ -220,11 +214,6 @@ SampDist <- mosaic::do(10000) *{                     # make 10,000
 SampDist %>%                                         # What proportion of those
   mutate(Greater = ifelse(xbar >= 2.5, 1, 0)) %>%    # xbar values are
   summarise( ProportionGreater = mean(Greater) )     # greater than 2.5?
-```
-
-```
-##   ProportionGreater
-## 1            0.0621
 ```
 
 **Summary**
@@ -256,7 +245,67 @@ $$\bar{Y}	\stackrel{\cdot}{\sim}	N\left(\mu_{\bar{Y}}=\mu,\;\;\sigma_{\bar{Y}}^{
     b) Over the next month, I'll visit Big Foot BBQ 5 times. What is the probability that the mean waiting time of those 5 visits is less than 9 minutes? (This assumes independence of visits but because I don't hit the same restaurant the same night each week, this assumption is probably OK.)
 
 3. Suppose that we have a population with the following distribution that has mean $\mu=5.2$ and standard deviation $\sigma=3.0$:
-<img src="04_SamplingDistribution_files/figure-html/Ch3_HistogramMatching-1.png" width="672" />
+```{r, echo=FALSE, Ch3_HistogramMatching, cache=TRUE, fig.height=5}
+df.star <- function(x){
+  X <- splines::bs(x, knots=c(1.95,4,8), Boundary.knots=c(0,10))
+  return( X %*% c(0, 2, 0, 0, 2, 0) )  
+}  
+C <- integrate(df.star, 0, 10)$value 
+my.df <- function(x){
+  df.star(x) / C 
+} 
+my.rf <- function(n){
+  out <- rep(NA, n)
+  M <- .3
+  for(i in 1:n){
+    keep.going <- TRUE
+    while(keep.going){
+      x <- runif(1, 0,10)
+      if(runif(1) < my.df(x)/M){
+        keep.going <- FALSE
+      }
+    }
+    out[i] <- x
+  }
+  return(out)
+} 
+mu <- integrate(function(x){ x*my.df(x) }, 0, 10)$value 
+#mu
+sigma2 <- integrate( function(x){ (x-mu)^2 * my.df(x) }, 0, 10)$value 
+#sqrt(sigma2)
+x <- seq(0,10, length=1001) 
+
+Population <- ggplot2::qplot(x, my.df(x), ylab='Density', main='Population Distribution', geom='line') + 
+   labs(x=NULL)
+
+mean.rf <- function(n, sample.size=10){
+  M <- matrix(my.rf(n*sample.size), nrow=n)
+  return( as.vector( apply(M, 1, mean) ) )
+}
+D.D <- data.frame(x = my.rf(10000), Group='D')
+D.C <- data.frame(x = mean.rf(5000, 4), Group='C')
+D.B <- data.frame(x = mean.rf(5000, 36), Group='B')
+D.A <- data.frame(x = c(rnorm(20, mean=1, sd=.4),
+                        rnorm(6000, mean=3.95, sd=.4),
+                        rnorm(5000, mean=6.80, sd=.4),
+                        rnorm(20, mean=8.5, sd=.2)), Group='A') 
+data <- rbind(D.A, D.B, D.C, D.D) %>%
+  mutate( Group = factor(Group, levels=c('A','B','C','D'))) 
+
+summary.stats <- data %>%
+   group_by(Group) %>%
+   summarize(xbar = round(mean(x),digits=1),
+             s=round(sd(x),digits=1))
+
+Possibilities <- ggplot(data, aes(x=x)) +
+  geom_histogram(binwidth=.2, aes(y = ..density..)) + 
+  facet_wrap( ~ Group ) + theme_bw() +
+  geom_text( data=summary.stats, x=2, y=.6, aes(label=paste("Mean =",xbar) )) +
+  geom_text( data=summary.stats, x=8, y=.6, aes(label=paste("StdDev =",s) )) + 
+  theme_bw() + labs(x=NULL, y='Density')
+
+Rmisc::multiplot(Population, Possibilities)
+```
     a) Which of the histograms would most likely represent the distribution of the sample mean $\bar{x}$ of $n=4$ observations?  
     b) Which of the histograms would most likely represent the distribution of the sample mean $\bar{x}$ of $n=30$ observations?
     c) Justify your choices in parts (a) and (b).

@@ -255,13 +255,6 @@ $$\bar{Y}	\stackrel{\cdot}{\sim}	N\left(\mu_{\bar{Y}}=\mu,\;\;\sigma_{\bar{Y}}^{
     a) Tonight I am planning on going to Big Foot BBQ. What is the probability I have to wait less than 9 minutes?
     b) Over the next month, I'll visit Big Foot BBQ 5 times. What is the probability that the mean waiting time of those 5 visits is less than 9 minutes? (This assumes independence of visits but because I don't hit the same restaurant the same night each week, this assumption is probably OK.)
 
-3. Suppose that we have a population with the following distribution that has mean $\mu=5.2$ and standard deviation $\sigma=3.0$:
-<img src="04_SamplingDistribution_files/figure-html/Ch3_HistogramMatching-1.png" width="672" />
-    a) Which of the histograms would most likely represent the distribution of the sample mean $\bar{x}$ of $n=4$ observations?  
-    b) Which of the histograms would most likely represent the distribution of the sample mean $\bar{x}$ of $n=30$ observations?
-    c) Justify your choices in parts (a) and (b).
-    
-
 3. A bottling company uses a machine to fill bottles with a tasty beverage. The bottles are advertised to contain 300 milliliters (ml), but in reality the amount varies according to a normal distribution with mean $\mu=298$ ml and standard deviation $\sigma=3$ ml. (For this problem, we'll assume $\sigma$ is known and carry out the calculations accordingly).
     a) What is the probability that a randomly chosen bottle contains less than 296 ml?
     b) Given a simple random sample of size $n=6$ bottles, what is the probability that the sample mean is less than $296$ ml?

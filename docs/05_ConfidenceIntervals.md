@@ -33,7 +33,7 @@ In general for a $\left(1-\alpha\right)\cdot100\%$ confidence interval, we would
 The interpretation of a confidence interval is that over repeated sampling, $100(1-\alpha)\%$ of the resulting intervals will contain the population mean $\mu$
 but we don't know if the interval we have actually observed is one of the good intervals that contains the mean $\mu$ or not. Because this is quite the mouthful, we will say “we are $100\left(1-\alpha\right)\%$ confident that the observed interval contains the mean $\mu$.”
 
-Example: Suppose a bottling facility has a machine that supposedly fills bottles to 300 milliliters (ml) and is known to have a standard deviation of $\sigma=3$ ml. However, the machine occasionally gets out of calibration and might be consistently overfilling or under-filling bottles. To discover if the machine is calibrated correctly, we take a random sample of $n=40$ bottles and observe the mean amount filled was $\bar{x}=299$ ml. We calculate a $95\%$ confidence interval (CI) to be 
+**Example:** Suppose a bottling facility has a machine that supposedly fills bottles to 300 milliliters (ml) and is known to have a standard deviation of $\sigma=3$ ml. However, the machine occasionally gets out of calibration and might be consistently overfilling or under-filling bottles. To discover if the machine is calibrated correctly, we take a random sample of $n=40$ bottles and observe the mean amount filled was $\bar{x}=299$ ml. We calculate a $95\%$ confidence interval (CI) to be 
 $$\begin{aligned} \bar{x}	&\pm	z_{1-\alpha/2}\left(\frac{\sigma}{\sqrt{n}}\right)\\
                    299	  &\pm	1.96\left(\frac{3}{\sqrt{40}}\right) \\
                    299	  &\pm	0.93 \end{aligned}$$
@@ -64,7 +64,7 @@ Notation: We will be calculating confidence intervals for the rest of the course
 $$Estimate\;\pm\,t_{df}^{1-\alpha/2}\,\,Standard\,Error\left(\,Estimate\,\right)$$
  In our current problem, $\bar{x}$ is our estimate of $\mu$ and the estimated standard deviation (which is commonly called the standard error) is $s/\sqrt{n}$ and the appropriate degrees of freedom are $df=n-1$.
 
-Example: Suppose we are interested in calculating a $95\%$ confidence interval for the mean weight of adult black bears. We collect a random sample of $40$ individuals (large enough for the CLT to kick in) and observe the following data: 
+**Example:** Suppose we are interested in calculating a $95\%$ confidence interval for the mean weight of adult black bears. We collect a random sample of $40$ individuals (large enough for the CLT to kick in) and observe the following data: 
 
 
 ```r
@@ -98,7 +98,7 @@ ggplot() +
 
 <img src="05_ConfidenceIntervals_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
-The observed sample mean is $\bar{x}=345.6$  pounds and a sample standard deviation $s=108.8527$  pounds. Because we want a $95\%$ $confidence interval $\alpha=0.05$. Using t-tables or the following R code
+The observed sample mean is $\bar{x}=345.6$  pounds and a sample standard deviation $s=108.8527$  pounds. Because we want a $95\%$ confidence interval $\alpha=0.05$. Using t-tables or the following R code
 
 
 ```r
@@ -113,7 +113,7 @@ we find that $t_{n-1}^{1-\alpha/2}=2.022691$. Therefore the $95\%$ confidence in
 $$\bar{x}	\pm	t_{n-1}^{1-\alpha/2}\left(\frac{s}{\sqrt{n}}\right)$$
 $$345.6	\pm	2.022691\left(\frac{108.8527}{\sqrt{40}}\right)$$
 $$345.6	\pm	34.8$$
-or  $\left(310.8, \, 380.4\right)$ which is interpreted as “We are 95% confident that the true mean $\mu$ is in this interval” which is shorthand for “The process that resulted in this interval (taking a random sample, and then calculating an interval using the algorithm presented) will result in intervals such that 95% of them contain the mean $\mu$, but we cannot know of this particular interval is one of the good ones or not.”
+or  $\left(310.8, \, 380.4\right)$ which is interpreted as “We are 95% confident that the true mean $\mu$ is in this interval” which is shorthand for “The process that resulted in this interval (taking a random sample, and then calculating an interval using the algorithm presented) will result in intervals such that 95% of them contain the mean $\mu$, but we cannot know if this particular interval is one of the good ones or not.”
 
 We can wonder how well this interval matches up with the interval we would have gotten if we had used the bootstrap method to create a confidence interval for $\mu$. In this case, where the sample size $n$ is relatively large, the Central Limit Theorem is certainly working and the distribution of the sample mean certainly looks fairly normal.
 

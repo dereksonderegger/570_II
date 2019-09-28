@@ -24,7 +24,7 @@
 <meta name="author" content="Derek L. Sonderegger &amp; Robert Buscaglia" />
 
 
-<meta name="date" content="2019-09-25" />
+<meta name="date" content="2019-09-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,41 +50,66 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -186,6 +211,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.3" data-path="5-confidence-intervals-for-mu.html"><a href="5-confidence-intervals-for-mu.html#sample-size-selection"><i class="fa fa-check"></i><b>5.3</b> Sample Size Selection</a></li>
 <li class="chapter" data-level="5.4" data-path="5-confidence-intervals-for-mu.html"><a href="5-confidence-intervals-for-mu.html#exercises-4"><i class="fa fa-check"></i><b>5.4</b> Exercises</a></li>
 </ul></li>
+<li class="chapter" data-level="6" data-path="6-hypothesis-tests-for-the-mean-of-a-population.html"><a href="6-hypothesis-tests-for-the-mean-of-a-population.html"><i class="fa fa-check"></i><b>6</b> Hypothesis Tests for the mean of a population</a><ul>
+<li class="chapter" data-level="6.1" data-path="6-hypothesis-tests-for-the-mean-of-a-population.html"><a href="6-hypothesis-tests-for-the-mean-of-a-population.html#writing-hypotheses"><i class="fa fa-check"></i><b>6.1</b> Writing Hypotheses</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="6-hypothesis-tests-for-the-mean-of-a-population.html"><a href="6-hypothesis-tests-for-the-mean-of-a-population.html#null-and-alternative-hypotheses"><i class="fa fa-check"></i><b>6.1.1</b> Null and alternative hypotheses</a></li>
+<li class="chapter" data-level="6.1.2" data-path="6-hypothesis-tests-for-the-mean-of-a-population.html"><a href="6-hypothesis-tests-for-the-mean-of-a-population.html#error"><i class="fa fa-check"></i><b>6.1.2</b> Error</a></li>
+<li class="chapter" data-level="6.1.3" data-path="6-hypothesis-tests-for-the-mean-of-a-population.html"><a href="6-hypothesis-tests-for-the-mean-of-a-population.html#why-should-hypotheses-use-mu-and-not-barx"><i class="fa fa-check"></i><b>6.1.3</b> Why should hypotheses use <span class="math inline">\(\mu\)</span> and not <span class="math inline">\(\bar{x}\)</span>?</a></li>
+<li class="chapter" data-level="6.1.4" data-path="6-hypothesis-tests-for-the-mean-of-a-population.html"><a href="6-hypothesis-tests-for-the-mean-of-a-population.html#calculating-p-values"><i class="fa fa-check"></i><b>6.1.4</b> Calculating p-values</a></li>
+<li class="chapter" data-level="6.1.5" data-path="6-hypothesis-tests-for-the-mean-of-a-population.html"><a href="6-hypothesis-tests-for-the-mean-of-a-population.html#calculating-p-values-vs-cutoff-values"><i class="fa fa-check"></i><b>6.1.5</b> Calculating p-values vs cutoff values</a></li>
+<li class="chapter" data-level="6.1.6" data-path="6-hypothesis-tests-for-the-mean-of-a-population.html"><a href="6-hypothesis-tests-for-the-mean-of-a-population.html#t-tests-in-r"><i class="fa fa-check"></i><b>6.1.6</b> t-tests in R</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="6-hypothesis-tests-for-the-mean-of-a-population.html"><a href="6-hypothesis-tests-for-the-mean-of-a-population.html#type-i-and-type-ii-errors"><i class="fa fa-check"></i><b>6.2</b> Type I and Type II Errors</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="6-hypothesis-tests-for-the-mean-of-a-population.html"><a href="6-hypothesis-tests-for-the-mean-of-a-population.html#power-and-sample-size-selection"><i class="fa fa-check"></i><b>6.2.1</b> Power and Sample Size Selection</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="6-hypothesis-tests-for-the-mean-of-a-population.html"><a href="6-hypothesis-tests-for-the-mean-of-a-population.html#exercises-5"><i class="fa fa-check"></i><b>6.3</b> Exercises</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="appendix-a-alternative-bootstrap-code.html"><a href="appendix-a-alternative-bootstrap-code.html"><i class="fa fa-check"></i>Appendix A : Alternative Bootstrap Code</a><ul>
 <li class="chapter" data-level="" data-path="appendix-a-alternative-bootstrap-code.html"><a href="appendix-a-alternative-bootstrap-code.html#mosaic-package"><i class="fa fa-check"></i>Mosaic Package</a></li>
 <li class="chapter" data-level="" data-path="appendix-a-alternative-bootstrap-code.html"><a href="appendix-a-alternative-bootstrap-code.html#base-r-code"><i class="fa fa-check"></i>Base R Code</a></li>
@@ -209,49 +248,49 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="sampling-distribution-of-barx" class="section level1">
 <h1><span class="header-section-number">Chapter 4</span> Sampling Distribution of <span class="math inline">\(\bar{X}\)</span></h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
-<span class="kw">library</span>(dplyr)
-
-<span class="co"># Set default behavior of ggplot2 graphs to be black/white theme</span>
-<span class="kw">theme_set</span>(<span class="kw">theme_bw</span>())
-
-<span class="co"># other packages I&#39;ll only use occasionally so instead of loading the</span>
-<span class="co"># whole package, I&#39;ll just do packageName::functionName() when I use</span>
-<span class="co"># the function.</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb99-2" title="2"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb99-3" title="3"></a>
+<a class="sourceLine" id="cb99-4" title="4"><span class="co"># Set default behavior of ggplot2 graphs to be black/white theme</span></a>
+<a class="sourceLine" id="cb99-5" title="5"><span class="kw">theme_set</span>(<span class="kw">theme_bw</span>())</a>
+<a class="sourceLine" id="cb99-6" title="6"></a>
+<a class="sourceLine" id="cb99-7" title="7"><span class="co"># other packages I&#39;ll only use occasionally so instead of loading the</span></a>
+<a class="sourceLine" id="cb99-8" title="8"><span class="co"># whole package, I&#39;ll just do packageName::functionName() when I use</span></a>
+<a class="sourceLine" id="cb99-9" title="9"><span class="co"># the function.</span></a></code></pre></div>
 <p>In the previous chapter, we used bootstrapping to estimate the sampling distribution of <span class="math inline">\(\bar{X}\)</span>. We then used this bootstrap distribution to calculate a confidence interval for the population mean. We noticed that the sampling distribution of <span class="math inline">\(\bar{X}\)</span> almost always looked like a normal distribution. Prior to the advent of modern computing, statisticians used a theoretical approximation known as the Central Limit Theorem (CLT). Even today, statistical procedures based on the CLT are widely used and often perform as the corresponding re-sampling technique. In this chapter we’ll lay the theoretical foundations for the CLT as well as introduce computation</p>
 <div id="enlightening-example" class="section level2">
 <h2><span class="header-section-number">4.1</span> Enlightening Example</h2>
 <p>Suppose we are sampling from a population that has a mean of <span class="math inline">\(\mu=5\)</span> and is skewed. For this example, I’ll use a Chi-squared distribution with parameter <span class="math inline">\(\nu=5\)</span>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Population is a Chi-sq distribution with df=5 </span>
-PopDist &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">20</span>,<span class="dt">length=</span><span class="dv">10000</span>)) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">density=</span><span class="kw">dchisq</span>(x,<span class="dt">df=</span><span class="dv">5</span>))
-
-<span class="kw">ggplot</span>(PopDist, <span class="kw">aes</span>(<span class="dt">x=</span>x, <span class="dt">y=</span>density)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_area</span>(<span class="dt">fill=</span><span class="st">&#39;salmon&#39;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Population Distribution&#39;</span>)</code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" title="1"><span class="co"># Population is a Chi-sq distribution with df=5 </span></a>
+<a class="sourceLine" id="cb100-2" title="2">PopDist &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">20</span>,<span class="dt">length=</span><span class="dv">10000</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb100-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">density=</span><span class="kw">dchisq</span>(x,<span class="dt">df=</span><span class="dv">5</span>))</a>
+<a class="sourceLine" id="cb100-4" title="4"></a>
+<a class="sourceLine" id="cb100-5" title="5"><span class="kw">ggplot</span>(PopDist, <span class="kw">aes</span>(<span class="dt">x=</span>x, <span class="dt">y=</span>density)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb100-6" title="6"><span class="st">  </span><span class="kw">geom_area</span>(<span class="dt">fill=</span><span class="st">&#39;salmon&#39;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb100-7" title="7"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Population Distribution&#39;</span>)</a></code></pre></div>
 <p><img src="04_SamplingDistribution_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>We want to estimate the mean <span class="math inline">\(\mu\)</span> and take a random sample of <span class="math inline">\(n=5\)</span>. Lets do this a few times and notice that the sample mean is never exactly 5, but is a bit off from that.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="dv">5</span>  <span class="co"># Our Sample Size!</span>
-mosaic<span class="op">::</span><span class="kw">do</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span>{
-  Sample.Data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">x =</span> <span class="kw">rchisq</span>(n,<span class="dt">df=</span><span class="dv">5</span>) )
-  Sample.Data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>( <span class="dt">xbar =</span> <span class="kw">mean</span>(x) )
-}</code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" title="1">n &lt;-<span class="st"> </span><span class="dv">5</span>  <span class="co"># Our Sample Size!</span></a>
+<a class="sourceLine" id="cb101-2" title="2">mosaic<span class="op">::</span><span class="kw">do</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span>{</a>
+<a class="sourceLine" id="cb101-3" title="3">  Sample.Data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">x =</span> <span class="kw">rchisq</span>(n,<span class="dt">df=</span><span class="dv">5</span>) )</a>
+<a class="sourceLine" id="cb101-4" title="4">  Sample.Data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>( <span class="dt">xbar =</span> <span class="kw">mean</span>(x) )</a>
+<a class="sourceLine" id="cb101-5" title="5">}</a></code></pre></div>
 <pre><code>##       xbar
 ## 1 4.327771
 ## 2 7.053190
 ## 3 4.878844</code></pre>
 <p>Now produce 10000 estimates from random samples of the population.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="dv">5</span>
-SampDist &lt;-<span class="st"> </span>mosaic<span class="op">::</span><span class="kw">do</span>(<span class="dv">10000</span>) <span class="op">*</span><span class="st"> </span>{
-  Sample.Data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">x =</span> <span class="kw">rchisq</span>(n,<span class="dt">df=</span><span class="dv">5</span>) )
-  Sample.Data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>( <span class="dt">xbar =</span> <span class="kw">mean</span>(x)     ) 
-}</code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" title="1">n &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb103-2" title="2">SampDist &lt;-<span class="st"> </span>mosaic<span class="op">::</span><span class="kw">do</span>(<span class="dv">10000</span>) <span class="op">*</span><span class="st"> </span>{</a>
+<a class="sourceLine" id="cb103-3" title="3">  Sample.Data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">x =</span> <span class="kw">rchisq</span>(n,<span class="dt">df=</span><span class="dv">5</span>) )</a>
+<a class="sourceLine" id="cb103-4" title="4">  Sample.Data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>( <span class="dt">xbar =</span> <span class="kw">mean</span>(x)     ) </a>
+<a class="sourceLine" id="cb103-5" title="5">}</a></code></pre></div>
 <p>We will compare the population distribution to the sampling distribution graphically.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_area</span>(<span class="dt">data=</span>PopDist, <span class="kw">aes</span>(<span class="dt">x=</span>x, <span class="dt">y=</span>density), <span class="dt">fill=</span><span class="st">&#39;salmon&#39;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">data=</span>SampDist, <span class="kw">aes</span>(<span class="dt">x=</span>xbar, <span class="dt">y=</span>..density..),
-                  <span class="dt">binwidth=</span>.<span class="dv">1</span>,
-                  <span class="dt">alpha=</span>.<span class="dv">6</span>)     <span class="co"># alpha is the opacity of the layer</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb104-2" title="2"><span class="st">  </span><span class="kw">geom_area</span>(<span class="dt">data=</span>PopDist, <span class="kw">aes</span>(<span class="dt">x=</span>x, <span class="dt">y=</span>density), <span class="dt">fill=</span><span class="st">&#39;salmon&#39;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb104-3" title="3"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">data=</span>SampDist, <span class="kw">aes</span>(<span class="dt">x=</span>xbar, <span class="dt">y=</span>..density..),</a>
+<a class="sourceLine" id="cb104-4" title="4">                  <span class="dt">binwidth=</span>.<span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb104-5" title="5">                  <span class="dt">alpha=</span>.<span class="dv">6</span>)     <span class="co"># alpha is the opacity of the layer</span></a></code></pre></div>
 <p><img src="04_SamplingDistribution_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>From the histogram of the sample means, we notice three things:</p>
 <ul>
@@ -264,19 +303,27 @@ SampDist &lt;-<span class="st"> </span>mosaic<span class="op">::</span><span cla
 <h2><span class="header-section-number">4.2</span> Mathematical details</h2>
 <div id="probability-rules-for-expectations-and-variances" class="section level3">
 <h3><span class="header-section-number">4.2.1</span> Probability Rules for Expectations and Variances</h3>
-<p>Claim: For random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> and constant <span class="math inline">\(a\)</span> the following statements hold: <span class="math display">\[E\left(aX\right)  =   aE\left(X\right)\]</span> <span class="math display">\[Var\left(aX\right)    =   a^{2}Var\left(X\right)\]</span> <span class="math display">\[E\left(X+Y\right) =   E\left(X\right)+E\left(Y\right)\]</span> <span class="math display">\[E\left(X-Y\right) =   E\left(X\right)-E\left(Y\right)\]</span> <span class="math display">\[Var\left(X\pm Y\right)    =   Var\left(X\right)+Var\left(Y\right)\;\textrm{if X,Y are independent}\]</span></p>
+<p>Claim: For random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> and constant <span class="math inline">\(a\)</span> the following statements hold:
+<span class="math display">\[E\left(aX\right)  =   aE\left(X\right)\]</span>
+<span class="math display">\[Var\left(aX\right)    =   a^{2}Var\left(X\right)\]</span>
+<span class="math display">\[E\left(X+Y\right) =   E\left(X\right)+E\left(Y\right)\]</span>
+<span class="math display">\[E\left(X-Y\right) =   E\left(X\right)-E\left(Y\right)\]</span>
+<span class="math display">\[Var\left(X\pm Y\right)    =   Var\left(X\right)+Var\left(Y\right)\;\textrm{if X,Y are independent}\]</span></p>
 <p>Proving these results is relatively straight forward and is done in almost all introductory probability text books.</p>
 </div>
 <div id="mean-and-variance-of-the-sample-mean" class="section level3">
 <h3><span class="header-section-number">4.2.2</span> Mean and Variance of the Sample Mean</h3>
 <p>We have been talking about random variables drawn from a known distribution and being able to derive their expected values and variances. We now turn to the mean of a collection of random variables. Because sample values are random, any function of them is also random. So even though the act of calculating a mean is not a random process, the numbers that are fed into the algorithm are random. Thus the sample mean will change from sample to sample and we are interested in how it varies.</p>
-<p>Using the rules we have just confirmed, it is easy to calculate the expectation and variance of the sample mean. Given a sample <span class="math inline">\(X_{1},X_{2},\dots,X_{n}\)</span> of observations where all the observations are independent of each other and all the observations have expectation <span class="math inline">\(E\left[X_{i}\right]=\mu\)</span> and variance <span class="math inline">\(Var\left[X_{i}\right]=\sigma^{2}\)</span> then <span class="math display">\[\begin{aligned}E\left[\bar{X}\right]  
+<p>Using the rules we have just confirmed, it is easy to calculate the expectation and variance of the sample mean. Given a sample <span class="math inline">\(X_{1},X_{2},\dots,X_{n}\)</span> of observations where all the observations are independent of each other and all the observations have expectation <span class="math inline">\(E\left[X_{i}\right]=\mu\)</span> and variance <span class="math inline">\(Var\left[X_{i}\right]=\sigma^{2}\)</span> then
+<span class="math display">\[\begin{aligned}E\left[\bar{X}\right]  
   &amp;=    E\left[\frac{1}{n}\sum_{i=1}^{n}X_{i}\right] \\
     &amp;=  \frac{1}{n}E\left[\sum_{i=1}^{n}X_{i}\right] \\
     &amp;=  \frac{1}{n}\sum_{i=1}^{n}E\left[X_{i}\right] \\
     &amp;=  \frac{1}{n}\sum_{i=1}^{n}\mu                 \\
     &amp;=  \frac{1}{n}\,n\mu                            \\
-    &amp;=  \mu\end{aligned}\]</span> and <span class="math display">\[\begin{aligned} Var\left[\bar{X}\right]                 
+    &amp;=  \mu\end{aligned}\]</span>
+and
+<span class="math display">\[\begin{aligned} Var\left[\bar{X}\right]                 
   &amp;=    Var\left[\frac{1}{n}\sum_{i=1}^{n}X_{i}\right]       \\
     &amp;=  \frac{1}{n^{2}}Var\left[\sum_{i=1}^{n}X_{i}\right]   \\
     &amp;=  \frac{1}{n^{2}}\sum_{i=1}^{n}Var\left[X_{i}\right]   \\
@@ -289,36 +336,43 @@ SampDist &lt;-<span class="st"> </span>mosaic<span class="op">::</span><span cla
 </div>
 <div id="distribution-of-barx" class="section level2">
 <h2><span class="header-section-number">4.3</span> Distribution of <span class="math inline">\(\bar{X}\)</span></h2>
-<p>If <span class="math inline">\(X_{i}\stackrel{iid}{\sim}N\left(\mu,\sigma^{2}\right)\)</span> then it is well known (and proven in most undergraduate probability classes) that <span class="math inline">\(\bar{X}\)</span> is also normally distributed with a mean and variance that were already established. That is <span class="math display">\[\bar{X}\sim N\left(\mu_{\bar{X}}=\mu,\;\sigma_{\bar{X}}^{2}=\frac{\sigma^{2}}{n}\right)\]</span></p>
+<p>If <span class="math inline">\(X_{i}\stackrel{iid}{\sim}N\left(\mu,\sigma^{2}\right)\)</span> then it is well known (and proven in most undergraduate probability classes) that <span class="math inline">\(\bar{X}\)</span> is also normally distributed with a mean and variance that were already established. That is
+<span class="math display">\[\bar{X}\sim N\left(\mu_{\bar{X}}=\mu,\;\sigma_{\bar{X}}^{2}=\frac{\sigma^{2}}{n}\right)\]</span></p>
 <p>Notation: Because the expectations of <span class="math inline">\(X\)</span> and <span class="math inline">\(\bar{X}\)</span> are the same, I could drop the subscript for the expectation of <span class="math inline">\(\bar{X}\)</span> but it is sometimes helpful to be precise. Because the variances are different we will use <span class="math inline">\(\sigma_{\bar{X}}\)</span> to denote the standard deviation of <span class="math inline">\(\bar{X}\)</span> and <span class="math inline">\(\sigma_{\bar{X}}^{2}\)</span> to denote variance of <span class="math inline">\(\bar{X}\)</span>. If there is no subscript, we are referring to the population parameter of the distribution from which we taking the sample from.</p>
 <p><strong>Example:</strong> A researcher measures the wingspan of a captured Mountain Plover three times. Assume that each of these <span class="math inline">\(X_{i}\)</span> measurements comes from a <span class="math inline">\(N\left(\mu=6\textrm{ inches},\,\sigma^{2}=1\textrm{ inches}^2\right)\)</span> distribution.</p>
 <ol style="list-style-type: decimal">
-<li><p>What is the probability that the first observation is greater than 7? <span class="math display">\[\begin{aligned}P\left(X\ge7\right)    
+<li><p>What is the probability that the first observation is greater than 7?
+<span class="math display">\[\begin{aligned}P\left(X\ge7\right)    
   &amp;=    P\left(\frac{X-\mu}{\sigma}\ge\frac{7-6}{1}\right)  \\
-&amp;=  P\left(Z\ge1\right)                                 \\
-&amp;=  0.1587
+ &amp;=  P\left(Z\ge1\right)                                 \\
+ &amp;=  0.1587
   \end{aligned}\]</span></p></li>
-<li><p>What is the distribution of the sample mean? <span class="math display">\[\bar{X}\sim N\left(\mu_{\bar{X}}=6,\,\;\sigma_{\bar{X}}^{2}=\frac{1^{2}}{3}\right)\]</span></p></li>
-<li><p>What is the probability that the sample mean is greater than 7? <span class="math display">\[\begin{aligned}P\left(\bar{X}\ge7\right)                                                     
+<li><p>What is the distribution of the sample mean?
+<span class="math display">\[\bar{X}\sim N\left(\mu_{\bar{X}}=6,\,\;\sigma_{\bar{X}}^{2}=\frac{1^{2}}{3}\right)\]</span></p></li>
+<li><p>What is the probability that the sample mean is greater than 7?
+<span class="math display">\[\begin{aligned}P\left(\bar{X}\ge7\right)                                                     
   &amp;=    P\left(\frac{\bar{X}-\mu_{\bar{X}}}{\sigma_{\bar{X}}}\ge\frac{7-6}{\sqrt{\frac{1}{3}}}\right)  \\
-&amp;=  P\left(Z\ge\sqrt{3}\right)    \\
-&amp;=  P\left(Z\ge1.73\right) \\
-&amp;=  0.0418
-\end{aligned}\]</span></p></li>
+ &amp;=  P\left(Z\ge\sqrt{3}\right)    \\
+ &amp;=  P\left(Z\ge1.73\right) \\
+ &amp;=  0.0418
+ \end{aligned}\]</span></p></li>
 </ol>
 <p><strong>Example:</strong> Suppose that the weight of an adult black bear is normally distributed with standard deviation <span class="math inline">\(\sigma=50\)</span> pounds. How large a sample do I need to take to be <span class="math inline">\(95\%\)</span> certain that my sample mean is within <span class="math inline">\(10\)</span> pounds of the true mean <span class="math inline">\(\mu\)</span>?</p>
 <p>So we want <span class="math display">\[\left|\bar{X}-\mu\right| \le 10\]</span> which we rewrite as <span class="math display">\[-10    \le\bar{X}-\mu_{\bar{X}}\le 10\]</span></p>
 <p><span class="math display">\[\frac{-10}{\left(\frac{50}{\sqrt{n}}\right)}  \le\frac{\bar{X}-\mu_{\bar{X}}}{\sigma_{\bar{X}}}\le    \frac{10}{\left(\frac{50}{\sqrt{n}}\right)}\]</span></p>
 <p><span class="math display">\[\frac{-10}{\left(\frac{50}{\sqrt{n}}\right)}  \le Z\le    \frac{10}{\left(\frac{50}{\sqrt{n}}\right)}\]</span></p>
 <p>Next we look in our standard normal table to find a <span class="math inline">\(z\)</span>-value such that <span class="math inline">\(P\left(-z\le Z\le z\right)=0.95\)</span> and that value is <span class="math inline">\(z=1.96\)</span>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">z=</span> <span class="kw">seq</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dt">length=</span><span class="dv">1000</span>) ) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">mutate</span>( <span class="dt">y =</span> <span class="kw">dnorm</span>(z) )
-<span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>z, <span class="dt">y=</span>y)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_area</span>( <span class="dt">data =</span> data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">abs</span>(z) <span class="op">&lt;=</span><span class="st"> </span><span class="fl">1.96</span>), <span class="dt">fill=</span><span class="st">&#39;grey&#39;</span>, <span class="dt">alpha=</span>.<span class="dv">7</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_text</span>( <span class="dt">x=</span><span class="dv">0</span>, <span class="dt">y=</span>.<span class="dv">2</span>, <span class="dt">label=</span><span class="st">&#39;95%&#39;</span>)</code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" title="1">data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">z=</span> <span class="kw">seq</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dt">length=</span><span class="dv">1000</span>) ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb105-2" title="2"><span class="st">  </span><span class="kw">mutate</span>( <span class="dt">y =</span> <span class="kw">dnorm</span>(z) )</a>
+<a class="sourceLine" id="cb105-3" title="3"><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>z, <span class="dt">y=</span>y)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb105-4" title="4"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb105-5" title="5"><span class="st">  </span><span class="kw">geom_area</span>( <span class="dt">data =</span> data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">abs</span>(z) <span class="op">&lt;=</span><span class="st"> </span><span class="fl">1.96</span>), <span class="dt">fill=</span><span class="st">&#39;grey&#39;</span>, <span class="dt">alpha=</span>.<span class="dv">7</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb105-6" title="6"><span class="st">  </span><span class="kw">geom_text</span>( <span class="dt">x=</span><span class="dv">0</span>, <span class="dt">y=</span>.<span class="dv">2</span>, <span class="dt">label=</span><span class="st">&#39;95%&#39;</span>)</a></code></pre></div>
 <p><img src="04_SamplingDistribution_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<p>So all we need to do is solve the following equation for <span class="math inline">\(n\)</span> <span class="math display">\[1.96  =   \frac{10}{ \left( \frac{50}{\sqrt{n}} \right) }\]</span> <span class="math display">\[\frac{1.96}{10}\left(50\right)    =   \sqrt{n}\]</span> <span class="math display">\[96    \approx n\]</span></p>
+<p>So all we need to do is solve the following equation for <span class="math inline">\(n\)</span>
+<span class="math display">\[1.96  =   \frac{10}{ \left( \frac{50}{\sqrt{n}} \right) }\]</span>
+<span class="math display">\[\frac{1.96}{10}\left(50\right)    =   \sqrt{n}\]</span>
+<span class="math display">\[96    \approx n\]</span></p>
 </div>
 <div id="central-limit-theorem" class="section level2">
 <h2><span class="header-section-number">4.4</span> Central Limit Theorem</h2>
@@ -340,22 +394,24 @@ SampDist &lt;-<span class="st"> </span>mosaic<span class="op">::</span><span cla
     &amp;\approx    P\left(Z\ge\frac{2.5-2}{\frac{2}{\sqrt{40}}}\right) \\
     &amp;=  P\left(Z\ge1.58\right) \\
     &amp;=  0.0571 \end{aligned}\]</span></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Answer obtained via simulation</span>
-SampDist &lt;-<span class="st"> </span>mosaic<span class="op">::</span><span class="kw">do</span>(<span class="dv">10000</span>) <span class="op">*</span>{                     <span class="co"># make 10,000</span>
-  Sample &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">x=</span> <span class="kw">rexp</span>(<span class="dt">n=</span><span class="dv">40</span>, <span class="dt">rate=</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span> ) )   <span class="co"># simulated xbar </span>
-  Sample <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>( <span class="dt">xbar =</span> <span class="kw">mean</span>( x )         )   <span class="co"># values</span>
-}
-SampDist <span class="op">%&gt;%</span><span class="st">                                         </span><span class="co"># What proportion of those</span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Greater =</span> <span class="kw">ifelse</span>(xbar <span class="op">&gt;=</span><span class="st"> </span><span class="fl">2.5</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="op">%&gt;%</span><span class="st">    </span><span class="co"># xbar values are</span>
-<span class="st">  </span><span class="kw">summarise</span>( <span class="dt">ProportionGreater =</span> <span class="kw">mean</span>(Greater) )     <span class="co"># greater than 2.5?</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1"><span class="co"># Answer obtained via simulation</span></a>
+<a class="sourceLine" id="cb106-2" title="2">SampDist &lt;-<span class="st"> </span>mosaic<span class="op">::</span><span class="kw">do</span>(<span class="dv">10000</span>) <span class="op">*</span>{                     <span class="co"># make 10,000</span></a>
+<a class="sourceLine" id="cb106-3" title="3">  Sample &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">x=</span> <span class="kw">rexp</span>(<span class="dt">n=</span><span class="dv">40</span>, <span class="dt">rate=</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span> ) )   <span class="co"># simulated xbar </span></a>
+<a class="sourceLine" id="cb106-4" title="4">  Sample <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>( <span class="dt">xbar =</span> <span class="kw">mean</span>( x )         )   <span class="co"># values</span></a>
+<a class="sourceLine" id="cb106-5" title="5">}</a>
+<a class="sourceLine" id="cb106-6" title="6">SampDist <span class="op">%&gt;%</span><span class="st">                                         </span><span class="co"># What proportion of those</span></a>
+<a class="sourceLine" id="cb106-7" title="7"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Greater =</span> <span class="kw">ifelse</span>(xbar <span class="op">&gt;=</span><span class="st"> </span><span class="fl">2.5</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="op">%&gt;%</span><span class="st">    </span><span class="co"># xbar values are</span></a>
+<a class="sourceLine" id="cb106-8" title="8"><span class="st">  </span><span class="kw">summarise</span>( <span class="dt">ProportionGreater =</span> <span class="kw">mean</span>(Greater) )     <span class="co"># greater than 2.5?</span></a></code></pre></div>
 <pre><code>##   ProportionGreater
 ## 1            0.0621</code></pre>
 <p><strong>Summary</strong></p>
 <p>Often we have sampled <span class="math inline">\(n\)</span> elements from some population <span class="math inline">\(Y_{1},Y_{2},\dots,Y_{n}\)</span> independently and <span class="math inline">\(E\left(Y_{i}\right)=\mu\)</span> and <span class="math inline">\(Var\left(Y_{i}\right)=\sigma^{2}\)</span> and we want to understand the distribution of the sample mean, that is we want to understand how the sample mean varies from sample to sample.</p>
 <p><span class="math inline">\(E\left(\bar{Y}\right)=\mu\)</span>. That states that the distribution of the sample mean will centered at <span class="math inline">\(\mu\)</span>. We expect to sometimes take samples where the sample mean is higher than <span class="math inline">\(\mu\)</span> and sometimes less than <span class="math inline">\(\mu\)</span>, but the average underestimate is the same magnitude as the average overestimate.</p>
 <p><span class="math inline">\(Var\left(\bar{Y}\right)=\frac{\sigma^{2}}{n}\)</span>. This states that as our sample size increases, we trust the sample mean to be close to <span class="math inline">\(\mu\)</span>. The larger the sample size, the greater our expectation that the <span class="math inline">\(\bar{Y}\)</span> will be close to <span class="math inline">\(\mu\)</span>.</p>
-<p>If <span class="math inline">\(Y_{1},Y_{2},\dots,Y_{n}\)</span> were sampled from a <span class="math inline">\(N\left(\mu,\sigma^{2}\right)\)</span> distribution then <span class="math inline">\(\bar{Y}\)</span> is normally distributed. <span class="math display">\[\bar{Y} \sim    N\left(\mu_{\bar{Y}}=\mu,\;\;\sigma_{\bar{Y}}^{2}=\frac{\sigma^{2}}{n}\right)\]</span></p>
-<p>If <span class="math inline">\(Y_{1},Y_{2},\dots,Y_{n}\)</span> were sampled from a distribution that is <em>not</em> normal but has mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^{2}\)</span>, and our sample size is large, then <span class="math inline">\(\bar{Y}\)</span> is <em>approximately</em> normally distributed. <span class="math display">\[\bar{Y}   \stackrel{\cdot}{\sim}  N\left(\mu_{\bar{Y}}=\mu,\;\;\sigma_{\bar{Y}}^{2}=\frac{\sigma^{2}}{n}\right)\]</span></p>
+<p>If <span class="math inline">\(Y_{1},Y_{2},\dots,Y_{n}\)</span> were sampled from a <span class="math inline">\(N\left(\mu,\sigma^{2}\right)\)</span> distribution then <span class="math inline">\(\bar{Y}\)</span> is normally distributed.
+<span class="math display">\[\bar{Y} \sim    N\left(\mu_{\bar{Y}}=\mu,\;\;\sigma_{\bar{Y}}^{2}=\frac{\sigma^{2}}{n}\right)\]</span></p>
+<p>If <span class="math inline">\(Y_{1},Y_{2},\dots,Y_{n}\)</span> were sampled from a distribution that is <em>not</em> normal but has mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^{2}\)</span>, and our sample size is large, then <span class="math inline">\(\bar{Y}\)</span> is <em>approximately</em> normally distributed.
+<span class="math display">\[\bar{Y}   \stackrel{\cdot}{\sim}  N\left(\mu_{\bar{Y}}=\mu,\;\;\sigma_{\bar{Y}}^{2}=\frac{\sigma^{2}}{n}\right)\]</span></p>
 </div>
 <div id="exercises-3" class="section level2">
 <h2><span class="header-section-number">4.5</span> Exercises</h2>
@@ -444,7 +500,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))

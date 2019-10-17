@@ -292,12 +292,12 @@ $$V_{1}=\frac{2.39^{2}}{10}=0.5712\;\;\;\textrm{and}\;\;\;V_{2}=\frac{2.21^{2}}{
 and
 $$\Delta=\frac{\left(0.5712+0.4884\right)^{2}}{\frac{\left(0.5712\right)^{2}}{9}+\frac{\left(0.4884\right)^{2}}{9}}=17.89$$
 
-So now we can compute our p-value as 
+So now we can compute our two-tailed p-value as 
 
-$$\textrm{p.value}=P\left(T_{17.89}<-3.39\right)$$
+$$\textrm{p-value}=2*P\left(T_{17.89}<-3.39\right)$$
 
 ```{r, message=FALSE}
-mosaic::xpt(-3.39, df=17.89, ncp=0)
+2*pt(-3.39, df=17.89, ncp=0)
 ```
 
 #### Confidence Interval
@@ -445,7 +445,7 @@ As usual, these calculations are pretty annoying to do by hand and we wish to in
 t.test( Taps ~ Group, data=CaffeineTaps, var.equal=TRUE ) 
 ```
 
-Maybe we would like to evaluate a highly confidence level.
+Maybe we would like to evaluate a higher confidence level.
 
 ```{r, message=FALSE}
 # Do the t-test at 99% confidence

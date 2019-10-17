@@ -394,19 +394,17 @@ $$V_{1}=\frac{2.39^{2}}{10}=0.5712\;\;\;\textrm{and}\;\;\;V_{2}=\frac{2.21^{2}}{
 and
 $$\Delta=\frac{\left(0.5712+0.4884\right)^{2}}{\frac{\left(0.5712\right)^{2}}{9}+\frac{\left(0.4884\right)^{2}}{9}}=17.89$$
 
-So now we can compute our p-value as 
+So now we can compute our two-tailed p-value as 
 
-$$\textrm{p.value}=P\left(T_{17.89}<-3.39\right)$$
+$$\textrm{p-value}=2*P\left(T_{17.89}<-3.39\right)$$
 
 
 ```r
-mosaic::xpt(-3.39, df=17.89, ncp=0)
+2*pt(-3.39, df=17.89, ncp=0)
 ```
 
-<img src="07_Two_Samples_files/figure-html/unnamed-chunk-21-1.png" width="672" />
-
 ```
-## [1] 0.00164277
+## [1] 0.00328554
 ```
 
 #### Confidence Interval
@@ -616,7 +614,7 @@ t.test( Taps ~ Group, data=CaffeineTaps, var.equal=TRUE )
 ##                    244.8                    248.3
 ```
 
-Maybe we would like to evaluate a highly confidence level.
+Maybe we would like to evaluate a higher confidence level.
 
 
 ```r

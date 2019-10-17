@@ -500,11 +500,10 @@ where
 <p><span class="math display">\[V_{1}=\frac{2.39^{2}}{10}=0.5712\;\;\;\textrm{and}\;\;\;V_{2}=\frac{2.21^{2}}{10}=0.4884\]</span>
 and
 <span class="math display">\[\Delta=\frac{\left(0.5712+0.4884\right)^{2}}{\frac{\left(0.5712\right)^{2}}{9}+\frac{\left(0.4884\right)^{2}}{9}}=17.89\]</span></p>
-<p>So now we can compute our p-value as</p>
-<p><span class="math display">\[\textrm{p.value}=P\left(T_{17.89}&lt;-3.39\right)\]</span></p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" title="1">mosaic<span class="op">::</span><span class="kw">xpt</span>(<span class="op">-</span><span class="fl">3.39</span>, <span class="dt">df=</span><span class="fl">17.89</span>, <span class="dt">ncp=</span><span class="dv">0</span>)</a></code></pre></div>
-<p><img src="07_Two_Samples_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
-<pre><code>## [1] 0.00164277</code></pre>
+<p>So now we can compute our two-tailed p-value as</p>
+<p><span class="math display">\[\textrm{p-value}=2*P\left(T_{17.89}&lt;-3.39\right)\]</span></p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" title="1"><span class="dv">2</span><span class="op">*</span><span class="kw">pt</span>(<span class="op">-</span><span class="fl">3.39</span>, <span class="dt">df=</span><span class="fl">17.89</span>, <span class="dt">ncp=</span><span class="dv">0</span>)</a></code></pre></div>
+<pre><code>## [1] 0.00328554</code></pre>
 <div id="confidence-interval" class="section level4">
 <h4><span class="header-section-number">7.1.2.1</span> Confidence Interval</h4>
 <p>Similar to the theory discussed earlier, we can calculate the asymptotic confidence interval for the difference in the means. Recall that in general the confidence interval is given by</p>
@@ -634,7 +633,7 @@ H_{a}:  &amp;\mu_{nc}-\mu_{c} \ne 0
 ## sample estimates:
 ## mean in group NoCaffeine   mean in group Caffeine 
 ##                    244.8                    248.3</code></pre>
-<p>Maybe we would like to evaluate a highly confidence level.</p>
+<p>Maybe we would like to evaluate a higher confidence level.</p>
 <div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" title="1"><span class="co"># Do the t-test at 99% confidence</span></a>
 <a class="sourceLine" id="cb185-2" title="2"><span class="kw">t.test</span>( Taps <span class="op">~</span><span class="st"> </span>Group, <span class="dt">data=</span>CaffeineTaps, <span class="dt">var.equal=</span><span class="ot">TRUE</span>, <span class="dt">conf.level=</span>.<span class="dv">99</span> ) </a></code></pre></div>
 <pre><code>## 

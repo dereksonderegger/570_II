@@ -24,14 +24,14 @@
 <meta name="author" content="Derek L. Sonderegger &amp; Robert Buscaglia" />
 
 
-<meta name="date" content="2019-10-16" />
+<meta name="date" content="2019-10-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="7-two-sample-hypothesis-tests-and-confidence-intervals.html"/>
+<link rel="prev" href="8-testing-model-assumptions.html"/>
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -240,6 +240,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7.3" data-path="7-two-sample-hypothesis-tests-and-confidence-intervals.html"><a href="7-two-sample-hypothesis-tests-and-confidence-intervals.html#exercises-6"><i class="fa fa-check"></i><b>7.3</b> Exercises</a></li>
 </ul></li>
+<li class="chapter" data-level="8" data-path="8-testing-model-assumptions.html"><a href="8-testing-model-assumptions.html"><i class="fa fa-check"></i><b>8</b> Testing Model Assumptions</a><ul>
+<li class="chapter" data-level="8.1" data-path="8-testing-model-assumptions.html"><a href="8-testing-model-assumptions.html#testing-normality"><i class="fa fa-check"></i><b>8.1</b> Testing Normality</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="8-testing-model-assumptions.html"><a href="8-testing-model-assumptions.html#visual-inspection---qqplots"><i class="fa fa-check"></i><b>8.1.1</b> Visual Inspection - QQplots</a></li>
+<li class="chapter" data-level="8.1.2" data-path="8-testing-model-assumptions.html"><a href="8-testing-model-assumptions.html#tests-for-normality"><i class="fa fa-check"></i><b>8.1.2</b> Tests for Normality</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="8-testing-model-assumptions.html"><a href="8-testing-model-assumptions.html#testing-equal-variance"><i class="fa fa-check"></i><b>8.2</b> Testing Equal Variance</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="8-testing-model-assumptions.html"><a href="8-testing-model-assumptions.html#visual-inspection"><i class="fa fa-check"></i><b>8.2.1</b> Visual Inspection</a></li>
+<li class="chapter" data-level="8.2.2" data-path="8-testing-model-assumptions.html"><a href="8-testing-model-assumptions.html#tests-for-equal-variance"><i class="fa fa-check"></i><b>8.2.2</b> Tests for Equal Variance</a></li>
+<li class="chapter" data-level="8.2.3" data-path="8-testing-model-assumptions.html"><a href="8-testing-model-assumptions.html#symmetry-of-the-f-distribution"><i class="fa fa-check"></i><b>8.2.3</b> Symmetry of the F-distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="8-testing-model-assumptions.html"><a href="8-testing-model-assumptions.html#power-of-the-f-test"><i class="fa fa-check"></i><b>8.3</b> Power of the F-test</a></li>
+<li class="chapter" data-level="8.4" data-path="8-testing-model-assumptions.html"><a href="8-testing-model-assumptions.html#theoretical-distribution-vs-bootstrap"><i class="fa fa-check"></i><b>8.4</b> Theoretical distribution vs bootstrap</a></li>
+<li class="chapter" data-level="8.5" data-path="8-testing-model-assumptions.html"><a href="8-testing-model-assumptions.html#exercises-7"><i class="fa fa-check"></i><b>8.5</b> Exercises</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="appendix-a-alternative-bootstrap-code.html"><a href="appendix-a-alternative-bootstrap-code.html"><i class="fa fa-check"></i>Appendix A : Alternative Bootstrap Code</a><ul>
 <li class="chapter" data-level="" data-path="appendix-a-alternative-bootstrap-code.html"><a href="appendix-a-alternative-bootstrap-code.html#mosaic-package"><i class="fa fa-check"></i>Mosaic Package</a></li>
 <li class="chapter" data-level="" data-path="appendix-a-alternative-bootstrap-code.html"><a href="appendix-a-alternative-bootstrap-code.html#base-r-code"><i class="fa fa-check"></i>Base R Code</a></li>
@@ -265,23 +279,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>Appendix A : Alternative Bootstrap Code</h1>
 <div id="mosaic-package" class="section level2 unnumbered">
 <h2>Mosaic Package</h2>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" title="1"><span class="kw">library</span>(ggplot2)    <span class="co"># graphing functions</span></a>
-<a class="sourceLine" id="cb230-2" title="2"><span class="kw">library</span>(dplyr)      <span class="co"># data summary tools</span></a>
-<a class="sourceLine" id="cb230-3" title="3"><span class="kw">library</span>(mosaic)     <span class="co"># using Mosaic for iterations</span></a>
-<a class="sourceLine" id="cb230-4" title="4"></a>
-<a class="sourceLine" id="cb230-5" title="5"><span class="co"># Set default behavior of ggplot2 graphs to be black/white theme</span></a>
-<a class="sourceLine" id="cb230-6" title="6"><span class="kw">theme_set</span>(<span class="kw">theme_bw</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb273-1" title="1"><span class="kw">library</span>(ggplot2)    <span class="co"># graphing functions</span></a>
+<a class="sourceLine" id="cb273-2" title="2"><span class="kw">library</span>(dplyr)      <span class="co"># data summary tools</span></a>
+<a class="sourceLine" id="cb273-3" title="3"><span class="kw">library</span>(mosaic)     <span class="co"># using Mosaic for iterations</span></a>
+<a class="sourceLine" id="cb273-4" title="4"></a>
+<a class="sourceLine" id="cb273-5" title="5"><span class="co"># Set default behavior of ggplot2 graphs to be black/white theme</span></a>
+<a class="sourceLine" id="cb273-6" title="6"><span class="kw">theme_set</span>(<span class="kw">theme_bw</span>())</a></code></pre></div>
 <p>This method uses the <code>mosaic</code> package and can work very well when everything is in data frames.</p>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" title="1"><span class="co"># read the Lakes data set</span></a>
-<a class="sourceLine" id="cb231-2" title="2">Lakes &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;http://www.lock5stat.com/datasets/FloridaLakes.csv&#39;</span>)</a>
-<a class="sourceLine" id="cb231-3" title="3"></a>
-<a class="sourceLine" id="cb231-4" title="4"><span class="co"># create the Estimated Sampling Distribution of xbar</span></a>
-<a class="sourceLine" id="cb231-5" title="5">BootDist &lt;-<span class="st"> </span>mosaic<span class="op">::</span><span class="kw">do</span>(<span class="dv">10000</span>) <span class="op">*</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb231-6" title="6"><span class="st">  </span>mosaic<span class="op">::</span><span class="kw">resample</span>(Lakes) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb231-7" title="7"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">xbar =</span> <span class="kw">mean</span>(AvgMercury))</a>
-<a class="sourceLine" id="cb231-8" title="8"></a>
-<a class="sourceLine" id="cb231-9" title="9"><span class="co"># what columns does the data frame &quot;BootDist&quot; have?</span></a>
-<a class="sourceLine" id="cb231-10" title="10"><span class="kw">head</span>(BootDist)</a></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb274-1" title="1"><span class="co"># read the Lakes data set</span></a>
+<a class="sourceLine" id="cb274-2" title="2">Lakes &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;http://www.lock5stat.com/datasets/FloridaLakes.csv&#39;</span>)</a>
+<a class="sourceLine" id="cb274-3" title="3"></a>
+<a class="sourceLine" id="cb274-4" title="4"><span class="co"># create the Estimated Sampling Distribution of xbar</span></a>
+<a class="sourceLine" id="cb274-5" title="5">BootDist &lt;-<span class="st"> </span>mosaic<span class="op">::</span><span class="kw">do</span>(<span class="dv">10000</span>) <span class="op">*</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb274-6" title="6"><span class="st">  </span>mosaic<span class="op">::</span><span class="kw">resample</span>(Lakes) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb274-7" title="7"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">xbar =</span> <span class="kw">mean</span>(AvgMercury))</a>
+<a class="sourceLine" id="cb274-8" title="8"></a>
+<a class="sourceLine" id="cb274-9" title="9"><span class="co"># what columns does the data frame &quot;BootDist&quot; have?</span></a>
+<a class="sourceLine" id="cb274-10" title="10"><span class="kw">head</span>(BootDist)</a></code></pre></div>
 <pre><code>##        xbar
 ## 1 0.5088679
 ## 2 0.5013208
@@ -289,28 +303,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 0.5609434
 ## 5 0.4509434
 ## 6 0.5367925</code></pre>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" title="1"><span class="co"># show a histogram of the estimated sampling distribution of xbar</span></a>
-<a class="sourceLine" id="cb233-2" title="2"><span class="kw">ggplot</span>(BootDist, <span class="kw">aes</span>(<span class="dt">x=</span>xbar)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb233-3" title="3"><span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb233-4" title="4"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Estimated Sampling distribution of xbar&#39;</span> )</a></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb276-1" title="1"><span class="co"># show a histogram of the estimated sampling distribution of xbar</span></a>
+<a class="sourceLine" id="cb276-2" title="2"><span class="kw">ggplot</span>(BootDist, <span class="kw">aes</span>(<span class="dt">x=</span>xbar)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb276-3" title="3"><span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb276-4" title="4"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Estimated Sampling distribution of xbar&#39;</span> )</a></code></pre></div>
 <p><img src="97_Appendix_A_Alternative_Bootstrap_Methods_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" title="1"><span class="co"># calculate a quantile-based confidence interval</span></a>
-<a class="sourceLine" id="cb234-2" title="2"><span class="kw">quantile</span>(BootDist<span class="op">$</span>xbar, <span class="kw">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb277-1" title="1"><span class="co"># calculate a quantile-based confidence interval</span></a>
+<a class="sourceLine" id="cb277-2" title="2"><span class="kw">quantile</span>(BootDist<span class="op">$</span>xbar, <span class="kw">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</a></code></pre></div>
 <pre><code>##      2.5%     97.5% 
 ## 0.4381132 0.6184953</code></pre>
 </div>
 <div id="base-r-code" class="section level2 unnumbered">
 <h2>Base R Code</h2>
 <p>Here, no packages are used and the steps of the bootstrap are more explicit.</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" title="1">AvgMerc &lt;-<span class="st"> </span>Lakes<span class="op">$</span>AvgMercury</a>
-<a class="sourceLine" id="cb236-2" title="2">Boot.Its&lt;-<span class="dv">10000</span>  <span class="co">### Numer of iterations, like `R` in `boot`</span></a>
-<a class="sourceLine" id="cb236-3" title="3">Sample.Size&lt;-<span class="kw">length</span>(AvgMerc)</a>
-<a class="sourceLine" id="cb236-4" title="4">BS.means&lt;-<span class="kw">numeric</span>() <span class="co">### where each estimate is saved</span></a>
-<a class="sourceLine" id="cb236-5" title="5"><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>Boot.Its) BS.means[j]&lt;-<span class="kw">mean</span>(<span class="kw">sample</span>(AvgMerc, Sample.Size, <span class="dt">replace=</span>T))</a>
-<a class="sourceLine" id="cb236-6" title="6"><span class="kw">hist</span>(BS.means)</a></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb279-1" title="1">AvgMerc &lt;-<span class="st"> </span>Lakes<span class="op">$</span>AvgMercury</a>
+<a class="sourceLine" id="cb279-2" title="2">Boot.Its&lt;-<span class="dv">10000</span>  <span class="co">### Numer of iterations, like `R` in `boot`</span></a>
+<a class="sourceLine" id="cb279-3" title="3">Sample.Size&lt;-<span class="kw">length</span>(AvgMerc)</a>
+<a class="sourceLine" id="cb279-4" title="4">BS.means&lt;-<span class="kw">numeric</span>() <span class="co">### where each estimate is saved</span></a>
+<a class="sourceLine" id="cb279-5" title="5"><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>Boot.Its) BS.means[j]&lt;-<span class="kw">mean</span>(<span class="kw">sample</span>(AvgMerc, Sample.Size, <span class="dt">replace=</span>T))</a>
+<a class="sourceLine" id="cb279-6" title="6"><span class="kw">hist</span>(BS.means)</a></code></pre></div>
 <p><img src="97_Appendix_A_Alternative_Bootstrap_Methods_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Then the 95% confidence interval can be found in a similar manner to above.</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb237-1" title="1"><span class="kw">quantile</span>(BS.means, <span class="kw">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb280-1" title="1"><span class="kw">quantile</span>(BS.means, <span class="kw">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</a></code></pre></div>
 <pre><code>##      2.5%     97.5% 
 ## 0.4382972 0.6183019</code></pre>
 
@@ -327,7 +341,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="7-two-sample-hypothesis-tests-and-confidence-intervals.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="8-testing-model-assumptions.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>

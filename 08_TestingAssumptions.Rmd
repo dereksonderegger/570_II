@@ -24,8 +24,6 @@ library(dplyr)
 theme_set(theme_bw())
 ```
 
-**Chapter is still being edited.**
-
 Performing a t-test requires that the data was drawn from a normal distribution or that the sample size is large enough that the Central Limit Theorem will guarantee that the sample means are approximately normally distributed. However, how do you decide if the data were drawn from a normal distribution, say if your sample size is between 10 and 20? If we are using a model that assumes equal variance between groups, how should we test if that assumption is true?
 
 ## Testing Normality

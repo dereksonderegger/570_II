@@ -10,8 +10,6 @@ library(ggplot2)
 library(ggfortify)  # for autoplot( lm ) functions
 ```
 
-**Chapter still under edits.**
-
 We are now moving into a different realm of statistics. We have covered enough probability and the basic ideas of hypothesis tests and p-values to move onto the type of inference that you took this class to learn. The heart of science is comparing and evaluating which hypothesis is better supported by the data.
 
 To evaluate a hypothesis, scientists will write a grant, hire grad students (or under-grads), collect the data, and then analyze the data using some sort of model that reflects the hypothesis under consideration. It could be as simple as “What is the relationship between iris species and petal width?” or as complex as “What is the temporal variation in growing season length in response to elevated CO$_{2}$ in desert ecosystems?” 

@@ -1,7 +1,7 @@
 --- 
 title: "Introduction to Statistical Methodology, Second Edition"
 author: "Derek L. Sonderegger & Robert Buscaglia"
-date: "November 11, 2019"
+date: "November 27, 2019"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
